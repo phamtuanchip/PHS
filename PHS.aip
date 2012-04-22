@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DOCUMENT type="Advanced Installer" version="3.7.1" modules="java" RootPath="." Language="en">
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
+    <ROW Property="ALLUSERS" Value="2"/>
+    <ROW Property="ARPCOMMENTS" Value="This installer database contains the logic and data required to install &lt;product name&gt;." ValueLocId="*"/>
+    <ROW Property="BannerBitmap" Value="style27_banner.jpg"/>
+    <ROW Property="DialogBitmap" Value="style27_dialog.jpg"/>
+    <ROW Property="Manufacturer" Value="FPT-APTECH" ValueLocId="*"/>
+    <ROW Property="ProductCode" Value="1033:{B3CA881B-D248-4E42-B108-72075B67C67B} "/>
+    <ROW Property="ProductLanguage" Value="1033"/>
+    <ROW Property="ProductName" Value="Professional Hotel System" ValueLocId="*"/>
+    <ROW Property="ProductVersion" Value="1.0.0"/>
+    <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
+    <ROW Property="UpgradeCode" Value="{DB0E8F00-C57D-4E50-AAAC-0F71283A3209}"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiDirsComponent">
+    <ROW Directory="APPDIR" Directory_Parent="TARGETDIR" DefaultDir="APPDIR" IsPseudoRoot="1"/>
+    <ROW Directory="Cac_Use_Project_DIR" Directory_Parent="uml_ha_DIR" DefaultDir="CacUse~1|Cac Use Project"/>
+    <ROW Directory="Class_DIR" Directory_Parent="phs_documents_DIR" DefaultDir="Class"/>
+    <ROW Directory="Database_DIR" Directory_Parent="APPDIR" DefaultDir="Database"/>
+    <ROW Directory="DesktopFolder" Directory_Parent="TARGETDIR" DefaultDir="Deskto~1|DesktopFolder" IsPseudoRoot="1"/>
+    <ROW Directory="Documents_DIR" Directory_Parent="APPDIR" DefaultDir="Docume~1|Documents"/>
+    <ROW Directory="Image_DIR" Directory_Parent="APPDIR" DefaultDir="Image"/>
+    <ROW Directory="SHORTCUTDIR" Directory_Parent="TARGETDIR" DefaultDir="SHORTC~1|SHORTCUTDIR" IsPseudoRoot="1"/>
+    <ROW Directory="TARGETDIR" DefaultDir="SourceDir"/>
+    <ROW Directory="build_DIR" Directory_Parent="APPDIR" DefaultDir="build"/>
+    <ROW Directory="classes_DIR" Directory_Parent="build_DIR" DefaultDir="classes"/>
+    <ROW Directory="dist_DIR" Directory_Parent="APPDIR" DefaultDir="dist"/>
+    <ROW Directory="lib_1_DIR" Directory_Parent="APPDIR" DefaultDir="lib"/>
+    <ROW Directory="lib_DIR" Directory_Parent="dist_DIR" DefaultDir="lib"/>
+    <ROW Directory="nbproject_DIR" Directory_Parent="APPDIR" DefaultDir="nbproj~1|nbproject"/>
+    <ROW Directory="phs_documents_DIR" Directory_Parent="Documents_DIR" DefaultDir="phs_do~1|phs_documents"/>
+    <ROW Directory="phs_project_1_DIR" Directory_Parent="src_DIR" DefaultDir="phs_pr~1|phs_project"/>
+    <ROW Directory="phs_project_DIR" Directory_Parent="classes_DIR" DefaultDir="phs_pr~1|phs_project"/>
+    <ROW Directory="private_DIR" Directory_Parent="nbproject_DIR" DefaultDir="private"/>
+    <ROW Directory="profiler_DIR" Directory_Parent="private_DIR" DefaultDir="profiler"/>
+    <ROW Directory="src_DIR" Directory_Parent="APPDIR" DefaultDir="src"/>
+    <ROW Directory="test_DIR" Directory_Parent="APPDIR" DefaultDir="test"/>
+    <ROW Directory="uml_ha_DIR" Directory_Parent="Documents_DIR" DefaultDir="uml_ha"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
+    <ROW Component="APPDIR" ComponentId="{8A3C8C28-8FCF-4BE7-A5D1-C960BDE58941}" Directory_="APPDIR" Attributes="0"/>
+    <ROW Component="AttachDTB.bat" ComponentId="{4F368E6E-0835-4BC5-AB48-62F4C3FD9F2E}" Directory_="APPDIR" Attributes="0" KeyPath="AttachDTB.bat" FullKeyPath="APPDIR"/>
+    <ROW Component="JPG" ComponentId="{80377D6C-AD01-4B38-85B5-7EE4B25EB9CB}" Directory_="phs_project_DIR" Attributes="0" KeyPath="JPG" FullKeyPath="APPDIR\build\classes\phs_project"/>
+    <ROW Component="JPG_1" ComponentId="{641D0430-5E0B-431F-BB06-C10CDA49476D}" Directory_="phs_project_1_DIR" Attributes="0" KeyPath="JPG_1" FullKeyPath="APPDIR\src\phs_project"/>
+    <ROW Component="PHS_PROJECT.jar" ComponentId="{2DAC16F3-2095-475F-8305-11104F5B52A7}" Directory_="dist_DIR" Attributes="0" KeyPath="PHS_PROJECT.jar" FullKeyPath="APPDIR\dist"/>
+    <ROW Component="Professional_Hotel_System.exe" ComponentId="{9991C916-26E5-48EA-9D14-0024D7ABE1CA}" Directory_="APPDIR" Attributes="0" KeyPath="Professional_Hotel_System.exe" FullKeyPath="APPDIR\PHS.exe"/>
+    <ROW Component="Project.doc" ComponentId="{0995AAF9-1733-402D-8B8F-E04D6A34CB69}" Directory_="uml_ha_DIR" Attributes="0" KeyPath="Project.doc" FullKeyPath="APPDIR\Documents\uml_ha"/>
+    <ROW Component="QLNV_DKTV_QLSP.doc" ComponentId="{DEF46568-8566-4FDF-81FA-30A7A4CC5502}" Directory_="Cac_Use_Project_DIR" Attributes="0" KeyPath="QLNV_DKTV_QLSP.doc" FullKeyPath="APPDIR\Documents\uml_ha\Cac Use Project"/>
+    <ROW Component="addCustomer.JPG" ComponentId="{4EC19A0D-920E-4694-A58B-5C41766FA7E0}" Directory_="phs_documents_DIR" Attributes="0" KeyPath="addCustomer.JPG" FullKeyPath="APPDIR\Documents\phs_documents"/>
+    <ROW Component="addForm.class" ComponentId="{5981F030-E4BB-48CC-9821-E684BB830928}" Directory_="Class_DIR" Attributes="0" KeyPath="addForm.class_1" FullKeyPath="APPDIR\Documents\phs_documents\Class"/>
+    <ROW Component="build" ComponentId="{B9DE6B61-8906-426E-8776-4D89CD0F0E66}" Directory_="build_DIR" Attributes="0"/>
+    <ROW Component="build_impl.xml" ComponentId="{3CE55159-0437-4821-9925-AEB84995EB75}" Directory_="nbproject_DIR" Attributes="0" KeyPath="build_impl.xml" FullKeyPath="APPDIR\nbproject"/>
+    <ROW Component="classes" ComponentId="{944AC2B9-8B5D-4003-ADD3-D59CC054DABE}" Directory_="classes_DIR" Attributes="0"/>
+    <ROW Component="datphong.doc" ComponentId="{C405DA6F-0D16-4DB4-AA38-42ABCE8FADB6}" Directory_="Documents_DIR" Attributes="0" KeyPath="datphong.doc" FullKeyPath="APPDIR\Documents"/>
+    <ROW Component="ico" ComponentId="{DB65089D-C238-46D3-9614-C8FB7BCCE514}" Directory_="Image_DIR" Attributes="0" KeyPath="ico" FullKeyPath="APPDIR\Image"/>
+    <ROW Component="jcalendar.jar" ComponentId="{00326582-5B84-4626-8820-58C71E6E7F5E}" Directory_="lib_DIR" Attributes="0" KeyPath="jcalendar.jar" FullKeyPath="APPDIR\dist\lib"/>
+    <ROW Component="jcalendar.jar_1" ComponentId="{04EBF256-76EB-4784-95C4-8E3DC224E283}" Directory_="lib_1_DIR" Attributes="0" KeyPath="jcalendar.jar_1" FullKeyPath="APPDIR\lib"/>
+    <ROW Component="phs_data_Data.MDF" ComponentId="{95F9C44E-0229-4651-88A1-9CCA40D06639}" Directory_="Database_DIR" Attributes="0" KeyPath="phs_data_Data.MDF" FullKeyPath="APPDIR\Database"/>
+    <ROW Component="presets.xml" ComponentId="{C44A2204-F412-4B32-BB62-10CCDCB98575}" Directory_="profiler_DIR" Attributes="0" KeyPath="presets.xml" FullKeyPath="APPDIR\nbproject\private\profiler"/>
+    <ROW Component="private.properties" ComponentId="{0D5A4DB2-868D-4E02-B472-3C293696E10E}" Directory_="private_DIR" Attributes="0" KeyPath="private.properties" FullKeyPath="APPDIR\nbproject\private"/>
+    <ROW Component="src" ComponentId="{61F7F4B5-65D9-44F9-A42A-35DD422BFDD2}" Directory_="src_DIR" Attributes="0"/>
+    <ROW Component="test" ComponentId="{5F918A9A-9F55-440C-8790-45C3DCC63141}" Directory_="test_DIR" Attributes="0"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
+    <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0" Components="AttachDTB.bat JPG phs_data_Data.MDF jcalendar.jar PHS_PROJECT.jar ico jcalendar.jar_1 build_impl.xml private.properties presets.xml JPG_1 Professional_Hotel_System.exe classes build src test APPDIR datphong.doc addCustomer.JPG addForm.class QLNV_DKTV_QLSP.doc Project.doc"/>
+    <ATTRIBUTE name="CurrentFeature" value="MainFeature"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
+    <ROW File="AddRooms.class" Component_="JPG" FileName="AddRoo~9.cla|AddRooms.class" Attributes="0" SourcePath="build\classes\phs_project\AddRooms.class" SelfReg="false" Sequence="24"/>
+    <ROW File="AddRooms.class_1" Component_="addForm.class" FileName="AddRoo~1.cla|AddRooms.class" Attributes="0" SourcePath="Documents\phs_documents\Class\AddRooms.class" SelfReg="false" Sequence="347"/>
+    <ROW File="AddRooms.form" Component_="JPG_1" FileName="AddRoo~1.for|AddRooms.form" Attributes="0" SourcePath="src\phs_project\AddRooms.form" SelfReg="false" Sequence="257"/>
+    <ROW File="AddRooms.java" Component_="JPG_1" FileName="AddRoo~1.jav|AddRooms.java" Attributes="0" SourcePath="src\phs_project\AddRooms.java" SelfReg="false" Sequence="258"/>
+    <ROW File="AddRooms_1.class" Component_="JPG" FileName="AddRoo~1.cla|AddRooms$1.class" Attributes="0" SourcePath="build\classes\phs_project\AddRooms$1.class" SelfReg="false" Sequence="16"/>
+    <ROW File="AddRooms_2.class" Component_="JPG" FileName="AddRoo~2.cla|AddRooms$2.class" Attributes="0" SourcePath="build\classes\phs_project\AddRooms$2.class" SelfReg="false" Sequence="17"/>
+    <ROW File="AddRooms_3.class" Component_="JPG" FileName="AddRoo~3.cla|AddRooms$3.class" Attributes="0" SourcePath="build\classes\phs_project\AddRooms$3.class" SelfReg="false" Sequence="18"/>
+    <ROW File="AddRooms_4.class" Component_="JPG" FileName="AddRoo~4.cla|AddRooms$4.class" Attributes="0" SourcePath="build\classes\phs_project\AddRooms$4.class" SelfReg="false" Sequence="19"/>
+    <ROW File="AddRooms_5.class" Component_="JPG" FileName="AddRoo~5.cla|AddRooms$5.class" Attributes="0" SourcePath="build\classes\phs_project\AddRooms$5.class" SelfReg="false" Sequence="20"/>
+    <ROW File="AddRooms_6.class" Component_="JPG" FileName="AddRoo~6.cla|AddRooms$6.class" Attributes="0" SourcePath="build\classes\phs_project\AddRooms$6.class" SelfReg="false" Sequence="21"/>
+    <ROW File="AddRooms_7.class" Component_="JPG" FileName="AddRoo~7.cla|AddRooms$7.class" Attributes="0" SourcePath="build\classes\phs_project\AddRooms$7.class" SelfReg="false" Sequence="22"/>
+    <ROW File="AddRooms_8.class" Component_="JPG" FileName="AddRoo~8.cla|AddRooms$8.class" Attributes="0" SourcePath="build\classes\phs_project\AddRooms$8.class" SelfReg="false" Sequence="23"/>
+    <ROW File="AddRooms_9.class" Component_="JPG" FileName="AddRo~10.cla|AddRooms$9.class" Attributes="0" SourcePath="build\classes\phs_project\AddRooms$9.class" SelfReg="false" Sequence="312"/>
+    <ROW File="AttachDTB.bat" Component_="AttachDTB.bat" FileName="Attach~1.bat|AttachDTB.bat" Attributes="0" SourcePath="AttachDTB.bat" SelfReg="false" Sequence="1"/>
+    <ROW File="ChangeLookFeel.class" Component_="JPG" FileName="Change~1.cla|ChangeLookFeel.class" Attributes="0" SourcePath="build\classes\phs_project\ChangeLookFeel.class" SelfReg="false" Sequence="51"/>
+    <ROW File="ChangeLookFeel.class_1" Component_="addForm.class" FileName="Change~1.cla|ChangeLookFeel.class" Attributes="0" SourcePath="Documents\phs_documents\Class\ChangeLookFeel.class" SelfReg="false" Sequence="351"/>
+    <ROW File="ChangeLookFeel.java" Component_="JPG_1" FileName="Change~1.jav|ChangeLookFeel.java" Attributes="0" SourcePath="src\phs_project\ChangeLookFeel.java" SelfReg="false" Sequence="266"/>
+    <ROW File="CheckOut.JPG" Component_="addCustomer.JPG" FileName="CheckOut.JPG" Attributes="0" SourcePath="Documents\phs_documents\CheckOut.JPG" SelfReg="false" Sequence="345"/>
+    <ROW File="Clock.gif" Component_="ico" FileName="Clock.gif" Attributes="0" SourcePath="Image\Clock.gif" SelfReg="false" Sequence="186"/>
+    <ROW File="ConnectionTuanp.class" Component_="JPG" FileName="Connec~5.cla|ConnectionTuanp.class" Attributes="0" SourcePath="build\classes\phs_project\ConnectionTuanp.class" SelfReg="false" Sequence="71"/>
+    <ROW File="ConnectionTuanp.class_1" Component_="addForm.class" FileName="Connec~2.cla|ConnectionTuanp.class" Attributes="0" SourcePath="Documents\phs_documents\Class\ConnectionTuanp.class" SelfReg="false" Sequence="355"/>
+    <ROW File="ConnectionTuanp.form" Component_="JPG_1" FileName="Connec~1.for|ConnectionTuanp.form" Attributes="0" SourcePath="src\phs_project\ConnectionTuanp.form" SelfReg="false" Sequence="272"/>
+    <ROW File="ConnectionTuanp.java" Component_="JPG_1" FileName="Connec~2.jav|ConnectionTuanp.java" Attributes="0" SourcePath="src\phs_project\ConnectionTuanp.java" SelfReg="false" Sequence="273"/>
+    <ROW File="ConnectionTuanp_1.class" Component_="JPG" FileName="Connec~2.cla|ConnectionTuanp$1.class" Attributes="0" SourcePath="build\classes\phs_project\ConnectionTuanp$1.class" SelfReg="false" Sequence="68"/>
+    <ROW File="ConnectionTuanp_2.class" Component_="JPG" FileName="Connec~3.cla|ConnectionTuanp$2.class" Attributes="0" SourcePath="build\classes\phs_project\ConnectionTuanp$2.class" SelfReg="false" Sequence="69"/>
+    <ROW File="ConnectionTuanp_3.class" Component_="JPG" FileName="Connec~4.cla|ConnectionTuanp$3.class" Attributes="0" SourcePath="build\classes\phs_project\ConnectionTuanp$3.class" SelfReg="false" Sequence="70"/>
+    <ROW File="CreateOrder.JPG" Component_="addCustomer.JPG" FileName="Create~1.JPG|CreateOrder.JPG" Attributes="0" SourcePath="Documents\phs_documents\CreateOrder.JPG" SelfReg="false" Sequence="378"/>
+    <ROW File="CustomTableCellRenderer.class" Component_="JPG" FileName="Custom~3.cla|CustomTableCellRenderer.class" Attributes="0" SourcePath="build\classes\phs_project\CustomTableCellRenderer.class" SelfReg="false" Sequence="89"/>
+    <ROW File="CustomTableCellRenderer.class_1" Component_="addForm.class" FileName="Custom~2.cla|CustomTableCellRenderer.class" Attributes="0" SourcePath="Documents\phs_documents\Class\CustomTableCellRenderer.class" SelfReg="false" Sequence="359"/>
+    <ROW File="CustomTableCellRenderer.java" Component_="JPG_1" FileName="Custom~2.jav|CustomTableCellRenderer.java" Attributes="0" SourcePath="src\phs_project\CustomTableCellRenderer.java" SelfReg="false" Sequence="280"/>
+    <ROW File="CustomerInfo.class" Component_="JPG" FileName="Custom~2.cla|CustomerInfo.class" Attributes="0" SourcePath="build\classes\phs_project\CustomerInfo.class" SelfReg="false" Sequence="88"/>
+    <ROW File="CustomerInfo.class_1" Component_="addForm.class" FileName="Custom~1.cla|CustomerInfo.class" Attributes="0" SourcePath="Documents\phs_documents\Class\CustomerInfo.class" SelfReg="false" Sequence="358"/>
+    <ROW File="CustomerInfo.form" Component_="JPG_1" FileName="Custom~1.for|CustomerInfo.form" Attributes="0" SourcePath="src\phs_project\CustomerInfo.form" SelfReg="false" Sequence="278"/>
+    <ROW File="CustomerInfo.java" Component_="JPG_1" FileName="Custom~1.jav|CustomerInfo.java" Attributes="0" SourcePath="src\phs_project\CustomerInfo.java" SelfReg="false" Sequence="279"/>
+    <ROW File="CustomerInfo_1.class" Component_="JPG" FileName="Custom~1.cla|CustomerInfo$1.class" Attributes="0" SourcePath="build\classes\phs_project\CustomerInfo$1.class" SelfReg="false" Sequence="87"/>
+    <ROW File="DateCalender.class" Component_="JPG" FileName="DateCa~6.cla|DateCalender.class" Attributes="0" SourcePath="build\classes\phs_project\DateCalender.class" SelfReg="false" Sequence="95"/>
+    <ROW File="DateCalender.class_1" Component_="addForm.class" FileName="DateCa~1.cla|DateCalender.class" Attributes="0" SourcePath="Documents\phs_documents\Class\DateCalender.class" SelfReg="false" Sequence="360"/>
+    <ROW File="DateCalender.java" Component_="JPG_1" FileName="DateCa~1.jav|DateCalender.java" Attributes="0" SourcePath="src\phs_project\DateCalender.java" SelfReg="false" Sequence="281"/>
+    <ROW File="DateCalender_1.class" Component_="JPG" FileName="DateCa~1.cla|DateCalender$1.class" Attributes="0" SourcePath="build\classes\phs_project\DateCalender$1.class" SelfReg="false" Sequence="90"/>
+    <ROW File="DateCalender_2.class" Component_="JPG" FileName="DateCa~2.cla|DateCalender$2.class" Attributes="0" SourcePath="build\classes\phs_project\DateCalender$2.class" SelfReg="false" Sequence="91"/>
+    <ROW File="DateCalender_3.class" Component_="JPG" FileName="DateCa~3.cla|DateCalender$3.class" Attributes="0" SourcePath="build\classes\phs_project\DateCalender$3.class" SelfReg="false" Sequence="92"/>
+    <ROW File="DateCalender_4.class" Component_="JPG" FileName="DateCa~4.cla|DateCalender$4.class" Attributes="0" SourcePath="build\classes\phs_project\DateCalender$4.class" SelfReg="false" Sequence="93"/>
+    <ROW File="DateCalender_RDefaultTableModel.class" Component_="JPG" FileName="DateCa~5.cla|DateCalender$RDefaultTableModel.class" Attributes="0" SourcePath="build\classes\phs_project\DateCalender$RDefaultTableModel.class" SelfReg="false" Sequence="94"/>
+    <ROW File="DetachDTB.bat" Component_="AttachDTB.bat" FileName="Detach~1.bat|DetachDTB.bat" Attributes="0" SourcePath="DetachDTB.bat" SelfReg="false" Sequence="174"/>
+    <ROW File="Edit.gif" Component_="ico" FileName="Edit.gif" Attributes="0" SourcePath="Image\Edit.gif" SelfReg="false" Sequence="200"/>
+    <ROW File="Entity.JPG" Component_="addCustomer.JPG" FileName="Entity.JPG" Attributes="0" SourcePath="Documents\phs_documents\Entity.JPG" SelfReg="false" Sequence="382"/>
+    <ROW File="Entity_Relationship_Diagram1.jpg" Component_="addCustomer.JPG" FileName="Entity~1.jpg|Entity Relationship Diagram1.jpg" Attributes="0" SourcePath="Documents\phs_documents\Entity Relationship Diagram1.jpg" SelfReg="false" Sequence="381"/>
+    <ROW File="JPG" Component_="JPG" FileName="1.JPG" Attributes="0" SourcePath="build\classes\phs_project\1.JPG" SelfReg="false" Sequence="2"/>
+    <ROW File="JPG_1" Component_="JPG_1" FileName="1.JPG" Attributes="0" SourcePath="src\phs_project\1.JPG" SelfReg="false" Sequence="253"/>
+    <ROW File="Main.class" Component_="JPG" FileName="Main~1.cla|Main.class" Attributes="0" SourcePath="build\classes\phs_project\Main.class" SelfReg="false" Sequence="139"/>
+    <ROW File="Main.java" Component_="JPG_1" FileName="Main~1.jav|Main.java" Attributes="0" SourcePath="src\phs_project\Main.java" SelfReg="false" Sequence="292"/>
+    <ROW File="MainForrm.JPG" Component_="addCustomer.JPG" FileName="MainFo~1.JPG|MainForrm.JPG" Attributes="0" SourcePath="Documents\phs_documents\MainForrm.JPG" SelfReg="false" Sequence="383"/>
+    <ROW File="NewJPanel.class" Component_="JPG" FileName="NewJPa~1.cla|NewJPanel.class" Attributes="0" SourcePath="build\classes\phs_project\NewJPanel.class" SelfReg="false" Sequence="140"/>
+    <ROW File="NewJPanel.class_1" Component_="addForm.class" FileName="NewJPa~1.cla|NewJPanel.class" Attributes="0" SourcePath="Documents\phs_documents\Class\NewJPanel.class" SelfReg="false" Sequence="366"/>
+    <ROW File="NewJPanel.form" Component_="JPG_1" FileName="NewJPa~1.for|NewJPanel.form" Attributes="0" SourcePath="src\phs_project\NewJPanel.form" SelfReg="false" Sequence="293"/>
+    <ROW File="NewJPanel.java" Component_="JPG_1" FileName="NewJPa~1.jav|NewJPanel.java" Attributes="0" SourcePath="src\phs_project\NewJPanel.java" SelfReg="false" Sequence="294"/>
+    <ROW File="New_Microsoft_Word_Document.doc" Component_="AttachDTB.bat" FileName="NewMic~1.doc|New Microsoft Word Document.doc" Attributes="0" SourcePath="New Microsoft Word Document.doc" SelfReg="false" Sequence="430"/>
+    <ROW File="PHS.aip" Component_="AttachDTB.bat" FileName="PHS.aip" Attributes="0" SourcePath="PHS.aip" SelfReg="false" Sequence="250"/>
+    <ROW File="PHS.zip" Component_="AttachDTB.bat" FileName="PHS.zip" Attributes="0" SourcePath="PHS.zip" SelfReg="false" Sequence="431"/>
+    <ROW File="PHS_PROJECT.jar" Component_="PHS_PROJECT.jar" FileName="PHS_PR~1.jar|PHS_PROJECT.jar" Attributes="0" SourcePath="dist\PHS_PROJECT.jar" SelfReg="false" Sequence="181"/>
+    <ROW File="Pro_FullVer1.doc" Component_="Project.doc" FileName="Pro_Fu~1.doc|Pro_FullVer1.doc" Attributes="0" SourcePath="Documents\uml_ha\Pro_FullVer1.doc" SelfReg="false" Sequence="427"/>
+    <ROW File="Professional_Hotel_System.exe" Component_="Professional_Hotel_System.exe" FileName="PHS.exe" Attributes="0" SourcePath="&lt;aijclw.exe&gt;" SelfReg="false" Sequence="310"/>
+    <ROW File="Project.doc" Component_="Project.doc" FileName="Project.doc" Attributes="0" SourcePath="Documents\uml_ha\Project.doc" SelfReg="false" Sequence="425"/>
+    <ROW File="Project.zip" Component_="Project.doc" FileName="Project.zip" Attributes="0" SourcePath="Documents\uml_ha\Project.zip" SelfReg="false" Sequence="426"/>
+    <ROW File="QLNV_DKTV_QLSP.doc" Component_="QLNV_DKTV_QLSP.doc" FileName="QLNV_D~1.doc|QLNV_DKTV_QLSP.doc" Attributes="0" SourcePath="Documents\uml_ha\Cac Use Project\QLNV_DKTV_QLSP.doc" SelfReg="false" Sequence="417"/>
+    <ROW File="README.TXT" Component_="PHS_PROJECT.jar" FileName="README.TXT" Attributes="0" SourcePath="dist\README.TXT" SelfReg="false" Sequence="182"/>
+    <ROW File="ResultsModel.class" Component_="JPG" FileName="Result~1.cla|ResultsModel.class" Attributes="0" SourcePath="build\classes\phs_project\ResultsModel.class" SelfReg="false" Sequence="145"/>
+    <ROW File="ResultsModel.class_1" Component_="addForm.class" FileName="Result~1.cla|ResultsModel.class" Attributes="0" SourcePath="Documents\phs_documents\Class\ResultsModel.class" SelfReg="false" Sequence="369"/>
+    <ROW File="ResultsModel.java" Component_="JPG_1" FileName="Result~1.jav|ResultsModel.java" Attributes="0" SourcePath="src\phs_project\ResultsModel.java" SelfReg="false" Sequence="298"/>
+    <ROW File="ResultsTableModel.class" Component_="JPG" FileName="Result~2.cla|ResultsTableModel.class" Attributes="0" SourcePath="build\classes\phs_project\ResultsTableModel.class" SelfReg="false" Sequence="146"/>
+    <ROW File="ResultsTableModel.class_1" Component_="addForm.class" FileName="Result~2.cla|ResultsTableModel.class" Attributes="0" SourcePath="Documents\phs_documents\Class\ResultsTableModel.class" SelfReg="false" Sequence="370"/>
+    <ROW File="ResultsTableModel.java" Component_="JPG_1" FileName="Result~2.jav|ResultsTableModel.java" Attributes="0" SourcePath="src\phs_project\ResultsTableModel.java" SelfReg="false" Sequence="299"/>
+    <ROW File="RunClass.bat" Component_="AttachDTB.bat" FileName="RunClass.bat" Attributes="0" SourcePath="RunClass.bat" SelfReg="false" Sequence="252"/>
+    <ROW File="RunSelectSQL.sql" Component_="phs_data_Data.MDF" FileName="RunSel~1.sql|RunSelectSQL.sql" Attributes="0" SourcePath="Database\RunSelectSQL.sql" SelfReg="false" Sequence="338"/>
+    <ROW File="SQLServerEx.class" Component_="JPG" FileName="SQLSer~1.cla|SQLServerEx.class" Attributes="0" SourcePath="build\classes\phs_project\SQLServerEx.class" SelfReg="false" Sequence="160"/>
+    <ROW File="SQLServerEx.class_1" Component_="addForm.class" FileName="SQLSer~1.cla|SQLServerEx.class" Attributes="0" SourcePath="Documents\phs_documents\Class\SQLServerEx.class" SelfReg="false" Sequence="374"/>
+    <ROW File="SQLServerEx.java" Component_="JPG_1" FileName="SQLSer~1.jav|SQLServerEx.java" Attributes="0" SourcePath="src\phs_project\SQLServerEx.java" SelfReg="false" Sequence="305"/>
+    <ROW File="SearchRoom.JPG" Component_="addCustomer.JPG" FileName="Search~1.JPG|SearchRoom.JPG" Attributes="0" SourcePath="Documents\phs_documents\SearchRoom.JPG" SelfReg="false" Sequence="390"/>
+    <ROW File="Search_Order.class" Component_="JPG" FileName="Search~6.cla|Search_Order.class" Attributes="0" SourcePath="build\classes\phs_project\Search_Order.class" SelfReg="false" Sequence="152"/>
+    <ROW File="Search_Order.class_1" Component_="addForm.class" FileName="Search~1.cla|Search_Order.class" Attributes="0" SourcePath="Documents\phs_documents\Class\Search_Order.class" SelfReg="false" Sequence="371"/>
+    <ROW File="Search_Order.form" Component_="JPG_1" FileName="Search~1.for|Search_Order.form" Attributes="0" SourcePath="src\phs_project\Search_Order.form" SelfReg="false" Sequence="300"/>
+    <ROW File="Search_Order.java" Component_="JPG_1" FileName="Search~1.jav|Search_Order.java" Attributes="0" SourcePath="src\phs_project\Search_Order.java" SelfReg="false" Sequence="301"/>
+    <ROW File="Search_Order1.class" Component_="JPG" FileName="Searc~12.cla|Search_Order1.class" Attributes="0" SourcePath="build\classes\phs_project\Search_Order1.class" SelfReg="false" Sequence="158"/>
+    <ROW File="Search_Order1.class_1" Component_="addForm.class" FileName="Search~2.cla|Search_Order1.class" Attributes="0" SourcePath="Documents\phs_documents\Class\Search_Order1.class" SelfReg="false" Sequence="372"/>
+    <ROW File="Search_Order1.form" Component_="JPG_1" FileName="Search~2.for|Search_Order1.form" Attributes="0" SourcePath="src\phs_project\Search_Order1.form" SelfReg="false" Sequence="302"/>
+    <ROW File="Search_Order1.java" Component_="JPG_1" FileName="Search~2.jav|Search_Order1.java" Attributes="0" SourcePath="src\phs_project\Search_Order1.java" SelfReg="false" Sequence="303"/>
+    <ROW File="Search_Order1_1.class" Component_="JPG" FileName="Search~7.cla|Search_Order1$1.class" Attributes="0" SourcePath="build\classes\phs_project\Search_Order1$1.class" SelfReg="false" Sequence="153"/>
+    <ROW File="Search_Order1_2.class" Component_="JPG" FileName="Search~8.cla|Search_Order1$2.class" Attributes="0" SourcePath="build\classes\phs_project\Search_Order1$2.class" SelfReg="false" Sequence="154"/>
+    <ROW File="Search_Order1_3.class" Component_="JPG" FileName="Search~9.cla|Search_Order1$3.class" Attributes="0" SourcePath="build\classes\phs_project\Search_Order1$3.class" SelfReg="false" Sequence="155"/>
+    <ROW File="Search_Order1_4.class" Component_="JPG" FileName="Searc~10.cla|Search_Order1$4.class" Attributes="0" SourcePath="build\classes\phs_project\Search_Order1$4.class" SelfReg="false" Sequence="156"/>
+    <ROW File="Search_Order1_5.class" Component_="JPG" FileName="Searc~11.cla|Search_Order1$5.class" Attributes="0" SourcePath="build\classes\phs_project\Search_Order1$5.class" SelfReg="false" Sequence="157"/>
+    <ROW File="Search_Order_1.class" Component_="JPG" FileName="Search~1.cla|Search_Order$1.class" Attributes="0" SourcePath="build\classes\phs_project\Search_Order$1.class" SelfReg="false" Sequence="147"/>
+    <ROW File="Search_Order_2.class" Component_="JPG" FileName="Search~2.cla|Search_Order$2.class" Attributes="0" SourcePath="build\classes\phs_project\Search_Order$2.class" SelfReg="false" Sequence="148"/>
+    <ROW File="Search_Order_3.class" Component_="JPG" FileName="Search~3.cla|Search_Order$3.class" Attributes="0" SourcePath="build\classes\phs_project\Search_Order$3.class" SelfReg="false" Sequence="149"/>
+    <ROW File="Search_Order_4.class" Component_="JPG" FileName="Search~4.cla|Search_Order$4.class" Attributes="0" SourcePath="build\classes\phs_project\Search_Order$4.class" SelfReg="false" Sequence="150"/>
+    <ROW File="Search_Order_5.class" Component_="JPG" FileName="Search~5.cla|Search_Order$5.class" Attributes="0" SourcePath="build\classes\phs_project\Search_Order$5.class" SelfReg="false" Sequence="151"/>
+    <ROW File="TableDataRoom.class" Component_="JPG" FileName="TableD~1.cla|TableDataRoom.class" Attributes="0" SourcePath="build\classes\phs_project\TableDataRoom.class" SelfReg="false" Sequence="161"/>
+    <ROW File="TableDataRoom.class_1" Component_="addForm.class" FileName="TableD~1.cla|TableDataRoom.class" Attributes="0" SourcePath="Documents\phs_documents\Class\TableDataRoom.class" SelfReg="false" Sequence="375"/>
+    <ROW File="TableDataRoom.java" Component_="JPG_1" FileName="TableD~1.jav|TableDataRoom.java" Attributes="0" SourcePath="src\phs_project\TableDataRoom.java" SelfReg="false" Sequence="306"/>
+    <ROW File="TienHuynh.gif" Component_="ico" FileName="TienHu~1.gif|TienHuynh.gif" Attributes="0" SourcePath="Image\TienHuynh.gif" SelfReg="false" Sequence="233"/>
+    <ROW File="Traphong.class" Component_="JPG" FileName="Trapho~6.cla|Traphong.class" Attributes="0" SourcePath="build\classes\phs_project\Traphong.class" SelfReg="false" Sequence="327"/>
+    <ROW File="Traphong.form" Component_="JPG_1" FileName="Trapho~1.for|Traphong.form" Attributes="0" SourcePath="src\phs_project\Traphong.form" SelfReg="false" Sequence="433"/>
+    <ROW File="Traphong.java" Component_="JPG_1" FileName="Trapho~1.jav|Traphong.java" Attributes="0" SourcePath="src\phs_project\Traphong.java" SelfReg="false" Sequence="434"/>
+    <ROW File="Traphong_1.class" Component_="JPG" FileName="Trapho~1.cla|Traphong$1.class" Attributes="0" SourcePath="build\classes\phs_project\Traphong$1.class" SelfReg="false" Sequence="322"/>
+    <ROW File="Traphong_2.class" Component_="JPG" FileName="Trapho~2.cla|Traphong$2.class" Attributes="0" SourcePath="build\classes\phs_project\Traphong$2.class" SelfReg="false" Sequence="323"/>
+    <ROW File="Traphong_3.class" Component_="JPG" FileName="Trapho~3.cla|Traphong$3.class" Attributes="0" SourcePath="build\classes\phs_project\Traphong$3.class" SelfReg="false" Sequence="324"/>
+    <ROW File="Traphong_4.class" Component_="JPG" FileName="Trapho~4.cla|Traphong$4.class" Attributes="0" SourcePath="build\classes\phs_project\Traphong$4.class" SelfReg="false" Sequence="325"/>
+    <ROW File="Traphong_5.class" Component_="JPG" FileName="Trapho~5.cla|Traphong$5.class" Attributes="0" SourcePath="build\classes\phs_project\Traphong$5.class" SelfReg="false" Sequence="326"/>
+    <ROW File="USE_Admin.doc" Component_="Project.doc" FileName="USEAdm~1.doc|USE Admin.doc" Attributes="0" SourcePath="Documents\uml_ha\USE Admin.doc" SelfReg="false" Sequence="428"/>
+    <ROW File="UseCase_Admin.doc" Component_="QLNV_DKTV_QLSP.doc" FileName="UseCas~1.doc|UseCase Admin.doc" Attributes="0" SourcePath="Documents\uml_ha\Cac Use Project\UseCase Admin.doc" SelfReg="false" Sequence="418"/>
+    <ROW File="UseCase_Khach_Hang.doc" Component_="QLNV_DKTV_QLSP.doc" FileName="UseCas~3.doc|UseCase Khach Hang.doc" Attributes="0" SourcePath="Documents\uml_ha\Cac Use Project\UseCase Khach Hang.doc" SelfReg="false" Sequence="420"/>
+    <ROW File="UseCase_Quan_Ly_nhan_vien.doc" Component_="QLNV_DKTV_QLSP.doc" FileName="UseCas~6.doc|UseCase Quan Ly nhan vien.doc" Attributes="0" SourcePath="Documents\uml_ha\Cac Use Project\UseCase Quan Ly nhan vien.doc" SelfReg="false" Sequence="423"/>
+    <ROW File="UseCase_Quan_ly_san_pham.doc" Component_="QLNV_DKTV_QLSP.doc" FileName="UseCas~7.doc|UseCase Quan ly san pham.doc" Attributes="0" SourcePath="Documents\uml_ha\Cac Use Project\UseCase Quan ly san pham.doc" SelfReg="false" Sequence="424"/>
+    <ROW File="UseCase_dang_ki_thanh_vien.doc" Component_="QLNV_DKTV_QLSP.doc" FileName="UseCas~2.doc|UseCase dang ki thanh vien.doc" Attributes="0" SourcePath="Documents\uml_ha\Cac Use Project\UseCase dang ki thanh vien.doc" SelfReg="false" Sequence="419"/>
+    <ROW File="UseCase_quan_ly_gop_y_cua_khach_hang.doc" Component_="QLNV_DKTV_QLSP.doc" FileName="UseCas~4.doc|UseCase quan ly gop y cua khach hang.doc" Attributes="0" SourcePath="Documents\uml_ha\Cac Use Project\UseCase quan ly gop y cua khach hang.doc" SelfReg="false" Sequence="421"/>
+    <ROW File="UseCase_quan_ly_hoa_don.doc" Component_="QLNV_DKTV_QLSP.doc" FileName="UseCas~5.doc|UseCase quan ly hoa don.doc" Attributes="0" SourcePath="Documents\uml_ha\Cac Use Project\UseCase quan ly hoa don.doc" SelfReg="false" Sequence="422"/>
+    <ROW File="UserFormat.class" Component_="JPG" FileName="UserFo~1.cla|UserFormat.class" Attributes="0" SourcePath="build\classes\phs_project\UserFormat.class" SelfReg="false" Sequence="328"/>
+    <ROW File="UserFormat.java" Component_="JPG_1" FileName="UserFo~1.jav|UserFormat.java" Attributes="0" SourcePath="src\phs_project\UserFormat.java" SelfReg="false" Sequence="435"/>
+    <ROW File="UserInfo.class" Component_="JPG" FileName="UserIn~7.cla|UserInfo.class" Attributes="0" SourcePath="build\classes\phs_project\UserInfo.class" SelfReg="false" Sequence="168"/>
+    <ROW File="UserInfo.class_1" Component_="addForm.class" FileName="UserIn~1.cla|UserInfo.class" Attributes="0" SourcePath="Documents\phs_documents\Class\UserInfo.class" SelfReg="false" Sequence="376"/>
+    <ROW File="UserInfo.form" Component_="JPG_1" FileName="UserIn~1.for|UserInfo.form" Attributes="0" SourcePath="src\phs_project\UserInfo.form" SelfReg="false" Sequence="307"/>
+    <ROW File="UserInfo.java" Component_="JPG_1" FileName="UserIn~1.jav|UserInfo.java" Attributes="0" SourcePath="src\phs_project\UserInfo.java" SelfReg="false" Sequence="308"/>
+    <ROW File="UserInfo_1.class" Component_="JPG" FileName="UserIn~1.cla|UserInfo$1.class" Attributes="0" SourcePath="build\classes\phs_project\UserInfo$1.class" SelfReg="false" Sequence="162"/>
+    <ROW File="UserInfo_2.class" Component_="JPG" FileName="UserIn~2.cla|UserInfo$2.class" Attributes="0" SourcePath="build\classes\phs_project\UserInfo$2.class" SelfReg="false" Sequence="163"/>
+    <ROW File="UserInfo_3.class" Component_="JPG" FileName="UserIn~3.cla|UserInfo$3.class" Attributes="0" SourcePath="build\classes\phs_project\UserInfo$3.class" SelfReg="false" Sequence="164"/>
+    <ROW File="UserInfo_4.class" Component_="JPG" FileName="UserIn~4.cla|UserInfo$4.class" Attributes="0" SourcePath="build\classes\phs_project\UserInfo$4.class" SelfReg="false" Sequence="165"/>
+    <ROW File="UserInfo_5.class" Component_="JPG" FileName="UserIn~5.cla|UserInfo$5.class" Attributes="0" SourcePath="build\classes\phs_project\UserInfo$5.class" SelfReg="false" Sequence="166"/>
+    <ROW File="UserInfo_6.class" Component_="JPG" FileName="UserIn~6.cla|UserInfo$6.class" Attributes="0" SourcePath="build\classes\phs_project\UserInfo$6.class" SelfReg="false" Sequence="167"/>
+    <ROW File="Web.gif" Component_="ico" FileName="Web.gif" Attributes="0" SourcePath="Image\Web.gif" SelfReg="false" Sequence="234"/>
+    <ROW File="addCustomer.JPG" Component_="addCustomer.JPG" FileName="addCus~1.JPG|addCustomer.JPG" Attributes="0" SourcePath="Documents\phs_documents\addCustomer.JPG" SelfReg="false" Sequence="342"/>
+    <ROW File="addForm.class" Component_="JPG" FileName="addFo~12.cla|addForm.class" Attributes="0" SourcePath="build\classes\phs_project\addForm.class" SelfReg="false" Sequence="14"/>
+    <ROW File="addForm.class_1" Component_="addForm.class" FileName="addFor~1.cla|addForm.class" Attributes="0" SourcePath="Documents\phs_documents\Class\addForm.class" SelfReg="false" Sequence="346"/>
+    <ROW File="addForm.form" Component_="JPG_1" FileName="addFor~1.for|addForm.form" Attributes="0" SourcePath="src\phs_project\addForm.form" SelfReg="false" Sequence="254"/>
+    <ROW File="addForm.java" Component_="JPG_1" FileName="addFor~1.jav|addForm.java" Attributes="0" SourcePath="src\phs_project\addForm.java" SelfReg="false" Sequence="255"/>
+    <ROW File="addForm_1.class" Component_="JPG" FileName="addFor~1.cla|addForm$1.class" Attributes="0" SourcePath="build\classes\phs_project\addForm$1.class" SelfReg="false" Sequence="3"/>
+    <ROW File="addForm_10.class" Component_="JPG" FileName="addFor~2.cla|addForm$10.class" Attributes="0" SourcePath="build\classes\phs_project\addForm$10.class" SelfReg="false" Sequence="4"/>
+    <ROW File="addForm_11.class" Component_="JPG" FileName="addFor~3.cla|addForm$11.class" Attributes="0" SourcePath="build\classes\phs_project\addForm$11.class" SelfReg="false" Sequence="5"/>
+    <ROW File="addForm_2.class" Component_="JPG" FileName="addFor~4.cla|addForm$2.class" Attributes="0" SourcePath="build\classes\phs_project\addForm$2.class" SelfReg="false" Sequence="6"/>
+    <ROW File="addForm_3.class" Component_="JPG" FileName="addFor~5.cla|addForm$3.class" Attributes="0" SourcePath="build\classes\phs_project\addForm$3.class" SelfReg="false" Sequence="7"/>
+    <ROW File="addForm_4.class" Component_="JPG" FileName="addFor~6.cla|addForm$4.class" Attributes="0" SourcePath="build\classes\phs_project\addForm$4.class" SelfReg="false" Sequence="8"/>
+    <ROW File="addForm_5.class" Component_="JPG" FileName="addFor~7.cla|addForm$5.class" Attributes="0" SourcePath="build\classes\phs_project\addForm$5.class" SelfReg="false" Sequence="9"/>
+    <ROW File="addForm_6.class" Component_="JPG" FileName="addFor~8.cla|addForm$6.class" Attributes="0" SourcePath="build\classes\phs_project\addForm$6.class" SelfReg="false" Sequence="10"/>
+    <ROW File="addForm_7.class" Component_="JPG" FileName="addFor~9.cla|addForm$7.class" Attributes="0" SourcePath="build\classes\phs_project\addForm$7.class" SelfReg="false" Sequence="11"/>
+    <ROW File="addForm_8.class" Component_="JPG" FileName="addFo~10.cla|addForm$8.class" Attributes="0" SourcePath="build\classes\phs_project\addForm$8.class" SelfReg="false" Sequence="12"/>
+    <ROW File="addForm_9.class" Component_="JPG" FileName="addFo~11.cla|addForm$9.class" Attributes="0" SourcePath="build\classes\phs_project\addForm$9.class" SelfReg="false" Sequence="13"/>
+    <ROW File="addForm_jPanel5.ser" Component_="JPG" FileName="addFor~1.ser|addForm_jPanel5.ser" Attributes="0" SourcePath="build\classes\phs_project\addForm_jPanel5.ser" SelfReg="false" Sequence="15"/>
+    <ROW File="addForm_jPanel5.ser_1" Component_="JPG_1" FileName="addFor~1.ser|addForm_jPanel5.ser" Attributes="0" SourcePath="src\phs_project\addForm_jPanel5.ser" SelfReg="false" Sequence="256"/>
+    <ROW File="addServiceType.class" Component_="JPG" FileName="addSe~18.cla|addServiceType.class" Attributes="0" SourcePath="build\classes\phs_project\addServiceType.class" SelfReg="false" Sequence="42"/>
+    <ROW File="addServiceType.class_1" Component_="addForm.class" FileName="addSer~2.cla|addServiceType.class" Attributes="0" SourcePath="Documents\phs_documents\Class\addServiceType.class" SelfReg="false" Sequence="349"/>
+    <ROW File="addServiceType.form" Component_="JPG_1" FileName="addSer~2.for|addServiceType.form" Attributes="0" SourcePath="src\phs_project\addServiceType.form" SelfReg="false" Sequence="261"/>
+    <ROW File="addServiceType.java" Component_="JPG_1" FileName="addSer~2.jav|addServiceType.java" Attributes="0" SourcePath="src\phs_project\addServiceType.java" SelfReg="false" Sequence="262"/>
+    <ROW File="addServiceType_1.class" Component_="JPG" FileName="addSe~10.cla|addServiceType$1.class" Attributes="0" SourcePath="build\classes\phs_project\addServiceType$1.class" SelfReg="false" Sequence="34"/>
+    <ROW File="addServiceType_2.class" Component_="JPG" FileName="addSe~11.cla|addServiceType$2.class" Attributes="0" SourcePath="build\classes\phs_project\addServiceType$2.class" SelfReg="false" Sequence="35"/>
+    <ROW File="addServiceType_3.class" Component_="JPG" FileName="addSe~12.cla|addServiceType$3.class" Attributes="0" SourcePath="build\classes\phs_project\addServiceType$3.class" SelfReg="false" Sequence="36"/>
+    <ROW File="addServiceType_4.class" Component_="JPG" FileName="addSe~13.cla|addServiceType$4.class" Attributes="0" SourcePath="build\classes\phs_project\addServiceType$4.class" SelfReg="false" Sequence="37"/>
+    <ROW File="addServiceType_5.class" Component_="JPG" FileName="addSe~14.cla|addServiceType$5.class" Attributes="0" SourcePath="build\classes\phs_project\addServiceType$5.class" SelfReg="false" Sequence="38"/>
+    <ROW File="addServiceType_6.class" Component_="JPG" FileName="addSe~15.cla|addServiceType$6.class" Attributes="0" SourcePath="build\classes\phs_project\addServiceType$6.class" SelfReg="false" Sequence="39"/>
+    <ROW File="addServiceType_7.class" Component_="JPG" FileName="addSe~16.cla|addServiceType$7.class" Attributes="0" SourcePath="build\classes\phs_project\addServiceType$7.class" SelfReg="false" Sequence="40"/>
+    <ROW File="addServiceType_8.class" Component_="JPG" FileName="addSe~17.cla|addServiceType$8.class" Attributes="0" SourcePath="build\classes\phs_project\addServiceType$8.class" SelfReg="false" Sequence="41"/>
+    <ROW File="addServiceType_table.ser" Component_="JPG" FileName="addSer~1.ser|addServiceType_table.ser" Attributes="0" SourcePath="build\classes\phs_project\addServiceType_table.ser" SelfReg="false" Sequence="43"/>
+    <ROW File="addServiceType_table.ser_1" Component_="JPG_1" FileName="addSer~1.ser|addServiceType_table.ser" Attributes="0" SourcePath="src\phs_project\addServiceType_table.ser" SelfReg="false" Sequence="263"/>
+    <ROW File="addServices.JPG" Component_="addCustomer.JPG" FileName="addSer~1.JPG|addServices.JPG" Attributes="0" SourcePath="Documents\phs_documents\addServices.JPG" SelfReg="false" Sequence="343"/>
+    <ROW File="addServicestoOrder.class" Component_="JPG" FileName="addSer~9.cla|addServicestoOrder.class" Attributes="0" SourcePath="build\classes\phs_project\addServicestoOrder.class" SelfReg="false" Sequence="33"/>
+    <ROW File="addServicestoOrder.class_1" Component_="addForm.class" FileName="addSer~1.cla|addServicestoOrder.class" Attributes="0" SourcePath="Documents\phs_documents\Class\addServicestoOrder.class" SelfReg="false" Sequence="348"/>
+    <ROW File="addServicestoOrder.form" Component_="JPG_1" FileName="addSer~1.for|addServicestoOrder.form" Attributes="0" SourcePath="src\phs_project\addServicestoOrder.form" SelfReg="false" Sequence="259"/>
+    <ROW File="addServicestoOrder.java" Component_="JPG_1" FileName="addSer~1.jav|addServicestoOrder.java" Attributes="0" SourcePath="src\phs_project\addServicestoOrder.java" SelfReg="false" Sequence="260"/>
+    <ROW File="addServicestoOrder_1.class" Component_="JPG" FileName="addSer~1.cla|addServicestoOrder$1.class" Attributes="0" SourcePath="build\classes\phs_project\addServicestoOrder$1.class" SelfReg="false" Sequence="25"/>
+    <ROW File="addServicestoOrder_2.class" Component_="JPG" FileName="addSer~2.cla|addServicestoOrder$2.class" Attributes="0" SourcePath="build\classes\phs_project\addServicestoOrder$2.class" SelfReg="false" Sequence="26"/>
+    <ROW File="addServicestoOrder_3.class" Component_="JPG" FileName="addSer~3.cla|addServicestoOrder$3.class" Attributes="0" SourcePath="build\classes\phs_project\addServicestoOrder$3.class" SelfReg="false" Sequence="27"/>
+    <ROW File="addServicestoOrder_4.class" Component_="JPG" FileName="addSer~4.cla|addServicestoOrder$4.class" Attributes="0" SourcePath="build\classes\phs_project\addServicestoOrder$4.class" SelfReg="false" Sequence="28"/>
+    <ROW File="addServicestoOrder_5.class" Component_="JPG" FileName="addSer~5.cla|addServicestoOrder$5.class" Attributes="0" SourcePath="build\classes\phs_project\addServicestoOrder$5.class" SelfReg="false" Sequence="29"/>
+    <ROW File="addServicestoOrder_6.class" Component_="JPG" FileName="addSer~6.cla|addServicestoOrder$6.class" Attributes="0" SourcePath="build\classes\phs_project\addServicestoOrder$6.class" SelfReg="false" Sequence="30"/>
+    <ROW File="addServicestoOrder_7.class" Component_="JPG" FileName="addSer~7.cla|addServicestoOrder$7.class" Attributes="0" SourcePath="build\classes\phs_project\addServicestoOrder$7.class" SelfReg="false" Sequence="31"/>
+    <ROW File="addServicestoOrder_8.class" Component_="JPG" FileName="addSer~8.cla|addServicestoOrder$8.class" Attributes="0" SourcePath="build\classes\phs_project\addServicestoOrder$8.class" SelfReg="false" Sequence="32"/>
+    <ROW File="admin.gif" Component_="ico" FileName="admin.gif" Attributes="0" SourcePath="Image\admin.gif" SelfReg="false" Sequence="184"/>
+    <ROW File="attach_db.sql" Component_="phs_data_Data.MDF" FileName="attach~2.sql|attach_db.sql" Attributes="0" SourcePath="Database\attach_db.sql" SelfReg="false" Sequence="330"/>
+    <ROW File="attachphsdata.sql" Component_="phs_data_Data.MDF" FileName="attach~1.sql|attachphsdata.sql" Attributes="0" SourcePath="Database\attachphsdata.sql" SelfReg="false" Sequence="329"/>
+    <ROW File="backup_and_restore_data.sql" Component_="phs_data_Data.MDF" FileName="backup~1.sql|backup_and_restore_data.sql" Attributes="0" SourcePath="Database\backup_and_restore_data.sql" SelfReg="false" Sequence="332"/>
+    <ROW File="backupdata" Component_="phs_data_Data.MDF" FileName="backup~1|backupdata" Attributes="0" SourcePath="Database\backupdata" SelfReg="false" Sequence="331"/>
+    <ROW File="build.xml" Component_="AttachDTB.bat" FileName="build.xml" Attributes="0" SourcePath="build.xml" SelfReg="false" Sequence="171"/>
+    <ROW File="build_before_profiler.xml" Component_="AttachDTB.bat" FileName="build-~1.xml|build-before-profiler.xml" Attributes="0" SourcePath="build-before-profiler.xml" SelfReg="false" Sequence="170"/>
+    <ROW File="build_impl.xml" Component_="build_impl.xml" FileName="build-~1.xml|build-impl.xml" Attributes="0" SourcePath="nbproject\build-impl.xml" SelfReg="false" Sequence="242"/>
+    <ROW File="cd1.png" Component_="ico" FileName="cd1.png" Attributes="0" SourcePath="Image\cd1.png" SelfReg="false" Sequence="185"/>
+    <ROW File="chagerooms.class" Component_="JPG" FileName="chager~7.cla|chagerooms.class" Attributes="0" SourcePath="build\classes\phs_project\chagerooms.class" SelfReg="false" Sequence="50"/>
+    <ROW File="chagerooms.class_1" Component_="addForm.class" FileName="chager~1.cla|chagerooms.class" Attributes="0" SourcePath="Documents\phs_documents\Class\chagerooms.class" SelfReg="false" Sequence="350"/>
+    <ROW File="chagerooms.form" Component_="JPG_1" FileName="chager~1.for|chagerooms.form" Attributes="0" SourcePath="src\phs_project\chagerooms.form" SelfReg="false" Sequence="264"/>
+    <ROW File="chagerooms.java" Component_="JPG_1" FileName="chager~1.jav|chagerooms.java" Attributes="0" SourcePath="src\phs_project\chagerooms.java" SelfReg="false" Sequence="265"/>
+    <ROW File="chagerooms_1.class" Component_="JPG" FileName="chager~1.cla|chagerooms$1.class" Attributes="0" SourcePath="build\classes\phs_project\chagerooms$1.class" SelfReg="false" Sequence="44"/>
+    <ROW File="chagerooms_2.class" Component_="JPG" FileName="chager~2.cla|chagerooms$2.class" Attributes="0" SourcePath="build\classes\phs_project\chagerooms$2.class" SelfReg="false" Sequence="45"/>
+    <ROW File="chagerooms_3.class" Component_="JPG" FileName="chager~3.cla|chagerooms$3.class" Attributes="0" SourcePath="build\classes\phs_project\chagerooms$3.class" SelfReg="false" Sequence="46"/>
+    <ROW File="chagerooms_4.class" Component_="JPG" FileName="chager~4.cla|chagerooms$4.class" Attributes="0" SourcePath="build\classes\phs_project\chagerooms$4.class" SelfReg="false" Sequence="47"/>
+    <ROW File="chagerooms_5.class" Component_="JPG" FileName="chager~5.cla|chagerooms$5.class" Attributes="0" SourcePath="build\classes\phs_project\chagerooms$5.class" SelfReg="false" Sequence="48"/>
+    <ROW File="chagerooms_6.class" Component_="JPG" FileName="chager~6.cla|chagerooms$6.class" Attributes="0" SourcePath="build\classes\phs_project\chagerooms$6.class" SelfReg="false" Sequence="49"/>
+    <ROW File="changeRooms.JPG" Component_="addCustomer.JPG" FileName="change~1.JPG|changeRooms.JPG" Attributes="0" SourcePath="Documents\phs_documents\changeRooms.JPG" SelfReg="false" Sequence="344"/>
+    <ROW File="checkOut.class" Component_="JPG" FileName="checkO~4.cla|checkOut.class" Attributes="0" SourcePath="build\classes\phs_project\checkOut.class" SelfReg="false" Sequence="55"/>
+    <ROW File="checkOut.class_1" Component_="addForm.class" FileName="checkO~1.cla|checkOut.class" Attributes="0" SourcePath="Documents\phs_documents\Class\checkOut.class" SelfReg="false" Sequence="352"/>
+    <ROW File="checkOut.form" Component_="JPG_1" FileName="checkO~1.for|checkOut.form" Attributes="0" SourcePath="src\phs_project\checkOut.form" SelfReg="false" Sequence="267"/>
+    <ROW File="checkOut.java" Component_="JPG_1" FileName="checkO~1.jav|checkOut.java" Attributes="0" SourcePath="src\phs_project\checkOut.java" SelfReg="false" Sequence="268"/>
+    <ROW File="checkOut1.class" Component_="JPG" FileName="check~15.cla|checkOut1.class" Attributes="0" SourcePath="build\classes\phs_project\checkOut1.class" SelfReg="false" Sequence="66"/>
+    <ROW File="checkOut1.class_1" Component_="addForm.class" FileName="checkO~2.cla|checkOut1.class" Attributes="0" SourcePath="Documents\phs_documents\Class\checkOut1.class" SelfReg="false" Sequence="353"/>
+    <ROW File="checkOut1.form" Component_="JPG_1" FileName="checkO~2.for|checkOut1.form" Attributes="0" SourcePath="src\phs_project\checkOut1.form" SelfReg="false" Sequence="269"/>
+    <ROW File="checkOut1.java" Component_="JPG_1" FileName="checkO~2.jav|checkOut1.java" Attributes="0" SourcePath="src\phs_project\checkOut1.java" SelfReg="false" Sequence="270"/>
+    <ROW File="checkOut1_1.class" Component_="JPG" FileName="checkO~5.cla|checkOut1$1.class" Attributes="0" SourcePath="build\classes\phs_project\checkOut1$1.class" SelfReg="false" Sequence="56"/>
+    <ROW File="checkOut1_10.class" Component_="JPG" FileName="checkO~6.cla|checkOut1$10.class" Attributes="0" SourcePath="build\classes\phs_project\checkOut1$10.class" SelfReg="false" Sequence="57"/>
+    <ROW File="checkOut1_2.class" Component_="JPG" FileName="checkO~7.cla|checkOut1$2.class" Attributes="0" SourcePath="build\classes\phs_project\checkOut1$2.class" SelfReg="false" Sequence="58"/>
+    <ROW File="checkOut1_3.class" Component_="JPG" FileName="checkO~8.cla|checkOut1$3.class" Attributes="0" SourcePath="build\classes\phs_project\checkOut1$3.class" SelfReg="false" Sequence="59"/>
+    <ROW File="checkOut1_4.class" Component_="JPG" FileName="checkO~9.cla|checkOut1$4.class" Attributes="0" SourcePath="build\classes\phs_project\checkOut1$4.class" SelfReg="false" Sequence="60"/>
+    <ROW File="checkOut1_5.class" Component_="JPG" FileName="check~10.cla|checkOut1$5.class" Attributes="0" SourcePath="build\classes\phs_project\checkOut1$5.class" SelfReg="false" Sequence="61"/>
+    <ROW File="checkOut1_6.class" Component_="JPG" FileName="check~11.cla|checkOut1$6.class" Attributes="0" SourcePath="build\classes\phs_project\checkOut1$6.class" SelfReg="false" Sequence="62"/>
+    <ROW File="checkOut1_7.class" Component_="JPG" FileName="check~12.cla|checkOut1$7.class" Attributes="0" SourcePath="build\classes\phs_project\checkOut1$7.class" SelfReg="false" Sequence="63"/>
+    <ROW File="checkOut1_8.class" Component_="JPG" FileName="check~13.cla|checkOut1$8.class" Attributes="0" SourcePath="build\classes\phs_project\checkOut1$8.class" SelfReg="false" Sequence="64"/>
+    <ROW File="checkOut1_9.class" Component_="JPG" FileName="check~14.cla|checkOut1$9.class" Attributes="0" SourcePath="build\classes\phs_project\checkOut1$9.class" SelfReg="false" Sequence="65"/>
+    <ROW File="checkOut_1.class" Component_="JPG" FileName="checkO~1.cla|checkOut$1.class" Attributes="0" SourcePath="build\classes\phs_project\checkOut$1.class" SelfReg="false" Sequence="52"/>
+    <ROW File="checkOut_2.class" Component_="JPG" FileName="checkO~2.cla|checkOut$2.class" Attributes="0" SourcePath="build\classes\phs_project\checkOut$2.class" SelfReg="false" Sequence="53"/>
+    <ROW File="checkOut_3.class" Component_="JPG" FileName="checkO~3.cla|checkOut$3.class" Attributes="0" SourcePath="build\classes\phs_project\checkOut$3.class" SelfReg="false" Sequence="54"/>
+    <ROW File="close_file.gif" Component_="ico" FileName="close_~1.gif|close_file.gif" Attributes="0" SourcePath="Image\close_file.gif" SelfReg="false" Sequence="187"/>
+    <ROW File="connectDatabase.class" Component_="JPG" FileName="connec~1.cla|connectDatabase.class" Attributes="0" SourcePath="build\classes\phs_project\connectDatabase.class" SelfReg="false" Sequence="67"/>
+    <ROW File="connectDatabase.class_1" Component_="addForm.class" FileName="connec~1.cla|connectDatabase.class" Attributes="0" SourcePath="Documents\phs_documents\Class\connectDatabase.class" SelfReg="false" Sequence="354"/>
+    <ROW File="connectDatabase.java" Component_="JPG_1" FileName="connec~1.jav|connectDatabase.java" Attributes="0" SourcePath="src\phs_project\connectDatabase.java" SelfReg="false" Sequence="271"/>
+    <ROW File="createOrder.class" Component_="JPG" FileName="create~6.cla|createOrder.class" Attributes="0" SourcePath="build\classes\phs_project\createOrder.class" SelfReg="false" Sequence="77"/>
+    <ROW File="createOrder.class_1" Component_="addForm.class" FileName="create~1.cla|createOrder.class" Attributes="0" SourcePath="Documents\phs_documents\Class\createOrder.class" SelfReg="false" Sequence="356"/>
+    <ROW File="createOrder.form" Component_="JPG_1" FileName="create~1.for|createOrder.form" Attributes="0" SourcePath="src\phs_project\createOrder.form" SelfReg="false" Sequence="274"/>
+    <ROW File="createOrder.java" Component_="JPG_1" FileName="create~1.jav|createOrder.java" Attributes="0" SourcePath="src\phs_project\createOrder.java" SelfReg="false" Sequence="275"/>
+    <ROW File="createOrderNew.class" Component_="JPG" FileName="creat~16.cla|createOrderNew.class" Attributes="0" SourcePath="build\classes\phs_project\createOrderNew.class" SelfReg="false" Sequence="86"/>
+    <ROW File="createOrderNew.class_1" Component_="addForm.class" FileName="create~2.cla|createOrderNew.class" Attributes="0" SourcePath="Documents\phs_documents\Class\createOrderNew.class" SelfReg="false" Sequence="357"/>
+    <ROW File="createOrderNew.form" Component_="JPG_1" FileName="create~2.for|createOrderNew.form" Attributes="0" SourcePath="src\phs_project\createOrderNew.form" SelfReg="false" Sequence="276"/>
+    <ROW File="createOrderNew.java" Component_="JPG_1" FileName="create~2.jav|createOrderNew.java" Attributes="0" SourcePath="src\phs_project\createOrderNew.java" SelfReg="false" Sequence="277"/>
+    <ROW File="createOrderNew_1.class" Component_="JPG" FileName="create~7.cla|createOrderNew$1.class" Attributes="0" SourcePath="build\classes\phs_project\createOrderNew$1.class" SelfReg="false" Sequence="78"/>
+    <ROW File="createOrderNew_2.class" Component_="JPG" FileName="create~8.cla|createOrderNew$2.class" Attributes="0" SourcePath="build\classes\phs_project\createOrderNew$2.class" SelfReg="false" Sequence="79"/>
+    <ROW File="createOrderNew_3.class" Component_="JPG" FileName="create~9.cla|createOrderNew$3.class" Attributes="0" SourcePath="build\classes\phs_project\createOrderNew$3.class" SelfReg="false" Sequence="80"/>
+    <ROW File="createOrderNew_4.class" Component_="JPG" FileName="creat~10.cla|createOrderNew$4.class" Attributes="0" SourcePath="build\classes\phs_project\createOrderNew$4.class" SelfReg="false" Sequence="81"/>
+    <ROW File="createOrderNew_5.class" Component_="JPG" FileName="creat~11.cla|createOrderNew$5.class" Attributes="0" SourcePath="build\classes\phs_project\createOrderNew$5.class" SelfReg="false" Sequence="82"/>
+    <ROW File="createOrderNew_6.class" Component_="JPG" FileName="creat~12.cla|createOrderNew$6.class" Attributes="0" SourcePath="build\classes\phs_project\createOrderNew$6.class" SelfReg="false" Sequence="83"/>
+    <ROW File="createOrderNew_7.class" Component_="JPG" FileName="creat~13.cla|createOrderNew$7.class" Attributes="0" SourcePath="build\classes\phs_project\createOrderNew$7.class" SelfReg="false" Sequence="84"/>
+    <ROW File="createOrderNew_8.class" Component_="JPG" FileName="creat~14.cla|createOrderNew$8.class" Attributes="0" SourcePath="build\classes\phs_project\createOrderNew$8.class" SelfReg="false" Sequence="85"/>
+    <ROW File="createOrderNew_PanelKhachmoi.ser" Component_="JPG" FileName="create~1.ser|createOrderNew_PanelKhachmoi.ser" Attributes="0" SourcePath="build\classes\phs_project\createOrderNew_PanelKhachmoi.ser" SelfReg="false" Sequence="313"/>
+    <ROW File="createOrderNew_PanelKhachmoi.ser_1" Component_="JPG_1" FileName="create~1.ser|createOrderNew_PanelKhachmoi.ser" Attributes="0" SourcePath="src\phs_project\createOrderNew_PanelKhachmoi.ser" SelfReg="false" Sequence="432"/>
+    <ROW File="createOrder_1.class" Component_="JPG" FileName="create~1.cla|createOrder$1.class" Attributes="0" SourcePath="build\classes\phs_project\createOrder$1.class" SelfReg="false" Sequence="72"/>
+    <ROW File="createOrder_2.class" Component_="JPG" FileName="create~2.cla|createOrder$2.class" Attributes="0" SourcePath="build\classes\phs_project\createOrder$2.class" SelfReg="false" Sequence="73"/>
+    <ROW File="createOrder_3.class" Component_="JPG" FileName="create~3.cla|createOrder$3.class" Attributes="0" SourcePath="build\classes\phs_project\createOrder$3.class" SelfReg="false" Sequence="74"/>
+    <ROW File="createOrder_4.class" Component_="JPG" FileName="create~4.cla|createOrder$4.class" Attributes="0" SourcePath="build\classes\phs_project\createOrder$4.class" SelfReg="false" Sequence="75"/>
+    <ROW File="createOrder_5.class" Component_="JPG" FileName="create~5.cla|createOrder$5.class" Attributes="0" SourcePath="build\classes\phs_project\createOrder$5.class" SelfReg="false" Sequence="76"/>
+    <ROW File="customers.jpg" Component_="addCustomer.JPG" FileName="custom~1.jpg|customers.jpg" Attributes="0" SourcePath="Documents\phs_documents\customers.jpg" SelfReg="false" Sequence="379"/>
+    <ROW File="customersList.jpg" Component_="addCustomer.JPG" FileName="custom~2.jpg|customersList.jpg" Attributes="0" SourcePath="Documents\phs_documents\customersList.jpg" SelfReg="false" Sequence="380"/>
+    <ROW File="datphong.doc" Component_="datphong.doc" FileName="datphong.doc" Attributes="0" SourcePath="Documents\datphong.doc" SelfReg="false" Sequence="339"/>
+    <ROW File="detachphsdata.sql" Component_="phs_data_Data.MDF" FileName="detach~1.sql|detachphsdata.sql" Attributes="0" SourcePath="Database\detachphsdata.sql" SelfReg="false" Sequence="333"/>
+    <ROW File="digitalClock.class" Component_="JPG" FileName="digita~1.cla|digitalClock.class" Attributes="0" SourcePath="build\classes\phs_project\digitalClock.class" SelfReg="false" Sequence="96"/>
+    <ROW File="digitalClock.class_1" Component_="addForm.class" FileName="digita~1.cla|digitalClock.class" Attributes="0" SourcePath="Documents\phs_documents\Class\digitalClock.class" SelfReg="false" Sequence="361"/>
+    <ROW File="digitalClock.java" Component_="JPG_1" FileName="digita~1.jav|digitalClock.java" Attributes="0" SourcePath="src\phs_project\digitalClock.java" SelfReg="false" Sequence="282"/>
+    <ROW File="documents_white.png" Component_="ico" FileName="docume~1.png|documents_white.png" Attributes="0" SourcePath="Image\documents_white.png" SelfReg="false" Sequence="188"/>
+    <ROW File="documents_white_edit.png" Component_="ico" FileName="docume~2.png|documents_white_edit.png" Attributes="0" SourcePath="Image\documents_white_edit.png" SelfReg="false" Sequence="189"/>
+    <ROW File="documents_white_exec.png" Component_="ico" FileName="docume~3.png|documents_white_exec.png" Attributes="0" SourcePath="Image\documents_white_exec.png" SelfReg="false" Sequence="190"/>
+    <ROW File="documents_white_fav.png" Component_="ico" FileName="docume~4.png|documents_white_fav.png" Attributes="0" SourcePath="Image\documents_white_fav.png" SelfReg="false" Sequence="191"/>
+    <ROW File="documents_white_music.png" Component_="ico" FileName="docume~5.png|documents_white_music.png" Attributes="0" SourcePath="Image\documents_white_music.png" SelfReg="false" Sequence="192"/>
+    <ROW File="documents_white_web.png" Component_="ico" FileName="docume~6.png|documents_white_web.png" Attributes="0" SourcePath="Image\documents_white_web.png" SelfReg="false" Sequence="193"/>
+    <ROW File="documents_yellow.png" Component_="ico" FileName="docume~7.png|documents_yellow.png" Attributes="0" SourcePath="Image\documents_yellow.png" SelfReg="false" Sequence="194"/>
+    <ROW File="documents_yellow_edit.png" Component_="ico" FileName="docume~8.png|documents_yellow_edit.png" Attributes="0" SourcePath="Image\documents_yellow_edit.png" SelfReg="false" Sequence="195"/>
+    <ROW File="documents_yellow_exec.png" Component_="ico" FileName="docume~9.png|documents_yellow_exec.png" Attributes="0" SourcePath="Image\documents_yellow_exec.png" SelfReg="false" Sequence="196"/>
+    <ROW File="documents_yellow_fav.png" Component_="ico" FileName="docum~10.png|documents_yellow_fav.png" Attributes="0" SourcePath="Image\documents_yellow_fav.png" SelfReg="false" Sequence="197"/>
+    <ROW File="documents_yellow_music.png" Component_="ico" FileName="docum~11.png|documents_yellow_music.png" Attributes="0" SourcePath="Image\documents_yellow_music.png" SelfReg="false" Sequence="198"/>
+    <ROW File="documents_yellow_web.png" Component_="ico" FileName="docum~12.png|documents_yellow_web.png" Attributes="0" SourcePath="Image\documents_yellow_web.png" SelfReg="false" Sequence="199"/>
+    <ROW File="ei0021_48.gif" Component_="ico" FileName="ei0021~1.gif|ei0021-48.gif" Attributes="0" SourcePath="Image\ei0021-48.gif" SelfReg="false" Sequence="201"/>
+    <ROW File="eula.rtf" Component_="AttachDTB.bat" FileName="eula.rtf" Attributes="0" SourcePath="eula.rtf" SelfReg="false" Sequence="311"/>
+    <ROW File="exec.png" Component_="ico" FileName="exec.png" Attributes="0" SourcePath="Image\exec.png" SelfReg="false" Sequence="203"/>
+    <ROW File="exec_.gif" Component_="ico" FileName="exec~1.gif|exec .gif" Attributes="0" SourcePath="Image\exec .gif" SelfReg="false" Sequence="202"/>
+    <ROW File="fav.png" Component_="ico" FileName="fav.png" Attributes="0" SourcePath="Image\fav.png" SelfReg="false" Sequence="204"/>
+    <ROW File="flash_b.gif" Component_="ico" FileName="flash-b.gif" Attributes="0" SourcePath="Image\flash-b.gif" SelfReg="false" Sequence="205"/>
+    <ROW File="flash_l.gif" Component_="ico" FileName="flash-l.gif" Attributes="0" SourcePath="Image\flash-l.gif" SelfReg="false" Sequence="206"/>
+    <ROW File="flash_r.gif" Component_="ico" FileName="flash-r.gif" Attributes="0" SourcePath="Image\flash-r.gif" SelfReg="false" Sequence="207"/>
+    <ROW File="flash_t.gif" Component_="ico" FileName="flash-t.gif" Attributes="0" SourcePath="Image\flash-t.gif" SelfReg="false" Sequence="208"/>
+    <ROW File="folder.png" Component_="ico" FileName="folder.png" Attributes="0" SourcePath="Image\folder.png" SelfReg="false" Sequence="209"/>
+    <ROW File="folder_documents.png" Component_="ico" FileName="folder~1.png|folder_documents.png" Attributes="0" SourcePath="Image\folder_documents.png" SelfReg="false" Sequence="211"/>
+    <ROW File="folder_exec.png" Component_="ico" FileName="folder~2.png|folder_exec.png" Attributes="0" SourcePath="Image\folder_exec.png" SelfReg="false" Sequence="212"/>
+    <ROW File="folder_fav.png" Component_="ico" FileName="folder~3.png|folder_fav.png" Attributes="0" SourcePath="Image\folder_fav.png" SelfReg="false" Sequence="213"/>
+    <ROW File="folder_music.png" Component_="ico" FileName="folder~4.png|folder_music.png" Attributes="0" SourcePath="Image\folder_music.png" SelfReg="false" Sequence="214"/>
+    <ROW File="folder_op.gif" Component_="ico" FileName="folder~2.gif|folder_op.gif" Attributes="0" SourcePath="Image\folder_op.gif" SelfReg="false" Sequence="215"/>
+    <ROW File="folder_open3.png" Component_="ico" FileName="folder~5.png|folder_open3.png" Attributes="0" SourcePath="Image\folder_open3.png" SelfReg="false" Sequence="216"/>
+    <ROW File="folder_penguin.png" Component_="ico" FileName="folder~6.png|folder_penguin.png" Attributes="0" SourcePath="Image\folder_penguin.png" SelfReg="false" Sequence="217"/>
+    <ROW File="folder_web.png" Component_="ico" FileName="folder~7.png|folder_web.png" Attributes="0" SourcePath="Image\folder_web.png" SelfReg="false" Sequence="218"/>
+    <ROW File="folderclassic.gif" Component_="ico" FileName="folder~1.gif|folderclassic.gif" Attributes="0" SourcePath="Image\folderclassic.gif" SelfReg="false" Sequence="210"/>
+    <ROW File="genfiles.properties" Component_="build_impl.xml" FileName="genfil~1.pro|genfiles.properties" Attributes="0" SourcePath="nbproject\genfiles.properties" SelfReg="false" Sequence="243"/>
+    <ROW File="getData.class" Component_="JPG" FileName="getDat~1.cla|getData.class" Attributes="0" SourcePath="build\classes\phs_project\getData.class" SelfReg="false" Sequence="97"/>
+    <ROW File="getData.class_1" Component_="addForm.class" FileName="getDat~1.cla|getData.class" Attributes="0" SourcePath="Documents\phs_documents\Class\getData.class" SelfReg="false" Sequence="362"/>
+    <ROW File="getData.java" Component_="JPG_1" FileName="getDat~1.jav|getData.java" Attributes="0" SourcePath="src\phs_project\getData.java" SelfReg="false" Sequence="283"/>
+    <ROW File="history.gif" Component_="ico" FileName="history.gif" Attributes="0" SourcePath="Image\history.gif" SelfReg="false" Sequence="219"/>
+    <ROW File="hotelForm.class" Component_="JPG" FileName="hotel~24.cla|hotelForm.class" Attributes="0" SourcePath="build\classes\phs_project\hotelForm.class" SelfReg="false" Sequence="120"/>
+    <ROW File="hotelForm.class_1" Component_="addForm.class" FileName="hotelF~1.cla|hotelForm.class" Attributes="0" SourcePath="Documents\phs_documents\Class\hotelForm.class" SelfReg="false" Sequence="363"/>
+    <ROW File="hotelForm.form" Component_="JPG_1" FileName="hotelF~1.for|hotelForm.form" Attributes="0" SourcePath="src\phs_project\hotelForm.form" SelfReg="false" Sequence="284"/>
+    <ROW File="hotelForm.java" Component_="JPG_1" FileName="hotelF~1.jav|hotelForm.java" Attributes="0" SourcePath="src\phs_project\hotelForm.java" SelfReg="false" Sequence="285"/>
+    <ROW File="hotelForm_1.class" Component_="JPG" FileName="hotelF~1.cla|hotelForm$1.class" Attributes="0" SourcePath="build\classes\phs_project\hotelForm$1.class" SelfReg="false" Sequence="98"/>
+    <ROW File="hotelForm_10.class" Component_="JPG" FileName="hotelF~2.cla|hotelForm$10.class" Attributes="0" SourcePath="build\classes\phs_project\hotelForm$10.class" SelfReg="false" Sequence="99"/>
+    <ROW File="hotelForm_11.class" Component_="JPG" FileName="hotelF~3.cla|hotelForm$11.class" Attributes="0" SourcePath="build\classes\phs_project\hotelForm$11.class" SelfReg="false" Sequence="100"/>
+    <ROW File="hotelForm_12.class" Component_="JPG" FileName="hotelF~4.cla|hotelForm$12.class" Attributes="0" SourcePath="build\classes\phs_project\hotelForm$12.class" SelfReg="false" Sequence="101"/>
+    <ROW File="hotelForm_13.class" Component_="JPG" FileName="hotelF~5.cla|hotelForm$13.class" Attributes="0" SourcePath="build\classes\phs_project\hotelForm$13.class" SelfReg="false" Sequence="102"/>
+    <ROW File="hotelForm_14.class" Component_="JPG" FileName="hotelF~6.cla|hotelForm$14.class" Attributes="0" SourcePath="build\classes\phs_project\hotelForm$14.class" SelfReg="false" Sequence="103"/>
+    <ROW File="hotelForm_15.class" Component_="JPG" FileName="hotelF~7.cla|hotelForm$15.class" Attributes="0" SourcePath="build\classes\phs_project\hotelForm$15.class" SelfReg="false" Sequence="104"/>
+    <ROW File="hotelForm_16.class" Component_="JPG" FileName="hotelF~8.cla|hotelForm$16.class" Attributes="0" SourcePath="build\classes\phs_project\hotelForm$16.class" SelfReg="false" Sequence="105"/>
+    <ROW File="hotelForm_17.class" Component_="JPG" FileName="hotelF~9.cla|hotelForm$17.class" Attributes="0" SourcePath="build\classes\phs_project\hotelForm$17.class" SelfReg="false" Sequence="106"/>
+    <ROW File="hotelForm_18.class" Component_="JPG" FileName="hotel~10.cla|hotelForm$18.class" Attributes="0" SourcePath="build\classes\phs_project\hotelForm$18.class" SelfReg="false" Sequence="107"/>
+    <ROW File="hotelForm_19.class" Component_="JPG" FileName="hotel~11.cla|hotelForm$19.class" Attributes="0" SourcePath="build\classes\phs_project\hotelForm$19.class" SelfReg="false" Sequence="108"/>
+    <ROW File="hotelForm_2.class" Component_="JPG" FileName="hotel~12.cla|hotelForm$2.class" Attributes="0" SourcePath="build\classes\phs_project\hotelForm$2.class" SelfReg="false" Sequence="109"/>
+    <ROW File="hotelForm_20.class" Component_="JPG" FileName="hotel~13.cla|hotelForm$20.class" Attributes="0" SourcePath="build\classes\phs_project\hotelForm$20.class" SelfReg="false" Sequence="110"/>
+    <ROW File="hotelForm_21.class" Component_="JPG" FileName="hotel~14.cla|hotelForm$21.class" Attributes="0" SourcePath="build\classes\phs_project\hotelForm$21.class" SelfReg="false" Sequence="111"/>
+    <ROW File="hotelForm_22.class" Component_="JPG" FileName="hotel~15.cla|hotelForm$22.class" Attributes="0" SourcePath="build\classes\phs_project\hotelForm$22.class" SelfReg="false" Sequence="112"/>
+    <ROW File="hotelForm_23.class" Component_="JPG" FileName="hotel~16.cla|hotelForm$23.class" Attributes="0" SourcePath="build\classes\phs_project\hotelForm$23.class" SelfReg="false" Sequence="314"/>
+    <ROW File="hotelForm_24.class" Component_="JPG" FileName="hotel~25.cla|hotelForm$24.class" Attributes="0" SourcePath="build\classes\phs_project\hotelForm$24.class" SelfReg="false" Sequence="315"/>
+    <ROW File="hotelForm_25.class" Component_="JPG" FileName="hotel~26.cla|hotelForm$25.class" Attributes="0" SourcePath="build\classes\phs_project\hotelForm$25.class" SelfReg="false" Sequence="316"/>
+    <ROW File="hotelForm_26.class" Component_="JPG" FileName="hotel~27.cla|hotelForm$26.class" Attributes="0" SourcePath="build\classes\phs_project\hotelForm$26.class" SelfReg="false" Sequence="317"/>
+    <ROW File="hotelForm_27.class" Component_="JPG" FileName="hotel~28.cla|hotelForm$27.class" Attributes="0" SourcePath="build\classes\phs_project\hotelForm$27.class" SelfReg="false" Sequence="318"/>
+    <ROW File="hotelForm_28.class" Component_="JPG" FileName="hotel~29.cla|hotelForm$28.class" Attributes="0" SourcePath="build\classes\phs_project\hotelForm$28.class" SelfReg="false" Sequence="319"/>
+    <ROW File="hotelForm_29.class" Component_="JPG" FileName="hotel~30.cla|hotelForm$29.class" Attributes="0" SourcePath="build\classes\phs_project\hotelForm$29.class" SelfReg="false" Sequence="320"/>
+    <ROW File="hotelForm_3.class" Component_="JPG" FileName="hotel~17.cla|hotelForm$3.class" Attributes="0" SourcePath="build\classes\phs_project\hotelForm$3.class" SelfReg="false" Sequence="113"/>
+    <ROW File="hotelForm_30.class" Component_="JPG" FileName="hotel~31.cla|hotelForm$30.class" Attributes="0" SourcePath="build\classes\phs_project\hotelForm$30.class" SelfReg="false" Sequence="321"/>
+    <ROW File="hotelForm_4.class" Component_="JPG" FileName="hotel~18.cla|hotelForm$4.class" Attributes="0" SourcePath="build\classes\phs_project\hotelForm$4.class" SelfReg="false" Sequence="114"/>
+    <ROW File="hotelForm_5.class" Component_="JPG" FileName="hotel~19.cla|hotelForm$5.class" Attributes="0" SourcePath="build\classes\phs_project\hotelForm$5.class" SelfReg="false" Sequence="115"/>
+    <ROW File="hotelForm_6.class" Component_="JPG" FileName="hotel~20.cla|hotelForm$6.class" Attributes="0" SourcePath="build\classes\phs_project\hotelForm$6.class" SelfReg="false" Sequence="116"/>
+    <ROW File="hotelForm_7.class" Component_="JPG" FileName="hotel~21.cla|hotelForm$7.class" Attributes="0" SourcePath="build\classes\phs_project\hotelForm$7.class" SelfReg="false" Sequence="117"/>
+    <ROW File="hotelForm_8.class" Component_="JPG" FileName="hotel~22.cla|hotelForm$8.class" Attributes="0" SourcePath="build\classes\phs_project\hotelForm$8.class" SelfReg="false" Sequence="118"/>
+    <ROW File="hotelForm_9.class" Component_="JPG" FileName="hotel~23.cla|hotelForm$9.class" Attributes="0" SourcePath="build\classes\phs_project\hotelForm$9.class" SelfReg="false" Sequence="119"/>
+    <ROW File="hotel_tuan.doc" Component_="datphong.doc" FileName="hotel_~1.doc|hotel_tuan.doc" Attributes="0" SourcePath="Documents\hotel_tuan.doc" SelfReg="false" Sequence="340"/>
+    <ROW File="hotel_tung.doc" Component_="datphong.doc" FileName="hotel_~2.doc|hotel_tung.doc" Attributes="0" SourcePath="Documents\hotel_tung.doc" SelfReg="false" Sequence="341"/>
+    <ROW File="ico" Component_="ico" FileName="42.ico" Attributes="0" SourcePath="Image\42.ico" SelfReg="false" Sequence="183"/>
+    <ROW File="icon.JPG" Component_="JPG" FileName="icon.JPG" Attributes="0" SourcePath="build\classes\phs_project\icon.JPG" SelfReg="false" Sequence="121"/>
+    <ROW File="icon.JPG_1" Component_="JPG_1" FileName="icon.JPG" Attributes="0" SourcePath="src\phs_project\icon.JPG" SelfReg="false" Sequence="286"/>
+    <ROW File="icon_ms_access.gif" Component_="ico" FileName="icon-m~1.gif|icon-ms-access.gif" Attributes="0" SourcePath="Image\icon-ms-access.gif" SelfReg="false" Sequence="220"/>
+    <ROW File="icon_ms_excel.gif" Component_="ico" FileName="icon-m~2.gif|icon-ms-excel.gif" Attributes="0" SourcePath="Image\icon-ms-excel.gif" SelfReg="false" Sequence="221"/>
+    <ROW File="icon_ms_office.gif" Component_="ico" FileName="icon-m~3.gif|icon-ms-office.gif" Attributes="0" SourcePath="Image\icon-ms-office.gif" SelfReg="false" Sequence="222"/>
+    <ROW File="icon_ms_outlook.gif" Component_="ico" FileName="icon-m~4.gif|icon-ms-outlook.gif" Attributes="0" SourcePath="Image\icon-ms-outlook.gif" SelfReg="false" Sequence="223"/>
+    <ROW File="icon_ms_picture_manager.gif" Component_="ico" FileName="icon-m~5.gif|icon-ms-picture-manager.gif" Attributes="0" SourcePath="Image\icon-ms-picture-manager.gif" SelfReg="false" Sequence="224"/>
+    <ROW File="icon_ms_powerpoint.gif" Component_="ico" FileName="icon-m~7.gif|icon-ms-powerpoint.gif" Attributes="0" SourcePath="Image\icon-ms-powerpoint.gif" SelfReg="false" Sequence="226"/>
+    <ROW File="icon_ms_powerpoint_viewer.gif" Component_="ico" FileName="icon-m~6.gif|icon-ms-powerpoint-viewer.gif" Attributes="0" SourcePath="Image\icon-ms-powerpoint-viewer.gif" SelfReg="false" Sequence="225"/>
+    <ROW File="icon_ms_publisher.gif" Component_="ico" FileName="icon-m~8.gif|icon-ms-publisher.gif" Attributes="0" SourcePath="Image\icon-ms-publisher.gif" SelfReg="false" Sequence="227"/>
+    <ROW File="insertCustomer.class" Component_="JPG" FileName="inser~11.cla|insertCustomer.class" Attributes="0" SourcePath="build\classes\phs_project\insertCustomer.class" SelfReg="false" Sequence="130"/>
+    <ROW File="insertCustomer.class_1" Component_="addForm.class" FileName="insert~1.cla|insertCustomer.class" Attributes="0" SourcePath="Documents\phs_documents\Class\insertCustomer.class" SelfReg="false" Sequence="364"/>
+    <ROW File="insertCustomer.form" Component_="JPG_1" FileName="insert~1.for|insertCustomer.form" Attributes="0" SourcePath="src\phs_project\insertCustomer.form" SelfReg="false" Sequence="287"/>
+    <ROW File="insertCustomer.java" Component_="JPG_1" FileName="insert~1.jav|insertCustomer.java" Attributes="0" SourcePath="src\phs_project\insertCustomer.java" SelfReg="false" Sequence="288"/>
+    <ROW File="insertCustomer_1.class" Component_="JPG" FileName="insert~1.cla|insertCustomer$1.class" Attributes="0" SourcePath="build\classes\phs_project\insertCustomer$1.class" SelfReg="false" Sequence="122"/>
+    <ROW File="insertCustomer_2.class" Component_="JPG" FileName="insert~3.cla|insertCustomer$2.class" Attributes="0" SourcePath="build\classes\phs_project\insertCustomer$2.class" SelfReg="false" Sequence="123"/>
+    <ROW File="insertCustomer_3.class" Component_="JPG" FileName="insert~4.cla|insertCustomer$3.class" Attributes="0" SourcePath="build\classes\phs_project\insertCustomer$3.class" SelfReg="false" Sequence="124"/>
+    <ROW File="insertCustomer_4.class" Component_="JPG" FileName="insert~5.cla|insertCustomer$4.class" Attributes="0" SourcePath="build\classes\phs_project\insertCustomer$4.class" SelfReg="false" Sequence="125"/>
+    <ROW File="insertCustomer_5.class" Component_="JPG" FileName="insert~6.cla|insertCustomer$5.class" Attributes="0" SourcePath="build\classes\phs_project\insertCustomer$5.class" SelfReg="false" Sequence="126"/>
+    <ROW File="insertCustomer_6.class" Component_="JPG" FileName="insert~7.cla|insertCustomer$6.class" Attributes="0" SourcePath="build\classes\phs_project\insertCustomer$6.class" SelfReg="false" Sequence="127"/>
+    <ROW File="insertCustomer_7.class" Component_="JPG" FileName="insert~8.cla|insertCustomer$7.class" Attributes="0" SourcePath="build\classes\phs_project\insertCustomer$7.class" SelfReg="false" Sequence="128"/>
+    <ROW File="insertCustomer_8.class" Component_="JPG" FileName="insert~9.cla|insertCustomer$8.class" Attributes="0" SourcePath="build\classes\phs_project\insertCustomer$8.class" SelfReg="false" Sequence="129"/>
+    <ROW File="jcalendar.jar" Component_="jcalendar.jar" FileName="jcalen~1.jar|jcalendar.jar" Attributes="0" SourcePath="dist\lib\jcalendar.jar" SelfReg="false" Sequence="175"/>
+    <ROW File="jcalendar.jar_1" Component_="jcalendar.jar_1" FileName="jcalen~1.jar|jcalendar.jar" Attributes="0" SourcePath="lib\jcalendar.jar" SelfReg="false" Sequence="235"/>
+    <ROW File="kunststoff.jar" Component_="jcalendar.jar" FileName="kunsts~1.jar|kunststoff.jar" Attributes="0" SourcePath="dist\lib\kunststoff.jar" SelfReg="false" Sequence="176"/>
+    <ROW File="kunststoff.jar_1" Component_="jcalendar.jar_1" FileName="kunsts~1.jar|kunststoff.jar" Attributes="0" SourcePath="lib\kunststoff.jar" SelfReg="false" Sequence="236"/>
+    <ROW File="loginForm.class" Component_="JPG" FileName="loginF~7.cla|loginForm.class" Attributes="0" SourcePath="build\classes\phs_project\loginForm.class" SelfReg="false" Sequence="137"/>
+    <ROW File="loginForm.class_1" Component_="addForm.class" FileName="loginF~1.cla|loginForm.class" Attributes="0" SourcePath="Documents\phs_documents\Class\loginForm.class" SelfReg="false" Sequence="365"/>
+    <ROW File="loginForm.form" Component_="JPG_1" FileName="loginF~1.for|loginForm.form" Attributes="0" SourcePath="src\phs_project\loginForm.form" SelfReg="false" Sequence="289"/>
+    <ROW File="loginForm.java" Component_="JPG_1" FileName="loginF~1.jav|loginForm.java" Attributes="0" SourcePath="src\phs_project\loginForm.java" SelfReg="false" Sequence="290"/>
+    <ROW File="loginForm_1.class" Component_="JPG" FileName="loginF~1.cla|loginForm$1.class" Attributes="0" SourcePath="build\classes\phs_project\loginForm$1.class" SelfReg="false" Sequence="131"/>
+    <ROW File="loginForm_2.class" Component_="JPG" FileName="loginF~2.cla|loginForm$2.class" Attributes="0" SourcePath="build\classes\phs_project\loginForm$2.class" SelfReg="false" Sequence="132"/>
+    <ROW File="loginForm_3.class" Component_="JPG" FileName="loginF~3.cla|loginForm$3.class" Attributes="0" SourcePath="build\classes\phs_project\loginForm$3.class" SelfReg="false" Sequence="133"/>
+    <ROW File="loginForm_4.class" Component_="JPG" FileName="loginF~4.cla|loginForm$4.class" Attributes="0" SourcePath="build\classes\phs_project\loginForm$4.class" SelfReg="false" Sequence="134"/>
+    <ROW File="loginForm_5.class" Component_="JPG" FileName="loginF~5.cla|loginForm$5.class" Attributes="0" SourcePath="build\classes\phs_project\loginForm$5.class" SelfReg="false" Sequence="135"/>
+    <ROW File="loginForm_6.class" Component_="JPG" FileName="loginF~6.cla|loginForm$6.class" Attributes="0" SourcePath="build\classes\phs_project\loginForm$6.class" SelfReg="false" Sequence="136"/>
+    <ROW File="loginISQL.bat" Component_="phs_data_Data.MDF" FileName="loginI~1.bat|loginISQL.bat" Attributes="0" SourcePath="Database\loginISQL.bat" SelfReg="false" Sequence="334"/>
+    <ROW File="login_attach.bat" Component_="phs_data_Data.MDF" FileName="login_~1.bat|login_attach.bat" Attributes="0" SourcePath="Database\login_attach.bat" SelfReg="false" Sequence="335"/>
+    <ROW File="login_detach.bat" Component_="phs_data_Data.MDF" FileName="login_~2.bat|login_detach.bat" Attributes="0" SourcePath="Database\login_detach.bat" SelfReg="false" Sequence="336"/>
+    <ROW File="logo_login.gif" Component_="JPG" FileName="logo_l~1.gif|logo_login.gif" Attributes="0" SourcePath="build\classes\phs_project\logo_login.gif" SelfReg="false" Sequence="138"/>
+    <ROW File="logo_login.gif_1" Component_="ico" FileName="logo_l~1.gif|logo_login.gif" Attributes="0" SourcePath="Image\logo_login.gif" SelfReg="false" Sequence="228"/>
+    <ROW File="logo_login.gif_2" Component_="JPG_1" FileName="logo_l~1.gif|logo_login.gif" Attributes="0" SourcePath="src\phs_project\logo_login.gif" SelfReg="false" Sequence="291"/>
+    <ROW File="logo_login.psd" Component_="ico" FileName="logo_l~1.psd|logo_login.psd" Attributes="0" SourcePath="Image\logo_login.psd" SelfReg="false" Sequence="229"/>
+    <ROW File="manifest.mf" Component_="AttachDTB.bat" FileName="manifest.mf" Attributes="0" SourcePath="manifest.mf" SelfReg="false" Sequence="241"/>
+    <ROW File="msbase.jar" Component_="jcalendar.jar" FileName="msbase.jar" Attributes="0" SourcePath="dist\lib\msbase.jar" SelfReg="false" Sequence="177"/>
+    <ROW File="msbase.jar_1" Component_="jcalendar.jar_1" FileName="msbase.jar" Attributes="0" SourcePath="lib\msbase.jar" SelfReg="false" Sequence="237"/>
+    <ROW File="mssqlserver.jar" Component_="jcalendar.jar" FileName="mssqls~1.jar|mssqlserver.jar" Attributes="0" SourcePath="dist\lib\mssqlserver.jar" SelfReg="false" Sequence="178"/>
+    <ROW File="mssqlserver.jar_1" Component_="jcalendar.jar_1" FileName="mssqls~1.jar|mssqlserver.jar" Attributes="0" SourcePath="lib\mssqlserver.jar" SelfReg="false" Sequence="238"/>
+    <ROW File="msutil.jar" Component_="jcalendar.jar" FileName="msutil.jar" Attributes="0" SourcePath="dist\lib\msutil.jar" SelfReg="false" Sequence="179"/>
+    <ROW File="msutil.jar_1" Component_="jcalendar.jar_1" FileName="msutil.jar" Attributes="0" SourcePath="lib\msutil.jar" SelfReg="false" Sequence="239"/>
+    <ROW File="network.png" Component_="ico" FileName="network.png" Attributes="0" SourcePath="Image\network.png" SelfReg="false" Sequence="230"/>
+    <ROW File="orderlist.class" Component_="JPG" FileName="orderl~3.cla|orderlist.class" Attributes="0" SourcePath="build\classes\phs_project\orderlist.class" SelfReg="false" Sequence="143"/>
+    <ROW File="orderlist.class_1" Component_="addForm.class" FileName="orderl~1.cla|orderlist.class" Attributes="0" SourcePath="Documents\phs_documents\Class\orderlist.class" SelfReg="false" Sequence="367"/>
+    <ROW File="orderlist.form" Component_="JPG_1" FileName="orderl~1.for|orderlist.form" Attributes="0" SourcePath="src\phs_project\orderlist.form" SelfReg="false" Sequence="295"/>
+    <ROW File="orderlist.java" Component_="JPG_1" FileName="orderl~1.jav|orderlist.java" Attributes="0" SourcePath="src\phs_project\orderlist.java" SelfReg="false" Sequence="296"/>
+    <ROW File="orderlist_1.class" Component_="JPG" FileName="orderl~1.cla|orderlist$1.class" Attributes="0" SourcePath="build\classes\phs_project\orderlist$1.class" SelfReg="false" Sequence="141"/>
+    <ROW File="orderlist_2.class" Component_="JPG" FileName="orderl~2.cla|orderlist$2.class" Attributes="0" SourcePath="build\classes\phs_project\orderlist$2.class" SelfReg="false" Sequence="142"/>
+    <ROW File="orders.JPG" Component_="addCustomer.JPG" FileName="orders.JPG" Attributes="0" SourcePath="Documents\phs_documents\orders.JPG" SelfReg="false" Sequence="384"/>
+    <ROW File="ordersList.JPG" Component_="addCustomer.JPG" FileName="orders~1.JPG|ordersList.JPG" Attributes="0" SourcePath="Documents\phs_documents\ordersList.JPG" SelfReg="false" Sequence="385"/>
+    <ROW File="penguin.png" Component_="ico" FileName="penguin.png" Attributes="0" SourcePath="Image\penguin.png" SelfReg="false" Sequence="231"/>
+    <ROW File="phs_data_Data.MDF" Component_="phs_data_Data.MDF" FileName="phs_da~1.MDF|phs_data_Data.MDF" Attributes="0" SourcePath="Database\phs_data_Data.MDF" SelfReg="false" Sequence="172"/>
+    <ROW File="phs_data_Log.LDF" Component_="phs_data_Data.MDF" FileName="phs_da~1.LDF|phs_data_Log.LDF" Attributes="0" SourcePath="Database\phs_data_Log.LDF" SelfReg="false" Sequence="173"/>
+    <ROW File="phs_documents.doc" Component_="addCustomer.JPG" FileName="phs_do~1.doc|phs_documents.doc" Attributes="0" SourcePath="Documents\phs_documents\phs_documents.doc" SelfReg="false" Sequence="386"/>
+    <ROW File="phs_project.vpp" Component_="addCustomer.JPG" FileName="phs_pr~1.vpp|phs_project.vpp" Attributes="0" SourcePath="Documents\phs_documents\phs_project.vpp" SelfReg="false" Sequence="387"/>
+    <ROW File="presets.xml" Component_="presets.xml" FileName="presets.xml" Attributes="0" SourcePath="nbproject\private\profiler\presets.xml" SelfReg="false" Sequence="246"/>
+    <ROW File="private.properties" Component_="private.properties" FileName="privat~1.pro|private.properties" Attributes="0" SourcePath="nbproject\private\private.properties" SelfReg="false" Sequence="244"/>
+    <ROW File="private.xml" Component_="private.properties" FileName="private.xml" Attributes="0" SourcePath="nbproject\private\private.xml" SelfReg="false" Sequence="245"/>
+    <ROW File="profiler_build_impl.xml" Component_="build_impl.xml" FileName="profil~1.xml|profiler-build-impl.xml" Attributes="0" SourcePath="nbproject\profiler-build-impl.xml" SelfReg="false" Sequence="247"/>
+    <ROW File="project.properties" Component_="build_impl.xml" FileName="projec~1.pro|project.properties" Attributes="0" SourcePath="nbproject\project.properties" SelfReg="false" Sequence="248"/>
+    <ROW File="project.xml" Component_="build_impl.xml" FileName="project.xml" Attributes="0" SourcePath="nbproject\project.xml" SelfReg="false" Sequence="249"/>
+    <ROW File="publicClass.class" Component_="JPG" FileName="public~1.cla|publicClass.class" Attributes="0" SourcePath="build\classes\phs_project\publicClass.class" SelfReg="false" Sequence="144"/>
+    <ROW File="publicClass.class_1" Component_="addForm.class" FileName="public~1.cla|publicClass.class" Attributes="0" SourcePath="Documents\phs_documents\Class\publicClass.class" SelfReg="false" Sequence="368"/>
+    <ROW File="publicClass.java" Component_="JPG_1" FileName="public~1.jav|publicClass.java" Attributes="0" SourcePath="src\phs_project\publicClass.java" SelfReg="false" Sequence="297"/>
+    <ROW File="reports.JPG" Component_="addCustomer.JPG" FileName="reports.JPG" Attributes="0" SourcePath="Documents\phs_documents\reports.JPG" SelfReg="false" Sequence="388"/>
+    <ROW File="rooms.JPG" Component_="addCustomer.JPG" FileName="rooms.JPG" Attributes="0" SourcePath="Documents\phs_documents\rooms.JPG" SelfReg="false" Sequence="389"/>
+    <ROW File="run.bat" Component_="AttachDTB.bat" FileName="run.bat" Attributes="0" SourcePath="run.bat" SelfReg="false" Sequence="251"/>
+    <ROW File="run.bat_1" Component_="phs_data_Data.MDF" FileName="run.bat" Attributes="0" SourcePath="Database\run.bat" SelfReg="false" Sequence="337"/>
+    <ROW File="save_file.gif" Component_="ico" FileName="save_f~1.gif|save_file.gif" Attributes="0" SourcePath="Image\save_file.gif" SelfReg="false" Sequence="232"/>
+    <ROW File="sequenceChuyenPhong.JPG" Component_="addCustomer.JPG" FileName="sequen~1.JPG|sequenceChuyenPhong.JPG" Attributes="0" SourcePath="Documents\phs_documents\sequenceChuyenPhong.JPG" SelfReg="false" Sequence="391"/>
+    <ROW File="sequenceDangnhap.JPG" Component_="addCustomer.JPG" FileName="sequen~2.JPG|sequenceDangnhap.JPG" Attributes="0" SourcePath="Documents\phs_documents\sequenceDangnhap.JPG" SelfReg="false" Sequence="392"/>
+    <ROW File="sequenceQuanTriXoa.JPG" Component_="addCustomer.JPG" FileName="sequen~3.JPG|sequenceQuanTriXoa.JPG" Attributes="0" SourcePath="Documents\phs_documents\sequenceQuanTriXoa.JPG" SelfReg="false" Sequence="393"/>
+    <ROW File="sequenceSuaKhachhang.JPG" Component_="addCustomer.JPG" FileName="sequen~4.JPG|sequenceSuaKhachhang.JPG" Attributes="0" SourcePath="Documents\phs_documents\sequenceSuaKhachhang.JPG" SelfReg="false" Sequence="394"/>
+    <ROW File="sequenceTaodonhang.JPG" Component_="addCustomer.JPG" FileName="sequen~5.JPG|sequenceTaodonhang.JPG" Attributes="0" SourcePath="Documents\phs_documents\sequenceTaodonhang.JPG" SelfReg="false" Sequence="395"/>
+    <ROW File="sequenceThanhToan.JPG" Component_="addCustomer.JPG" FileName="sequen~6.JPG|sequenceThanhToan.JPG" Attributes="0" SourcePath="Documents\phs_documents\sequenceThanhToan.JPG" SelfReg="false" Sequence="396"/>
+    <ROW File="sequenceThemDichvu.JPG" Component_="addCustomer.JPG" FileName="sequen~7.JPG|sequenceThemDichvu.JPG" Attributes="0" SourcePath="Documents\phs_documents\sequenceThemDichvu.JPG" SelfReg="false" Sequence="397"/>
+    <ROW File="sequenceThemDichvuVaoDL.JPG" Component_="addCustomer.JPG" FileName="sequen~8.JPG|sequenceThemDichvuVaoDL.JPG" Attributes="0" SourcePath="Documents\phs_documents\sequenceThemDichvuVaoDL.JPG" SelfReg="false" Sequence="398"/>
+    <ROW File="sequenceThemKh_chepphong.JPG" Component_="addCustomer.JPG" FileName="seque~10.JPG|sequenceThemKhãchepphong.JPG" Attributes="0" SourcePath="Documents\phs_documents\sequenceThemKhãchepphong.JPG" SelfReg="false" Sequence="400"/>
+    <ROW File="sequenceThemKhach.JPG" Component_="addCustomer.JPG" FileName="sequen~9.JPG|sequenceThemKhach.JPG" Attributes="0" SourcePath="Documents\phs_documents\sequenceThemKhach.JPG" SelfReg="false" Sequence="399"/>
+    <ROW File="sequenceThemPhong.JPG" Component_="addCustomer.JPG" FileName="seque~11.JPG|sequenceThemPhong.JPG" Attributes="0" SourcePath="Documents\phs_documents\sequenceThemPhong.JPG" SelfReg="false" Sequence="401"/>
+    <ROW File="sequenceTimphong.JPG" Component_="addCustomer.JPG" FileName="seque~12.JPG|sequenceTimphong.JPG" Attributes="0" SourcePath="Documents\phs_documents\sequenceTimphong.JPG" SelfReg="false" Sequence="402"/>
+    <ROW File="services.jpg" Component_="addCustomer.JPG" FileName="services.jpg" Attributes="0" SourcePath="Documents\phs_documents\services.jpg" SelfReg="false" Sequence="403"/>
+    <ROW File="sqlDatabase.class" Component_="JPG" FileName="sqlDat~1.cla|sqlDatabase.class" Attributes="0" SourcePath="build\classes\phs_project\sqlDatabase.class" SelfReg="false" Sequence="159"/>
+    <ROW File="sqlDatabase.class_1" Component_="addForm.class" FileName="sqlDat~1.cla|sqlDatabase.class" Attributes="0" SourcePath="Documents\phs_documents\Class\sqlDatabase.class" SelfReg="false" Sequence="373"/>
+    <ROW File="sqlDatabase.java" Component_="JPG_1" FileName="sqlDat~1.jav|sqlDatabase.java" Attributes="0" SourcePath="src\phs_project\sqlDatabase.java" SelfReg="false" Sequence="304"/>
+    <ROW File="swing_layout_1.0.jar" Component_="jcalendar.jar" FileName="swing-~1.jar|swing-layout-1.0.jar" Attributes="0" SourcePath="dist\lib\swing-layout-1.0.jar" SelfReg="false" Sequence="180"/>
+    <ROW File="swing_layout_1.0.jar_1" Component_="jcalendar.jar_1" FileName="swing-~1.jar|swing-layout-1.0.jar" Attributes="0" SourcePath="lib\swing-layout-1.0.jar" SelfReg="false" Sequence="240"/>
+    <ROW File="tasksheet.xls" Component_="datphong.doc" FileName="tasksh~1.xls|tasksheet.xls" Attributes="0" SourcePath="Documents\tasksheet.xls" SelfReg="false" Sequence="416"/>
+    <ROW File="uscaseChuyenphong.JPG" Component_="addCustomer.JPG" FileName="uscase~1.JPG|uscaseChuyenphong.JPG" Attributes="0" SourcePath="Documents\phs_documents\uscaseChuyenphong.JPG" SelfReg="false" Sequence="404"/>
+    <ROW File="uscaseQuantritaikhoan.JPG" Component_="addCustomer.JPG" FileName="uscase~2.JPG|uscaseQuantritaikhoan.JPG" Attributes="0" SourcePath="Documents\phs_documents\uscaseQuantritaikhoan.JPG" SelfReg="false" Sequence="405"/>
+    <ROW File="uscaseSuathongtinkhach.JPG" Component_="addCustomer.JPG" FileName="uscase~3.JPG|uscaseSuathongtinkhach.JPG" Attributes="0" SourcePath="Documents\phs_documents\uscaseSuathongtinkhach.JPG" SelfReg="false" Sequence="406"/>
+    <ROW File="uscaseThanhtoan.JPG" Component_="addCustomer.JPG" FileName="uscase~4.JPG|uscaseThanhtoan.JPG" Attributes="0" SourcePath="Documents\phs_documents\uscaseThanhtoan.JPG" SelfReg="false" Sequence="407"/>
+    <ROW File="uscaseThemdichvu.JPG" Component_="addCustomer.JPG" FileName="uscase~5.JPG|uscaseThemdichvu.JPG" Attributes="0" SourcePath="Documents\phs_documents\uscaseThemdichvu.JPG" SelfReg="false" Sequence="408"/>
+    <ROW File="uscaseThemkhach.JPG" Component_="addCustomer.JPG" FileName="uscase~6.JPG|uscaseThemkhach.JPG" Attributes="0" SourcePath="Documents\phs_documents\uscaseThemkhach.JPG" SelfReg="false" Sequence="409"/>
+    <ROW File="uscaseThongke.JPG" Component_="addCustomer.JPG" FileName="uscase~7.JPG|uscaseThongke.JPG" Attributes="0" SourcePath="Documents\phs_documents\uscaseThongke.JPG" SelfReg="false" Sequence="410"/>
+    <ROW File="uscaseTimphong.JPG" Component_="addCustomer.JPG" FileName="uscase~8.JPG|uscaseTimphong.JPG" Attributes="0" SourcePath="Documents\phs_documents\uscaseTimphong.JPG" SelfReg="false" Sequence="411"/>
+    <ROW File="usecase.doc" Component_="datphong.doc" FileName="usecase.doc" Attributes="0" SourcePath="Documents\usecase.doc" SelfReg="false" Sequence="429"/>
+    <ROW File="usecaseDangnhap.JPG" Component_="addCustomer.JPG" FileName="usecas~1.JPG|usecaseDangnhap.JPG" Attributes="0" SourcePath="Documents\phs_documents\usecaseDangnhap.JPG" SelfReg="false" Sequence="412"/>
+    <ROW File="usecaseLapdonhang.JPG" Component_="addCustomer.JPG" FileName="usecas~2.JPG|usecaseLapdonhang.JPG" Attributes="0" SourcePath="Documents\phs_documents\usecaseLapdonhang.JPG" SelfReg="false" Sequence="413"/>
+    <ROW File="usecaseQuantri.JPG" Component_="addCustomer.JPG" FileName="usecas~3.JPG|usecaseQuantri.JPG" Attributes="0" SourcePath="Documents\phs_documents\usecaseQuantri.JPG" SelfReg="false" Sequence="414"/>
+    <ROW File="users.JPG" Component_="addCustomer.JPG" FileName="users.JPG" Attributes="0" SourcePath="Documents\phs_documents\users.JPG" SelfReg="false" Sequence="415"/>
+    <ROW File="validate.class" Component_="JPG" FileName="valida~1.cla|validate.class" Attributes="0" SourcePath="build\classes\phs_project\validate.class" SelfReg="false" Sequence="169"/>
+    <ROW File="validate.class_1" Component_="addForm.class" FileName="valida~1.cla|validate.class" Attributes="0" SourcePath="Documents\phs_documents\Class\validate.class" SelfReg="false" Sequence="377"/>
+    <ROW File="validate.java" Component_="JPG_1" FileName="valida~1.jav|validate.java" Attributes="0" SourcePath="src\phs_project\validate.java" SelfReg="false" Sequence="309"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.DictionaryComponent">
+    <ROW Path="&lt;ui.ail&gt;"/>
+    <ROW Path="&lt;ui_en.ail&gt;"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiBinaryComponent">
+    <ROW Name="style27_banner.jpg" SourcePath="&lt;style27_banner.jpg&gt;"/>
+    <ROW Name="style27_dialog.jpg" SourcePath="&lt;style27_dialog.jpg&gt;"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiControlComponent">
+    <ROW Dialog_="LicenseAgreementDlg" Control="AgreementText" Type="FileScrollableText" X="20" Y="60" Width="330" Height="120" Attributes="7" Text="eula.rtf" Control_Next="Buttons" TextLocId="Control.Text.LicenseAgreementDlg#AgreementText"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCreateFolderComponent">
+    <ROW Directory_="classes_DIR" Component_="classes"/>
+    <ROW Directory_="build_DIR" Component_="build"/>
+    <ROW Directory_="src_DIR" Component_="src"/>
+    <ROW Directory_="test_DIR" Component_="test"/>
+    <ROW Directory_="APPDIR" Component_="APPDIR"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
+    <ROW Action="AI_DOWNGRADE" Type="19" Target="4010"/>
+    <ROW Action="AI_EXIT_ACTION" Type="19" Target="4000"/>
+    <ROW Action="AttachDTB.bat" Type="1554" Source="AttachDTB.bat" Target="&quot;[#phs_data_Data.MDF]&quot; &quot;[#phs_data_Log.LDF]&quot;"/>
+    <ROW Action="DetachDTB.bat" Type="1042" Source="DetachDTB.bat"/>
+    <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][Manufacturer]\[ProductName]"/>
+    <ROW Action="SET_SHORTCUTDIR" Type="307" Source="SHORTCUTDIR" Target="[ProgramMenuFolder][ProductName]"/>
+    <ROW Action="SET_TARGETDIR_TO_APPDIR" Type="51" Source="TARGETDIR" Target="[APPDIR]"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiIniFileComponent">
+    <ROW IniFile="Application_Type" FileName="PHS.ini" DirProperty="APPDIR" Section="Application" Key="Application Type" Value="gui" Action="0" Component_="Professional_Hotel_System.exe"/>
+    <ROW IniFile="Class_Path" FileName="PHS.ini" DirProperty="APPDIR" Section="Class Path" Key="Class Path" Value="[#jcalendar.jar];[#kunststoff.jar];[#msbase.jar];[#mssqlserver.jar];[#msutil.jar];[#swing_layout_1.0.jar];[#PHS_PROJECT.jar];[#jcalendar.jar_1];[#kunststoff.jar_1];[#msbase.jar_1];[#mssqlserver.jar_1];[#msutil.jar_1];[#swing_layout_1.0.jar_1];" Action="0" Component_="Professional_Hotel_System.exe"/>
+    <ROW IniFile="Main_Class" FileName="PHS.ini" DirProperty="APPDIR" Section="Java Runtime Environment" Key="Main Class" Value="phs_project.loginForm" Action="0" Component_="Professional_Hotel_System.exe"/>
+    <ROW IniFile="Maximum_Version" FileName="PHS.ini" DirProperty="APPDIR" Section="Java Runtime Environment" Key="Maximum Version" Value="any" Action="0" Component_="Professional_Hotel_System.exe"/>
+    <ROW IniFile="Minimum_Version" FileName="PHS.ini" DirProperty="APPDIR" Section="Java Runtime Environment" Key="Minimum Version" Value="any" Action="0" Component_="Professional_Hotel_System.exe"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstExSeqComponent">
+    <ROW Action="AI_DOWNGRADE" Condition="AI_NEWERPRODUCTFOUND AND (UILevel &lt;&gt; 5)" Sequence="210"/>
+    <ROW Action="AttachDTB.bat" Condition="NOT Installed" Sequence="5969"/>
+    <ROW Action="DetachDTB.bat" Condition="REMOVE=&quot;ALL&quot;" Sequence="1651"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
+    <ATTRIBUTE name="End" value="ExitDialog"/>
+    <ATTRIBUTE name="Progress" value="ProgressDlg"/>
+    <ATTRIBUTE name="Start" value="WelcomeDlg LicenseAgreementDlg FolderDlg VerifyReadyDlg"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiJavaComponent">
+    <ROW Name="Professional Hotel System.exe" Launcher="Professional_Hotel_System.exe" MainClass="Main_Class" ClassPath="Class_Path" JREMin="Minimum_Version" JREMax="Maximum_Version" IconPath="Image\42.ico" AppType="Application_Type" PlusList="APPDIR;" MinusList="#Professional_Hotel_System.exe;" MacDescription="[CurrentJavaProductName] [ProductVersion] © [Manufacturer], Inc, 2006" MacBundleId="com.[Manufacturer].[ProductName].[CurrentJavaProductName]"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiMediaComponent">
+    <ATTRIBUTE name="Compress" value="1"/>
+    <ATTRIBUTE name="FirstMediaSize" value="0"/>
+    <ATTRIBUTE name="FirstMediaSizeUnit" value="0"/>
+    <ATTRIBUTE name="InstallationType" value="0"/>
+    <ATTRIBUTE name="MacBuild" value="true"/>
+    <ATTRIBUTE name="MediaSize" value="0"/>
+    <ATTRIBUTE name="MediaSizeUnit" value="0"/>
+    <ATTRIBUTE name="Package" value="1"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiShortsComponent">
+    <ROW Shortcut="Professional_Hotel_System.exe" Directory_="SHORTCUTDIR" Name="Profes~1.exe|Professional_Hotel_System.exe" Component_="Professional_Hotel_System.exe" Target="[#Professional_Hotel_System.exe]" Description="Professional_Hotel_System.exe" Hotkey="0" IconIndex="0" ShowCmd="1" WkDir="APPDIR"/>
+    <ROW Shortcut="Professional_Hotel_System.exe_1" Directory_="DesktopFolder" Name="PHS.exe" Component_="Professional_Hotel_System.exe" Target="[#Professional_Hotel_System.exe]" Description="Professional_Hotel_System.exe" Hotkey="0" IconIndex="0" ShowCmd="1" WkDir="APPDIR"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiUpgradeComponent">
+    <ROW UpgradeCode="UpgradeCode" VersionMax="ProductVersion" Attributes="1025"/>
+    <ROW UpgradeCode="UpgradeCode" VersionMin="ProductVersion" Attributes="2"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.SynchronizedFolderComponent">
+    <ROW Directory_="APPDIR" ExcludePattern="*~|#*#|%*%|._|CVS|.cvsignore|SCCS|vssver.scc|.svn|.DS_Store" ExcludeFlags="6"/>
+  </COMPONENT>
+</DOCUMENT>
