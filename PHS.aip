@@ -94,6 +94,7 @@
     <ROW File="ConnectionTuanp_1.class" Component_="JPG" FileName="Connec~2.cla|ConnectionTuanp$1.class" Attributes="0" SourcePath="build\classes\phs_project\ConnectionTuanp$1.class" SelfReg="false" NextFile="ConnectionTuanp_2.class"/>
     <ROW File="ConnectionTuanp_2.class" Component_="JPG" FileName="Connec~3.cla|ConnectionTuanp$2.class" Attributes="0" SourcePath="build\classes\phs_project\ConnectionTuanp$2.class" SelfReg="false" NextFile="ConnectionTuanp_3.class"/>
     <ROW File="ConnectionTuanp_3.class" Component_="JPG" FileName="Connec~4.cla|ConnectionTuanp$3.class" Attributes="0" SourcePath="build\classes\phs_project\ConnectionTuanp$3.class" SelfReg="false" NextFile="ConnectionTuanp.class"/>
+    <ROW File="CopyofDetachDTB.bat" Component_="AttachDTB.bat" FileName="Copyof~1.bat|Copy of DetachDTB.bat" Attributes="0" SourcePath="Copy of DetachDTB.bat" SelfReg="false"/>
     <ROW File="CreateUser.class" Component_="JPG" FileName="Creat~38.cla|CreateUser.class" Attributes="0" SourcePath="build\classes\phs_project\CreateUser.class" SelfReg="false" NextFile="hotelForm31.class"/>
     <ROW File="CreateUser.form" Component_="JPG_1" FileName="Create~3.for|CreateUser.form" Attributes="0" SourcePath="src\phs_project\CreateUser.form" SelfReg="false" NextFile="CreateUser.java"/>
     <ROW File="CreateUser.java" Component_="JPG_1" FileName="Create~3.jav|CreateUser.java" Attributes="0" SourcePath="src\phs_project\CreateUser.java" SelfReg="false" NextFile="OptionLookAndFeel.form"/>
@@ -775,7 +776,7 @@
     <ROW File="quaqua.jar" Component_="jcalendar.jar_1" FileName="quaqua.jar" Attributes="0" SourcePath="lib\quaqua.jar" SelfReg="false" NextFile="reportcat_limited.jar"/>
     <ROW File="quaqua.jar_1" Component_="jcalendar.jar" FileName="quaqua.jar" Attributes="0" SourcePath="dist\lib\quaqua.jar" SelfReg="false" NextFile="reportcat_limited.jar_1"/>
     <ROW File="reportcat_limited.jar" Component_="jcalendar.jar_1" FileName="report~1.jar|reportcat_limited.jar" Attributes="0" SourcePath="lib\reportcat_limited.jar" SelfReg="false" NextFile="PHS.back.aip"/>
-    <ROW File="reportcat_limited.jar_1" Component_="jcalendar.jar" FileName="report~1.jar|reportcat_limited.jar" Attributes="0" SourcePath="dist\lib\reportcat_limited.jar" SelfReg="false"/>
+    <ROW File="reportcat_limited.jar_1" Component_="jcalendar.jar" FileName="report~1.jar|reportcat_limited.jar" Attributes="0" SourcePath="dist\lib\reportcat_limited.jar" SelfReg="false" NextFile="CopyofDetachDTB.bat"/>
     <ROW File="run.bat" Component_="AttachDTB.bat" FileName="run.bat" Attributes="0" SourcePath="run.bat" SelfReg="false" NextFile="RunClass.bat"/>
     <ROW File="run.bat_1" Component_="phs_data_Data.MDF" FileName="run.bat" Attributes="0" SourcePath="Database\run.bat" SelfReg="false" NextFile="RunSelectSQL.sql"/>
     <ROW File="save_file.gif" Component_="ico" FileName="save_f~1.gif|save_file.gif" Attributes="0" SourcePath="Image\save_file.gif" SelfReg="false" NextFile="TienHuynh.gif"/>
@@ -1036,7 +1037,7 @@
     <ROW Action="AI_STORE_LOCATION" Type="51" Source="ARPINSTALLLOCATION" Target="[APPDIR]"/>
     <ROW Action="AttachDTB.bat" Type="1554" Source="AttachDTB.bat" Target="&quot;[#phs_data_Data.MDF]&quot; &quot;[#phs_data_Log.LDF]&quot;"/>
     <ROW Action="DetachDTB.bat" Type="1042" Source="DetachDTB.bat"/>
-    <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][Manufacturer]\[ProductName]"/>
+    <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][Manufacturer]\[ProductName]" MultiBuildTarget="DefaultBuild:[WindowsVolume][ProductName]"/>
     <ROW Action="SET_SHORTCUTDIR" Type="307" Source="SHORTCUTDIR" Target="[ProgramMenuFolder][ProductName]"/>
     <ROW Action="SET_TARGETDIR_TO_APPDIR" Type="51" Source="TARGETDIR" Target="[APPDIR]"/>
   </COMPONENT>
