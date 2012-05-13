@@ -5,12 +5,11 @@
     <ROW Table="Media" Column="LastSequence" MinValue="0" MaxValue="32767" Description="File sequence number for the last file for this media." Options="0" ColumnType="2" ColumnIndex="1" ColumnSize="2" MsiKey="Media#LastSequence"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
-    <ROW Property="AI_ThemeStyle" Value="style27" MsiKey="AI_ThemeStyle"/>
     <ROW Property="ALLUSERS" Value="2"/>
     <ROW Property="ARPCOMMENTS" Value="Chuong trinh cai cai dat MS SQL Server 2000 Services Pack 3 de chay !" ValueLocId="*"/>
     <ROW Property="Manufacturer" Value="Nhom D - Lop G1 - Vien Dai Hoc Mo" ValueLocId="*"/>
-    <ROW Property="ProductCode" Value="1033:{B3CA881B-D248-4E42-B108-72075B67C67B} " Type="16"/>
-    <ROW Property="ProductLanguage" Value="1033"/>
+    <ROW Property="ProductCode" Value="1033:{B3CA881B-D248-4E42-B108-72075B67C67B} 1066:{15BCC048-8424-48D6-9427-4CD0DF797121} " Type="16"/>
+    <ROW Property="ProductLanguage" Value="1066"/>
     <ROW Property="ProductName" Value="PHS" ValueLocId="*"/>
     <ROW Property="ProductVersion" Value="1.0.0"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
@@ -28,14 +27,17 @@
     <ROW Directory="Image_1_Dir" Directory_Parent="phs_project_1_DIR" DefaultDir="Image"/>
     <ROW Directory="Image_DIR" Directory_Parent="APPDIR" DefaultDir="Image"/>
     <ROW Directory="Image_Dir" Directory_Parent="phs_project_DIR" DefaultDir="Image"/>
+    <ROW Directory="PHScache_Dir" Directory_Parent="APPDIR" DefaultDir="PHS-ca~1|PHS-cache"/>
     <ROW Directory="SHORTCUTDIR" Directory_Parent="TARGETDIR" DefaultDir="SHORTC~1|SHORTCUTDIR" IsPseudoRoot="1"/>
     <ROW Directory="TARGETDIR" DefaultDir="SourceDir"/>
     <ROW Directory="build_DIR" Directory_Parent="APPDIR" DefaultDir="build"/>
     <ROW Directory="classes_DIR" Directory_Parent="build_DIR" DefaultDir="classes"/>
     <ROW Directory="dist_DIR" Directory_Parent="APPDIR" DefaultDir="dist"/>
+    <ROW Directory="empty_Dir" Directory_Parent="build_DIR" DefaultDir="empty"/>
     <ROW Directory="lib_1_DIR" Directory_Parent="APPDIR" DefaultDir="lib"/>
     <ROW Directory="lib_DIR" Directory_Parent="dist_DIR" DefaultDir="lib"/>
     <ROW Directory="nbproject_DIR" Directory_Parent="APPDIR" DefaultDir="nbproj~1|nbproject"/>
+    <ROW Directory="part2_Dir" Directory_Parent="PHScache_Dir" DefaultDir="part2"/>
     <ROW Directory="phs_project_1_DIR" Directory_Parent="src_DIR" DefaultDir="phs_pr~1|phs_project"/>
     <ROW Directory="phs_project_DIR" Directory_Parent="classes_DIR" DefaultDir="phs_pr~1|phs_project"/>
     <ROW Directory="private_DIR" Directory_Parent="nbproject_DIR" DefaultDir="private"/>
@@ -53,6 +55,9 @@
     <ROW Component="README.TXT" ComponentId="{2377747A-1EDA-4A51-8F61-7D54922BB51F}" Directory_="Documents_DIR" Attributes="0" KeyPath="README.TXT_3" Type="0"/>
     <ROW Component="build_impl.xml" ComponentId="{3CE55159-0437-4821-9925-AEB84995EB75}" Directory_="nbproject_DIR" Attributes="0" KeyPath="build_impl.xml" Type="0"/>
     <ROW Component="builtjar.properties" ComponentId="{02CC1CDE-05DC-4839-9169-6F935494C217}" Directory_="build_DIR" Attributes="0" KeyPath="builtjar.properties" Type="0"/>
+    <ROW Component="cacheIndex.txt" ComponentId="{49BF6079-546F-4BC6-B35B-5B89C5DAE838}" Directory_="PHScache_Dir" Attributes="0" KeyPath="cacheIndex.txt" Type="0"/>
+    <ROW Component="disk1.cab_1" ComponentId="{5BD46543-CEB2-4DD2-933D-AC5EDA7EC8AA}" Directory_="part2_Dir" Attributes="0" KeyPath="disk1.cab_1" Type="0"/>
+    <ROW Component="empty" ComponentId="{12E81733-7E20-4367-84D4-0E9106A7D766}" Directory_="empty_Dir" Attributes="0"/>
     <ROW Component="ico" ComponentId="{DB65089D-C238-46D3-9614-C8FB7BCCE514}" Directory_="Image_DIR" Attributes="0" KeyPath="ico" Type="0"/>
     <ROW Component="ico_3" ComponentId="{89BCCF4D-7DEF-4C78-84FC-D788DAD8A25B}" Directory_="Image_Dir" Attributes="0" KeyPath="ico_3" Type="0"/>
     <ROW Component="ico_4" ComponentId="{00B24810-F797-406C-8706-974B53205015}" Directory_="Image_1_Dir" Attributes="0" KeyPath="ico_4" Type="0"/>
@@ -63,7 +68,7 @@
     <ROW Component="private.properties" ComponentId="{0D5A4DB2-868D-4E02-B472-3C293696E10E}" Directory_="private_DIR" Attributes="0" KeyPath="private.properties" Type="0"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
-    <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0" Components="AttachDTB.bat Datphong.gif Datphong.gif_2 JPG JPG_1 PHS_PROJECT.jar Professional_Hotel_System.exe README.TXT build_impl.xml builtjar.properties ico ico_3 ico_4 jcalendar.jar jcalendar.jar_1 phs_data_Data.MDF presets.xml private.properties"/>
+    <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0" Components="AttachDTB.bat Datphong.gif Datphong.gif_2 JPG JPG_1 PHS_PROJECT.jar Professional_Hotel_System.exe README.TXT build_impl.xml builtjar.properties cacheIndex.txt disk1.cab_1 empty ico ico_3 ico_4 jcalendar.jar jcalendar.jar_1 phs_data_Data.MDF presets.xml private.properties"/>
     <ATTRIBUTE name="CurrentFeature" value="MainFeature"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
@@ -94,7 +99,7 @@
     <ROW File="ConnectionTuanp_1.class" Component_="JPG" FileName="Connec~2.cla|ConnectionTuanp$1.class" Attributes="0" SourcePath="build\classes\phs_project\ConnectionTuanp$1.class" SelfReg="false" NextFile="ConnectionTuanp_2.class"/>
     <ROW File="ConnectionTuanp_2.class" Component_="JPG" FileName="Connec~3.cla|ConnectionTuanp$2.class" Attributes="0" SourcePath="build\classes\phs_project\ConnectionTuanp$2.class" SelfReg="false" NextFile="ConnectionTuanp_3.class"/>
     <ROW File="ConnectionTuanp_3.class" Component_="JPG" FileName="Connec~4.cla|ConnectionTuanp$3.class" Attributes="0" SourcePath="build\classes\phs_project\ConnectionTuanp$3.class" SelfReg="false" NextFile="ConnectionTuanp.class"/>
-    <ROW File="CopyofDetachDTB.bat" Component_="AttachDTB.bat" FileName="Copyof~1.bat|Copy of DetachDTB.bat" Attributes="0" SourcePath="Copy of DetachDTB.bat" SelfReg="false"/>
+    <ROW File="CopyofDetachDTB.bat" Component_="AttachDTB.bat" FileName="Copyof~1.bat|Copy of DetachDTB.bat" Attributes="0" SourcePath="Copy of DetachDTB.bat" SelfReg="false" NextFile="cacheIndex.txt"/>
     <ROW File="CreateUser.class" Component_="JPG" FileName="Creat~38.cla|CreateUser.class" Attributes="0" SourcePath="build\classes\phs_project\CreateUser.class" SelfReg="false" NextFile="hotelForm31.class"/>
     <ROW File="CreateUser.form" Component_="JPG_1" FileName="Create~3.for|CreateUser.form" Attributes="0" SourcePath="src\phs_project\CreateUser.form" SelfReg="false" NextFile="CreateUser.java"/>
     <ROW File="CreateUser.java" Component_="JPG_1" FileName="Create~3.jav|CreateUser.java" Attributes="0" SourcePath="src\phs_project\CreateUser.java" SelfReg="false" NextFile="OptionLookAndFeel.form"/>
@@ -277,6 +282,7 @@
     <ROW File="build_before_profiler.xml" Component_="AttachDTB.bat" FileName="build-~1.xml|build-before-profiler.xml" Attributes="0" SourcePath="build-before-profiler.xml" SelfReg="false" NextFile="build.xml"/>
     <ROW File="build_impl.xml" Component_="build_impl.xml" FileName="build-~1.xml|build-impl.xml" Attributes="0" SourcePath="nbproject\build-impl.xml" SelfReg="false" NextFile="genfiles.properties"/>
     <ROW File="builtjar.properties" Component_="builtjar.properties" FileName="built-~1.pro|built-jar.properties" Attributes="0" SourcePath="build\built-jar.properties" SelfReg="false" NextFile="README.TXT_3"/>
+    <ROW File="cacheIndex.txt" Component_="cacheIndex.txt" FileName="cacheI~1.txt|cacheIndex.txt" Attributes="0" SourcePath="PHS-cache\cacheIndex.txt" SelfReg="false" NextFile="disk1.cab_1"/>
     <ROW File="cd1.png" Component_="ico" FileName="cd1.png" Attributes="0" SourcePath="Image\cd1.png" SelfReg="false" NextFile="Clock.gif"/>
     <ROW File="cd1.png_3" Component_="ico_3" FileName="cd1.png" Attributes="0" SourcePath="build\classes\phs_project\Image\cd1.png" SelfReg="false" NextFile="Clock.gif_3"/>
     <ROW File="cd1.png_4" Component_="ico_4" FileName="cd1.png" Attributes="0" SourcePath="src\phs_project\Image\cd1.png" SelfReg="false" NextFile="Clock.gif_4"/>
@@ -355,6 +361,7 @@
     <ROW File="detachphsdata.sql" Component_="phs_data_Data.MDF" FileName="detach~1.sql|detachphsdata.sql" Attributes="0" SourcePath="Database\detachphsdata.sql" SelfReg="false" NextFile="loginISQL.bat"/>
     <ROW File="digitalClock.class" Component_="JPG" FileName="digita~1.cla|digitalClock.class" Attributes="0" SourcePath="build\classes\phs_project\digitalClock.class" SelfReg="false" NextFile="getData.class"/>
     <ROW File="digitalClock.java" Component_="JPG_1" FileName="digita~1.jav|digitalClock.java" Attributes="0" SourcePath="src\phs_project\digitalClock.java" SelfReg="false" NextFile="getData.java"/>
+    <ROW File="disk1.cab_1" Component_="disk1.cab_1" FileName="disk1.cab" Attributes="0" SourcePath="PHS-cache\part2\disk1.cab" SelfReg="false" NextFile="outputinfo.ini_1"/>
     <ROW File="documents_white.png" Component_="ico" FileName="docume~1.png|documents_white.png" Attributes="0" SourcePath="Image\documents_white.png" SelfReg="false" NextFile="documents_white_edit.png"/>
     <ROW File="documents_white.png_3" Component_="ico_3" FileName="docume~1.png|documents_white.png" Attributes="0" SourcePath="build\classes\phs_project\Image\documents_white.png" SelfReg="false" NextFile="documents_white_edit.png_3"/>
     <ROW File="documents_white.png_4" Component_="ico_4" FileName="docume~1.png|documents_white.png" Attributes="0" SourcePath="src\phs_project\Image\documents_white.png" SelfReg="false" NextFile="documents_white_edit.png_4"/>
@@ -749,6 +756,7 @@
     <ROW File="orderlist.java" Component_="JPG_1" FileName="orderl~1.jav|orderlist.java" Attributes="0" SourcePath="src\phs_project\orderlist.java" SelfReg="false" NextFile="publicClass.java"/>
     <ROW File="orderlist_1.class" Component_="JPG" FileName="orderl~1.cla|orderlist$1.class" Attributes="0" SourcePath="build\classes\phs_project\orderlist$1.class" SelfReg="false" NextFile="orderlist_2.class"/>
     <ROW File="orderlist_2.class" Component_="JPG" FileName="orderl~2.cla|orderlist$2.class" Attributes="0" SourcePath="build\classes\phs_project\orderlist$2.class" SelfReg="false" NextFile="orderlist.class"/>
+    <ROW File="outputinfo.ini_1" Component_="disk1.cab_1" FileName="output~1.ini|output-info.ini" Attributes="0" SourcePath="PHS-cache\part2\output-info.ini" SelfReg="false"/>
     <ROW File="penguin.png" Component_="ico" FileName="penguin.png" Attributes="0" SourcePath="Image\penguin.png" SelfReg="false" NextFile="save_file.gif"/>
     <ROW File="penguin.png_3" Component_="ico_3" FileName="penguin.png" Attributes="0" SourcePath="build\classes\phs_project\Image\penguin.png" SelfReg="false" NextFile="save_file.gif_3"/>
     <ROW File="penguin.png_4" Component_="ico_4" FileName="penguin.png" Attributes="0" SourcePath="src\phs_project\Image\penguin.png" SelfReg="false" NextFile="save_file.gif_4"/>
@@ -980,30 +988,29 @@
     <ROW File="validate.java" Component_="JPG_1" FileName="valida~1.jav|validate.java" Attributes="0" SourcePath="src\phs_project\validate.java" SelfReg="false" NextFile="Professional_Hotel_System.exe"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BuildComponent">
-    <ROW BuildKey="DefaultBuild" BuildName="DefaultBuild" BuildOrder="1" BuildType="1" PackageFolder="..\target" Languages="en" InstallationType="4" UseLargeSchema="true"/>
+    <ROW BuildKey="DefaultBuild" BuildName="DefaultBuild" BuildOrder="1" BuildType="1" PackageFolder="..\target" Languages="vi" InstallationType="4" PackageType="1" ExtUI="true" UseLargeSchema="true"/>
     <ROW BuildKey="DefaultBuildMacOS" BuildName="DefaultBuildMacOS" BuildOrder="2" BuildType="2" Languages="en" MacDefaultMemorySize="128"/>
     <ATTRIBUTE name="CurrentBuild" value="DefaultBuild"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.DictionaryComponent">
     <ROW Path="&lt;AI_DICTS&gt;ui.ail"/>
     <ROW Path="&lt;AI_DICTS&gt;ui_en.ail"/>
+    <ATTRIBUTE name="TranslateSegments" value="8116002816"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.FragmentComponent">
     <ROW Fragment="CommonUI.aip" Path="&lt;AI_FRAGS&gt;CommonUI.aip"/>
-    <ROW Fragment="FolderDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\FolderDlg.aip"/>
-    <ROW Fragment="LicenseAgreementDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\LicenseAgreementDlg.aip"/>
-    <ROW Fragment="SequenceDialogs.aip" Path="&lt;AI_THEMES&gt;classic\fragments\SequenceDialogs.aip"/>
+    <ROW Fragment="FolderDlg.aip" Path="&lt;AI_THEMES&gt;azure\fragments\FolderDlg.aip"/>
+    <ROW Fragment="LicenseAgreementDlg.aip" Path="&lt;AI_THEMES&gt;azure\fragments\LicenseAgreementDlg.aip"/>
+    <ROW Fragment="SequenceDialogs.aip" Path="&lt;AI_THEMES&gt;azure\fragments\SequenceDialogs.aip"/>
     <ROW Fragment="Sequences.aip" Path="&lt;AI_FRAGS&gt;Sequences.aip"/>
     <ROW Fragment="StaticUIStrings.aip" Path="&lt;AI_FRAGS&gt;StaticUIStrings.aip"/>
-    <ROW Fragment="UI.aip" Path="&lt;AI_THEMES&gt;classic\fragments\UI.aip"/>
+    <ROW Fragment="UI.aip" Path="&lt;AI_THEMES&gt;azure\fragments\UI.aip"/>
     <ROW Fragment="Validation.aip" Path="&lt;AI_FRAGS&gt;Validation.aip"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiBinaryComponent">
     <ROW Name="aicustact.dll" SourcePath="&lt;AI_CUSTACTS&gt;aicustact.dll"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiControlComponent">
-    <ROW Dialog_="LicenseAgreementDlg" Control="AgreementText" Type="FileScrollableText" X="20" Y="60" Width="330" Height="120" Attributes="7" Text="eula.rtf" Order="400" TextLocId="Control.Text.LicenseAgreementDlg#AgreementText"/>
-    <ATTRIBUTE name="DeletedRows" value="LicenseAgreementDlg#AgreementText"/>
     <ATTRIBUTE name="FixedSizeBitmaps" value="0"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiControlEventComponent">
@@ -1026,6 +1033,9 @@
     <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_PATCH" Ordering="199"/>
     <ROW Dialog_="ResumeDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_RESUME" Ordering="299"/>
   </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCreateFolderComponent">
+    <ROW Directory_="empty_Dir" Component_="empty"/>
+  </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
     <ROW Action="AI_DOWNGRADE" Type="19" Target="4010"/>
     <ROW Action="AI_EXIT_ACTION" Type="19" Target="4000"/>
@@ -1033,6 +1043,7 @@
     <ROW Action="AI_PREPARE_UPGRADE" Type="65" Source="aicustact.dll" Target="PrepareUpgrade"/>
     <ROW Action="AI_RESTORE_LOCATION" Type="65" Source="aicustact.dll" Target="RestoreLocation"/>
     <ROW Action="AI_ResolveKnownFolders" Type="1" Source="aicustact.dll" Target="AI_ResolveKnownFolders"/>
+    <ROW Action="AI_RunFinishActions" Type="1" Source="aicustact.dll" Target="RunFinishActions" WithoutSeq="true"/>
     <ROW Action="AI_SHOW_LOG" Type="65" Source="aicustact.dll" Target="LaunchLogFile" WithoutSeq="true"/>
     <ROW Action="AI_STORE_LOCATION" Type="51" Source="ARPINSTALLLOCATION" Target="[APPDIR]"/>
     <ROW Action="AttachDTB.bat" Type="1554" Source="AttachDTB.bat" Target="&quot;[#phs_data_Data.MDF]&quot; &quot;[#phs_data_Log.LDF]&quot;"/>
@@ -1072,7 +1083,7 @@
     <ROW Shortcut="Professional_Hotel_System.exe_1" Directory_="DesktopFolder" Name="PHS.exe" Component_="Professional_Hotel_System.exe" Target="[#Professional_Hotel_System.exe]" Description="Professional_Hotel_System.exe" Hotkey="0" IconIndex="0" ShowCmd="1" WkDir="APPDIR"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiThemeComponent">
-    <ATTRIBUTE name="UsedTheme" value="classic"/>
+    <ATTRIBUTE name="UsedTheme" value="azure"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiUpgradeComponent">
     <ROW UpgradeCode="[|UpgradeCode]" VersionMax="[|ProductVersion]" Attributes="1025" ActionProperty="OLDPRODUCTS"/>
