@@ -26,6 +26,8 @@ public class AddRooms extends javax.swing.JDialog {
     public AddRooms(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+
         addRoomsType();
         ViewRooms();
         ResetFields();

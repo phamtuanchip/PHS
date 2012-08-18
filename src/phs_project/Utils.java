@@ -12,6 +12,8 @@ package phs_project;
     import java.sql.Connection;
     import java.sql.ResultSet;
     import java.sql.Statement;
+import java.util.Locale;
+import java.util.ResourceBundle;
     import java.util.Vector;
     import javax.swing.JTable;
     import javax.swing.JTextField;
@@ -20,6 +22,19 @@ package phs_project;
 
 
 public class Utils {
+
+    private static ResourceBundle rb ;
+    private static Locale lc = new Locale("vi", "VN");
+
+    public static ResourceBundle RB() {
+        if(rb == null) rb = ResourceBundle.getBundle("phs_project/Image/locale", LC()) ;
+        return rb;
+    }
+     
+    public static Locale LC() {
+     return lc ;
+    }
+
     public static void hiddencol(JTable tblName, int colNum )
     {
         tblName.getColumnModel().getColumn(colNum).setMaxWidth(0);
