@@ -4,7 +4,7 @@ import java.sql.*;
 public class connectDatabase{    
     public Connection getConnection(){
 		try{
-                    String dsn = "jdbc:microsoft:sqlserver://"+loginForm.server+":1433;databaseName =phs_data;User=sa;Password=sa";
+                    String dsn = "jdbc:microsoft:sqlserver://"+loginForm.server+":1433;databaseName =phs_data;User=sa;Password=1234567";
                     //load driver
                     Class.forName("com.microsoft.jdbc.sqlserver.SQLServerDriver");
                     //make connection

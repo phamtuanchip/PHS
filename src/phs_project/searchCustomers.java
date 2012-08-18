@@ -24,8 +24,8 @@ public class searchCustomers extends javax.swing.JDialog{
     /** Creates new form searchCustomers */
     public searchCustomers() {
         initComponents();
-        new publicClass().addItemToTable(tblCustomers,"select customerId, firstName+' '+lastName as [Tên khách hàng], phone as [Điện thoại], email as [Hộp thư] from customers");
-        new publicClass().hiddencol(tblCustomers,0);
+        new Utils().addItemToTable(tblCustomers,"select customerId, firstName+' '+lastName as [Tên khách hàng], phone as [�?iện thoại], email as [Hộp thư] from customers");
+        new Utils().hiddencol(tblCustomers,0);
         
     }
     
@@ -169,15 +169,15 @@ public class searchCustomers extends javax.swing.JDialog{
 
     private void txtCustomerNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCustomerNameKeyReleased
 // TODO add your handling code here:
-        new publicClass().addItemToTable(tblCustomers,"select customerId, firstName+' '+lastName as [Tên khách hàng], phone as [Điện thoại], email as [Hộp thư] from customers where firstName like N'%"+txtCustomerName.getText()+"%' or lastName like N'%"+txtCustomerName.getText()+"%'");
-        new publicClass().hiddencol(tblCustomers,0);
+        new Utils().addItemToTable(tblCustomers,"select customerId, firstName+' '+lastName as [Tên khách hàng], phone as [�?iện thoại], email as [Hộp thư] from customers where firstName like N'%"+txtCustomerName.getText()+"%' or lastName like N'%"+txtCustomerName.getText()+"%'");
+        new Utils().hiddencol(tblCustomers,0);
         CusId=null;
     }//GEN-LAST:event_txtCustomerNameKeyReleased
 
     private void txtCustomerNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCustomerNameKeyPressed
 // TODO add your handling code here:
-        new publicClass().addItemToTable(tblCustomers,"select customerId, firstName+' '+lastName as [Tên khách hàng], phone as [Điện thoại], email as [Hộp thư] from customers where firstName like N'%"+txtCustomerName.getText()+"%' or lastName like N'%"+txtCustomerName.getText()+"%'");
-        new publicClass().hiddencol(tblCustomers,0);
+        new Utils().addItemToTable(tblCustomers,"select customerId, firstName+' '+lastName as [Tên khách hàng], phone as [�?iện thoại], email as [Hộp thư] from customers where firstName like N'%"+txtCustomerName.getText()+"%' or lastName like N'%"+txtCustomerName.getText()+"%'");
+        new Utils().hiddencol(tblCustomers,0);
         CusId=null;
         
     }//GEN-LAST:event_txtCustomerNameKeyPressed
@@ -185,7 +185,7 @@ public class searchCustomers extends javax.swing.JDialog{
     private void btnInsertToOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertToOrderActionPerformed
 // TODO add your handling code here:
         if (CusId==null){
-          JOptionPane.showMessageDialog(this,"Bạn phải chọn một khách hàng !");
+          JOptionPane.showMessageDialog(this,"Bạn phải ch�?n một khách hàng !");
             
         }
         else {
@@ -197,7 +197,7 @@ public class searchCustomers extends javax.swing.JDialog{
 
     private void tblCustomersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCustomersMouseClicked
 // TODO add your handling code here:
-        CusId= new publicClass().SelectedRowToString(tblCustomers,0);
+        CusId= new Utils().SelectedRowToString(tblCustomers,0);
     }//GEN-LAST:event_tblCustomersMouseClicked
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed

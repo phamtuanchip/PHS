@@ -36,19 +36,19 @@ public class checkOutAll extends javax.swing.JDialog {
         txtOrderId.setText(Order_ID);
        //NgayTratruoc.setVisible(false);
         NgayTratruoc.setLocale(new Locale("vi"));
-        txtOrderOfCus.setText(new publicClass().selectDateToString("select * from OrderOfCus where orderId='"+Order_ID+"'","CusName"));
-        txtOrderDate.setText(new publicClass().selectDateToString("select * from OrderOfCus where orderId='"+Order_ID+"'","orderDate"));
+        txtOrderOfCus.setText(new Utils().selectDateToString("select * from OrderOfCus where orderId='"+Order_ID+"'","CusName"));
+        txtOrderDate.setText(new Utils().selectDateToString("select * from OrderOfCus where orderId='"+Order_ID+"'","orderDate"));
         new digitalClock(txtCurrentDate);
-        new publicClass().addItemToTable(tblRoomsInOrder,"select * from roomInorder where orderid='"+Order_ID+"'");
-        new publicClass().hiddencol(tblRoomsInOrder,0);
-        new publicClass().hiddencol(tblRoomsInOrder,1);
-        new publicClass().hiddencol(tblRoomsInOrder,2);
-        new publicClass().hiddencol(tblRoomsInOrder,4);
-        new publicClass().hiddencol(tblRoomsInOrder,6);
-        new publicClass().addItemToTable(tblServicesInOrderOnly,"select * from AllserviceInOrder where orderid='"+Order_ID+"'");
-        new publicClass().hiddencol(tblServicesInOrderOnly,0);
+        new Utils().addItemToTable(tblRoomsInOrder,"select * from roomInorder where orderid='"+Order_ID+"'");
+        new Utils().hiddencol(tblRoomsInOrder,0);
+        new Utils().hiddencol(tblRoomsInOrder,1);
+        new Utils().hiddencol(tblRoomsInOrder,2);
+        new Utils().hiddencol(tblRoomsInOrder,4);
+        new Utils().hiddencol(tblRoomsInOrder,6);
+        new Utils().addItemToTable(tblServicesInOrderOnly,"select * from AllserviceInOrder where orderid='"+Order_ID+"'");
+        new Utils().hiddencol(tblServicesInOrderOnly,0);
         FillAllFeild ();
-        /* sumCostOfRoomInOrder.setText(new publicClass().selectDateToString("select sum ([Thành tiền]) as TotalCostRoom from tinhtienphong where [mã đơn hàng]='"+txtOrderId.getText()+"'","TotalCostRoom"));      
+        /* sumCostOfRoomInOrder.setText(new publicClass().selectDateToString("select sum ([Thành ti�?n]) as TotalCostRoom from tinhtienphong where [mã đơn hàng]='"+txtOrderId.getText()+"'","TotalCostRoom"));      
         sumCostOfSVInOrder.setText(new publicClass().selectDateToString("sumofServices '"+txtOrderId.getText()+"'","sumSVR"));
         txtDiscount.setText(new publicClass().selectDateToString("select discount from orders where orderId='"+txtOrderId.getText()+"'","discount"));
         txtAddition.setText(new publicClass().selectDateToString("select addition from orders where orderId='"+txtOrderId.getText()+"'","addition"));
@@ -502,11 +502,11 @@ public class checkOutAll extends javax.swing.JDialog {
 
     private void FillAllFeild ()
     {
-        sumCostOfRoomInOrder.setText(new publicClass().selectDateToString("select sum ([Thành tiền]) as TotalCostRoom from tinhtienphong where [mã đơn hàng]='"+txtOrderId.getText()+"'","TotalCostRoom"));      
-        sumCostOfSVInOrder.setText(new publicClass().selectDateToString("sumofServices '"+txtOrderId.getText()+"'","sumSVR"));
-        txtDiscount.setText(new publicClass().selectDateToString("select discount from orders where orderId='"+txtOrderId.getText()+"'","discount"));
-        txtAddition.setText(new publicClass().selectDateToString("select addition from orders where orderId='"+txtOrderId.getText()+"'","addition"));
-         txtAdd12.setText(new publicClass().selectDateToString("TinhTongTienDonHang "+txtOrderId.getText(),"TotalOd"));
+        sumCostOfRoomInOrder.setText(new Utils().selectDateToString("select sum ([Thành ti�?n]) as TotalCostRoom from tinhtienphong where [mã đơn hàng]='"+txtOrderId.getText()+"'","TotalCostRoom"));
+        sumCostOfSVInOrder.setText(new Utils().selectDateToString("sumofServices '"+txtOrderId.getText()+"'","sumSVR"));
+        txtDiscount.setText(new Utils().selectDateToString("select discount from orders where orderId='"+txtOrderId.getText()+"'","discount"));
+        txtAddition.setText(new Utils().selectDateToString("select addition from orders where orderId='"+txtOrderId.getText()+"'","addition"));
+         txtAdd12.setText(new Utils().selectDateToString("TinhTongTienDonHang "+txtOrderId.getText(),"TotalOd"));
           
          
          float Total = new Integer(txtAdd12.getText())+new Integer(txtAddition.getText())-new Integer(txtDiscount.getText())-new Integer(txtPay.getText());
@@ -528,7 +528,7 @@ public class checkOutAll extends javax.swing.JDialog {
 // TODO add your handling code here:
          if (roomId==null)
         {
-            JOptionPane.showMessageDialog(this,"Bạn phải chọn phòng !");
+            JOptionPane.showMessageDialog(this,"Bạn phải ch�?n phòng !");
         }
         else
         {
@@ -540,20 +540,20 @@ public class checkOutAll extends javax.swing.JDialog {
 // TODO add your handling code here:
         if (roomId==null)
         {
-            JOptionPane.showMessageDialog(this,"Bạn phải chọn phòng để trả");
+            JOptionPane.showMessageDialog(this,"Bạn phải ch�?n phòng để trả");
         }
         else
         {   if (new Integer(roomStatus)!=4){
             
-            if (new Integer(new publicClass().selectDateToString("tratruochaykhong '"+detaiId+"'","canPay"))==0){
+            if (new Integer(new Utils().selectDateToString("tratruochaykhong '"+detaiId+"'","canPay"))==0){
             JOptionPane.showMessageDialog(this,"Bạn  không thể trả phòng khi mà khách đặt trước và chưa đến ở !");
             }
-            if (new Integer(new publicClass().selectDateToString("tratruochaykhong '"+detaiId+"'","canPay"))==1)
+            if (new Integer(new Utils().selectDateToString("tratruochaykhong '"+detaiId+"'","canPay"))==1)
             {
-            JOptionPane.showMessageDialog(this,"Trả trước thời hạn!");  
+            JOptionPane.showMessageDialog(this,"Trả trước th�?i hạn!");  
                 if (TratruocThoiHan.isSelected())
                 {
-                    int cf1 =  JOptionPane.showConfirmDialog(this,"Bạn có muốn trả phòng: "+roomName+" trước thời hạn vào ngày: "+new UserFormat().getFormat(NgayTratruoc.getDate(),"thongthuong")+" hay không ?","Thong bao",0);
+                    int cf1 =  JOptionPane.showConfirmDialog(this,"Bạn có muốn trả phòng: "+roomName+" trước th�?i hạn vào ngày: "+new UserFormat().getFormat(NgayTratruoc.getDate(),"thongthuong")+" hay không ?","Thong bao",0);
                     if (cf1==0) {
                         
                         CheckOutRoom(roomId,roomName,txtOrderId.getText(),detaiId,new UserFormat().getFormat(NgayTratruoc.getDate(),"ngaygio"));
@@ -567,7 +567,7 @@ public class checkOutAll extends javax.swing.JDialog {
                          CheckOutRoom(roomId,roomName,txtOrderId.getText(),detaiId,"getDate()");
                     }
                 }
-            } // ngày hiện thời nằm trong khoảng thời gian có thể trả
+            } // ngày hiện th�?i nằm trong khoảng th�?i gian có thể trả
          }
             else // phong da tra
             {
@@ -581,25 +581,25 @@ public class checkOutAll extends javax.swing.JDialog {
                     if (CheckOutDate.equals("getDate()"))
                     {
                         String sqltra="update orderdetail set enddate =getDate() where [id]='"+DetailId+"'";
-                        new publicClass().SQLRUN(sqltra);
+                        new Utils().SQLRUN(sqltra);
                     }
                     else
                     {
                          String sqltra="update orderdetail set enddate ='"+CheckOutDate+"' where [id]='"+DetailId+"'";
-                         new publicClass().SQLRUN(sqltra);
+                         new Utils().SQLRUN(sqltra);
                     }
                      String sqldele="delete roomcurent_detail where roomid='"+RoomId+"'";
                      String sqlChange = "update orderdetail set roomStatus=4 where [id]='"+DetailId+"'";
                     
-                    new publicClass().SQLRUN(sqldele);
-                    new publicClass().SQLRUN(sqlChange);
-                    new publicClass().addItemToTable(tblRoomsInOrder,"select * from roomInorder where orderid='"+OrderId+"'");
-                    new publicClass().hiddencol(tblRoomsInOrder,0);
-                    new publicClass().hiddencol(tblRoomsInOrder,1);
-                    new publicClass().hiddencol(tblRoomsInOrder,2);
-                    new publicClass().hiddencol(tblRoomsInOrder,4);
-                    new publicClass().hiddencol(tblRoomsInOrder,6);
-                    sumCostOfRoomInOrder.setText(new publicClass().selectDateToString("select sum ([Tổng tiền]) as sumCOR from costofrooms where [Mã]='"+OrderId+"'","sumCOR"));      
+                    new Utils().SQLRUN(sqldele);
+                    new Utils().SQLRUN(sqlChange);
+                    new Utils().addItemToTable(tblRoomsInOrder,"select * from roomInorder where orderid='"+OrderId+"'");
+                    new Utils().hiddencol(tblRoomsInOrder,0);
+                    new Utils().hiddencol(tblRoomsInOrder,1);
+                    new Utils().hiddencol(tblRoomsInOrder,2);
+                    new Utils().hiddencol(tblRoomsInOrder,4);
+                    new Utils().hiddencol(tblRoomsInOrder,6);
+                    sumCostOfRoomInOrder.setText(new Utils().selectDateToString("select sum ([Tổng ti�?n]) as sumCOR from costofrooms where [Mã]='"+OrderId+"'","sumCOR"));
                     FillAllFeild ();
                     JOptionPane.showMessageDialog(this,"Phòng: "+RoomName+" đã được trả!");
     }
@@ -625,35 +625,35 @@ public class checkOutAll extends javax.swing.JDialog {
 
     private void tblRoomsInOrderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblRoomsInOrderMouseClicked
 // TODO add your handling code here:
-        roomId = new publicClass().SelectedRowToString(tblRoomsInOrder,1);
-        detaiId=new publicClass().SelectedRowToString(tblRoomsInOrder,2);
-        roomName = new publicClass().SelectedRowToString(tblRoomsInOrder,3);
-        roomStatus = new publicClass().SelectedRowToString(tblRoomsInOrder,4);
-        ed = new publicClass().SelectedRowToString(tblRoomsInOrder,6);
-        new publicClass().addItemToTable(tblCusInRoom,"select * from CustomerLiveInroom where roomid='"+roomId+"' and orderId='"+Order_ID+"'");
-        new publicClass().hiddencol(tblCusInRoom,0);
-        new publicClass().hiddencol(tblCusInRoom,1);
-        new publicClass().addItemToTable(tblServicesInRoom,"select * from servicesInroom where roomid='"+roomId+"' and orderId='"+Order_ID+"'");
-        new publicClass().hiddencol(tblServicesInRoom,0);
-        new publicClass().hiddencol(tblServicesInRoom,1);
+        roomId = new Utils().SelectedRowToString(tblRoomsInOrder,1);
+        detaiId=new Utils().SelectedRowToString(tblRoomsInOrder,2);
+        roomName = new Utils().SelectedRowToString(tblRoomsInOrder,3);
+        roomStatus = new Utils().SelectedRowToString(tblRoomsInOrder,4);
+        ed = new Utils().SelectedRowToString(tblRoomsInOrder,6);
+        new Utils().addItemToTable(tblCusInRoom,"select * from CustomerLiveInroom where roomid='"+roomId+"' and orderId='"+Order_ID+"'");
+        new Utils().hiddencol(tblCusInRoom,0);
+        new Utils().hiddencol(tblCusInRoom,1);
+        new Utils().addItemToTable(tblServicesInRoom,"select * from servicesInroom where roomid='"+roomId+"' and orderId='"+Order_ID+"'");
+        new Utils().hiddencol(tblServicesInRoom,0);
+        new Utils().hiddencol(tblServicesInRoom,1);
     }//GEN-LAST:event_tblRoomsInOrderMouseClicked
     
     private void UpdateOrder()
     
     {
-        int countRoom = new Integer(new publicClass().selectDateToString("select count(roomId) as CountRoom from orderDetail where orderId='"+txtOrderId.getText()+"'","CountRoom"));
-        int countRoomCheckedOut = new Integer(new publicClass().selectDateToString("select count(roomId) as CountRoom from orderDetail where orderId='"+txtOrderId.getText()+"' and (roomstatus=4 or roomstatus=7) ","CountRoom"));
+        int countRoom = new Integer(new Utils().selectDateToString("select count(roomId) as CountRoom from orderDetail where orderId='"+txtOrderId.getText()+"'","CountRoom"));
+        int countRoomCheckedOut = new Integer(new Utils().selectDateToString("select count(roomId) as CountRoom from orderDetail where orderId='"+txtOrderId.getText()+"' and (roomstatus=4 or roomstatus=7) ","CountRoom"));
        // int countRoomCheckedOut = new Integer(new publicClass().selectDateToString("select count(roomId) as CountRoom from orderDetail where orderId='"+txtOrderId.getText()+"' and roomstatus=4","CountRoom"));
         
         if (countRoom !=countRoomCheckedOut){
             
-             new publicClass().SQLRUN(" update orders set conpleteDate =getDate(),disCount="+txtDiscount.getText()+",addition="+txtAddition.getText()+",totalfee="+txtTotalSum.getText()+",status=4 where orderID='"+txtOrderId.getText()+"'");
+             new Utils().SQLRUN(" update orders set conpleteDate =getDate(),disCount="+txtDiscount.getText()+",addition="+txtAddition.getText()+",totalfee="+txtTotalSum.getText()+",status=4 where orderID='"+txtOrderId.getText()+"'");
              JOptionPane.showMessageDialog(this,"Bạn vừa cập nhật thành công cho đơn hàng !");
             
         }
         else
         {
-            new publicClass().SQLRUN(" update orders set conpleteDate =getDate(),disCount="+txtDiscount.getText()+",addition="+txtAddition.getText()+",totalfee="+txtTotalSum.getText()+",status=3 where orderID='"+txtOrderId.getText()+"'");
+            new Utils().SQLRUN(" update orders set conpleteDate =getDate(),disCount="+txtDiscount.getText()+",addition="+txtAddition.getText()+",totalfee="+txtTotalSum.getText()+",status=3 where orderID='"+txtOrderId.getText()+"'");
             JOptionPane.showMessageDialog(this,"Bạn vừa cập nhật thành công cho đơn hàng !");
         }
     }

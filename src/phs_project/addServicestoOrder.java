@@ -27,7 +27,7 @@ public class addServicestoOrder extends javax.swing.JDialog {
         
         if (hotelForm.ODID==null)
         {
-            JOptionPane.showMessageDialog(this,"Bạn không thể gọi trực tiếp form này vì cần có tham số");
+            JOptionPane.showMessageDialog(this,"Bạn không thể g�?i trực tiếp form này vì cần có tham số");
         }
         else 
         {    
@@ -340,7 +340,7 @@ public class addServicestoOrder extends javax.swing.JDialog {
 
      private void RemoveServices(){
         if(svInOdId==null){
-            JOptionPane.showMessageDialog(this,"Bạn phải chọn một dịc vụ để bỏ ra");
+            JOptionPane.showMessageDialog(this,"Bạn phải ch�?n một dịc vụ để b�? ra");
         }
         else{
             SQLRUN ("delete servicesDetail where idservices_detail ='"+svInOdId+"'");
@@ -374,7 +374,7 @@ public class addServicestoOrder extends javax.swing.JDialog {
         {
 //Goi cau truy van
         if (svId==null){
-            JOptionPane.showMessageDialog(this,"Bạn phải chọn một dịc vụ để thêm vào!");
+            JOptionPane.showMessageDialog(this,"Bạn phải ch�?n một dịc vụ để thêm vào!");
         }
         else
         {
@@ -425,20 +425,20 @@ public class addServicestoOrder extends javax.swing.JDialog {
             loaiDV="all";
             String sqlshowSV=  "select * from servicejointype where [Loại] <>'"+loaiDV+"'";
             new sqlDatabase().addDataTable(sqlshowSV,SeviceName);
-            new publicClass().hiddencol(SeviceName,0);
+            new Utils().hiddencol(SeviceName,0);
         }
         else {
             loaiDV =serviceType.getSelectedItem().toString();
             String sqlshowSV=  "select * from servicejointype where [Loại] =N'"+loaiDV+"'";
             new sqlDatabase().addDataTable(sqlshowSV,SeviceName);}
-            new publicClass().hiddencol(SeviceName,0);
+            new Utils().hiddencol(SeviceName,0);
     }
     
     private void ServiceInorderShow(String OdId){
         OdId=orderId.getText();
-        String sqlshowSV=  "select [MãDV],[Tên dịch vụ],[Giá tiền],[Giảm giá], [Phụ phí], [Tổng tiền], [Loại],[Của phòng] from costofservices where [Mã] ='"+OdId+"'";
+        String sqlshowSV=  "select [MãDV],[Tên dịch vụ],[Giá ti�?n],[Giảm giá], [Phụ phí], [Tổng ti�?n], [Loại],[Của phòng] from costofservices where [Mã] ='"+OdId+"'";
         new sqlDatabase().addDataTable(sqlshowSV,ServiceInorder);
-        new publicClass().hiddencol(ServiceInorder,0);
+        new Utils().hiddencol(ServiceInorder,0);
     }
     private void roomInorderShow()
     {

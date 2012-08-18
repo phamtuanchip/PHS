@@ -23,7 +23,7 @@ public class Report extends javax.swing.JDialog {
     
     private void addItemToCombo(){
         String sql = "Select status_detail from order_status";
-        new publicClass().addItemTooCombobox(cbxLoaidonhang,sql,"Hiện tất cả loại đơn hàng");
+        new Utils().addItemTooCombobox(cbxLoaidonhang,sql,"Hiện tất cả loại đơn hàng");
     }
     private void showOrder(){
         sdf = new SimpleDateFormat("MM/dd/yyyy");
@@ -33,12 +33,12 @@ public class Report extends javax.swing.JDialog {
         if(order_status == "Hiện tất cả loại đơn hàng"){
             String sql = "Select * from report1 where [Ngày đặt phòng] between '" + begindate + "' and '" + endDate + "'";
             System.out.println(sql);
-            new publicClass().addItemToTable(tbldanhsachdonhang,sql);
+            new Utils().addItemToTable(tbldanhsachdonhang,sql);
         }
         else{
             String sql = "Select * from report1 where [Trạng thái đơn hàng] = N'" + order_status + "' and [Ngày đặt phòng] between '" + begindate + "' and '" + endDate + "'";
             System.out.println(sql);
-            new publicClass().addItemToTable(tbldanhsachdonhang,sql);
+            new Utils().addItemToTable(tbldanhsachdonhang,sql);
         }                
     }
     private void thongke(){
@@ -53,19 +53,19 @@ public class Report extends javax.swing.JDialog {
         float sum = 0;
         if(order_status == "Hiện tất cả loại đơn hàng"){
             String sql = "Select count(*) as dem from report1 where [Ngày đặt phòng] between '" + begindate + "' and '" + endDate + "'";
-            count = new publicClass().selectDateToString(sql,"dem");
+            count = new Utils().selectDateToString(sql,"dem");
             lblSodonhang.setText(count);
-            String sql1 = "Select sum([Tổng tiền]) as tong from report1 where [Ngày đặt phòng] between '" + begindate + "' and '" + endDate + "'";
-            sum = new publicClass().selectDataToFloat(sql1,"tong");
+            String sql1 = "Select sum([Tổng ti�?n]) as tong from report1 where [Ngày đặt phòng] between '" + begindate + "' and '" + endDate + "'";
+            sum = new Utils().selectDataToFloat(sql1,"tong");
             txttongtien.setValue(new Float(sum));
             txttongtien.setEnabled(false);
         }
         else{
             String sql = "Select count(*) as dem from report1 where [Trạng thái đơn hàng] = N'" + order_status + "' and [Ngày đặt phòng] between '" + begindate + "' and '" + endDate + "'";
-            count = new publicClass().selectDateToString(sql,"dem");
+            count = new Utils().selectDateToString(sql,"dem");
             lblSodonhang.setText(count);
-            String sql1 = "Select sum([Tổng tiền]) as tong from report1 where [Trạng thái đơn hàng] = N'" + order_status + "' and [Ngày đặt phòng] between '" + begindate + "' and '" + endDate + "'";
-            sum = new publicClass().selectDataToFloat(sql1,"tong");
+            String sql1 = "Select sum([Tổng ti�?n]) as tong from report1 where [Trạng thái đơn hàng] = N'" + order_status + "' and [Ngày đặt phòng] between '" + begindate + "' and '" + endDate + "'";
+            sum = new Utils().selectDataToFloat(sql1,"tong");
             txttongtien.setValue(new Float(sum));
             txttongtien.setEnabled(false);
         }                
@@ -76,7 +76,7 @@ public class Report extends javax.swing.JDialog {
         String endDate = sdf.format(txtdenngay.getDate());                
         String countTotal = "";
         String sql = "Select count(*) as dem from report1 where [Ngày đặt phòng] between '" + begindate + "' and '" + endDate + "'";
-        countTotal = new publicClass().selectDateToString(sql,"dem");
+        countTotal = new Utils().selectDateToString(sql,"dem");
         lbltongdonhang.setText(countTotal);
     }
     /** This method is called from within the constructor to

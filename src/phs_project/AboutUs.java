@@ -6,6 +6,10 @@
 
 package phs_project;
 
+import java.util.Locale;
+import java.util.ResourceBundle;
+import javax.swing.JFrame;
+
 /**
  *
  * @author  nhoc
@@ -17,6 +21,8 @@ public class AboutUs extends javax.swing.JDialog{
        
          super(parent, modal);
           initComponents();
+         //ResourceBundle rb = ResourceBundle.getBundle("phs_project/locale", new Locale("vi","VN")) ;
+         //jLabel1.setText(rb.getString(this.getClass()+"-form-title"));
     }
     
     /** This method is called from within the constructor to
@@ -51,15 +57,15 @@ public class AboutUs extends javax.swing.JDialog{
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel2.setText("Phiên b?n: 1.0 Beta");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18));
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Phát tri?n b?i:");
 
         jLabel10.setText("M?i thông tin xin g?i v?:");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
-        jLabel4.setText("D Group");
+        jLabel4.setText("Ph?m Tuân");
 
-        jLabel11.setText("Nhóm D, L?p G1, Topica");
+        jLabel11.setText("phamtuanchip@gmail.com");
 
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -68,13 +74,13 @@ public class AboutUs extends javax.swing.JDialog{
             .add(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jLabel11)
-                .addContainerGap(140, Short.MAX_VALUE))
+                .addContainerGap(131, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel1Layout.createSequentialGroup()
                 .add(jLabel11)
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addContainerGap(111, Short.MAX_VALUE))
         );
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/phs_project/Image/logo_login.gif"))); // NOI18N
@@ -88,7 +94,7 @@ public class AboutUs extends javax.swing.JDialog{
                 .add(jLabel13)
                 .add(253, 253, 253))
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(132, Short.MAX_VALUE)
+                .addContainerGap(103, Short.MAX_VALUE)
                 .add(jLabel3)
                 .add(19, 19, 19)
                 .add(jLabel4)
@@ -122,7 +128,7 @@ public class AboutUs extends javax.swing.JDialog{
                     .add(jLabel3)
                     .add(jLabel4))
                 .add(18, 18, 18)
-                .add(jLabel15, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                .add(jLabel15, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
                 .add(43, 43, 43)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
@@ -131,7 +137,7 @@ public class AboutUs extends javax.swing.JDialog{
                     .add(jLabel10))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel13)
-                .add(95, 95, 95))
+                .add(124, 124, 124))
         );
 
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
@@ -147,11 +153,11 @@ public class AboutUs extends javax.swing.JDialog{
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-       // java.awt.EventQueue.invokeLater(new Runnable() {
-          //  public void run() {
-             //   new AboutUs(java.awt.Frame parent, boolean modal);
-           // }
-       // });
+       java.awt.EventQueue.invokeLater(new Runnable() {
+         public void run() {
+             new AboutUs(new JFrame(),true).setVisible(true);
+          }
+       });
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

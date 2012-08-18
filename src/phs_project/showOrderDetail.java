@@ -25,7 +25,7 @@ public class showOrderDetail extends javax.swing.JDialog {
         }
         else
         {
-        JOptionPane.showMessageDialog(this,"Bạn không thể trực tiếp gọi mẫu này  này !");
+        JOptionPane.showMessageDialog(this,"Bạn không thể trực tiếp g�?i mẫu này  này !");
         }
         
        //ShowOrderInfo("251");
@@ -469,15 +469,15 @@ public class showOrderDetail extends javax.swing.JDialog {
 
     private void tblRoomsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblRoomsMouseClicked
 // TODO add your handling code here:
-     RoomId = new publicClass().SelectedRowToString(tblRooms,0)  ;
-     Bd = new publicClass().SelectedRowToString(tblRooms,1)  ;
+     RoomId = new Utils().SelectedRowToString(tblRooms,0)  ;
+     Bd = new Utils().SelectedRowToString(tblRooms,1)  ;
      lblBd.setText(Bd);             
-     Ed = new publicClass().SelectedRowToString(tblRooms,2)  ;
+     Ed = new Utils().SelectedRowToString(tblRooms,2)  ;
      lblEd.setText(Ed);
-     Days= new publicClass().SelectedRowToString(tblRooms,3)  ;
+     Days= new Utils().SelectedRowToString(tblRooms,3)  ;
      lblDays.setText(Days);
-     lblNumbCus.setText(new publicClass().selectDateToString("select count(customerId) as coutcus from roomcurent_detail where roomId='"+RoomId+"'","coutcus"));
-     lblSVR.setText(new publicClass().selectDateToString("select sum(prices) as TotalSV from ServicesOfRoom where orderID = '" + lblMa.getText() + "' and RoomNUm = '" +RoomId+ "'","TotalSV"));
+     lblNumbCus.setText(new Utils().selectDateToString("select count(customerId) as coutcus from roomcurent_detail where roomId='"+RoomId+"'","coutcus"));
+     lblSVR.setText(new Utils().selectDateToString("select sum(prices) as TotalSV from ServicesOfRoom where orderID = '" + lblMa.getText() + "' and RoomNUm = '" +RoomId+ "'","TotalSV"));
      
     }//GEN-LAST:event_tblRoomsMouseClicked
 
@@ -490,25 +490,25 @@ public class showOrderDetail extends javax.swing.JDialog {
     private void ShowOrderInfo (String OrderId)
     {
         lblMa.setText(OrderId);
-        lblDate.setText(new publicClass().selectDateToString("select orderDate from OrderOfCus where orderId='"+lblMa.getText()+"'","orderDate"));
-        lblCus.setText(new publicClass().selectDateToString("select cusname from OrderOfCus where orderId='"+lblMa.getText()+"'","cusname"));
+        lblDate.setText(new Utils().selectDateToString("select orderDate from OrderOfCus where orderId='"+lblMa.getText()+"'","orderDate"));
+        lblCus.setText(new Utils().selectDateToString("select cusname from OrderOfCus where orderId='"+lblMa.getText()+"'","cusname"));
         //txtN(new publicClass().selectDateToString("select [note] from Orders where orderId='"+lblMa.getText()+"'","note"));
-        lblTotalCost.setText(new publicClass().selectDateToString("select totalFee from orders where orderId='"+lblMa.getText()+"'","totalFee"));
-        String CusTomerId= new publicClass().selectDateToString("select customerId from OrderOfCus where orderId='"+OrderId+"'","customerId");
-        lblPhone.setText(new publicClass().selectDateToString("select phone from customers where customerId='"+CusTomerId+"'","phone"));
-        lblEmail.setText(new publicClass().selectDateToString("select email from customers where customerId='"+CusTomerId+"'","email"));
-        lblIDCard.setText(new publicClass().selectDateToString("select idCardNumb from customers where customerId='"+CusTomerId+"'","idCardNumb"));
-        lblTotalCus.setText(new publicClass().selectDateToString("select count(customerid) as CoutCus from cusInOrders where orderId='"+lblMa.getText()+"'","CoutCus"));
-        lblTotalRoom.setText(new publicClass().selectDateToString("select count(roomId) as CoutRoom from orderDetail where orderId='"+lblMa.getText()+"'","CoutRoom"));
-        lblTotalSvr.setText(new publicClass().selectDateToString("select count(servicesID) as CoutSvr from servicesDetail where orderId='"+lblMa.getText()+"'","CoutSvr"));
+        lblTotalCost.setText(new Utils().selectDateToString("select totalFee from orders where orderId='"+lblMa.getText()+"'","totalFee"));
+        String CusTomerId= new Utils().selectDateToString("select customerId from OrderOfCus where orderId='"+OrderId+"'","customerId");
+        lblPhone.setText(new Utils().selectDateToString("select phone from customers where customerId='"+CusTomerId+"'","phone"));
+        lblEmail.setText(new Utils().selectDateToString("select email from customers where customerId='"+CusTomerId+"'","email"));
+        lblIDCard.setText(new Utils().selectDateToString("select idCardNumb from customers where customerId='"+CusTomerId+"'","idCardNumb"));
+        lblTotalCus.setText(new Utils().selectDateToString("select count(customerid) as CoutCus from cusInOrders where orderId='"+lblMa.getText()+"'","CoutCus"));
+        lblTotalRoom.setText(new Utils().selectDateToString("select count(roomId) as CoutRoom from orderDetail where orderId='"+lblMa.getText()+"'","CoutRoom"));
+        lblTotalSvr.setText(new Utils().selectDateToString("select count(servicesID) as CoutSvr from servicesDetail where orderId='"+lblMa.getText()+"'","CoutSvr"));
         
-        new publicClass().addItemToTable(tblRooms,"select roomId,[Ngày đến ở],enddate,[Tổng ngày ở],[Tên phòng],[Trạng thái] from roomInorder where orderId='"+lblMa.getText()+"'");
-        new publicClass().hiddencol(tblRooms,0);
-        new publicClass().hiddencol(tblRooms,1);
-        new publicClass().hiddencol(tblRooms,2);
-         new publicClass().hiddencol(tblRooms,3);
-        new publicClass().addItemToTable(tblCustomers,"select [Tên khách hàng] from CustomerLiveInroom as customerN where orderId='"+lblMa.getText()+"'");
-        new publicClass().addItemToTable(tblServices,"select [Tên dịch vụ] from servicesInOrder as svr where orderId='"+lblMa.getText()+"'");
+        new Utils().addItemToTable(tblRooms,"select roomId,[Ngày đến ở],enddate,[Tổng ngày ở],[Tên phòng],[Trạng thái] from roomInorder where orderId='"+lblMa.getText()+"'");
+        new Utils().hiddencol(tblRooms,0);
+        new Utils().hiddencol(tblRooms,1);
+        new Utils().hiddencol(tblRooms,2);
+         new Utils().hiddencol(tblRooms,3);
+        new Utils().addItemToTable(tblCustomers,"select [Tên khách hàng] from CustomerLiveInroom as customerN where orderId='"+lblMa.getText()+"'");
+        new Utils().addItemToTable(tblServices,"select [Tên dịch vụ] from servicesInOrder as svr where orderId='"+lblMa.getText()+"'");
         
     }
     /**

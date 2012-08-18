@@ -25,7 +25,7 @@ public class chagerooms extends javax.swing.JDialog {
         initComponents();
          if (hotelForm.ODID==null)
         {
-            JOptionPane.showMessageDialog(this,"Bạn không thể gọi trực tiếp form này vì cần có tham số");
+            JOptionPane.showMessageDialog(this,"Bạn không thể g�?i trực tiếp form này vì cần có tham số");
         }
         else 
         {
@@ -371,7 +371,7 @@ public class chagerooms extends javax.swing.JDialog {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 // TODO add your handling code here:
         if (roomtochange==null) {
-           JOptionPane.showMessageDialog(this,"Bạn phải chọn phòng cần bỏ ra !");
+           JOptionPane.showMessageDialog(this,"Bạn phải ch�?n phòng cần b�? ra !");
            
        }
        else 
@@ -379,14 +379,14 @@ public class chagerooms extends javax.swing.JDialog {
             if ((new Integer (roomStatusID)==6)||(new Integer (roomStatusID)==8))
             {
                 String sqlremoverom="delete orderdetail where [id] = '"+detailId+"'";
-                new publicClass().SQLRUN(sqlremoverom);
-                JOptionPane.showMessageDialog(this,"Bạn vừa bỏ phòng ra khỏi đơn hàng thành công !");
+                new Utils().SQLRUN(sqlremoverom);
+                JOptionPane.showMessageDialog(this,"Bạn vừa b�? phòng ra kh�?i đơn hàng thành công !");
                 roomInOrdershow();
                 
             }
             else
             {
-               JOptionPane.showMessageDialog(this,"Phòng này không thể thao tác !\n Bạn phải xem lại !\n Đang ở, đã chuyển, đã trả..");
+               JOptionPane.showMessageDialog(this,"Phòng này không thể thao tác !\n Bạn phải xem lại !\n �?ang ở, đã chuyển, đã trả..");
             }
        }
         
@@ -394,8 +394,8 @@ public class chagerooms extends javax.swing.JDialog {
 
     private void tblFreeRoomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblFreeRoomMouseClicked
 // TODO add your handling code here:
-        freeRoomTooAdd= new publicClass().SelectedRowToString(tblFreeRoom,0);
-        freeRoomTooAddName=new publicClass().SelectedRowToString(tblFreeRoom,1);
+        freeRoomTooAdd= new Utils().SelectedRowToString(tblFreeRoom,0);
+        freeRoomTooAddName=new Utils().SelectedRowToString(tblFreeRoom,1);
     }//GEN-LAST:event_tblFreeRoomMouseClicked
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
@@ -408,7 +408,7 @@ public class chagerooms extends javax.swing.JDialog {
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
 // TODO add your handling code here:
         if (freeRoomTooAdd==null){
-            JOptionPane.showMessageDialog(this,"Bạn phải chọn phòng cần thêm !");
+            JOptionPane.showMessageDialog(this,"Bạn phải ch�?n phòng cần thêm !");
         }
         else
         {
@@ -418,7 +418,7 @@ public class chagerooms extends javax.swing.JDialog {
                 String sqlinsert ="insert into orderDetail (roomid,orderid,begindate,enddate) values ('"+
                         freeRoomTooAdd+"','"+madonhang.getText()+"','"+new UserFormat().getFormat(beginDate.getDate(),"ngaygio")+"','"+new UserFormat().getFormat(endDate.getDate(),"ngaygio")+"')";
                 //JOptionPane.showMessageDialog(this,sqlinsert);
-                new publicClass().SQLRUN(sqlinsert);
+                new Utils().SQLRUN(sqlinsert);
                 roomInOrdershow();
                 roomFreeToAdd(new UserFormat().getFormat(beginDate.getDate(),"ngaygio"),new UserFormat().getFormat(endDate.getDate(),"ngaygio"));
                 freeRoomTooAdd=null;
@@ -453,12 +453,12 @@ public class chagerooms extends javax.swing.JDialog {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 // TODO add your handling code here:
          if (roomtochange==null) {
-           JOptionPane.showMessageDialog(this,"Bạn phải chọn phòng cần chuyển");
+           JOptionPane.showMessageDialog(this,"Bạn phải ch�?n phòng cần chuyển");
            
        }
        else 
            if(roomfree==null){
-           JOptionPane.showMessageDialog(this,"Bạn phải chọn phòng trống để chuyển ");
+           JOptionPane.showMessageDialog(this,"Bạn phải ch�?n phòng trống để chuyển ");
            }
            else
            { if ((new Integer (roomStatusID)==4)||(new Integer (roomStatusID)==7)){
@@ -467,15 +467,15 @@ public class chagerooms extends javax.swing.JDialog {
             }
              else
             {
-              int isChange = JOptionPane.showConfirmDialog(this," Bạn thực sự muốn chuyển phòng "+nameroomtochange+" thành phòng "+nameroomfree+"? \n Tất cả khách sẽ phải chuyển, dịch vụ sẽ đã gọi sẽ chuyển !","Cảnh báo",0);
+              int isChange = JOptionPane.showConfirmDialog(this," Bạn thực sự muốn chuyển phòng "+nameroomtochange+" thành phòng "+nameroomfree+"? \n Tất cả khách sẽ phải chuyển, dịch vụ sẽ đã g�?i sẽ chuyển !","Cảnh báo",0);
               if (isChange==0) 
               {
               //SQLRUN("Update orderdetail set roomid='"+roomfree+"' where begindate='"+bd+"' and enddate='"+ed+"'");
               String sqlupdate=" update orderdetail set  enddate=getdate() where id='"+detailId+"' and roomid='"+roomtochange+"'";
               SQLRUN(sqlupdate);
-              new publicClass().SQLRUN("update roomcurent_detail set roomId='"+roomfree+"' where roomid='"+roomtochange+"'");
-              new publicClass().SQLRUN("update servicesDetail set roomnum='"+roomfree+"' where roomnum='"+roomtochange+"'");
-              new publicClass().SQLRUN("update orderdetail set roomstatus=7 where [id]='"+detailId+"'");
+              new Utils().SQLRUN("update roomcurent_detail set roomId='"+roomfree+"' where roomid='"+roomtochange+"'");
+              new Utils().SQLRUN("update servicesDetail set roomnum='"+roomfree+"' where roomnum='"+roomtochange+"'");
+              new Utils().SQLRUN("update orderdetail set roomstatus=7 where [id]='"+detailId+"'");
               
               String sqlchangeCus="";
              // JOptionPane.showMessageDialog(this,sqlupdate);
@@ -497,7 +497,7 @@ public class chagerooms extends javax.swing.JDialog {
               //roomOutOrdershow("","");
               */
               }
-              else{}// hủy bỏ việc chuyển phòng
+              else{}// hủy b�? việc chuyển phòng
              }
            }
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -511,12 +511,12 @@ public class chagerooms extends javax.swing.JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 // TODO add your handling code here:
        if (roomtochange==null) {
-           JOptionPane.showMessageDialog(this,"Bạn phải chọn phòng cần chuyển");
+           JOptionPane.showMessageDialog(this,"Bạn phải ch�?n phòng cần chuyển");
            
        }
        else 
            if(roomfree==null){
-           JOptionPane.showMessageDialog(this,"Bạn phải chọn phòng trống để chuyển ");
+           JOptionPane.showMessageDialog(this,"Bạn phải ch�?n phòng trống để chuyển ");
            }
            else
            {
@@ -527,11 +527,11 @@ public class chagerooms extends javax.swing.JDialog {
              }
              else   
              {
-              int isChange = JOptionPane.showConfirmDialog(this," Bạn thực sự muốn đổi phòng "+nameroomtochange+" thành phòng "+nameroomfree+"? \n Tất cả khách, dịch vụ đã gọi sẽ được chuyển!","Cảnh báo",0);
+              int isChange = JOptionPane.showConfirmDialog(this," Bạn thực sự muốn đổi phòng "+nameroomtochange+" thành phòng "+nameroomfree+"? \n Tất cả khách, dịch vụ đã g�?i sẽ được chuyển!","Cảnh báo",0);
               if (isChange==0) {
               SQLRUN("Update orderdetail set roomid='"+roomfree+"' where begindate='"+bd+"' and enddate='"+ed+"' and id='"+detailId+"'");
-              new publicClass().SQLRUN("update roomcurent_detail set roomId='"+roomfree+"' where roomid='"+roomtochange+"'");
-              new publicClass().SQLRUN("update servicesDetail set roomnum='"+roomfree+"' where roomnum='"+roomtochange+"'");
+              new Utils().SQLRUN("update roomcurent_detail set roomId='"+roomfree+"' where roomid='"+roomtochange+"'");
+              new Utils().SQLRUN("update servicesDetail set roomnum='"+roomfree+"' where roomnum='"+roomtochange+"'");
               roomInOrdershow(); // refress lai bang roominorder
               /* roomtochange = null; // chuyen het cac bien ve null //
                nameroomtochange = null;
@@ -568,7 +568,7 @@ public class chagerooms extends javax.swing.JDialog {
         roomOutOrdershow(bd,ed);// hien cac phong co the
         roomfree= null;
         //orderid=madonhang.getText();
-        new publicClass().addItemToTable(tblCusInRoom,"select firstname +' '+lastname as [Họ tên] from customers where customerId in (select customerid  from roomcurent_detail where roomid='"+roomtochange+"' )");
+        new Utils().addItemToTable(tblCusInRoom,"select firstname +' '+lastname as [H�? tên] from customers where customerId in (select customerid  from roomcurent_detail where roomid='"+roomtochange+"' )");
         
         
     }//GEN-LAST:event_roomInOrderMouseClicked
@@ -589,10 +589,10 @@ public class chagerooms extends javax.swing.JDialog {
             Oid = madonhang.getText();
             String sqltb=  "select * from roomInChangeOd where orderId= '"+Oid+"'";
             new sqlDatabase().addDataTable(sqltb,roomInOrder);
-            new publicClass().hiddencol(roomInOrder,0);
-            new publicClass().hiddencol(roomInOrder,1);
-            new publicClass().hiddencol(roomInOrder,2);
-            new publicClass().hiddencol(roomInOrder,3);
+            new Utils().hiddencol(roomInOrder,0);
+            new Utils().hiddencol(roomInOrder,1);
+            new Utils().hiddencol(roomInOrder,2);
+            new Utils().hiddencol(roomInOrder,3);
             roomtochange = null; // chuyen het cac bien ve null //
                nameroomtochange = null;
                bd = null;
@@ -619,7 +619,7 @@ public class chagerooms extends javax.swing.JDialog {
                     " OR('"+ed+"'BETWEEN bd AND ed) OR (bd BETWEEN '"+bd+"' AND '"+ed+"')"+
                     " OR(ed BETWEEN '"+bd+"' AND '" +ed+"'))" ;
             new sqlDatabase().addDataTable(sqltb,roomOutOrder);
-            new publicClass().hiddencol(roomOutOrder,0);
+            new Utils().hiddencol(roomOutOrder,0);
     }
     
      private void roomFreeToAdd(String bd,String ed)// Hien nhung room trong de chuyen)
@@ -631,12 +631,12 @@ public class chagerooms extends javax.swing.JDialog {
                     " OR('"+ed+"'BETWEEN bd AND ed) OR (bd BETWEEN '"+bd+"' AND '"+ed+"')"+
                     " OR(ed BETWEEN '"+bd+"' AND '" +ed+"'))" ;
            // new sqlDatabase().addDataTable(sqltb,roomOutOrder);
-            new publicClass().addItemToTable(tblFreeRoom,sqltb);
-            new publicClass().hiddencol(tblFreeRoom,0);
+            new Utils().addItemToTable(tblFreeRoom,sqltb);
+            new Utils().hiddencol(tblFreeRoom,0);
            }
            else
            {
-               new publicClass().addItemToTable(tblFreeRoom,"select [Số phòng] ='Chưa có'  ,[Giá] = 'Chưa có'");
+               new Utils().addItemToTable(tblFreeRoom,"select [Số phòng] ='Chưa có'  ,[Giá] = 'Chưa có'");
            }
     }
     

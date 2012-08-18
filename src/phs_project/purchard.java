@@ -67,30 +67,30 @@ public class purchard extends javax.swing.JDialog {
     }
     private void fillTableRoomDetail(String OrderID){
         String sql= "";
-        sql = sql + "select [Mã đơn hàng],[Tên phòng],[Ngày bắt đầu],[Ngày kết thúc],[Số ngày ],[Đơn giá phòng],[Phụ phí], ";
-        sql = sql + "[Giảm giá],[Thành tiền] from Tinhtienphong where [Mã đơn hàng] = '"+ OrderID+"'";
-        new publicClass().addItemToTable(tblRoomPrice,sql);
-        new publicClass().hiddencol(tblRoomPrice,0);
+        sql = sql + "select [Mã đơn hàng],[Tên phòng],[Ngày bắt đầu],[Ngày kết thúc],[Số ngày ],[�?ơn giá phòng],[Phụ phí], ";
+        sql = sql + "[Giảm giá],[Thành ti�?n] from Tinhtienphong where [Mã đơn hàng] = '"+ OrderID+"'";
+        new Utils().addItemToTable(tblRoomPrice,sql);
+        new Utils().hiddencol(tblRoomPrice,0);
     }
     private void fillTableServiceDetail(String OrderID){
         String sql = "";
-        sql = sql + "select Mã,[Của phòng] as [Phòng], Loại, [Tên dịch vụ],[Giá tiền], [Giảm giá], [Phụ phí], [Tổng tiền] ";
+        sql = sql + "select Mã,[Của phòng] as [Phòng], Loại, [Tên dịch vụ],[Giá ti�?n], [Giảm giá], [Phụ phí], [Tổng ti�?n] ";
         sql = sql + "from costofservices where Mã = '"+ OrderID+"'";
-        new publicClass().addItemToTable(tblServicesPrice,sql);
-        new publicClass().hiddencol(tblServicesPrice,0);
+        new Utils().addItemToTable(tblServicesPrice,sql);
+        new Utils().hiddencol(tblServicesPrice,0);
     }
     private void tinhtongtienphong(String OrderID){
         String sql = "";
-        sql = sql + "Select sum([Thành tiền]) as tongtienphong from Tinhtienphong where [Mã đơn hàng] = '" + OrderID+"'";
+        sql = sql + "Select sum([Thành ti�?n]) as tongtienphong from Tinhtienphong where [Mã đơn hàng] = '" + OrderID+"'";
         sql = sql + " group by [Mã đơn hàng]";
-        sumRoomPrice = new publicClass().selectDateToString(sql,"tongtienphong");
+        sumRoomPrice = new Utils().selectDateToString(sql,"tongtienphong");
         lblSumPriceRoom.setText(sumRoomPrice);
     }
     private void tinhtongtiendichvu(String OrderID){
         String sql = "";
-        sql = sql + "select sum([Tổng tiền]) as tongtiendichvu from costofservices where Mã = '" + OrderID+"'";
+        sql = sql + "select sum([Tổng ti�?n]) as tongtiendichvu from costofservices where Mã = '" + OrderID+"'";
         sql = sql + " group by Mã" ;
-        sumServicesPrice = new publicClass().selectDateToString(sql,"tongtiendichvu");
+        sumServicesPrice = new Utils().selectDateToString(sql,"tongtiendichvu");
         lblSumPriceServices.setText(sumServicesPrice);
     }
     private void cong(String str1,String str2){
@@ -107,11 +107,11 @@ public class purchard extends javax.swing.JDialog {
     }
     private void thanhtien(String OrderID){
         String sql = "select totalfee,addition,discount from orders where orderid ='" + OrderID+"'";
-        String tt = new publicClass().selectDateToString(sql,"totalfee");
+        String tt = new Utils().selectDateToString(sql,"totalfee");
         lblSumOrder.setText(tt);
-        String add = new publicClass().selectDateToString(sql,"addition");
+        String add = new Utils().selectDateToString(sql,"addition");
         lblAdd.setText(add);
-        String discount = new publicClass().selectDateToString(sql,"discount");
+        String discount = new Utils().selectDateToString(sql,"discount");
         lbldiscount.setText(discount);
     }
     

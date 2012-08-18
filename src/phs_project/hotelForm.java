@@ -6,33 +6,13 @@
 
 package phs_project;
 
-import com.toedter.calendar.JCalendar; 
-import com.toedter.calendar.JDateChooser;
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.image.ImageObserver;
-import java.awt.image.ImageProducer;
-import java.beans.PropertyChangeEvent;
-import java.lang.Integer;
-import java.rmi.server.ObjID;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
+
 import java.sql.*;
 import java.text.DateFormat;
 import java.text.Format;
 import java.text.ParseException;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import javax.swing.JDialog;
 import com.toedter.calendar.JCalendar.*;
-import com.toedter.calendar.JDayChooser;
-import javax.swing.JSpinner;
-import javax.swing.SpinnerDateModel;
 import javax.swing.*;
-import javax.swing.JFormattedTextField;
-import javax.swing.text.DefaultFormatterFactory;
-import javax.swing.text.DateFormatter;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.Date;
@@ -64,8 +44,8 @@ public class hotelForm extends javax.swing.JFrame {
         showordes(Loai);
         showCustomers();
         CountCustomerType();
-        jDateChooserSearch.setLocale(new Locale("vi"));
-        new publicClass().addItemTooCombobox(cbType,"select name from customerstype","");
+        jDateChooserSearch.setLocale(new Locale("vi","VN"));
+        new Utils().addItemTooCombobox(cbType,"select name from customerstype","");
         //End Tuanp onload contructer
     
     }
@@ -2236,7 +2216,7 @@ public class hotelForm extends javax.swing.JFrame {
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
 // TODO add your handling code here:
-         int result = JOptionPane.showConfirmDialog(this,"Bạn có thực sự muốn đổi người sử dụng không","Cảnh báo",JOptionPane.OK_CANCEL_OPTION);
+         int result = JOptionPane.showConfirmDialog(this,"Bạn có thực sự muốn đổi ngư�?i sử dụng không","Cảnh báo",JOptionPane.OK_CANCEL_OPTION);
         if(result == 0){
             this.dispose();
             loginForm.user = "";
@@ -2247,7 +2227,7 @@ public class hotelForm extends javax.swing.JFrame {
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
 // TODO add your handling code here:
-         int result = JOptionPane.showConfirmDialog(this,"Bạn có thực sự muốn thoát khỏi ứng dụng không ?","Cảnh báo",JOptionPane.OK_CANCEL_OPTION);
+         int result = JOptionPane.showConfirmDialog(this,"Bạn có thực sự muốn thoát kh�?i ứng dụng không ?","Cảnh báo",JOptionPane.OK_CANCEL_OPTION);
         if(result == 0){
             System.exit(1);
         }
@@ -2256,7 +2236,7 @@ public class hotelForm extends javax.swing.JFrame {
     private void mnitPayoutOrdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnitPayoutOrdActionPerformed
 // TODO add your handling code here:
         if (ODID==null){
-          JOptionPane.showMessageDialog(this,"Bạn phải chọn một đơn hàng");
+          JOptionPane.showMessageDialog(this,"Bạn phải ch�?n một đơn hàng");
             
         }
         else {
@@ -2267,7 +2247,7 @@ public class hotelForm extends javax.swing.JFrame {
     private void mnitDisplayOrdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnitDisplayOrdActionPerformed
 // TODO add your handling code here:
          if (ODID==null){
-          JOptionPane.showMessageDialog(this,"Bạn phải chọn một đơn hàng");
+          JOptionPane.showMessageDialog(this,"Bạn phải ch�?n một đơn hàng");
             
         }
         else {
@@ -2279,7 +2259,7 @@ public class hotelForm extends javax.swing.JFrame {
     private void mnitChangeOrdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnitChangeOrdActionPerformed
 // TODO add your handling code here:
         if (ODID==null){
-          JOptionPane.showMessageDialog(this,"Bạn phải chọn một đơn hàng");
+          JOptionPane.showMessageDialog(this,"Bạn phải ch�?n một đơn hàng");
             
         }
         else {
@@ -2291,7 +2271,7 @@ public class hotelForm extends javax.swing.JFrame {
     private void mnitAddSerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnitAddSerActionPerformed
 // TODO add your handling code here:
          if (ODID==null){
-          JOptionPane.showMessageDialog(this,"Bạn phải chọn một đơn hàng");
+          JOptionPane.showMessageDialog(this,"Bạn phải ch�?n một đơn hàng");
             
         }
         else {
@@ -2304,13 +2284,13 @@ public class hotelForm extends javax.swing.JFrame {
 // TODO add your handling code here:
         if (ODID==null)
          {
-          JOptionPane.showMessageDialog(this,"Bạn phải chọn một đơn hàng");            
+          JOptionPane.showMessageDialog(this,"Bạn phải ch�?n một đơn hàng");            
         }
         else 
-        {   String checkNum=new publicClass().selectDateToString("select count(roomId) as checkRNum from orderDetail where orderid='"+ODID+"' and getdate() between begindate and enddate","checkRNum");
+        {   String checkNum=new Utils().selectDateToString("select count(roomId) as checkRNum from orderDetail where orderid='"+ODID+"' and getdate() between begindate and enddate","checkRNum");
             if (new Integer(checkNum)==0)
             {
-                JOptionPane.showMessageDialog(this,"Đơn hàng này các phòng chưa đến ngày ở ! không thể xếp khách");
+                JOptionPane.showMessageDialog(this,"�?ơn hàng này các phòng chưa đến ngày ở ! không thể xếp khách");
             }
             else
             {
@@ -2338,7 +2318,7 @@ public class hotelForm extends javax.swing.JFrame {
 
     private void mnitLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnitLogOutActionPerformed
 // TODO add your handling code here:
-        int result = JOptionPane.showConfirmDialog(this,"Bạn có thực sự muốn đổi người sử dụng không","Cảnh báo",JOptionPane.OK_CANCEL_OPTION);
+        int result = JOptionPane.showConfirmDialog(this,"Bạn có thực sự muốn đổi ngư�?i sử dụng không","Cảnh báo",JOptionPane.OK_CANCEL_OPTION);
         if(result == 0){
             this.dispose();
             loginForm.user = "";
@@ -2419,7 +2399,7 @@ public class hotelForm extends javax.swing.JFrame {
         {
            if (txtFirstname.getText().equals(""))
            {
-               JOptionPane.showMessageDialog(this,"Bạn phải nhập Họ đệm !");
+               JOptionPane.showMessageDialog(this,"Bạn phải nhập H�? đệm !");
            
            }  
            else
@@ -2430,7 +2410,7 @@ public class hotelForm extends javax.swing.JFrame {
 
                }  
                else
-               {   String CountCus=new publicClass().selectDateToString("select count(customerId) as CC from customers where upper(firstName) =upper(N'"+txtFirstname.getText()+"') and upper(lastName) =upper(N'"+txtLastname.getText()+"')","CC");
+               {   String CountCus=new Utils().selectDateToString("select count(customerId) as CC from customers where upper(firstName) =upper(N'"+txtFirstname.getText()+"') and upper(lastName) =upper(N'"+txtLastname.getText()+"')","CC");
                    if (new Integer(CountCus)>0)
                    {
                        int cf = JOptionPane.showConfirmDialog(this,"Tên khách đã có ! bạn vẫn muốn tiếp tục ?","Cảnh báo !",0);
@@ -2456,12 +2436,12 @@ public class hotelForm extends javax.swing.JFrame {
     private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
 // TODO add your handling code here:
          if (CusId ==null){
-            JOptionPane.showMessageDialog(this,"Bạn phải chọn một khách hàng để sửa !");
+            JOptionPane.showMessageDialog(this,"Bạn phải ch�?n một khách hàng để sửa !");
         }
         else
         { 
              if (txtFirstname.getText().equals("")){
-                 JOptionPane.showMessageDialog(this,"Bạn không được để trống Họ đệm !");
+                 JOptionPane.showMessageDialog(this,"Bạn không được để trống H�? đệm !");
              
              }
              else
@@ -2483,7 +2463,7 @@ public class hotelForm extends javax.swing.JFrame {
     private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
 // TODO add your handling code here:
          if (ODID==null){
-          JOptionPane.showMessageDialog(this,"Bạn phải chọn một đơn hàng");
+          JOptionPane.showMessageDialog(this,"Bạn phải ch�?n một đơn hàng");
             
         }
         else {
@@ -2521,14 +2501,14 @@ public class hotelForm extends javax.swing.JFrame {
     private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
 // TODO add your handling code here:
         if (CusId ==null){
-            JOptionPane.showMessageDialog(this,"Bạn phải chọn một khách hàng để xóa");
+            JOptionPane.showMessageDialog(this,"Bạn phải ch�?n một khách hàng để xóa");
         }
         else
-        {   int cf=JOptionPane.showConfirmDialog(this,"Bạn thực sự muốn xóa tất cả thông tin về "+CusTomerName+" hay không ?","Cảnh báo",0);
+        {   int cf=JOptionPane.showConfirmDialog(this,"Bạn thực sự muốn xóa tất cả thông tin v�? "+CusTomerName+" hay không ?","Cảnh báo",0);
             if (cf==0){
-            new publicClass().SQLRUN("clearorderofcus '"+CusId+"'");
-            new publicClass().addItemToTable(tblCustomers,"select * from customersview");
-            new publicClass().hiddencol(tblCustomers,0);
+            new Utils().SQLRUN("clearorderofcus '"+CusId+"'");
+            new Utils().addItemToTable(tblCustomers,"select * from customersview");
+            new Utils().hiddencol(tblCustomers,0);
             UnFillAllFeild();
             }
         }
@@ -2536,15 +2516,15 @@ public class hotelForm extends javax.swing.JFrame {
 
     private void tblCustomersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCustomersMouseClicked
 // TODO add your handling code here:
-      CusId= new publicClass().SelectedRowToString(tblCustomers,0);
-      CusTomerName= new publicClass().SelectedRowToString(tblCustomers,1);
+      CusId= new Utils().SelectedRowToString(tblCustomers,0);
+      CusTomerName= new Utils().SelectedRowToString(tblCustomers,1);
       FillAllFeild();
     }//GEN-LAST:event_tblCustomersMouseClicked
 
     private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
 // TODO add your handling code here:
         if (ODID==null){
-          JOptionPane.showMessageDialog(this,"Bạn phải chọn một đơn hàng");
+          JOptionPane.showMessageDialog(this,"Bạn phải ch�?n một đơn hàng");
             
         }
         else {
@@ -2585,7 +2565,7 @@ public class hotelForm extends javax.swing.JFrame {
 // TODO add your handling code here:
          if (ODID==null)
          {
-          JOptionPane.showMessageDialog(this,"Bạn phải chọn một đơn hàng");            
+          JOptionPane.showMessageDialog(this,"Bạn phải ch�?n một đơn hàng");            
         }
         else 
         {            
@@ -2649,7 +2629,7 @@ public class hotelForm extends javax.swing.JFrame {
                     
             }
             else{
-                JOptionPane.showMessageDialog(this,"Ngày đến không được nhỏ hơn ngày hiện tại");
+                JOptionPane.showMessageDialog(this,"Ngày đến không được nh�? hơn ngày hiện tại");
                 try {
                     dateChooseBegin.setDate(new SimpleDateFormat("MM/dd/yy HH:mm:ss").parse(new UserFormat().getFormat(new Date(),"ngaygio")));                    
                     beginDate = new UserFormat().getFormat(dateChooseBegin.getDate(),"ngaygio");                    
@@ -2686,7 +2666,7 @@ public class hotelForm extends javax.swing.JFrame {
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
 // TODO add your handling code here:
         if (ODID==null){
-          JOptionPane.showMessageDialog(this,"Bạn phải chọn một đơn hàng");
+          JOptionPane.showMessageDialog(this,"Bạn phải ch�?n một đơn hàng");
             
         }
         else {
@@ -2719,7 +2699,7 @@ public class hotelForm extends javax.swing.JFrame {
 // TODO add your handling code here:
         
          if (ODID==null){
-          JOptionPane.showMessageDialog(this,"Bạn phải chọn một đơn hàng");
+          JOptionPane.showMessageDialog(this,"Bạn phải ch�?n một đơn hàng");
             
         }
         else {
@@ -2793,7 +2773,7 @@ public class hotelForm extends javax.swing.JFrame {
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
 // TODO add your handling code here:
         if (ODID==null){
-          JOptionPane.showMessageDialog(this,"Bạn phải chọn một đơn hàng");
+          JOptionPane.showMessageDialog(this,"Bạn phải ch�?n một đơn hàng");
             
         }
         else {
@@ -2824,7 +2804,7 @@ public class hotelForm extends javax.swing.JFrame {
         vt = new Vector();
            int ro = table.getSelectedRow();
            if(ro == -1){
-           JOptionPane.showMessageDialog(this,"Bạn phải chọn ít nhất một phòng!");
+           JOptionPane.showMessageDialog(this,"Bạn phải ch�?n ít nhất một phòng!");
             } // if huynh
             else{
                 for(int i=0; i<getData.RowCount;i++) {
@@ -2841,7 +2821,7 @@ public class hotelForm extends javax.swing.JFrame {
              
                 
                 if   (vt.size()==0 ) {
-                    JOptionPane.showMessageDialog(this,"Bạn phải chọn ít nhất một phòng");
+                    JOptionPane.showMessageDialog(this,"Bạn phải ch�?n ít nhất một phòng");
                 }
                 else {
                  createOrderNew taodonhang =new  createOrderNew(this,true,beginDate,endDate,vt);
@@ -2875,7 +2855,7 @@ public class hotelForm extends javax.swing.JFrame {
 
     private void mnitExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnitExitActionPerformed
 // TODO add your handling code here:        
-        int result = JOptionPane.showConfirmDialog(this,"Bạn có thực sự muốn thoát khỏi ứng dụng không ?","Cảnh báo",JOptionPane.OK_CANCEL_OPTION);
+        int result = JOptionPane.showConfirmDialog(this,"Bạn có thực sự muốn thoát kh�?i ứng dụng không ?","Cảnh báo",JOptionPane.OK_CANCEL_OPTION);
         if(result == 0){
             System.exit(1);
         }
@@ -2902,10 +2882,10 @@ public class hotelForm extends javax.swing.JFrame {
         mnOption.add(mnitNew);
     }
     private void setLich(){
-         vnLocale = new Locale("vi");
-         jcalendar1.setLocale(new Locale("vi"));  
-         dateChooseBegin.setLocale(new Locale("vi"));  
-         dateChooseEnd.setLocale(new Locale("vi"));
+         vnLocale = new Locale("vi","VN");
+         jcalendar1.setLocale(vnLocale);
+         dateChooseBegin.setLocale(vnLocale);
+         dateChooseEnd.setLocale(vnLocale);
          df1 = new SimpleDateFormat("MM/dd/yy HH:mm:ss");
          df = DateFormat.getDateInstance(DateFormat.LONG,vnLocale); 
         // Get today's date
@@ -2936,7 +2916,7 @@ public class hotelForm extends javax.swing.JFrame {
     */ 
     public void ViewRoom(){
         String select = cbbRoomType.getSelectedItem().toString();
-        String[] title = {"Chọn","Mã Phòng","Tên phòng","Loại phòng","Giá phòng"};
+        String[] title = {"Ch�?n","Mã Phòng","Tên phòng","Loại phòng","Giá phòng"};
 	String space = " ";
 	try{
                 if(con == null){
@@ -2962,17 +2942,17 @@ public class hotelForm extends javax.swing.JFrame {
 	TableDataRoom tableDataRoom = new TableDataRoom(beginDate,endDate,selectRoomTypeId,title);
 	table.setModel(tableDataRoom);		
 	table.setRowHeight(17);
-        new publicClass().hiddencol(table,1);
-        new publicClass().hiddencol(table,3);
+        new Utils().hiddencol(table,1);
+        new Utils().hiddencol(table,3);
     }
 
  
     
  //-------------------------HuynhNt Code--------------------------------//
     private void Infomation(){
-        lblUser.setText(new publicClass().selectDateToString("select username from users where userName='"+loginForm.user+"'","username"));
+        lblUser.setText(new Utils().selectDateToString("select username from users where userName='"+loginForm.user+"'","username"));
         lblRight.setText(loginForm.usertypename);        
-        lblImage.setIcon(new javax.swing.ImageIcon(getClass().getResource(new publicClass().selectDateToString("select image from users where userName='"+loginForm.user+"'","image"))));        
+        lblImage.setIcon(new javax.swing.ImageIcon(getClass().getResource(new Utils().selectDateToString("select image from users where userName='"+loginForm.user+"'","image"))));
         lblImage.setText("");
     }
     
@@ -2993,7 +2973,7 @@ public class hotelForm extends javax.swing.JFrame {
             sql = sql + "UNION select roomnumb, N'Phòng đang trống' as 'Trạng thái',roomid from rooms where roomid not in(select roomid from TrangThai ";
             sql = sql + "where (roomstatusId = 5 or roomstatusId = 6 or roomstatusId = 8 or roomstatusId = 7 ) and '"+dateChoose+"' between beginDate and endDate)" ;
             new sqlDatabase().addDataTable(sql,tableViewRoomStaus,3);  
-            new publicClass().hiddencol(tableViewRoomStaus,2);
+            new Utils().hiddencol(tableViewRoomStaus,2);
          }
          
         if (TatusRoom.equals("Phòng đang rỗi"))
@@ -3001,14 +2981,14 @@ public class hotelForm extends javax.swing.JFrame {
             sql = "select roomnumb as 'Tên phòng', N'Phòng đang trống' as 'Trạng thái',roomid from rooms where roomid not in(select roomid from TrangThai ";
             sql = sql + "where (roomstatusId = 5 or roomstatusId = 6 or roomstatusId = 8 or roomstatusId = 7 ) and '"+dateChoose+"' between beginDate and endDate)" ;
             new sqlDatabase().addDataTable(sql,tableViewRoomStaus,3);  
-            new publicClass().hiddencol(tableViewRoomStaus,2);
+            new Utils().hiddencol(tableViewRoomStaus,2);
         }
          if (TatusRoom.equals("Phòng đang đặt"))
          {
             sql = "select roomnumb as 'Tên phòng', N'Phòng đang đặt' as 'Trạng thái',roomid from rooms where roomid in(select roomid from TrangThai ";
             sql = sql + "where roomstatusId = 8 and '"+dateChoose+"' between beginDate and endDate) ";
             new sqlDatabase().addDataTable(sql,tableViewRoomStaus,3);  
-            new publicClass().hiddencol(tableViewRoomStaus,2);
+            new Utils().hiddencol(tableViewRoomStaus,2);
         }
         
         if (TatusRoom.equals("Phòng đang bận"))
@@ -3017,7 +2997,7 @@ public class hotelForm extends javax.swing.JFrame {
             sql =  "select roomnumb as 'Tên phòng', N'Phòng đang bận' as 'Trạng thái',roomid as 'Mã phòng' from rooms  where roomid in (select roomid from TrangThai " ; 
             sql = sql + "where (roomstatusId = 5 or roomstatusId = 6)  and '"+dateChoose+"' between beginDate and endDate) ";
             new sqlDatabase().addDataTable(sql,tableViewRoomStaus,3);  
-            new publicClass().hiddencol(tableViewRoomStaus,2);
+            new Utils().hiddencol(tableViewRoomStaus,2);
         }
         
        //String sql = "{call ViewRoomStatusToday('"+dateChoose+"')}";
@@ -3076,7 +3056,7 @@ public class hotelForm extends javax.swing.JFrame {
             new addServicestoOrder(this,true).setVisible(true);
         }
         else{
-            JOptionPane.showMessageDialog(this,"Phòng đang đang rỗi nên kông thể gọi dịch vụ!");
+            JOptionPane.showMessageDialog(this,"Phòng đang đang rỗi nên kông thể g�?i dịch vụ!");
         }   
     }
     //
@@ -3089,61 +3069,58 @@ public class hotelForm extends javax.swing.JFrame {
             new insertCustomer(this,true,ODID).setVisible(true);
         }
         else{
-            JOptionPane.showMessageDialog(this,"Phòng đang rỗi nên không thể thêm người vào được!");
+            JOptionPane.showMessageDialog(this,"Phòng đang rỗi nên không thể thêm ngư�?i vào được!");
         }   
     }
      
- //-------------------------End Huynh Nt Code--------------------------------//
-     
-//------------------------------------Tuanp Code/////////////
-    ////Tab Thong ke///
+  
       private void Search()
     {
     {   if (jRadioButtonRoomName.isSelected())
             
-        new publicClass().addItemToTable(tblSearchResult,"select [Tên phòng],[Tên khách],begindate as [Ngày đến ở] from vSearchRooms where [Tên phòng] like '%"+txtInput.getText()+"%'");
+        new Utils().addItemToTable(tblSearchResult,"select [Tên phòng],[Tên khách],begindate as [Ngày đến ở] from vSearchRooms where [Tên phòng] like '%"+txtInput.getText()+"%'");
     }
        if (jRadioButtonCusName.isSelected())
        {   
-        new publicClass().addItemToTable(tblSearchResult,"select [Tên khách],[Tên phòng],begindate as [Ngày đến ở] from vSearchRooms where [Tên khách] like '%"+txtInput.getText()+"%'");
+        new Utils().addItemToTable(tblSearchResult,"select [Tên khách],[Tên phòng],begindate as [Ngày đến ở] from vSearchRooms where [Tên khách] like '%"+txtInput.getText()+"%'");
        }
         if (jRadioButtonDay.isSelected())
         {
-         new publicClass().addItemToTable(tblSearchResult,"select begindate as [Ngày đến ở],[Tên khách],[Tên phòng] from vSearchRooms where convert(int,convert(datetime ,convert (nvarchar, DATEPART(month,begindate))+'/'+convert (nvarchar,DATEPART(day,begindate))+'/'+convert(nvarchar,DATEPART(year,begindate))) -'"+new UserFormat().getFormat(jDateChooserSearch.getDate(),"ngay")+"')=0 ");
+         new Utils().addItemToTable(tblSearchResult,"select begindate as [Ngày đến ở],[Tên khách],[Tên phòng] from vSearchRooms where convert(int,convert(datetime ,convert (nvarchar, DATEPART(month,begindate))+'/'+convert (nvarchar,DATEPART(day,begindate))+'/'+convert(nvarchar,DATEPART(year,begindate))) -'"+new UserFormat().getFormat(jDateChooserSearch.getDate(),"ngay")+"')=0 ");
         }
     }
      
      private void NumbofRoomShow()
      {
-        lbl1.setText(new publicClass().selectDateToString("select name from roomstype where roomtypeid=1","name"));
-         lbl2.setText(new publicClass().selectDateToString("select name from roomstype where roomtypeid=2","name"));
-          lbl3.setText(new publicClass().selectDateToString("select name from roomstype where roomtypeid=3","name"));
-           lbl4.setText(new publicClass().selectDateToString("select name from roomstype where roomtypeid=4","name"));
+        lbl1.setText(new Utils().selectDateToString("select name from roomstype where roomtypeid=1","name"));
+         lbl2.setText(new Utils().selectDateToString("select name from roomstype where roomtypeid=2","name"));
+          lbl3.setText(new Utils().selectDateToString("select name from roomstype where roomtypeid=3","name"));
+           lbl4.setText(new Utils().selectDateToString("select name from roomstype where roomtypeid=4","name"));
            
-           odtype1.setText(new publicClass().selectDateToString("select status_detail as Name from order_Status where statusId=1","name"));
-           odtype2.setText(new publicClass().selectDateToString("select status_detail as Name from order_Status where statusId=2","name"));
-           odtype3.setText(new publicClass().selectDateToString("select status_detail as Name from order_Status where statusId=3","name"));
-           odtype4.setText(new publicClass().selectDateToString("select status_detail as Name from order_Status where statusId=4","name"));
+           odtype1.setText(new Utils().selectDateToString("select status_detail as Name from order_Status where statusId=1","name"));
+           odtype2.setText(new Utils().selectDateToString("select status_detail as Name from order_Status where statusId=2","name"));
+           odtype3.setText(new Utils().selectDateToString("select status_detail as Name from order_Status where statusId=3","name"));
+           odtype4.setText(new Utils().selectDateToString("select status_detail as Name from order_Status where statusId=4","name"));
            
      }
      private void CountRoomShow()
      {
-         n1.setText(new publicClass().selectDateToString("CountRoomType 1,'"+new UserFormat().getFormat(dateChooseBegin.getDate(),"ngaygio")+"','"+new UserFormat().getFormat(dateChooseEnd.getDate(),"ngaygio")+"'","NumbOfRoomType"));
-         n2.setText(new publicClass().selectDateToString("CountRoomType 2,'"+new UserFormat().getFormat(dateChooseBegin.getDate(),"ngaygio")+"','"+new UserFormat().getFormat(dateChooseEnd.getDate(),"ngaygio")+"'","NumbOfRoomType"));
-         n3.setText(new publicClass().selectDateToString("CountRoomType 3,'"+new UserFormat().getFormat(dateChooseBegin.getDate(),"ngaygio")+"','"+new UserFormat().getFormat(dateChooseEnd.getDate(),"ngaygio")+"'","NumbOfRoomType"));
-         n4.setText(new publicClass().selectDateToString("CountRoomType 4,'"+new UserFormat().getFormat(dateChooseBegin.getDate(),"ngaygio")+"','"+new UserFormat().getFormat(dateChooseEnd.getDate(),"ngaygio")+"'","NumbOfRoomType"));
+         n1.setText(new Utils().selectDateToString("CountRoomType 1,'"+new UserFormat().getFormat(dateChooseBegin.getDate(),"ngaygio")+"','"+new UserFormat().getFormat(dateChooseEnd.getDate(),"ngaygio")+"'","NumbOfRoomType"));
+         n2.setText(new Utils().selectDateToString("CountRoomType 2,'"+new UserFormat().getFormat(dateChooseBegin.getDate(),"ngaygio")+"','"+new UserFormat().getFormat(dateChooseEnd.getDate(),"ngaygio")+"'","NumbOfRoomType"));
+         n3.setText(new Utils().selectDateToString("CountRoomType 3,'"+new UserFormat().getFormat(dateChooseBegin.getDate(),"ngaygio")+"','"+new UserFormat().getFormat(dateChooseEnd.getDate(),"ngaygio")+"'","NumbOfRoomType"));
+         n4.setText(new Utils().selectDateToString("CountRoomType 4,'"+new UserFormat().getFormat(dateChooseBegin.getDate(),"ngaygio")+"','"+new UserFormat().getFormat(dateChooseEnd.getDate(),"ngaygio")+"'","NumbOfRoomType"));
      }
       private void CountOrderShow()
       {
-          odn1.setText(new publicClass().selectDateToString("select count(orderId) as CountOD from orders where status =1","CountOD"));
-          odn2.setText(new publicClass().selectDateToString("select count(orderId) as CountOD from orders where status =2","CountOD"));
-          odn3.setText(new publicClass().selectDateToString("select count(orderId) as CountOD from orders where status =3","CountOD"));
-          odn4.setText(new publicClass().selectDateToString("select count(orderId) as CountOD from orders where status =4","CountOD"));
+          odn1.setText(new Utils().selectDateToString("select count(orderId) as CountOD from orders where status =1","CountOD"));
+          odn2.setText(new Utils().selectDateToString("select count(orderId) as CountOD from orders where status =2","CountOD"));
+          odn3.setText(new Utils().selectDateToString("select count(orderId) as CountOD from orders where status =3","CountOD"));
+          odn4.setText(new Utils().selectDateToString("select count(orderId) as CountOD from orders where status =4","CountOD"));
       }
       private void CountCustomerType()
       {
-          cn1.setText(new publicClass().selectDateToString("select count (*) as Demkhachdathang from customersview where customerId in (select customerid from orders)","Demkhachdathang"));
-          cn2.setText(new publicClass().selectDateToString("select count (*) as Demkhachdeno from customersview where customerId in (select customerid from roomcurent_detail)","Demkhachdeno"));
+          cn1.setText(new Utils().selectDateToString("select count (*) as Demkhachdathang from customersview where customerId in (select customerid from orders)","Demkhachdathang"));
+          cn2.setText(new Utils().selectDateToString("select count (*) as Demkhachdeno from customersview where customerId in (select customerid from roomcurent_detail)","Demkhachdeno"));
       }
      private void hiddenPopup(int orderStatus)
     {
@@ -3163,25 +3140,25 @@ public class hotelForm extends javax.swing.JFrame {
         }
     }
     private void viewreport() {
-         new publicClass().addDataToTextField("select count(orderId) as OTT from orders where status=3","OTT",txtOdDtt);
-         new publicClass().addDataToTextField("select count(orderId) as OCT from orders where status=5","OCT",txtOdCtt);
-         new publicClass().addDataToTextField("select count(orderId) as TT1p from orders where status=4","TT1p",txtOdTt1p);
-         new publicClass().addDataToTextField("select count(orderId) as TOD from orders ","TOD",txtTOD);
+         new Utils().addDataToTextField("select count(orderId) as OTT from orders where status=3","OTT",txtOdDtt);
+         new Utils().addDataToTextField("select count(orderId) as OCT from orders where status=5","OCT",txtOdCtt);
+         new Utils().addDataToTextField("select count(orderId) as TT1p from orders where status=4","TT1p",txtOdTt1p);
+         new Utils().addDataToTextField("select count(orderId) as TOD from orders ","TOD",txtTOD);
          
-         new publicClass().addDataToTextField("select count(TypeName) as LDV from ServicesType","LDV",txtLDv);
-         new publicClass().addDataToTextField("select count(servicesId) TDV from services","TDV",txtTDV);
+         new Utils().addDataToTextField("select count(TypeName) as LDV from ServicesType","LDV",txtLDv);
+         new Utils().addDataToTextField("select count(servicesId) TDV from services","TDV",txtTDV);
          
-         new publicClass().addDataToTextField("select count (customerId) as KDH from orders ","KDH",txtKDH);
-         new publicClass().addDataToTextField("select count(customerId) KDO from roomcurent_detail","KDO",txtKDO);
-         new publicClass().addDataToTextField("select count (customerId) TK from customers","TK",txtTK);
+         new Utils().addDataToTextField("select count (customerId) as KDH from orders ","KDH",txtKDH);
+         new Utils().addDataToTextField("select count(customerId) KDO from roomcurent_detail","KDO",txtKDO);
+         new Utils().addDataToTextField("select count (customerId) TK from customers","TK",txtTK);
          
-         new publicClass().addDataToTextField("select count(name) LP from roomstype","LP",txtLP);
-         new publicClass().addDataToTextField("select count (roomid) as TP from rooms","TP",txtTP);
+         new Utils().addDataToTextField("select count(name) LP from roomstype","LP",txtLP);
+         new Utils().addDataToTextField("select count (roomid) as TP from rooms","TP",txtTP);
          
-         new publicClass().addDataToTextField("select count (servicesId) as txtDvHd from servicesdetail","txtDvHd",txtDvHd);
-         new publicClass().addDataToTextField("select count (roomId) as txtPHD from roomcurent_detail","txtPHD",txtPHD);
-         new publicClass().addDataToTextField("select count ( DISTINCT roomId) as regRoom from orderdetail ","regRoom",txtRegRoom);
-         new publicClass().addDataToTextField("select count(roomId) -(select  count (DISTINCT roomId) from orderdetail) as CountFreeRoom from rooms","CountFreeRoom",txtFreeRoom);
+         new Utils().addDataToTextField("select count (servicesId) as txtDvHd from servicesdetail","txtDvHd",txtDvHd);
+         new Utils().addDataToTextField("select count (roomId) as txtPHD from roomcurent_detail","txtPHD",txtPHD);
+         new Utils().addDataToTextField("select count ( DISTINCT roomId) as regRoom from orderdetail ","regRoom",txtRegRoom);
+         new Utils().addDataToTextField("select count(roomId) -(select  count (DISTINCT roomId) from orderdetail) as CountFreeRoom from rooms","CountFreeRoom",txtFreeRoom);
          
          
          
@@ -3193,16 +3170,16 @@ public class hotelForm extends javax.swing.JFrame {
             loai="all";
             String sqlshoworder=  "select * from orderjointypejoincustomer where [Trạng thái] <>'"+loai+"'";
             new sqlDatabase().addDataTable(sqlshoworder,tableOrders);
-            new publicClass().hiddencol(tableOrders,0);
-            new publicClass().hiddencol(tableOrders,1);
+            new Utils().hiddencol(tableOrders,0);
+            new Utils().hiddencol(tableOrders,1);
             
         }
         else {
             loai =combOrdertype.getSelectedItem().toString();
             String sqlshoworder=  "select * from orderjointypejoincustomer where [Trạng thái]=N'"+loai+"'";
             new sqlDatabase().addDataTable(sqlshoworder,tableOrders);
-            new publicClass().hiddencol(tableOrders,0);
-            new publicClass().hiddencol(tableOrders,1);
+            new Utils().hiddencol(tableOrders,0);
+            new Utils().hiddencol(tableOrders,1);
         }
         
       
@@ -3214,17 +3191,17 @@ public class hotelForm extends javax.swing.JFrame {
          
        if (combOrdertype.getSelectedItem().toString()=="Hiện tất cả các loại") {
             loai="all";
-            String sqlshoworder=  "select * from orderjointypejoincustomer where [Trạng thái] <>'"+loai+"' and [Người đặt] like N'%"+txtRegName.getText()+"%'";
+            String sqlshoworder=  "select * from orderjointypejoincustomer where [Trạng thái] <>'"+loai+"' and [Ngư�?i đặt] like N'%"+txtRegName.getText()+"%'";
             new sqlDatabase().addDataTable(sqlshoworder,tableOrders);
-            new publicClass().hiddencol(tableOrders,0);
-            new publicClass().hiddencol(tableOrders,1);
+            new Utils().hiddencol(tableOrders,0);
+            new Utils().hiddencol(tableOrders,1);
         }
         else {
             loai =combOrdertype.getSelectedItem().toString();
-            String sqlshoworder=  "select * from orderjointypejoincustomer where [Trạng thái]=N'"+loai+"' and [Người đặt] like N'%"+txtRegName.getText()+"%'";
+            String sqlshoworder=  "select * from orderjointypejoincustomer where [Trạng thái]=N'"+loai+"' and [Ngư�?i đặt] like N'%"+txtRegName.getText()+"%'";
             new sqlDatabase().addDataTable(sqlshoworder,tableOrders);
-            new publicClass().hiddencol(tableOrders,0);
-            new publicClass().hiddencol(tableOrders,1);
+            new Utils().hiddencol(tableOrders,0);
+            new Utils().hiddencol(tableOrders,1);
         }
        
        }        
@@ -3242,7 +3219,7 @@ public class hotelForm extends javax.swing.JFrame {
         
         String gioi ="";
         String cusType ="";
-        cusType = new publicClass().selectDateToString("select customerTypeId from customerstype where name  =N'"+cbType.getSelectedItem().toString()+"'","customerTypeId");
+        cusType = new Utils().selectDateToString("select customerTypeId from customerstype where name  =N'"+cbType.getSelectedItem().toString()+"'","customerTypeId");
         if (sexMale.isSelected()){gioi="Nam";
         }
         if (sexFemale.isSelected()){gioi="Nu";
@@ -3273,14 +3250,14 @@ public class hotelForm extends javax.swing.JFrame {
         {
             Sql="select * from customersview where customerId in (select customerid from roomcurent_detail)";
         }
-        new publicClass().addItemToTable(tblCustomers,Sql);
-        new publicClass().hiddencol(tblCustomers,0);
+        new Utils().addItemToTable(tblCustomers,Sql);
+        new Utils().hiddencol(tblCustomers,0);
         
     }
      private void showCustomers(String FirstName, String LastName)
     {
-        new publicClass().addItemToTable(tblCustomers,"select * from customersview where [Họ tên] like '%"+FirstName+" "+LastName+"%'");
-        new publicClass().hiddencol(tblCustomers,0);
+        new Utils().addItemToTable(tblCustomers,"select * from customersview where [H�? tên] like '%"+FirstName+" "+LastName+"%'");
+        new Utils().hiddencol(tblCustomers,0);
     
     }
     private void FillAllFeild(){
@@ -3317,8 +3294,8 @@ public class hotelForm extends javax.swing.JFrame {
                 // dua du lieu vao cac truong
                
                 cbType.removeAllItems();
-               new publicClass().addItemTooCombobox(cbType,"select name from customerstype where customerTypeId='"+rs2.getString("type")+"'","");
-               new publicClass().addItemTooCombobox(cbType,"select name from customerstype where customerTypeId <>'"+rs2.getString("type")+"'","");
+               new Utils().addItemTooCombobox(cbType,"select name from customerstype where customerTypeId='"+rs2.getString("type")+"'","");
+               new Utils().addItemTooCombobox(cbType,"select name from customerstype where customerTypeId <>'"+rs2.getString("type")+"'","");
                 
                 if (rs2.getString("sex").equals("Nam")){
                     System.out.println(rs2.getString("sex"));
@@ -3340,7 +3317,7 @@ public class hotelForm extends javax.swing.JFrame {
        
             String gioi ="";
             String cusType ="";
-            cusType =new publicClass().selectDateToString("select customerTypeId from customerstype where name  =N'"+cbType.getSelectedItem().toString()+"'","customerTypeId");
+            cusType =new Utils().selectDateToString("select customerTypeId from customerstype where name  =N'"+cbType.getSelectedItem().toString()+"'","customerTypeId");
             if (sexMale.isSelected()){gioi="Nam";
             }
             if (sexFemale.isSelected()){gioi="Nu";
@@ -3364,7 +3341,7 @@ public class hotelForm extends javax.swing.JFrame {
         txtVisaCardNum.setText(" ");       
         txtAge.setText(" ");
         cbType.removeAllItems();
-        new publicClass().addItemTooCombobox(cbType,"select name from customerstype ","");
+        new Utils().addItemTooCombobox(cbType,"select name from customerstype ","");
         txtAddress.setText(" ");
         txtPhone.setText(" ");
         txtEmail.setText(" ");
@@ -3384,7 +3361,7 @@ public class hotelForm extends javax.swing.JFrame {
            // pack();
            
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this,"Đang nâng cấp !");
+            JOptionPane.showMessageDialog(this,"�?ang nâng cấp !");
             
             //System.err.println("Can't set look & feel:" + e);
         }

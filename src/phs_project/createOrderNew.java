@@ -524,14 +524,14 @@ public class createOrderNew extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 // TODO add your handling code here:
-         new publicClass().addItemToTable(Bangkhachhang,"select * from cusjointype where [Họ Tên] like N'%"+Timtenkhach.getText()+"%'");
-          new publicClass().hiddencol(Bangkhachhang,0);
+         new Utils().addItemToTable(Bangkhachhang,"select * from cusjointype where [H�? Tên] like N'%"+Timtenkhach.getText()+"%'");
+          new Utils().hiddencol(Bangkhachhang,0);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void TimtenkhachKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TimtenkhachKeyReleased
 // TODO add your handling code here:
-         new publicClass().addItemToTable(Bangkhachhang,"select * from cusjointype where [Họ Tên] like N'%"+Timtenkhach.getText()+"%'");
-          new publicClass().hiddencol(Bangkhachhang,0);
+         new Utils().addItemToTable(Bangkhachhang,"select * from cusjointype where [H�? Tên] like N'%"+Timtenkhach.getText()+"%'");
+          new Utils().hiddencol(Bangkhachhang,0);
     }//GEN-LAST:event_TimtenkhachKeyReleased
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -541,8 +541,8 @@ public class createOrderNew extends javax.swing.JDialog {
 
     private void TimtenkhachKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TimtenkhachKeyPressed
 // TODO add your handling code here:
-          new publicClass().addItemToTable(Bangkhachhang,"select * from cusjointype where [Họ Tên] like N'%"+Timtenkhach.getText()+"%'");
-          new publicClass().hiddencol(Bangkhachhang,0);
+          new Utils().addItemToTable(Bangkhachhang,"select * from cusjointype where [H�? Tên] like N'%"+Timtenkhach.getText()+"%'");
+          new Utils().hiddencol(Bangkhachhang,0);
     }//GEN-LAST:event_TimtenkhachKeyPressed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
@@ -553,7 +553,7 @@ public class createOrderNew extends javax.swing.JDialog {
             {
                 if ((firstName.getText().equals(""))||(lastName.getText().equals("")))
                 {
-                JOptionPane.showMessageDialog(this,"Bạn phải nhập họ và tên của khách hàng");
+                JOptionPane.showMessageDialog(this,"Bạn phải nhập h�? và tên của khách hàng");
                 
                 }
                 else
@@ -612,7 +612,7 @@ public class createOrderNew extends javax.swing.JDialog {
         //  addItemTooCombobox(type,"select name from customerstype","");
         unfillAllFeid();
         addItemToTable(Bangkhachhang,"select * from cusjointype");
-        new publicClass().hiddencol(Bangkhachhang,0);
+        new Utils().hiddencol(Bangkhachhang,0);
         PanelKhachQuen.setVisible(true);
        // if (Khachcu.isSelected()) {
          //   new searchCustomers().setVisible(true);
@@ -637,7 +637,7 @@ public class createOrderNew extends javax.swing.JDialog {
             Makhachhang=null;
             
         } else {
-            JOptionPane.showMessageDialog(this,"Bạn phải chọn 1 khách để xóa");
+            JOptionPane.showMessageDialog(this,"Bạn phải ch�?n 1 khách để xóa");
         }
     }
     
@@ -695,7 +695,7 @@ public class createOrderNew extends javax.swing.JDialog {
             if (roomArray != null )// khi da chon room
             {
                 
-                String CountDays = new publicClass().selectDateToString("select convert(int,'"+begindate.getText()+"'-getDate()) as countDay","countDay");
+                String CountDays = new Utils().selectDateToString("select convert(int,'"+begindate.getText()+"'-getDate()) as countDay","countDay");
                // JOptionPane.showMessageDialog(this,CountDays);
                 if (new Integer(CountDays)>0)
                 { 

@@ -49,18 +49,18 @@ public class AddRooms extends javax.swing.JDialog {
         if(table.getRowCount()!= 0){
             table.setRowSelectionInterval(rowselect,rowselect);        
         }
-        new publicClass().hiddencol(table,1);
+        new Utils().hiddencol(table,1);
     }
     private void seashRooms(){
         String roomN = txtRoomName.getText();
         String  sql  = "Select roomNumb as 'Tên phòng',roomId, name as 'Loại phòng' , price as 'Giá phòng' from rooms join roomstype on rooms.type = roomstype.roomtypeId ";
               sql = sql + "Where rooms.roomNumb like N'%"+roomN+"%'";
         new sqlDatabase().addDataTable(sql,table,2);
-        new publicClass().hiddencol(table,1);
+        new Utils().hiddencol(table,1);
     }
     private void addRoomsType(){
         String sql = "select name from roomstype";
-        new sqlDatabase().addDataCombobox(sql,cboRoomType,"----- Chọn loại phòng------");
+        new sqlDatabase().addDataCombobox(sql,cboRoomType,"----- Ch�?n loại phòng------");
     }
     
     private void ResetFields(){
@@ -84,12 +84,12 @@ public class AddRooms extends javax.swing.JDialog {
             rowselect = 0;
         }
         else{
-            JOptionPane.showMessageDialog(this,"Bạn phải chọn phòng muốn xóa");
+            JOptionPane.showMessageDialog(this,"Bạn phải ch�?n phòng muốn xóa");
         }        
     }
     private void updatePrices ()
     {  
-         new publicClass().SQLRUN("Update roomStype set  price='"+txtPrice.getText()+"'  where name=N'"+cboRoomType.getSelectedItem().toString()+"'");
+         new Utils().SQLRUN("Update roomStype set  price='"+txtPrice.getText()+"'  where name=N'"+cboRoomType.getSelectedItem().toString()+"'");
         
     }
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
@@ -334,7 +334,7 @@ public class AddRooms extends javax.swing.JDialog {
 // TODO add your handling code here:
         if(roomname != null){
              if (txtPrice.getText().equals("")){
-            JOptionPane.showMessageDialog(this,"Giá không được bỏ trống  !");
+            JOptionPane.showMessageDialog(this,"Giá không được b�? trống  !");
         }
         else
         {
@@ -345,7 +345,7 @@ public class AddRooms extends javax.swing.JDialog {
         }
         }
         else{
-            JOptionPane.showMessageDialog(this,"Bạn phải chọn phòng muốn thay đổi");
+            JOptionPane.showMessageDialog(this,"Bạn phải ch�?n phòng muốn thay đổi");
         }             
     }//GEN-LAST:event_btnUpdateActionPerformed
 
@@ -363,8 +363,8 @@ public class AddRooms extends javax.swing.JDialog {
         txtRoomName.selectAll();        
         
         cboRoomType.removeAllItems();
-       new publicClass().addItemTooCombobox(cboRoomType,"select name from roomstype where name=N'"+selectRoomType+"'","");
-       new publicClass().addItemTooCombobox(cboRoomType,"select name from roomstype where name <> N'"+selectRoomType+"'","");
+       new Utils().addItemTooCombobox(cboRoomType,"select name from roomstype where name=N'"+selectRoomType+"'","");
+       new Utils().addItemTooCombobox(cboRoomType,"select name from roomstype where name <> N'"+selectRoomType+"'","");
     }//GEN-LAST:event_tableMouseClicked
 
     private void cboRoomTypeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboRoomTypeItemStateChanged
@@ -389,7 +389,7 @@ public class AddRooms extends javax.swing.JDialog {
         JOptionPane.showMessageDialog(this,"Bạn phải nhập tên phòng");
         }
         else {
-            String CheckName=new publicClass().selectDateToString("select count(roomNumb) countName from rooms where upper(roomnumb)=upper(N'"+txtRoomName.getText()+"')","countName");
+            String CheckName=new Utils().selectDateToString("select count(roomNumb) countName from rooms where upper(roomnumb)=upper(N'"+txtRoomName.getText()+"')","countName");
             if (new Integer(CheckName)>0)
             {
                 JOptionPane.showMessageDialog(this,"Tên phòng đã có, nhập tên khác !");
