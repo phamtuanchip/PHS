@@ -46,7 +46,7 @@ public class Utils {
     public static void SQLRUN(String SQLTEXT) // Ham de chay cau truy van
     {
         try{
-            Connection   conn = getConnection();
+            Connection   conn = CON();
             Statement stm = conn.createStatement();
             stm.execute(SQLTEXT);
             conn.close();
@@ -88,7 +88,7 @@ public class Utils {
     {
 
         try{
-            Statement sttm = getConnection().createStatement();
+            Statement sttm = CON().createStatement();
             ResultSet rs = sttm.executeQuery(sql);
             while(rs.next()){
                 TexFiedName.setText(rs.getString(rsName));
@@ -107,7 +107,7 @@ public class Utils {
         String returnvl ="" ;
 
         try{
-            Statement sttm = getConnection().createStatement();
+            Statement sttm = CON().createStatement();
             ResultSet rs = sttm.executeQuery(sql);
             while(rs.next()){
                 System.err.println(rs.getString(rsName));
@@ -125,7 +125,7 @@ public class Utils {
         float returnvl =0 ;
 
         try{
-            Statement sttm = getConnection().createStatement();
+            Statement sttm = CON().createStatement();
             ResultSet rs = sttm.executeQuery(sql);
             while(rs.next()){
                 System.err.println(rs.getString(rsName));
@@ -141,7 +141,7 @@ public class Utils {
     public Vector getDataToVector(String sql,String rsName){
         Vector vt = new Vector();
         try{
-            Statement sttm = getConnection().createStatement();
+            Statement sttm = CON().createStatement();
             ResultSet rs = sttm.executeQuery(sql);
             while(rs.next()){
                 System.err.println(rs.getString(rsName));
@@ -159,7 +159,7 @@ public class Utils {
     /** Creates a new instance of publicClass */
     public Utils() {
     }
-    public static Connection getConnection() {
+    public static Connection CON() {
         try {
         if(con == null || con.isClosed()){
             con = new connectDatabase().getConnection();

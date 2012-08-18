@@ -10,7 +10,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
-import java.util.Locale;
 import javax.swing.JOptionPane;
 
 /**
@@ -34,7 +33,7 @@ public class CreateUser extends javax.swing.JDialog {
         addType();      
     }
     private void ViewUser(){
-        String sql = "SELECT username as 'Tài khoản', FirstName + ' ' + LastName as 'Họ Tên' FROM users";
+        String sql = "SELECT username as 'Tài khoản', FirstName + ' ' + LastName as 'H�? Tên' FROM users";
         new sqlDatabase().addDataTable(sql,table,2);
     }
     private int CheckValues(){
@@ -108,7 +107,7 @@ public class CreateUser extends javax.swing.JDialog {
             int re = new sqlDatabase().runSql(sql);
                     //JOptionPane.showMessageDialog(this,txtBirthday.getDate());
             if(true){
-                JOptionPane.showMessageDialog(this,"Đã thêm một người quản lý mới");
+                JOptionPane.showMessageDialog(this,"�?ã thêm một ngư�?i quản lý mới");
             }  
         }                     
     }
@@ -186,13 +185,13 @@ public class CreateUser extends javax.swing.JDialog {
         if(table.getSelectedRow()!=-1){
             int result = new sqlDatabase().runSql(sql);
             if(result != 0){
-                JOptionPane.showMessageDialog(this,"Đã xóa thành công");
+                JOptionPane.showMessageDialog(this,"�?ã xóa thành công");
                 ResetField();
                 ViewUser();
             }
         }
         else{
-            JOptionPane.showMessageDialog(this,"Bạn phải chọn tài khoản muốn xóa");
+            JOptionPane.showMessageDialog(this,"Bạn phải ch�?n tài khoản muốn xóa");
         }
     }
     /** This method is called from within the constructor to

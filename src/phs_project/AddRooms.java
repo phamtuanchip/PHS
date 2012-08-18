@@ -6,14 +6,11 @@
 
 package phs_project;
 
-import java.awt.Frame;
-import javax.swing.JOptionPane;
+ 
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import javax.swing.JTextField;
 
 /**
@@ -26,8 +23,15 @@ public class AddRooms extends javax.swing.JDialog {
     public AddRooms(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
-
+        this.setTitle(Utils.RB().getString("AddRooms-window-tille"));
+        jLabel1.setText(Utils.RB().getString("AddRooms-label-room-name"));
+        jLabel2.setText(Utils.RB().getString("AddRooms-label-room-type"));
+        jLabel3.setText(Utils.RB().getString("AddRooms-label-room-price"));
+        btnAdd.setText(Utils.RB().getString("Button-label-add"));
+        btnSeach.setText(Utils.RB().getString("Button-label-search"));
+        btnDelete.setText(Utils.RB().getString("Button-label-delete"));
+        btnExit.setText(Utils.RB().getString("Button-label-exit"));
+        btnUpdate.setText(Utils.RB().getString("Button-label-update"));
         addRoomsType();
         ViewRooms();
         ResetFields();
@@ -51,18 +55,18 @@ public class AddRooms extends javax.swing.JDialog {
         if(table.getRowCount()!= 0){
             table.setRowSelectionInterval(rowselect,rowselect);        
         }
-        new Utils().hiddencol(table,1);
+        Utils.hiddencol(table,1);
     }
     private void seashRooms(){
         String roomN = txtRoomName.getText();
-        String  sql  = "Select roomNumb as 'Tên phòng',roomId, name as 'Loại phòng' , price as 'Giá phòng' from rooms join roomstype on rooms.type = roomstype.roomtypeId ";
-              sql = sql + "Where rooms.roomNumb like N'%"+roomN+"%'";
-        new sqlDatabase().addDataTable(sql,table,2);
-        new Utils().hiddencol(table,1);
+        String  sqlst  = "Select roomNumb as 'Tên phòng',roomId, name as 'Loại phòng' , price as 'Giá phòng' from rooms join roomstype on rooms.type = roomstype.roomtypeId ";
+              sqlst = sqlst + "Where rooms.roomNumb like N'%"+roomN+"%'";
+        new sqlDatabase().addDataTable(sqlst,table,2);
+        Utils.hiddencol(table,1);
     }
     private void addRoomsType(){
-        String sql = "select name from roomstype";
-        new sqlDatabase().addDataCombobox(sql,cboRoomType,"----- Ch�?n loại phòng------");
+        String sqlst = "select name from roomstype";
+        new sqlDatabase().addDataCombobox(sqlst,cboRoomType,"------"+Utils.RB().getString("AddRooms-dropdown-default")+"------");
     }
     
     private void ResetFields(){
@@ -75,23 +79,23 @@ public class AddRooms extends javax.swing.JDialog {
     
     private void editRoom(){
         String newroomname = txtRoomName.getText();
-        String sql = "update rooms set roomNumb = N'"+newroomname+"'";
-                sql = sql + "where roomNumb = N'"+roomname+"' ";
-        int result = new sqlDatabase().runSql(sql);          
+        String sqlst = "update rooms set roomNumb = N'"+newroomname+"'";
+                sqlst = sqlst + "where roomNumb = N'"+roomname+"' ";
+        sqlDatabase.runSql(sqlst);
     }
     private void deleterooms(){
-        String sql = "delete rooms where roomNumb  = N'"+roomname+"'";
+        String sqlst = "delete rooms where roomNumb  = N'"+roomname+"'";
         if(roomname !=null){
-            int result = new sqlDatabase().runSql(sql);            
+            sqlDatabase.runSql(sqlst);
             rowselect = 0;
         }
         else{
-            JOptionPane.showMessageDialog(this,"Bạn phải ch�?n phòng muốn xóa");
+            JOptionPane.showMessageDialog(this,Utils.RB().getString("AddRooms-msg-have-to-select-room"));
         }        
     }
     private void updatePrices ()
     {  
-         new Utils().SQLRUN("Update roomStype set  price='"+txtPrice.getText()+"'  where name=N'"+cboRoomType.getSelectedItem().toString()+"'");
+         Utils.SQLRUN("Update roomStype set  price='"+txtPrice.getText()+"'  where name=N'"+cboRoomType.getSelectedItem().toString()+"'");
         
     }
     // <editor-fold defaultstate="collapsed" desc=" Generated Code ">//GEN-BEGIN:initComponents
@@ -336,18 +340,15 @@ public class AddRooms extends javax.swing.JDialog {
 // TODO add your handling code here:
         if(roomname != null){
              if (txtPrice.getText().equals("")){
-            JOptionPane.showMessageDialog(this,"Giá không được b�? trống  !");
-        }
-        else
-        {
+            JOptionPane.showMessageDialog(this,Utils.RB().getString("AddRooms-msg-room-price-require"));
+             } else {
             updatePrices ();
             editRoom();
             ViewRooms();
             ResetFields();
-        }
-        }
-        else{
-            JOptionPane.showMessageDialog(this,"Bạn phải ch�?n phòng muốn thay đổi");
+            }
+        } else{
+            JOptionPane.showMessageDialog(this,Utils.RB().getString("AddRooms-msg-room-name-require"));
         }             
     }//GEN-LAST:event_btnUpdateActionPerformed
 
@@ -365,42 +366,31 @@ public class AddRooms extends javax.swing.JDialog {
         txtRoomName.selectAll();        
         
         cboRoomType.removeAllItems();
-       new Utils().addItemTooCombobox(cboRoomType,"select name from roomstype where name=N'"+selectRoomType+"'","");
-       new Utils().addItemTooCombobox(cboRoomType,"select name from roomstype where name <> N'"+selectRoomType+"'","");
+        Utils.addItemTooCombobox(cboRoomType,"select name from roomstype where name=N'"+selectRoomType+"'","");
+        Utils.addItemTooCombobox(cboRoomType,"select name from roomstype where name <> N'"+selectRoomType+"'","");
     }//GEN-LAST:event_tableMouseClicked
 
     private void cboRoomTypeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cboRoomTypeItemStateChanged
 // TODO add your handling code here:
-        /*
-        if(cboRoomType.getSelectedIndex()!= 0){
-            typename = cboRoomType.getSelectedItem().toString(); 
-            String typeId1 =selectDateToString("select * from roomstype where name=N'"+cboRoomType.getSelectedItem().toString()+"'","roomtypeId");
-            addDataToTextField("select price from roomstype where roomtypeId= '"+typeId1+"'","price",txtPrice);
-        }
-        else{
-            typename = null;
-            txtPrice.setText("");
-        }
-        ViewRooms();        
-         */
+        
     }//GEN-LAST:event_cboRoomTypeItemStateChanged
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
 // TODO add your handling code here:
-        if (txtRoomName.getText().equals("")) {
-        JOptionPane.showMessageDialog(this,"Bạn phải nhập tên phòng");
+        if (txtRoomName.getText().trim().isEmpty()) {
+        JOptionPane.showMessageDialog(this,Utils.RB().getString("AddRooms-msg-room-name-require"));
         }
         else {
-            String CheckName=new Utils().selectDateToString("select count(roomNumb) countName from rooms where upper(roomnumb)=upper(N'"+txtRoomName.getText()+"')","countName");
+            String CheckName=Utils.selectDateToString("select count(roomNumb) countName from rooms where upper(roomnumb)=upper(N'"+txtRoomName.getText()+"')","countName");
             if (new Integer(CheckName)>0)
             {
-                JOptionPane.showMessageDialog(this,"Tên phòng đã có, nhập tên khác !");
+                JOptionPane.showMessageDialog(this,Utils.RB().getString("AddRooms-msg-room-name-exist"));
             }
             else
             {
             String typeId =selectDateToString("select * from roomstype where name=N'"+cboRoomType.getSelectedItem().toString()+"'","roomtypeId");
             String sqlinsert ="insert into rooms (roomnumb,type) values ('"+txtRoomName.getText()+"','"+typeId+"')";
-            int Result = new sqlDatabase().runSql(sqlinsert);
+            sqlDatabase.runSql(sqlinsert);
             ViewRooms();
             }
         }
@@ -428,11 +418,9 @@ public class AddRooms extends javax.swing.JDialog {
     {
         String returnvl ="" ;
         //Connection con =null;
-        if(con == null){
-            con = new connectDatabase().getConnection();
-        }
+
         try{
-            Statement sttm = con.createStatement();
+            Statement sttm = Utils.CON().createStatement();
             ResultSet rs = sttm.executeQuery(sql);
             while(rs.next()){
                 System.err.println(rs.getString(rsName));
@@ -482,6 +470,6 @@ public class AddRooms extends javax.swing.JDialog {
     private javax.swing.JTextField txtRoomName;
     // End of variables declaration//GEN-END:variables
 
-    private Frame hotelForm;
+ 
     
 }

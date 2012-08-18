@@ -778,7 +778,7 @@ public class createOrderNew extends javax.swing.JDialog {
     public void SQLRUN(String SQLTEXT) // Ham de chay cau truy van
     {
         try{
-            Connection   conn = Utils.getConnection();
+            Connection   conn = Utils.CON();
             Statement stm = conn.createStatement();
             stm.execute(SQLTEXT);
             conn.close();
@@ -823,7 +823,7 @@ public class createOrderNew extends javax.swing.JDialog {
     {
 
         try{
-            Statement sttm = Utils.getConnection().createStatement();
+            Statement sttm = Utils.CON().createStatement();
             ResultSet rs = sttm.executeQuery(sql);
             while(rs.next()){
                 TexFiedName.setText(rs.getString(rsName));
@@ -839,7 +839,7 @@ public class createOrderNew extends javax.swing.JDialog {
         String returnvl ="" ;
          
         try{
-            Statement sttm = Utils.getConnection().createStatement();
+            Statement sttm = Utils.CON().createStatement();
             ResultSet rs = sttm.executeQuery(sql);
             while(rs.next()){
                 System.err.println(rs.getString(rsName));

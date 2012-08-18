@@ -21,11 +21,9 @@ public class sqlDatabase {
     public sqlDatabase() {
     }
     public void addDataTable(String sql,JTable tablename){ 
-        if(con == null){        
-            con = new connectDatabase().getConnection();
-        }
+
         try{            
-            Statement st = con.createStatement();        
+            Statement st = Utils.CON().createStatement();
             ResultSet rs = st.executeQuery(sql);
                 
             ResultsModel model = new ResultsModel();     // Create a table model
@@ -45,13 +43,11 @@ public class sqlDatabase {
         Statement st;
         tablename.setFocusable(false);
         
-        if(con == null){        
-            con = new connectDatabase().getConnection();
-        }        
+
         if(type == 3){
             try{
                 CallableStatement cs;
-                cs = con.prepareCall(sql,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);                
+                cs = Utils.CON().prepareCall(sql,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
                 rs = cs.executeQuery();
                 ResultsTableModel model = new ResultsTableModel();     // Create a table model        
                 model.setResultSet(rs);               
@@ -67,7 +63,7 @@ public class sqlDatabase {
         if(type == 2){
             try{
                 CallableStatement cs;
-                cs = con.prepareCall(sql,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
+                cs = Utils.CON().prepareCall(sql,ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
                 rs = cs.executeQuery();
                 ResultsTableModel model = new ResultsTableModel();     // Create a table model        
                 model.setResultSet(rs);               
@@ -82,7 +78,7 @@ public class sqlDatabase {
         }
         else{
             try{                   
-                st = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);        
+                st = Utils.CON().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
                 rs = st.executeQuery(sql);
                 ResultsTableModel model = new ResultsTableModel();     // Create a table model        
                 model.setResultSet(rs);               
@@ -100,11 +96,9 @@ public class sqlDatabase {
     
     public int ConverSql(String sql,int count){
         int result = 0 ;
-        if(con == null){        
-            con = new connectDatabase().getConnection();      
-        }
+
         try{ 
-            Statement sttm = con.createStatement();        
+            Statement sttm = Utils.CON().createStatement();
             ResultSet rs = sttm.executeQuery(sql);            
         while(rs.next()){
             result =  rs.getInt(count);
@@ -121,11 +115,9 @@ public class sqlDatabase {
        
     
     public void addDataCombobox(String sql,JComboBox comboboxname){
-        if(con == null){        
-            con = new connectDatabase().getConnection();      
-        }
+
         try{ 
-            Statement sttm = con.createStatement();        
+            Statement sttm = Utils.CON().createStatement();
             ResultSet rs = sttm.executeQuery(sql);            
         while(rs.next()){
             comboboxname.addItem(rs.getString(1));
@@ -138,14 +130,12 @@ public class sqlDatabase {
         }
     }
     public void addDataCombobox(String sql,JComboBox comboboxname,String title){//overwrite method
-        if(con == null){        
-            con = new connectDatabase().getConnection();      
-        }
-        if(!title.equals("")){
+
+        if(!title.isEmpty()){
             comboboxname.addItem(title);
         }
         try{ 
-            Statement sttm = con.createStatement();        
+            Statement sttm = Utils.CON().createStatement();
             ResultSet rs = sttm.executeQuery(sql);            
         while(rs.next()){
             comboboxname.addItem(rs.getString(1));
@@ -160,11 +150,9 @@ public class sqlDatabase {
 //  
     public String converToString(String sql,int count){
         String result = "" ;
-        if(con == null){        
-            con = new connectDatabase().getConnection();      
-        }
+
         try{ 
-            Statement sttm = con.createStatement();        
+            Statement sttm = Utils.CON().createStatement();
             ResultSet rs = sttm.executeQuery(sql);            
             while(rs.next()){
                 result =  rs.getString(count);
@@ -178,13 +166,11 @@ public class sqlDatabase {
         return result;
     }
     //////////////////
-    public int runSql(String sql){
+    public static int runSql(String sql){
         int result = 0;
-        if(con == null){        
-            con = new connectDatabase().getConnection();      
-        }
+
         try{
-            Statement sttm = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);        
+            Statement sttm = Utils.CON().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
             result = sttm.executeUpdate(sql);                      
         }
         catch(Exception e){
@@ -195,11 +181,9 @@ public class sqlDatabase {
     
       public int getCount(String sql){
         int result = 0;
-        if(con == null){        
-            con = new connectDatabase().getConnection();      
-        }
+
         try{
-            Statement sttm = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);        
+            Statement sttm = Utils.CON().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
             ResultSet rs = sttm.executeQuery(sql);                      
             while(rs.next()){
                 result++;
@@ -213,11 +197,9 @@ public class sqlDatabase {
     }    
     
     public void addDataToTextField(String sql,JTextField comboboxname){
-        if(con == null){        
-            con = new connectDatabase().getConnection();      
-        }
+
         try{ 
-            Statement sttm = con.createStatement();        
+            Statement sttm = Utils.CON().createStatement();
             ResultSet rs = sttm.executeQuery(sql);            
         while(rs.next()){
             comboboxname.setText(rs.getString(1));
@@ -230,5 +212,5 @@ public class sqlDatabase {
         }
     }
     
-private Connection con;
+ 
 }

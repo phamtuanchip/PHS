@@ -2684,7 +2684,7 @@ public class hotelForm extends javax.swing.JFrame {
     private void SQLRUN (String SQLTEXT)
      {
        try{
-            Connection conn = Utils.getConnection();
+            Connection conn = Utils.CON();
             Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
             stm.execute(SQLTEXT);
             conn.close();
