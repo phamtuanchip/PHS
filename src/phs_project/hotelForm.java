@@ -45,9 +45,9 @@ public class hotelForm extends javax.swing.JFrame {
         showCustomers();
         CountCustomerType();
         jDateChooserSearch.setLocale(new Locale("vi","VN"));
-        new Utils().addItemTooCombobox(cbType,"select name from customerstype","");
+        Utils.addItemTooCombobox(cbType,"select name from customerstype","");
         //End Tuanp onload contructer
-    
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     
     /** This method is called from within the constructor to
@@ -2287,7 +2287,7 @@ public class hotelForm extends javax.swing.JFrame {
           JOptionPane.showMessageDialog(this,"Bạn phải ch�?n một đơn hàng");            
         }
         else 
-        {   String checkNum=new Utils().selectDateToString("select count(roomId) as checkRNum from orderDetail where orderid='"+ODID+"' and getdate() between begindate and enddate","checkRNum");
+        {   String checkNum=Utils.selectDateToString("select count(roomId) as checkRNum from orderDetail where orderid='"+ODID+"' and getdate() between begindate and enddate","checkRNum");
             if (new Integer(checkNum)==0)
             {
                 JOptionPane.showMessageDialog(this,"�?ơn hàng này các phòng chưa đến ngày ở ! không thể xếp khách");
@@ -2410,7 +2410,7 @@ public class hotelForm extends javax.swing.JFrame {
 
                }  
                else
-               {   String CountCus=new Utils().selectDateToString("select count(customerId) as CC from customers where upper(firstName) =upper(N'"+txtFirstname.getText()+"') and upper(lastName) =upper(N'"+txtLastname.getText()+"')","CC");
+               {   String CountCus=Utils.selectDateToString("select count(customerId) as CC from customers where upper(firstName) =upper(N'"+txtFirstname.getText()+"') and upper(lastName) =upper(N'"+txtLastname.getText()+"')","CC");
                    if (new Integer(CountCus)>0)
                    {
                        int cf = JOptionPane.showConfirmDialog(this,"Tên khách đã có ! bạn vẫn muốn tiếp tục ?","Cảnh báo !",0);
@@ -2506,9 +2506,9 @@ public class hotelForm extends javax.swing.JFrame {
         else
         {   int cf=JOptionPane.showConfirmDialog(this,"Bạn thực sự muốn xóa tất cả thông tin v�? "+CusTomerName+" hay không ?","Cảnh báo",0);
             if (cf==0){
-            new Utils().SQLRUN("clearorderofcus '"+CusId+"'");
-            new Utils().addItemToTable(tblCustomers,"select * from customersview");
-            new Utils().hiddencol(tblCustomers,0);
+                Utils.SQLRUN("clearorderofcus '"+CusId+"'");
+                Utils.addItemToTable(tblCustomers,"select * from customersview");
+                Utils.hiddencol(tblCustomers,0);
             UnFillAllFeild();
             }
         }
@@ -2516,8 +2516,8 @@ public class hotelForm extends javax.swing.JFrame {
 
     private void tblCustomersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCustomersMouseClicked
 // TODO add your handling code here:
-      CusId= new Utils().SelectedRowToString(tblCustomers,0);
-      CusTomerName= new Utils().SelectedRowToString(tblCustomers,1);
+      CusId= Utils.SelectedRowToString(tblCustomers,0);
+      CusTomerName= Utils.SelectedRowToString(tblCustomers,1);
       FillAllFeild();
     }//GEN-LAST:event_tblCustomersMouseClicked
 
@@ -2684,12 +2684,12 @@ public class hotelForm extends javax.swing.JFrame {
     private void SQLRUN (String SQLTEXT)
      {
        try{
-            Connection conn = new connectDatabase().getConnection();
+            Connection conn = Utils.getConnection();
             Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
             stm.execute(SQLTEXT);
             conn.close();
             stm.close();
-            System.out.println(SQLTEXT);
+            
         }
         catch(Exception e){
             e.printStackTrace();
@@ -2942,17 +2942,17 @@ public class hotelForm extends javax.swing.JFrame {
 	TableDataRoom tableDataRoom = new TableDataRoom(beginDate,endDate,selectRoomTypeId,title);
 	table.setModel(tableDataRoom);		
 	table.setRowHeight(17);
-        new Utils().hiddencol(table,1);
-        new Utils().hiddencol(table,3);
+        Utils.hiddencol(table,1);
+        Utils.hiddencol(table,3);
     }
 
  
     
  //-------------------------HuynhNt Code--------------------------------//
     private void Infomation(){
-        lblUser.setText(new Utils().selectDateToString("select username from users where userName='"+loginForm.user+"'","username"));
+        lblUser.setText(Utils.selectDateToString("select username from users where userName='"+loginForm.user+"'","username"));
         lblRight.setText(loginForm.usertypename);        
-        lblImage.setIcon(new javax.swing.ImageIcon(getClass().getResource(new Utils().selectDateToString("select image from users where userName='"+loginForm.user+"'","image"))));
+        lblImage.setIcon(new javax.swing.ImageIcon(getClass().getResource(Utils.selectDateToString("select image from users where userName='"+loginForm.user+"'","image"))));
         lblImage.setText("");
     }
     
@@ -2973,7 +2973,7 @@ public class hotelForm extends javax.swing.JFrame {
             sql = sql + "UNION select roomnumb, N'Phòng đang trống' as 'Trạng thái',roomid from rooms where roomid not in(select roomid from TrangThai ";
             sql = sql + "where (roomstatusId = 5 or roomstatusId = 6 or roomstatusId = 8 or roomstatusId = 7 ) and '"+dateChoose+"' between beginDate and endDate)" ;
             new sqlDatabase().addDataTable(sql,tableViewRoomStaus,3);  
-            new Utils().hiddencol(tableViewRoomStaus,2);
+            Utils.hiddencol(tableViewRoomStaus,2);
          }
          
         if (TatusRoom.equals("Phòng đang rỗi"))
@@ -2981,14 +2981,14 @@ public class hotelForm extends javax.swing.JFrame {
             sql = "select roomnumb as 'Tên phòng', N'Phòng đang trống' as 'Trạng thái',roomid from rooms where roomid not in(select roomid from TrangThai ";
             sql = sql + "where (roomstatusId = 5 or roomstatusId = 6 or roomstatusId = 8 or roomstatusId = 7 ) and '"+dateChoose+"' between beginDate and endDate)" ;
             new sqlDatabase().addDataTable(sql,tableViewRoomStaus,3);  
-            new Utils().hiddencol(tableViewRoomStaus,2);
+            Utils.hiddencol(tableViewRoomStaus,2);
         }
          if (TatusRoom.equals("Phòng đang đặt"))
          {
             sql = "select roomnumb as 'Tên phòng', N'Phòng đang đặt' as 'Trạng thái',roomid from rooms where roomid in(select roomid from TrangThai ";
             sql = sql + "where roomstatusId = 8 and '"+dateChoose+"' between beginDate and endDate) ";
             new sqlDatabase().addDataTable(sql,tableViewRoomStaus,3);  
-            new Utils().hiddencol(tableViewRoomStaus,2);
+            Utils.hiddencol(tableViewRoomStaus,2);
         }
         
         if (TatusRoom.equals("Phòng đang bận"))
@@ -2997,7 +2997,7 @@ public class hotelForm extends javax.swing.JFrame {
             sql =  "select roomnumb as 'Tên phòng', N'Phòng đang bận' as 'Trạng thái',roomid as 'Mã phòng' from rooms  where roomid in (select roomid from TrangThai " ; 
             sql = sql + "where (roomstatusId = 5 or roomstatusId = 6)  and '"+dateChoose+"' between beginDate and endDate) ";
             new sqlDatabase().addDataTable(sql,tableViewRoomStaus,3);  
-            new Utils().hiddencol(tableViewRoomStaus,2);
+            Utils.hiddencol(tableViewRoomStaus,2);
         }
         
        //String sql = "{call ViewRoomStatusToday('"+dateChoose+"')}";
@@ -3078,49 +3078,49 @@ public class hotelForm extends javax.swing.JFrame {
     {
     {   if (jRadioButtonRoomName.isSelected())
             
-        new Utils().addItemToTable(tblSearchResult,"select [Tên phòng],[Tên khách],begindate as [Ngày đến ở] from vSearchRooms where [Tên phòng] like '%"+txtInput.getText()+"%'");
+        Utils.addItemToTable(tblSearchResult,"select [Tên phòng],[Tên khách],begindate as [Ngày đến ở] from vSearchRooms where [Tên phòng] like '%"+txtInput.getText()+"%'");
     }
        if (jRadioButtonCusName.isSelected())
        {   
-        new Utils().addItemToTable(tblSearchResult,"select [Tên khách],[Tên phòng],begindate as [Ngày đến ở] from vSearchRooms where [Tên khách] like '%"+txtInput.getText()+"%'");
+        Utils.addItemToTable(tblSearchResult,"select [Tên khách],[Tên phòng],begindate as [Ngày đến ở] from vSearchRooms where [Tên khách] like '%"+txtInput.getText()+"%'");
        }
         if (jRadioButtonDay.isSelected())
         {
-         new Utils().addItemToTable(tblSearchResult,"select begindate as [Ngày đến ở],[Tên khách],[Tên phòng] from vSearchRooms where convert(int,convert(datetime ,convert (nvarchar, DATEPART(month,begindate))+'/'+convert (nvarchar,DATEPART(day,begindate))+'/'+convert(nvarchar,DATEPART(year,begindate))) -'"+new UserFormat().getFormat(jDateChooserSearch.getDate(),"ngay")+"')=0 ");
+         Utils.addItemToTable(tblSearchResult,"select begindate as [Ngày đến ở],[Tên khách],[Tên phòng] from vSearchRooms where convert(int,convert(datetime ,convert (nvarchar, DATEPART(month,begindate))+'/'+convert (nvarchar,DATEPART(day,begindate))+'/'+convert(nvarchar,DATEPART(year,begindate))) -'"+new UserFormat().getFormat(jDateChooserSearch.getDate(),"ngay")+"')=0 ");
         }
     }
      
      private void NumbofRoomShow()
      {
-        lbl1.setText(new Utils().selectDateToString("select name from roomstype where roomtypeid=1","name"));
-         lbl2.setText(new Utils().selectDateToString("select name from roomstype where roomtypeid=2","name"));
-          lbl3.setText(new Utils().selectDateToString("select name from roomstype where roomtypeid=3","name"));
-           lbl4.setText(new Utils().selectDateToString("select name from roomstype where roomtypeid=4","name"));
+        lbl1.setText(Utils.selectDateToString("select name from roomstype where roomtypeid=1","name"));
+         lbl2.setText(Utils.selectDateToString("select name from roomstype where roomtypeid=2","name"));
+          lbl3.setText(Utils.selectDateToString("select name from roomstype where roomtypeid=3","name"));
+           lbl4.setText(Utils.selectDateToString("select name from roomstype where roomtypeid=4","name"));
            
-           odtype1.setText(new Utils().selectDateToString("select status_detail as Name from order_Status where statusId=1","name"));
-           odtype2.setText(new Utils().selectDateToString("select status_detail as Name from order_Status where statusId=2","name"));
-           odtype3.setText(new Utils().selectDateToString("select status_detail as Name from order_Status where statusId=3","name"));
-           odtype4.setText(new Utils().selectDateToString("select status_detail as Name from order_Status where statusId=4","name"));
+           odtype1.setText(Utils.selectDateToString("select status_detail as Name from order_Status where statusId=1","name"));
+           odtype2.setText(Utils.selectDateToString("select status_detail as Name from order_Status where statusId=2","name"));
+           odtype3.setText(Utils.selectDateToString("select status_detail as Name from order_Status where statusId=3","name"));
+           odtype4.setText(Utils.selectDateToString("select status_detail as Name from order_Status where statusId=4","name"));
            
      }
      private void CountRoomShow()
      {
-         n1.setText(new Utils().selectDateToString("CountRoomType 1,'"+new UserFormat().getFormat(dateChooseBegin.getDate(),"ngaygio")+"','"+new UserFormat().getFormat(dateChooseEnd.getDate(),"ngaygio")+"'","NumbOfRoomType"));
-         n2.setText(new Utils().selectDateToString("CountRoomType 2,'"+new UserFormat().getFormat(dateChooseBegin.getDate(),"ngaygio")+"','"+new UserFormat().getFormat(dateChooseEnd.getDate(),"ngaygio")+"'","NumbOfRoomType"));
-         n3.setText(new Utils().selectDateToString("CountRoomType 3,'"+new UserFormat().getFormat(dateChooseBegin.getDate(),"ngaygio")+"','"+new UserFormat().getFormat(dateChooseEnd.getDate(),"ngaygio")+"'","NumbOfRoomType"));
-         n4.setText(new Utils().selectDateToString("CountRoomType 4,'"+new UserFormat().getFormat(dateChooseBegin.getDate(),"ngaygio")+"','"+new UserFormat().getFormat(dateChooseEnd.getDate(),"ngaygio")+"'","NumbOfRoomType"));
+         n1.setText(Utils.selectDateToString("CountRoomType 1,'"+new UserFormat().getFormat(dateChooseBegin.getDate(),"ngaygio")+"','"+new UserFormat().getFormat(dateChooseEnd.getDate(),"ngaygio")+"'","NumbOfRoomType"));
+         n2.setText(Utils.selectDateToString("CountRoomType 2,'"+new UserFormat().getFormat(dateChooseBegin.getDate(),"ngaygio")+"','"+new UserFormat().getFormat(dateChooseEnd.getDate(),"ngaygio")+"'","NumbOfRoomType"));
+         n3.setText(Utils.selectDateToString("CountRoomType 3,'"+new UserFormat().getFormat(dateChooseBegin.getDate(),"ngaygio")+"','"+new UserFormat().getFormat(dateChooseEnd.getDate(),"ngaygio")+"'","NumbOfRoomType"));
+         n4.setText(Utils.selectDateToString("CountRoomType 4,'"+new UserFormat().getFormat(dateChooseBegin.getDate(),"ngaygio")+"','"+new UserFormat().getFormat(dateChooseEnd.getDate(),"ngaygio")+"'","NumbOfRoomType"));
      }
       private void CountOrderShow()
       {
-          odn1.setText(new Utils().selectDateToString("select count(orderId) as CountOD from orders where status =1","CountOD"));
-          odn2.setText(new Utils().selectDateToString("select count(orderId) as CountOD from orders where status =2","CountOD"));
-          odn3.setText(new Utils().selectDateToString("select count(orderId) as CountOD from orders where status =3","CountOD"));
-          odn4.setText(new Utils().selectDateToString("select count(orderId) as CountOD from orders where status =4","CountOD"));
+          odn1.setText(Utils.selectDateToString("select count(orderId) as CountOD from orders where status =1","CountOD"));
+          odn2.setText(Utils.selectDateToString("select count(orderId) as CountOD from orders where status =2","CountOD"));
+          odn3.setText(Utils.selectDateToString("select count(orderId) as CountOD from orders where status =3","CountOD"));
+          odn4.setText(Utils.selectDateToString("select count(orderId) as CountOD from orders where status =4","CountOD"));
       }
       private void CountCustomerType()
       {
-          cn1.setText(new Utils().selectDateToString("select count (*) as Demkhachdathang from customersview where customerId in (select customerid from orders)","Demkhachdathang"));
-          cn2.setText(new Utils().selectDateToString("select count (*) as Demkhachdeno from customersview where customerId in (select customerid from roomcurent_detail)","Demkhachdeno"));
+          cn1.setText(Utils.selectDateToString("select count (*) as Demkhachdathang from customersview where customerId in (select customerid from orders)","Demkhachdathang"));
+          cn2.setText(Utils.selectDateToString("select count (*) as Demkhachdeno from customersview where customerId in (select customerid from roomcurent_detail)","Demkhachdeno"));
       }
      private void hiddenPopup(int orderStatus)
     {
@@ -3140,25 +3140,25 @@ public class hotelForm extends javax.swing.JFrame {
         }
     }
     private void viewreport() {
-         new Utils().addDataToTextField("select count(orderId) as OTT from orders where status=3","OTT",txtOdDtt);
-         new Utils().addDataToTextField("select count(orderId) as OCT from orders where status=5","OCT",txtOdCtt);
-         new Utils().addDataToTextField("select count(orderId) as TT1p from orders where status=4","TT1p",txtOdTt1p);
-         new Utils().addDataToTextField("select count(orderId) as TOD from orders ","TOD",txtTOD);
+         Utils.addDataToTextField("select count(orderId) as OTT from orders where status=3","OTT",txtOdDtt);
+         Utils.addDataToTextField("select count(orderId) as OCT from orders where status=5","OCT",txtOdCtt);
+         Utils.addDataToTextField("select count(orderId) as TT1p from orders where status=4","TT1p",txtOdTt1p);
+         Utils.addDataToTextField("select count(orderId) as TOD from orders ","TOD",txtTOD);
          
-         new Utils().addDataToTextField("select count(TypeName) as LDV from ServicesType","LDV",txtLDv);
-         new Utils().addDataToTextField("select count(servicesId) TDV from services","TDV",txtTDV);
+         Utils.addDataToTextField("select count(TypeName) as LDV from ServicesType","LDV",txtLDv);
+         Utils.addDataToTextField("select count(servicesId) TDV from services","TDV",txtTDV);
          
-         new Utils().addDataToTextField("select count (customerId) as KDH from orders ","KDH",txtKDH);
-         new Utils().addDataToTextField("select count(customerId) KDO from roomcurent_detail","KDO",txtKDO);
-         new Utils().addDataToTextField("select count (customerId) TK from customers","TK",txtTK);
+         Utils.addDataToTextField("select count (customerId) as KDH from orders ","KDH",txtKDH);
+         Utils.addDataToTextField("select count(customerId) KDO from roomcurent_detail","KDO",txtKDO);
+         Utils.addDataToTextField("select count (customerId) TK from customers","TK",txtTK);
          
-         new Utils().addDataToTextField("select count(name) LP from roomstype","LP",txtLP);
-         new Utils().addDataToTextField("select count (roomid) as TP from rooms","TP",txtTP);
+         Utils.addDataToTextField("select count(name) LP from roomstype","LP",txtLP);
+         Utils.addDataToTextField("select count (roomid) as TP from rooms","TP",txtTP);
          
-         new Utils().addDataToTextField("select count (servicesId) as txtDvHd from servicesdetail","txtDvHd",txtDvHd);
-         new Utils().addDataToTextField("select count (roomId) as txtPHD from roomcurent_detail","txtPHD",txtPHD);
-         new Utils().addDataToTextField("select count ( DISTINCT roomId) as regRoom from orderdetail ","regRoom",txtRegRoom);
-         new Utils().addDataToTextField("select count(roomId) -(select  count (DISTINCT roomId) from orderdetail) as CountFreeRoom from rooms","CountFreeRoom",txtFreeRoom);
+         Utils.addDataToTextField("select count (servicesId) as txtDvHd from servicesdetail","txtDvHd",txtDvHd);
+         Utils.addDataToTextField("select count (roomId) as txtPHD from roomcurent_detail","txtPHD",txtPHD);
+         Utils.addDataToTextField("select count ( DISTINCT roomId) as regRoom from orderdetail ","regRoom",txtRegRoom);
+         Utils.addDataToTextField("select count(roomId) -(select  count (DISTINCT roomId) from orderdetail) as CountFreeRoom from rooms","CountFreeRoom",txtFreeRoom);
          
          
          
@@ -3170,16 +3170,16 @@ public class hotelForm extends javax.swing.JFrame {
             loai="all";
             String sqlshoworder=  "select * from orderjointypejoincustomer where [Trạng thái] <>'"+loai+"'";
             new sqlDatabase().addDataTable(sqlshoworder,tableOrders);
-            new Utils().hiddencol(tableOrders,0);
-            new Utils().hiddencol(tableOrders,1);
+            Utils.hiddencol(tableOrders,0);
+            Utils.hiddencol(tableOrders,1);
             
         }
         else {
             loai =combOrdertype.getSelectedItem().toString();
             String sqlshoworder=  "select * from orderjointypejoincustomer where [Trạng thái]=N'"+loai+"'";
             new sqlDatabase().addDataTable(sqlshoworder,tableOrders);
-            new Utils().hiddencol(tableOrders,0);
-            new Utils().hiddencol(tableOrders,1);
+            Utils.hiddencol(tableOrders,0);
+            Utils.hiddencol(tableOrders,1);
         }
         
       
@@ -3193,15 +3193,15 @@ public class hotelForm extends javax.swing.JFrame {
             loai="all";
             String sqlshoworder=  "select * from orderjointypejoincustomer where [Trạng thái] <>'"+loai+"' and [Ngư�?i đặt] like N'%"+txtRegName.getText()+"%'";
             new sqlDatabase().addDataTable(sqlshoworder,tableOrders);
-            new Utils().hiddencol(tableOrders,0);
-            new Utils().hiddencol(tableOrders,1);
+            Utils.hiddencol(tableOrders,0);
+            Utils.hiddencol(tableOrders,1);
         }
         else {
             loai =combOrdertype.getSelectedItem().toString();
             String sqlshoworder=  "select * from orderjointypejoincustomer where [Trạng thái]=N'"+loai+"' and [Ngư�?i đặt] like N'%"+txtRegName.getText()+"%'";
             new sqlDatabase().addDataTable(sqlshoworder,tableOrders);
-            new Utils().hiddencol(tableOrders,0);
-            new Utils().hiddencol(tableOrders,1);
+            Utils.hiddencol(tableOrders,0);
+            Utils.hiddencol(tableOrders,1);
         }
        
        }        
@@ -3219,7 +3219,7 @@ public class hotelForm extends javax.swing.JFrame {
         
         String gioi ="";
         String cusType ="";
-        cusType = new Utils().selectDateToString("select customerTypeId from customerstype where name  =N'"+cbType.getSelectedItem().toString()+"'","customerTypeId");
+        cusType = Utils.selectDateToString("select customerTypeId from customerstype where name  =N'"+cbType.getSelectedItem().toString()+"'","customerTypeId");
         if (sexMale.isSelected()){gioi="Nam";
         }
         if (sexFemale.isSelected()){gioi="Nu";
@@ -3250,14 +3250,14 @@ public class hotelForm extends javax.swing.JFrame {
         {
             Sql="select * from customersview where customerId in (select customerid from roomcurent_detail)";
         }
-        new Utils().addItemToTable(tblCustomers,Sql);
-        new Utils().hiddencol(tblCustomers,0);
+        Utils.addItemToTable(tblCustomers,Sql);
+        Utils.hiddencol(tblCustomers,0);
         
     }
      private void showCustomers(String FirstName, String LastName)
     {
-        new Utils().addItemToTable(tblCustomers,"select * from customersview where [H�? tên] like '%"+FirstName+" "+LastName+"%'");
-        new Utils().hiddencol(tblCustomers,0);
+        Utils.addItemToTable(tblCustomers,"select * from customersview where [H�? tên] like '%"+FirstName+" "+LastName+"%'");
+        Utils.hiddencol(tblCustomers,0);
     
     }
     private void FillAllFeild(){
@@ -3294,8 +3294,8 @@ public class hotelForm extends javax.swing.JFrame {
                 // dua du lieu vao cac truong
                
                 cbType.removeAllItems();
-               new Utils().addItemTooCombobox(cbType,"select name from customerstype where customerTypeId='"+rs2.getString("type")+"'","");
-               new Utils().addItemTooCombobox(cbType,"select name from customerstype where customerTypeId <>'"+rs2.getString("type")+"'","");
+               Utils.addItemTooCombobox(cbType,"select name from customerstype where customerTypeId='"+rs2.getString("type")+"'","");
+               Utils.addItemTooCombobox(cbType,"select name from customerstype where customerTypeId <>'"+rs2.getString("type")+"'","");
                 
                 if (rs2.getString("sex").equals("Nam")){
                     System.out.println(rs2.getString("sex"));
@@ -3317,7 +3317,7 @@ public class hotelForm extends javax.swing.JFrame {
        
             String gioi ="";
             String cusType ="";
-            cusType =new Utils().selectDateToString("select customerTypeId from customerstype where name  =N'"+cbType.getSelectedItem().toString()+"'","customerTypeId");
+            cusType =Utils.selectDateToString("select customerTypeId from customerstype where name  =N'"+cbType.getSelectedItem().toString()+"'","customerTypeId");
             if (sexMale.isSelected()){gioi="Nam";
             }
             if (sexFemale.isSelected()){gioi="Nu";
@@ -3341,7 +3341,7 @@ public class hotelForm extends javax.swing.JFrame {
         txtVisaCardNum.setText(" ");       
         txtAge.setText(" ");
         cbType.removeAllItems();
-        new Utils().addItemTooCombobox(cbType,"select name from customerstype ","");
+        Utils.addItemTooCombobox(cbType,"select name from customerstype ","");
         txtAddress.setText(" ");
         txtPhone.setText(" ");
         txtEmail.setText(" ");

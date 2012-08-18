@@ -145,8 +145,12 @@ public class Utils {
     public Utils() {
     }
     public static Connection getConnection() {
-        if(con == null){
+        try {
+        if(con == null || con.isClosed()){
             con = new connectDatabase().getConnection();
+        }
+        } catch (Exception e) {
+        e.printStackTrace();
         }
         return con;
     }
