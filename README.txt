@@ -1,5 +1,5 @@
-Phan mem quan ly kach san
-phien ban 1.1 Beta1
+Phan mem quan ly kach san PING
+phien ban 1.1
 
 
 
