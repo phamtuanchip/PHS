@@ -34,7 +34,7 @@ public class getData{
 			int row_count = 0;
 			resultSet.last();
 			row_count = resultSet.getRow();
-			System.out.println (row_count);
+			//System.out.println (row_count);
 			RowCount=row_count;
 			data1 = new Object[row_count][column_count];
 			resultSet.first();
