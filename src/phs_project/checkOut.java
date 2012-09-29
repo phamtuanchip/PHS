@@ -3,14 +3,12 @@
  *
  * Created on March 25, 2006, 11:59 PM
  */
-
 package phs_project;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.Statement;
 import javax.swing.JComboBox;
-import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
@@ -19,19 +17,19 @@ import javax.swing.JTextField;
  * @author  nhoc
  */
 public class checkOut extends javax.swing.JFrame {
-    
+
     /** Creates new form checkOut */
     public checkOut() {
         initComponents();
         MDH.setText(hotelForm.ODID);
-         SQLRUN("sumtotal '"+hotelForm.ODID+"'"); // Chay ham tinh tien cho hoa don co ma hotelForm.ODID
+        SQLRUN("sumtotal '" + hotelForm.ODID + "'"); // Chay ham tinh tien cho hoa don co ma hotelForm.ODID
         CostOfRoomShow(hotelForm.ODID); // hien bang rooms
         CostOfServicesShow(hotelForm.ODID); // hien bang services
-        CostOfOrderShow (hotelForm.ODID); // hien gia don hang
+        CostOfOrderShow(hotelForm.ODID); // hien gia don hang
         //sumtotal(hotelForm.ODID,Tongtien);
-       
+
     }
-    
+
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -280,115 +278,116 @@ public class checkOut extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 // TODO add your handling code here:
-       SQLRUN("sumtotal '"+hotelForm.ODID+"'") ; // tinh lai tien
-       sumtotal(MDH.getText(),Tongtien);
-       CostOfOrderShow(MDH.getText());
+        SQLRUN("sumtotal '" + hotelForm.ODID + "'"); // tinh lai tien
+        sumtotal(MDH.getText(), Tongtien);
+        CostOfOrderShow(MDH.getText());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 // TODO add your handling code here:
         this.dispose();
-        hotelForm.ODID=null;
+        hotelForm.ODID = null;
     }//GEN-LAST:event_jButton2ActionPerformed
-    
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
+
             public void run() {
                 new checkOut().setVisible(true);
             }
         });
     }
-    
-    private void CostOfRoomShow (String ROID) // hien cac phong da thue
+
+    private void CostOfRoomShow(String ROID) // hien cac phong da thue
     {
-            String sqltb=  "select * from costofrooms where [Mã]='"+ROID+"'";
-            new sqlDatabase().addDataTable(sqltb,CostOfRoom);
+        String sqltb = "select * from costofrooms where [Mã]='" + ROID + "'";
+        new sqlDatabase().addDataTable(sqltb, CostOfRoom);
     }
+
     private void CostOfServicesShow(String SOID) // hien cac dich vu da dung
     {
-             String sqltb=  "select * from CostOfServices where [Mã]='"+SOID+"'";
-            new sqlDatabase().addDataTable(sqltb,CostOfServices);
+        String sqltb = "select * from CostOfServices where [Mã]='" + SOID + "'";
+        new sqlDatabase().addDataTable(sqltb, CostOfServices);
     }
-    private void CostOfOrderShow(String COID){
-            
-           String sqltb=  "select * from OrderOfCus where [Mã]='"+COID+"'";
-            new sqlDatabase().addDataTable(sqltb,CostOfOrder);
-        
+
+    private void CostOfOrderShow(String COID) {
+
+        String sqltb = "select * from OrderOfCus where [Mã]='" + COID + "'";
+        new sqlDatabase().addDataTable(sqltb, CostOfOrder);
+
     }
-    private void sumtotal (String OID,JTextField txtreturn) // tinh tong tien tren hoa don co ma OID va dua gia tri vao TextFeid 
+
+    private void sumtotal(String OID, JTextField txtreturn) // tinh tong tien tren hoa don co ma OID va dua gia tri vao TextFeid
     {
-        int addition ;
-        int discount ;
+        int addition;
+        int discount;
         addition = Integer.parseInt(giamgia.getText());
         discount = Integer.parseInt(phatsinh.getText());
-        String sqlupdate =" update orders set  addition ='"+addition+"', discount ='" +
-                discount+"' where orderid ='"+OID+"'";
-                SQLRUN(sqlupdate);
-        new  sqlDatabase().addDataToTextField("select totalfee from orders where orderId= '"+OID+"'",txtreturn);
+        String sqlupdate = " update orders set  addition ='" + addition + "', discount ='"
+                + discount + "' where orderid ='" + OID + "'";
+        SQLRUN(sqlupdate);
+        new sqlDatabase().addDataToTextField("select totalfee from orders where orderId= '" + OID + "'", txtreturn);
         //System.err.println(sqlupdate);
-       // ghichu.setText(sqlupdate);
+        // ghichu.setText(sqlupdate);
     }
-           
-    
+
 // COPY Tu day di tat ca cac form
                                   /* import cac goi nay
-                                   import java.sql.Connection;
-                                    import java.sql.ResultSet;
-                                    import java.sql.ResultSetMetaData;
-                                    import java.sql.Statement;
-                                    import javax.swing.JOptionPane;
-                                    import javax.swing.JTable;
-                                    import javax.swing.JTextField;
-                                   
-                                   */
-    private void SQLRUN (String SQLTEXT) // Ham de chay cau truy van
-     {
-       try{
+    import java.sql.Connection;
+    import java.sql.ResultSet;
+    import java.sql.ResultSetMetaData;
+    import java.sql.Statement;
+    import javax.swing.JOptionPane;
+    import javax.swing.JTable;
+    import javax.swing.JTextField;
+
+     */
+    private void SQLRUN(String SQLTEXT) // Ham de chay cau truy van
+    {
+        try {
             Connection conn = new connectDatabase().getConnection();
-            Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+            Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
             stm.execute(SQLTEXT);
             conn.close();
             stm.close();
             System.out.println(SQLTEXT);
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-     private String  SelectedRowToString (JTable TableName, int CollNumb ) // Lay va In ten truong thu CollNumb ra  bietn ReturnValua, lay 1 bien
-      {
+
+    private String SelectedRowToString(JTable TableName, int CollNumb) // Lay va In ten truong thu CollNumb ra  bietn ReturnValua, lay 1 bien
+    {
         //int CollNumb ;
         //CollNumb=0;
-        int  RowSelected;
+        int RowSelected;
         String ReturnValue;
         RowSelected = TableName.getSelectedRow();
-        ReturnValue=TableName.getValueAt(RowSelected,CollNumb).toString();
-        System.out.println(ReturnValue+" ");
+        ReturnValue = TableName.getValueAt(RowSelected, CollNumb).toString();
+        System.out.println(ReturnValue + " ");
         return ReturnValue;
         //System.out.println(TableName.getValueAt(RowSelected,CollNumb));
-        
-      }
-    private void addItemTooCombobox(JComboBox ComboboxName,String sqlcb) // Dua du lieu tu cau truy van vao combobox, chi co 1 truong trong du lieu
-     {
+
+    }
+
+    private void addItemTooCombobox(JComboBox ComboboxName, String sqlcb) // Dua du lieu tu cau truy van vao combobox, chi co 1 truong trong du lieu
+    {
         //String sqlcb = "select TenTruogn from TenBang";
         ComboboxName.addItem("Chon 1");
-        new sqlDatabase().addDataCombobox(sqlcb,ComboboxName);
-     }
-      
-     private void addItemToTable(JTable TableName,String sqltb )// Lay du lieu tu cau truy van dua vao tabe, nhieu ten bang
-     {
-      
-            //String sqltb=  "select * from Tenbang";
-            new sqlDatabase().addDataTable(sqltb,TableName);
-       
-     }
-    
-                             //  Copy tu day di tat ca cac form
-    
-    
+        new sqlDatabase().addDataCombobox(sqlcb, ComboboxName);
+    }
+
+    private void addItemToTable(JTable TableName, String sqltb)// Lay du lieu tu cau truy van dua vao tabe, nhieu ten bang
+    {
+
+        //String sqltb=  "select * from Tenbang";
+        new sqlDatabase().addDataTable(sqltb, TableName);
+
+    }
+    //  Copy tu day di tat ca cac form
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable CostOfOrder;
     private javax.swing.JTable CostOfRoom;
@@ -414,5 +413,4 @@ public class checkOut extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField phatsinh;
     // End of variables declaration//GEN-END:variables
-    
 }

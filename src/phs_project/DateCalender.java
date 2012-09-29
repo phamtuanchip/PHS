@@ -326,7 +326,7 @@ public class DateCalender extends JDialog implements java.io.Serializable
 		    rp.pack();
 		    rp.setVisible(true);
 		    String d=rp.getCalendarDate1();
-		    System.out.println ("date "+d);
+		    //System.out.println ("date "+d);
 
 		}
 }

@@ -3,36 +3,35 @@
  *
  * Created on March 4, 2006, 5:33 AM
  */
-
 package phs_project;
 
 import java.awt.event.KeyEvent;
 import java.sql.*;
-import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author  Administrator
  */
-public class loginForm extends javax.swing.JDialog { 
-    
+public class loginForm extends javax.swing.JDialog {
+
     /** Creates new form loginForm */
     public loginForm() {
         //end connection
         initComponents();
-        Check();        
+        Check();
         new ChangeLookFeel().configureUI();
     }
-    private void Check(){
+
+    private void Check() {
         server = txtServer.getText().trim();
-        if(check.isSelected()){
+        if (check.isSelected()) {
             txtServer.setEditable(true);
-        }
-        else{
+        } else {
             txtServer.setEditable(false);
         }
     }
+
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -207,10 +206,10 @@ public class loginForm extends javax.swing.JDialog {
 
     private void CancelKeyEvent(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CancelKeyEvent
 // TODO add your handling code here:
-        if(evt.getKeyCode() ==KeyEvent.VK_ESCAPE){
+        if (evt.getKeyCode() == KeyEvent.VK_ESCAPE) {
             btCancel.doClick();
         }
-        
+
     }//GEN-LAST:event_CancelKeyEvent
 
     private void btCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelActionPerformed
@@ -220,7 +219,7 @@ public class loginForm extends javax.swing.JDialog {
 
     private void EnterKeyEvent(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EnterKeyEvent
 // TODO add your handling code here:
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             btLogin.doClick();
         }
     }//GEN-LAST:event_EnterKeyEvent
@@ -228,86 +227,81 @@ public class loginForm extends javax.swing.JDialog {
     private void btLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLoginActionPerformed
 // TODO add your handling code here:
         server = txtServer.getText().trim();
-        int Result = login(txtUserName.getText(),txtPassword.getText());
-        if(Result == 1){
+        int Result = login(txtUserName.getText(), txtPassword.getText());
+        if (Result == 1) {
             this.setVisible(false);
             hotelForm af = new hotelForm();
             af.mnitUser.setEnabled(true);
             af.setVisible(true);
-        }
-        else if(Result == 2){
+        } else if (Result == 2) {
             this.dispose();
-            hotelForm af = new hotelForm();            
+            hotelForm af = new hotelForm();
             af.mnitUser.setEnabled(false);
             af.setVisible(true);
-        }
-        else{
+        } else {
             login_count++;
-            if(login_count <= 3){
-                JOptionPane.showMessageDialog(this,"Liên kiết đến máy chủ thất bại");
+            if (login_count <= 3) {
+                JOptionPane.showMessageDialog(this, "Liên kiết đến máy chủ thất bại");
                 txtUserName.setText("");
                 txtPassword.setText("");
                 txtUserName.requestFocus();
-            }
-            else{
+            } else {
                 System.exit(0);
             }
         }
     }//GEN-LAST:event_btLoginActionPerformed
-    
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
+
             public void run() {
                 new loginForm().setVisible(true);
-                  
+
             }
         });
     }
 
-public int login(String username,String password){    
-        int Result = 0;        
-        int row_count  =0;
+    public int login(String username, String password) {
+        int Result = 0;
+        int row_count = 0;
         //String usertypename = null;
-        try{
-            if(con == null){
-                con = new connectDatabase().getConnection();   
-            }                        
-            st = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);            
+        try {
+            if (con == null) {
+                con = new connectDatabase().getConnection();
+            }
+            st = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
             String sql = "SELECT username,password,userTypeName  ";
             sql = sql + "FROM users INNER JOIN userType ";
             sql = sql + "ON users.userTypeId = userType.userTypeId ";
-            sql = sql + "WHERE username = '"+username+"' ";
-            sql =  sql +"AND password = '"+password+"'";
+            sql = sql + "WHERE username = '" + username + "' ";
+            sql = sql + "AND password = '" + password + "'";
             ResultSet rs = st.executeQuery(sql);
             rs.last();
             row_count = rs.getRow();
-            if(row_count != 0){            
-                usertypename = rs.getString(3);   
+            if (row_count != 0) {
+                usertypename = rs.getString(3);
                 user = rs.getString(1);
-                if(usertypename.equals("Quản trị cấp cao")){ 
+                if (usertypename.equals("Quản trị cấp cao")) {
                     Result = 1;
-                }
-                else if(usertypename.equals("Nhân viên")){
+                } else if (usertypename.equals("Nhân viên")) {
                     Result = 2;
                 }
-            }                                    
-        }
-        catch(Exception e){
+            }
+        } catch (Exception e) {
             System.out.println(e);
         }
         return Result;
     }
-    
-   // private String sql;
+    // private String sql;
     public static String user = "";
     public static String server = "LOCALHOST";
-    private int login_count =0;
+    private int login_count = 0;
     private java.sql.Connection con = null;
     private java.sql.Statement st;
-    public static  String usertypename;
+    public static String usertypename;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel TienHuynh;
     private javax.swing.JButton btCancel;
@@ -322,5 +316,4 @@ public int login(String username,String password){
     private javax.swing.JTextField txtServer;
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
-
 }

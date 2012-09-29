@@ -3,32 +3,28 @@
  *
  * Created on March 17, 2006, 7:30 AM
  */
-
 package phs_project;
+
 import java.awt.event.KeyEvent;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.util.logging.SimpleFormatter;
 import javax.swing.*;
-import java.awt.*;
 import java.sql.*;
-import javax.swing.text.DateFormatter;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.text.Format;
+
 /**
  *
  * @author  Administrator
  */
 public class UserInfo extends javax.swing.JDialog {
-    
+
     /** Creates new form UserInfo */
-    public UserInfo(JFrame parent,boolean check) {
-        super(parent,check);
+    public UserInfo(JFrame parent, boolean check) {
+        super(parent, check);
         initComponents();
         viewUserInfo();
     }
-    
+
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -343,7 +339,7 @@ public class UserInfo extends javax.swing.JDialog {
 
     private void UpdateKeyEvent(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UpdateKeyEvent
 // TODO add your handling code here:    
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             btUpdate.doClick();
         }
     }//GEN-LAST:event_UpdateKeyEvent
@@ -351,76 +347,72 @@ public class UserInfo extends javax.swing.JDialog {
     private void btUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btUpdateActionPerformed
 // TODO add your handling code here:
         password = txtPassword.getText();
-        int Result = new loginForm().login(userlogin,password);
-        if(Result!=0){
-            if(txtNewPassword.getText().equals(txtNewPasswordR.getText())){
+        int Result = new loginForm().login(userlogin, password);
+        if (Result != 0) {
+            if (txtNewPassword.getText().equals(txtNewPasswordR.getText())) {
                 updateUserInfo();
                 this.dispose();
-            }
-            else{
-                JOptionPane.showMessageDialog(this,"Mật khẩu xác nhận không giống mật khẩu mới");
+            } else {
+                JOptionPane.showMessageDialog(this, "Mật khẩu xác nhận không giống mật khẩu mới");
                 txtNewPassword.setText("");
                 txtNewPasswordR.setText("");
                 txtNewPassword.requestFocus();
-                
+
             }
-        }
-        else{
-            JOptionPane.showMessageDialog(this,"Bạn đã nhập sai mật khẩu cũ");            
+        } else {
+            JOptionPane.showMessageDialog(this, "Bạn đã nhập sai mật khẩu cũ");
             txtPassword.setText("");
             txtPassword.requestFocus();
         }
-        
+
     }//GEN-LAST:event_btUpdateActionPerformed
 
     private void btExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExitActionPerformed
 // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_btExitActionPerformed
-    
-    private void viewUserInfo(){
-        userlogin = loginForm.user; 
-        String sql = "SELECT FirstName,LastName,Email,Mobile,HomePhone,Address,City,Birthday FROM users WHERE username = '"+userlogin+"'";
-        if(con == null){        
-            con = new connectDatabase().getConnection();      
+
+    private void viewUserInfo() {
+        userlogin = loginForm.user;
+        String sql = "SELECT FirstName,LastName,Email,Mobile,HomePhone,Address,City,Birthday FROM users WHERE username = '" + userlogin + "'";
+        if (con == null) {
+            con = new connectDatabase().getConnection();
         }
-        try{ 
-            Statement sttm = con.createStatement();        
+        try {
+            Statement sttm = con.createStatement();
             ResultSet rs = sttm.executeQuery(sql);
-            while(rs.next()){
+            while (rs.next()) {
                 txtFirstName.setText(rs.getString(1));
                 txtLastName.setText(rs.getString(2));
                 txtEmail.setText(rs.getString(3));
                 txtMobile.setText(String.valueOf(rs.getInt(4)));
-                txtHomePhone.setText(String.valueOf(rs.getInt(5)));                
+                txtHomePhone.setText(String.valueOf(rs.getInt(5)));
                 txtAddress.setText(rs.getString(6));
-                txtCity.setText(rs.getString(7));                
+                txtCity.setText(rs.getString(7));
                 //txtBirthday.setText(String.valueOf(rs.getDate(8)));                 
-                
-                try{
-                //txtBirthday.setDate(new SimpleDateFormat("MM/dd/yyyy").parse(String.valueOf(rs.getDate(8))));
-                 txtBirthday.setDate(new SimpleDateFormat("MM/dd/yy").parse(new UserFormat().getFormat(rs.getDate(8),"ngay")));  
-                    
-                }
-                catch(ParseException e){
+
+                try {
+                    //txtBirthday.setDate(new SimpleDateFormat("MM/dd/yyyy").parse(String.valueOf(rs.getDate(8))));
+                    txtBirthday.setDate(new SimpleDateFormat("MM/dd/yy").parse(new UserFormat().getFormat(rs.getDate(8), "ngay")));
+
+                } catch (ParseException e) {
                     e.printStackTrace();
                 }
-                
+
                 //txtCity.setText(rs.getString(8));
                 //JOptionPane.showMessageDialog(this,rs.getString(8));
                 txtUsername.setText(userlogin);
             }
-        sttm.close(); 
-        rs.close();
-        }
-        catch(Exception e){
+            sttm.close();
+            rs.close();
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
-    private void updateUserInfo(){
+
+    private void updateUserInfo() {
         firtname = txtFirstName.getText().trim();
-        lastname = txtLastName.getText().trim();        
+        lastname = txtLastName.getText().trim();
         email = txtEmail.getText().trim();
         mobile = Integer.parseInt(txtMobile.getText());
         homephone = Integer.parseInt(txtHomePhone.getText());
@@ -428,56 +420,57 @@ public class UserInfo extends javax.swing.JDialog {
         city = txtCity.getText().trim();
         //country = (String)txtCountry.getSelectedItem();
         country = txtCity.getText();
-        newpassword = txtNewPassword.getText().trim();              
+        newpassword = txtNewPassword.getText().trim();
         /*
         DateFormatter fmt = (DateFormatter)txtBirthday.getFormatter();
         fmt.setFormat(new SimpleDateFormat("d/M/yy"));
         txtBirthday.setValue(txtBirthday.getValue()); 
          */
         //birthday = txtBirthday.getText().trim();
-         birthday = new UserFormat().getFormat(txtBirthday.getDate(),"ngay");
-        
-        if(con == null){        
-            con = new connectDatabase().getConnection();      
-        }        
-        try{
+        birthday = new UserFormat().getFormat(txtBirthday.getDate(), "ngay");
+
+        if (con == null) {
+            con = new connectDatabase().getConnection();
+        }
+        try {
             //Statement sttm = con.createStatement();        
             //ResultSet rs = sttm.executeQuery(sql); 
             String sql = "UPDATE users SET FirstName = ?,LastName = ?,Email = ?,Mobile = ? ,HomePhone = ?,Address = ?,City = ?,password = ?,Birthday = ? ";
-                    sql = sql + "WHERE username = '"+userlogin+"'";
+            sql = sql + "WHERE username = '" + userlogin + "'";
             prStmt = con.prepareStatement(sql);
-            prStmt.setString(1,firtname);
-            prStmt.setString(2,lastname);            
-            prStmt.setString(3,email);
-            prStmt.setInt(4,mobile);
-            prStmt.setInt(5,homephone);
-            prStmt.setString(6,address);
-            prStmt.setString(7,city);
-            prStmt.setString(8,newpassword);
-            prStmt.setString(9,birthday);
+            prStmt.setString(1, firtname);
+            prStmt.setString(2, lastname);
+            prStmt.setString(3, email);
+            prStmt.setInt(4, mobile);
+            prStmt.setInt(5, homephone);
+            prStmt.setString(6, address);
+            prStmt.setString(7, city);
+            prStmt.setString(8, newpassword);
+            prStmt.setString(9, birthday);
             prStmt.executeUpdate();
             //formatter = new SimpleFormatter("MM/dd/yy");
-  
-        }
-        catch(Exception e){
+
+        } catch (Exception e) {
             e.printStackTrace();
-        }                
+        }
     }
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
+
             public void run() {
-                new UserInfo(new JFrame(),true).setVisible(true);
+                new UserInfo(new JFrame(), true).setVisible(true);
             }
         });
     }
     private Format formatter;
-    private String userlogin,username,password,firtname,lastname,birthday,email,address,city,country,newpassword,newpasswordr;
-    private int mobile,homephone;
-    private Connection con = null ;
-    private Statement sttm;   
+    private String userlogin, username, password, firtname, lastname, birthday, email, address, city, country, newpassword, newpasswordr;
+    private int mobile, homephone;
+    private Connection con = null;
+    private Statement sttm;
     private PreparedStatement prStmt;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btExit;
@@ -514,5 +507,4 @@ public class UserInfo extends javax.swing.JDialog {
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
-    
 }

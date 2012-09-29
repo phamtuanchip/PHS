@@ -3,188 +3,182 @@
  *
  * Created on April 7, 2006, 4:10 PM
  */
-
 package phs_project;
 
 import java.sql.*;
 import java.sql.Connection;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
-import javax.swing.*;
-import javax.swing.JOptionPane;
 import java.util.*;
 import java.util.Vector.*;
-import java.text.Format;
 import java.text.SimpleDateFormat;
+
 /**
  *
  * @author  TUNG
  */
 public class Search_Order1 extends javax.swing.JFrame {
-    
+
     /** Creates new form Search_Order */
     public Search_Order1() {
         initComponents();
         AdddatatoCombobox();
-        
+
     }
-            
-    private void AdddatatoCombobox(){
+
+    private void AdddatatoCombobox() {
         String sql = "Select RoomNumb from rooms";
-       cbxRoomName.addItem("Chon Phong thuoc don hang");
-        new sqlDatabase().addDataCombobox(sql,cbxRoomName);
-        
+        cbxRoomName.addItem("Chon Phong thuoc don hang");
+        new sqlDatabase().addDataCombobox(sql, cbxRoomName);
+
     }
-    private int SearchOrder(String roomName,String bdate){
+
+    private int SearchOrder(String roomName, String bdate) {
         int orderID = 0;
         Connection conn = new connectDatabase().getConnection();
         CallableStatement cs;
-        try{
+        try {
             cs = conn.prepareCall("{call search_order(?,?)}");
-            cs.setString(1,roomName);
-            cs.setString(2,bdate);
-            ResultSet  rs =  cs.executeQuery();   
-            if(rs.wasNull()){
-                JOptionPane.showMessageDialog(this,"Khong tim thay don hang nay!!!");
-            }
-            else{
-                while(rs.next()){
-                   orderID  = rs.getInt(1);
+            cs.setString(1, roomName);
+            cs.setString(2, bdate);
+            ResultSet rs = cs.executeQuery();
+            if (rs.wasNull()) {
+                JOptionPane.showMessageDialog(this, "Khong tim thay don hang nay!!!");
+            } else {
+                while (rs.next()) {
+                    orderID = rs.getInt(1);
                 }
             }
-            
+
             cs.close();
             conn.close();
-        }
-        catch(SQLException se){
+        } catch (SQLException se) {
             System.out.println("loi search_o");
             System.err.println(se);
         }
-         return orderID;
+        return orderID;
     }
-    private void fillTableRoomofOrder(){
+
+    private void fillTableRoomofOrder() {
         //fill data lien quan den 1 order vao table 
         df1 = new SimpleDateFormat("MM/dd/yyyy");
         String beginDate = df1.format(txtEndDate.getDate());
         System.out.println(beginDate);
-        int OrderID_value = this.SearchOrder(cbxRoomName.getSelectedItem().toString(),beginDate);
-        txtOrderID.setText(""+OrderID_value);
+        int OrderID_value = this.SearchOrder(cbxRoomName.getSelectedItem().toString(), beginDate);
+        txtOrderID.setText("" + OrderID_value);
         String cusName = this.getCusName();
         txtCusName.setText(cusName);
-        String [] title = {" ","Ten phong","Ngay bat dau","Ngay ket thuc","Thanh toan"};
-        TableDataRoom tabledataroom = new TableDataRoom(OrderID_value,title);
+        String[] title = {" ", "Ten phong", "Ngay bat dau", "Ngay ket thuc", "Thanh toan"};
+        TableDataRoom tabledataroom = new TableDataRoom(OrderID_value, title);
         tableSearchOrder.setModel(tabledataroom);
     }
-    private String getCusName(){
+
+    private String getCusName() {
         //Lay ra ten nguoi chiu trach nhiem thanh toan don hang
         df1 = new SimpleDateFormat("MM/dd/yyyy");
         String beginDate = df1.format(txtEndDate.getDate());
-        int OrderID = this.SearchOrder(cbxRoomName.getSelectedItem().toString(),beginDate);
+        int OrderID = this.SearchOrder(cbxRoomName.getSelectedItem().toString(), beginDate);
         String Cus_Name = "";
         Connection conn = new connectDatabase().getConnection();
         String sql = "select firstName + lastName As CustomerName from customers ";
         sql = sql + " where customerId = (Select customerId from orders where orderId = " + OrderID + ")";
-        try{
-            Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
+        try {
+            Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
             ResultSet resultSet = stmt.executeQuery(sql);
-            while(resultSet.next()){
+            while (resultSet.next()) {
                 Cus_Name = resultSet.getString(1);
             }
             stmt.close();
             conn.close();
-        }
-        catch(SQLException se){
+        } catch (SQLException se) {
             System.err.println(se);
         }
         return Cus_Name;
     }
-    private Vector getSizeVector(){
+
+    private Vector getSizeVector() {
         Vector roomInOrder = new Vector();
         df1 = new SimpleDateFormat("MM/dd/yyyy");
         String beginDate = df1.format(txtEndDate.getDate());
-        int OrderID = this.SearchOrder(cbxRoomName.getSelectedItem().toString(),beginDate);
-        String sql ="";
+        int OrderID = this.SearchOrder(cbxRoomName.getSelectedItem().toString(), beginDate);
+        String sql = "";
         sql = sql + "SELECT dbo.rooms.roomNumb FROM dbo.orderDetail INNER JOIN dbo.rooms ON dbo.orderDetail.roomId = dbo.rooms.roomId where orderid = " + OrderID;
 
-                      
-        try{
+
+        try {
             Connection conn = new connectDatabase().getConnection();
-            Statement st = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
+            Statement st = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
             ResultSet rs = st.executeQuery(sql);
-            while(rs.next()){
+            while (rs.next()) {
                 roomInOrder.addElement(rs.getString(1));
                 return roomInOrder;
             }
             st.close();
             conn.close();
-        }
-        catch(SQLException se){
+        } catch (SQLException se) {
             System.out.println(se);
         }
         return roomInOrder;
     }
-    private Vector getVectorRoom(){
+
+    private Vector getVectorRoom() {
         //Lay ra so phong muon check out
         Vector vt = new Vector();
         int ro = tableSearchOrder.getSelectedRow();
-        if(ro == -1){
-            JOptionPane.showMessageDialog(this,"Bạn phải chọn ít nhất một phòng!");
-        }
-        else{
-            for(int i=0; i<getData.RowCount1;i++) {
-                if(tableSearchOrder.getValueAt(i,0).equals(true)) {
-                    vt.addElement(tableSearchOrder.getValueAt(i,1));                        
+        if (ro == -1) {
+            JOptionPane.showMessageDialog(this, "Bạn phải ch�?n ít nhất một phòng!");
+        } else {
+            for (int i = 0; i < getData.RowCount1; i++) {
+                if (tableSearchOrder.getValueAt(i, 0).equals(true)) {
+                    vt.addElement(tableSearchOrder.getValueAt(i, 1));
+                } else {
+                    vt.removeElement(tableSearchOrder.getValueAt(i, 1));
                 }
-                else{                        
-                    vt.removeElement(tableSearchOrder.getValueAt(i,1));
-                }                   
-            }          
-            if   (vt.size()==0 ) {
-                JOptionPane.showMessageDialog(this,"Bạn phải chọn ít nhất một phòng");
             }
-            else {
-                 return vt;
+            if (vt.size() == 0) {
+                JOptionPane.showMessageDialog(this, "Bạn phải ch�?n ít nhất một phòng");
+            } else {
+                return vt;
             }
         } // else cua phan chua chon    
         return vt;
-    }                              
-    private void UpdateOrderDetail(){
-    //UPdate lai ngay tra phong va tinh tong tien cua orderDetail 
+    }
+
+    private void UpdateOrderDetail() {
+        //UPdate lai ngay tra phong va tinh tong tien cua orderDetail
         Vector vector = this.getVectorRoom();
         df1 = new SimpleDateFormat("MM/dd/yyyy");
         String beginDate = df1.format(txtEndDate.getDate());
-        int OrderID = this.SearchOrder(cbxRoomName.getSelectedItem().toString(),beginDate);
+        int OrderID = this.SearchOrder(cbxRoomName.getSelectedItem().toString(), beginDate);
         df2 = new SimpleDateFormat("MM/dd/yyyy");
         String EndDate = df2.format(txtEdate.getDate());
         String checkbox = "";
-        if(chbxTratruoc.isSelected() == true){
+        if (chbxTratruoc.isSelected() == true) {
             checkbox = "Yes";
-        }
-        else{
+        } else {
             checkbox = "No";
         }
-        execUpdateOrderDetail(OrderID,vector,EndDate,checkbox);
+        execUpdateOrderDetail(OrderID, vector, EndDate, checkbox);
     }
-    private void execUpdateOrderDetail(int OrderID,Vector vector,String Edate,String check){
-    // exec proc checkoutProcess
+
+    private void execUpdateOrderDetail(int OrderID, Vector vector, String Edate, String check) {
+        // exec proc checkoutProcess
         Connection conn = new connectDatabase().getConnection();
         CallableStatement cs;
-        try{
-            for(int i = 0;i<vector.size();i++){
-                cs = conn.prepareCall("{call checkoutProcess(?,?,?,?)}",ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
-                cs.setInt(1,OrderID);
-                cs.setString(2,vector.get(i).toString());
-                cs.setString(3,Edate);
-                cs.setString(4,check);
-                cs.execute();                
-            }         
-        conn.close();   
-        }      
-        catch(SQLException se){        
-            
-        }       
+        try {
+            for (int i = 0; i < vector.size(); i++) {
+                cs = conn.prepareCall("{call checkoutProcess(?,?,?,?)}", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+                cs.setInt(1, OrderID);
+                cs.setString(2, vector.get(i).toString());
+                cs.setString(3, Edate);
+                cs.setString(4, check);
+                cs.execute();
+            }
+            conn.close();
+        } catch (SQLException se) {
+        }
     }
+
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -411,14 +405,13 @@ public class Search_Order1 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void chbxCheckOutAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chbxCheckOutAllActionPerformed
-        if(chbxCheckOutAll.isSelected() == true){
-            for(int i=0; i<getData.RowCount1;i++) {
-                tableSearchOrder.setValueAt(true,i,0);                        
+        if (chbxCheckOutAll.isSelected() == true) {
+            for (int i = 0; i < getData.RowCount1; i++) {
+                tableSearchOrder.setValueAt(true, i, 0);
             }
-        }
-        else{
-            for(int i=0; i<getData.RowCount1;i++) {
-                tableSearchOrder.setValueAt(false,i,0);                        
+        } else {
+            for (int i = 0; i < getData.RowCount1; i++) {
+                tableSearchOrder.setValueAt(false, i, 0);
             }
         }
 // TODO add your handling code here:
@@ -431,12 +424,12 @@ public class Search_Order1 extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 // TODO add your handling code here:
-        UpdateOrderDetail();   
+        UpdateOrderDetail();
         Vector vector = this.getVectorRoom();
         df1 = new SimpleDateFormat("MM/dd/yyyy");
         String beginDate = df1.format(txtEndDate.getDate());
-        int OrderID = this.SearchOrder(cbxRoomName.getSelectedItem().toString(),beginDate);
-        checkOut1 checkOu = new checkOut1(this,true,vector,OrderID);
+        int OrderID = this.SearchOrder(cbxRoomName.getSelectedItem().toString(), beginDate);
+        checkOut1 checkOu = new checkOut1(this, true, vector, OrderID);
         checkOu.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -444,26 +437,26 @@ public class Search_Order1 extends javax.swing.JFrame {
 // TODO add your handling code here:
         df1 = new SimpleDateFormat("MM/dd/yyyy");
         String beginDate = df1.format(txtEndDate.getDate());
-         //JOptionPane.showMessageDialog(this,beginDate);
-        if(cbxRoomName.getSelectedItem().toString() == "Chon Phong thuoc don hang" || beginDate.length() == 0){
-            JOptionPane.showMessageDialog(this,"Phai chon phong va ngay bat dau!!!");
-        }
-        else{
-            fillTableRoomofOrder();                      
+        //JOptionPane.showMessageDialog(this,beginDate);
+        if (cbxRoomName.getSelectedItem().toString() == "Chon Phong thuoc don hang" || beginDate.length() == 0) {
+            JOptionPane.showMessageDialog(this, "Phai chon phong va ngay bat dau!!!");
+        } else {
+            fillTableRoomofOrder();
         }
     }//GEN-LAST:event_jButton2ActionPerformed
-    
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
+
             public void run() {
                 new Search_Order1().setVisible(true);
             }
         });
     }
-    private SimpleDateFormat df1,df2;
+    private SimpleDateFormat df1, df2;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel btnChon;
     private javax.swing.JButton btnHuybo;
@@ -488,5 +481,4 @@ public class Search_Order1 extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser txtEndDate;
     private javax.swing.JTextField txtOrderID;
     // End of variables declaration//GEN-END:variables
-    
 }

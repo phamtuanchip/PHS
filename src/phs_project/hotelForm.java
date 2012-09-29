@@ -3,9 +3,7 @@
  *
  * Created on March 9, 2006, 3:22 PM
  */
-
 package phs_project;
-
 
 import java.sql.*;
 import java.text.DateFormat;
@@ -21,22 +19,24 @@ import java.util.Date;
  *
  * @author  Administrator
  */
-public class hotelForm extends javax.swing.JFrame {    
+public class hotelForm extends javax.swing.JFrame {
+
     public static Vector vt;
     public int OrderID;
     public String beginDate = "";
-    public String endDate = "";    
+    public String endDate = "";
+
     /** Creates new form hotelForm */
     public hotelForm() {
-        initComponents();        
+        initComponents();
         setLich();
-        RoomTypeCombobox();            
-        ViewRoomStatusToday(); 
+        RoomTypeCombobox();
+        ViewRoomStatusToday();
         viewreport();
         //Huynh nt onload contructer
         Infomation();
         //End Huynh nt onload contructer
-       //Tuanp onload contructer
+        //Tuanp onload contructer
         UnFillAllFeild();
         NumbofRoomShow();
         CountRoomShow();
@@ -44,12 +44,12 @@ public class hotelForm extends javax.swing.JFrame {
         showordes(Loai);
         showCustomers();
         CountCustomerType();
-        jDateChooserSearch.setLocale(new Locale("vi","VN"));
-        Utils.addItemTooCombobox(cbType,"select name from customerstype","");
+        jDateChooserSearch.setLocale(new Locale("vi", "VN"));
+        Utils.addItemTooCombobox(cbType, "select name from customerstype", "");
         //End Tuanp onload contructer
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
-    
+
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -2127,18 +2127,18 @@ public class hotelForm extends javax.swing.JFrame {
 
     private void mnitPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnitPrintActionPerformed
 // TODO add your handling code here:
-        new purchard(this,true,ODID).setVisible(true);
+        new purchard(this, true, ODID).setVisible(true);
     }//GEN-LAST:event_mnitPrintActionPerformed
 
     private void mnitReportsRoomsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnitReportsRoomsActionPerformed
 // TODO add your handling code here:
-        new RoomReport(this,true).setVisible(true);
+        new RoomReport(this, true).setVisible(true);
     }//GEN-LAST:event_mnitReportsRoomsActionPerformed
 
     private void mnitReportsOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnitReportsOrdersActionPerformed
 // TODO add your handling code here:
-       
-        new Report(this,true).setVisible(true);
+
+        new Report(this, true).setVisible(true);
     }//GEN-LAST:event_mnitReportsOrdersActionPerformed
 
     private void jRadioButtonDayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonDayActionPerformed
@@ -2166,10 +2166,9 @@ public class hotelForm extends javax.swing.JFrame {
         Search();
     }//GEN-LAST:event_jButton15ActionPerformed
 
-   
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
 // TODO add your handling code here:
-         new AboutUs(this,true).setVisible(true);
+        new AboutUs(this, true).setVisible(true);
     }//GEN-LAST:event_jButton13ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -2194,14 +2193,14 @@ public class hotelForm extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 // TODO add your handling code here:
-         jTabbeQuanlykhachhang.setSelectedIndex(1);
+        jTabbeQuanlykhachhang.setSelectedIndex(1);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 // TODO add your handling code here:
         jTabbeQuanlykhachhang.setSelectedIndex(0);
-        
-        
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void cbbRoomStausItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbRoomStausItemStateChanged
@@ -2216,8 +2215,8 @@ public class hotelForm extends javax.swing.JFrame {
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
 // TODO add your handling code here:
-         int result = JOptionPane.showConfirmDialog(this,"Bạn có thực sự muốn đổi ngư�?i sử dụng không","Cảnh báo",JOptionPane.OK_CANCEL_OPTION);
-        if(result == 0){
+        int result = JOptionPane.showConfirmDialog(this, "Bạn có thực sự muốn đổi ngư�?i sử dụng không", "Cảnh báo", JOptionPane.OK_CANCEL_OPTION);
+        if (result == 0) {
             this.dispose();
             loginForm.user = "";
             loginForm.server = "";
@@ -2227,99 +2226,90 @@ public class hotelForm extends javax.swing.JFrame {
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
 // TODO add your handling code here:
-         int result = JOptionPane.showConfirmDialog(this,"Bạn có thực sự muốn thoát kh�?i ứng dụng không ?","Cảnh báo",JOptionPane.OK_CANCEL_OPTION);
-        if(result == 0){
+        int result = JOptionPane.showConfirmDialog(this, "Bạn có thực sự muốn thoát kh�?i ứng dụng không ?", "Cảnh báo", JOptionPane.OK_CANCEL_OPTION);
+        if (result == 0) {
             System.exit(1);
         }
     }//GEN-LAST:event_jButton14ActionPerformed
 
     private void mnitPayoutOrdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnitPayoutOrdActionPerformed
 // TODO add your handling code here:
-        if (ODID==null){
-          JOptionPane.showMessageDialog(this,"Bạn phải ch�?n một đơn hàng");
-            
-        }
-        else {
-            new checkOutAll(this,true,this.ODID).setVisible(true);
+        if (ODID == null) {
+            JOptionPane.showMessageDialog(this, "Bạn phải ch�?n một đơn hàng");
+
+        } else {
+            new checkOutAll(this, true, this.ODID).setVisible(true);
         }
     }//GEN-LAST:event_mnitPayoutOrdActionPerformed
 
     private void mnitDisplayOrdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnitDisplayOrdActionPerformed
 // TODO add your handling code here:
-         if (ODID==null){
-          JOptionPane.showMessageDialog(this,"Bạn phải ch�?n một đơn hàng");
-            
-        }
-        else {
+        if (ODID == null) {
+            JOptionPane.showMessageDialog(this, "Bạn phải ch�?n một đơn hàng");
+
+        } else {
             //new checkOutAll(this.ODID).setVisible(true);
-             new showOrderDetail(this,true).setVisible(true);
+            new showOrderDetail(this, true).setVisible(true);
         }
     }//GEN-LAST:event_mnitDisplayOrdActionPerformed
 
     private void mnitChangeOrdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnitChangeOrdActionPerformed
 // TODO add your handling code here:
-        if (ODID==null){
-          JOptionPane.showMessageDialog(this,"Bạn phải ch�?n một đơn hàng");
-            
+        if (ODID == null) {
+            JOptionPane.showMessageDialog(this, "Bạn phải ch�?n một đơn hàng");
+
+        } else {
+            new chagerooms(this, true).setVisible(true); // goi dialog change room
         }
-        else {
-            new chagerooms(this,true).setVisible(true); // goi dialog change room
-        }
-        
+
     }//GEN-LAST:event_mnitChangeOrdActionPerformed
 
     private void mnitAddSerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnitAddSerActionPerformed
 // TODO add your handling code here:
-         if (ODID==null){
-          JOptionPane.showMessageDialog(this,"Bạn phải ch�?n một đơn hàng");
-            
-        }
-        else {
-            new addServicestoOrder(this,true).setVisible(true);
+        if (ODID == null) {
+            JOptionPane.showMessageDialog(this, "Bạn phải ch�?n một đơn hàng");
+
+        } else {
+            new addServicestoOrder(this, true).setVisible(true);
             //ODID=null;
         }
     }//GEN-LAST:event_mnitAddSerActionPerformed
 
     private void mnitAddCusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnitAddCusActionPerformed
 // TODO add your handling code here:
-        if (ODID==null)
-         {
-          JOptionPane.showMessageDialog(this,"Bạn phải ch�?n một đơn hàng");            
-        }
-        else 
-        {   String checkNum=Utils.selectDateToString("select count(roomId) as checkRNum from orderDetail where orderid='"+ODID+"' and getdate() between begindate and enddate","checkRNum");
-            if (new Integer(checkNum)==0)
-            {
-                JOptionPane.showMessageDialog(this,"�?ơn hàng này các phòng chưa đến ngày ở ! không thể xếp khách");
-            }
-            else
-            {
-                new insertCustomer(this,true,ODID).setVisible(true);
+        if (ODID == null) {
+            JOptionPane.showMessageDialog(this, "Bạn phải ch�?n một đơn hàng");
+        } else {
+            String checkNum = Utils.selectDateToString("select count(roomId) as checkRNum from orderDetail where orderid='" + ODID + "' and getdate() between begindate and enddate", "checkRNum");
+            if (new Integer(checkNum) == 0) {
+                JOptionPane.showMessageDialog(this, "�?ơn hàng này các phòng chưa đến ngày ở ! không thể xếp khách");
+            } else {
+                new insertCustomer(this, true, ODID).setVisible(true);
             }
         }
-        
+
     }//GEN-LAST:event_mnitAddCusActionPerformed
 
     private void tableOrdersMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableOrdersMouseReleased
 // TODO add your handling code here:
-        if(evt.isPopupTrigger()){   
+        if (evt.isPopupTrigger()) {
             int rowSelect = tableOrders.getSelectedRow();
-            if(tableOrders.isRowSelected(rowSelect)){     
-                PmenuForOrders.show(evt.getComponent(),evt.getX(),evt.getY());
+            if (tableOrders.isRowSelected(rowSelect)) {
+                PmenuForOrders.show(evt.getComponent(), evt.getX(), evt.getY());
             }
         }
     }//GEN-LAST:event_tableOrdersMouseReleased
 
     private void mnitAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnitAboutActionPerformed
 // TODO add your handling code here:
-        new AboutUs(this,true).setVisible(true);
-        
+        new AboutUs(this, true).setVisible(true);
+
     }//GEN-LAST:event_mnitAboutActionPerformed
 
     private void mnitLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnitLogOutActionPerformed
 // TODO add your handling code here:
-        int result = JOptionPane.showConfirmDialog(this,"Bạn có thực sự muốn đổi ngư�?i sử dụng không","Cảnh báo",JOptionPane.OK_CANCEL_OPTION);
-        if(result == 0){
+        int result = JOptionPane.showConfirmDialog(this, "Bạn có thực sự muốn đổi ngư�?i sử dụng không", "Cảnh báo", JOptionPane.OK_CANCEL_OPTION);
+        if (result == 0) {
             this.dispose();
             loginForm.user = "";
             loginForm.server = "";
@@ -2329,28 +2319,28 @@ public class hotelForm extends javax.swing.JFrame {
 
     private void mnitAddCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnitAddCustomerActionPerformed
 // TODO add your handling code here:
-        int rowSelect = tableViewRoomStaus.getSelectedRow();            
-        String RName = tableViewRoomStaus.getValueAt(rowSelect,0).toString(); 
+        int rowSelect = tableViewRoomStaus.getSelectedRow();
+        String RName = tableViewRoomStaus.getValueAt(rowSelect, 0).toString();
         addCustomer(RName);
     }//GEN-LAST:event_mnitAddCustomerActionPerformed
 
     private void mnitAddServicesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnitAddServicesActionPerformed
 // TODO add your handling code here:
-        int rowSelect = tableViewRoomStaus.getSelectedRow();            
-        String RName = tableViewRoomStaus.getValueAt(rowSelect,0).toString();            
+        int rowSelect = tableViewRoomStaus.getSelectedRow();
+        String RName = tableViewRoomStaus.getValueAt(rowSelect, 0).toString();
         AddServices(RName);
     }//GEN-LAST:event_mnitAddServicesActionPerformed
 
     private void mnitChangeRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnitChangeRoomActionPerformed
 // TODO add your handling code here:
-         int rowSelect = tableViewRoomStaus.getSelectedRow();            
-         String RName = tableViewRoomStaus.getValueAt(rowSelect,0).toString(); 
-         ChangerRoom(RName);
+        int rowSelect = tableViewRoomStaus.getSelectedRow();
+        String RName = tableViewRoomStaus.getValueAt(rowSelect, 0).toString();
+        ChangerRoom(RName);
     }//GEN-LAST:event_mnitChangeRoomActionPerformed
 
     private void mnitUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnitUserActionPerformed
 // TODO add your handling code here:
-        new CreateUser(this,true).setVisible(true);
+        new CreateUser(this, true).setVisible(true);
     }//GEN-LAST:event_mnitUserActionPerformed
 
     private void mnitVisualStudio2005ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnitVisualStudio2005ActionPerformed
@@ -2360,29 +2350,29 @@ public class hotelForm extends javax.swing.JFrame {
 
     private void mnitOfficeXPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnitOfficeXPActionPerformed
 // TODO add your handling code here:
-       ChangeLookAndFeel("org.fife.plaf.OfficeXP.OfficeXPLookAndFeel");
+        ChangeLookAndFeel("org.fife.plaf.OfficeXP.OfficeXPLookAndFeel");
     }//GEN-LAST:event_mnitOfficeXPActionPerformed
 
     private void mnitOffice2003ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnitOffice2003ActionPerformed
 // TODO add your handling code here:
-       ChangeLookAndFeel("org.fife.plaf.Office2003.Office2003LookAndFeel");
+        ChangeLookAndFeel("org.fife.plaf.Office2003.Office2003LookAndFeel");
     }//GEN-LAST:event_mnitOffice2003ActionPerformed
 
     private void mnitDefaultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnitDefaultActionPerformed
 // TODO add your handling code here:
-      ChangeLookAndFeel("com.incors.plaf.kunststoff.KunststoffLookAndFeel");   
+        ChangeLookAndFeel("com.incors.plaf.kunststoff.KunststoffLookAndFeel");
     }//GEN-LAST:event_mnitDefaultActionPerformed
 
     private void mnitWindowsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnitWindowsActionPerformed
 // TODO add your handling code here:
         ChangeLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-        
+
     }//GEN-LAST:event_mnitWindowsActionPerformed
 
     private void txtRegNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRegNameKeyTyped
 // TODO add your handling code here:
         showOrderByCus(combOrdertype.getSelectedItem().toString());
-        
+
     }//GEN-LAST:event_txtRegNameKeyTyped
 
     private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton27ActionPerformed
@@ -2392,98 +2382,77 @@ public class hotelForm extends javax.swing.JFrame {
 
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
 // TODO add your handling code here:
-         if (CusId !=null){
-            JOptionPane.showMessageDialog(this,"Khách đã có trong đơn hàng !");
-        }
-        else
-        {
-           if (txtFirstname.getText().equals(""))
-           {
-               JOptionPane.showMessageDialog(this,"Bạn phải nhập H�? đệm !");
-           
-           }  
-           else
-           {
-               if (txtLastname.getText().equals(""))
-               {
-                   JOptionPane.showMessageDialog(this,"Bạn phải nhập Tên!");
+        if (CusId != null) {
+            JOptionPane.showMessageDialog(this, "Khách đã có trong đơn hàng !");
+        } else {
+            if (txtFirstname.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "Bạn phải nhập H�? đệm !");
 
-               }  
-               else
-               {   String CountCus=Utils.selectDateToString("select count(customerId) as CC from customers where upper(firstName) =upper(N'"+txtFirstname.getText()+"') and upper(lastName) =upper(N'"+txtLastname.getText()+"')","CC");
-                   if (new Integer(CountCus)>0)
-                   {
-                       int cf = JOptionPane.showConfirmDialog(this,"Tên khách đã có ! bạn vẫn muốn tiếp tục ?","Cảnh báo !",0);
-                       if (cf ==0)
-                       {
-                           InsertNewCustomer();       
-                       }
-                       else
-                       {
-                           JOptionPane.showMessageDialog(this,"Bạn nên kiểm tra lại xem có phải bạn đang nhập trùng ?");
-                       }
-                   }
-                   else
-                   {
-                      InsertNewCustomer();  
-                   }
-                     
-               }
-           }           
+            } else {
+                if (txtLastname.getText().equals("")) {
+                    JOptionPane.showMessageDialog(this, "Bạn phải nhập Tên!");
+
+                } else {
+                    String CountCus = Utils.selectDateToString("select count(customerId) as CC from customers where upper(firstName) =upper(N'" + txtFirstname.getText() + "') and upper(lastName) =upper(N'" + txtLastname.getText() + "')", "CC");
+                    if (new Integer(CountCus) > 0) {
+                        int cf = JOptionPane.showConfirmDialog(this, "Tên khách đã có ! bạn vẫn muốn tiếp tục ?", "Cảnh báo !", 0);
+                        if (cf == 0) {
+                            InsertNewCustomer();
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Bạn nên kiểm tra lại xem có phải bạn đang nhập trùng ?");
+                        }
+                    } else {
+                        InsertNewCustomer();
+                    }
+
+                }
+            }
         }
     }//GEN-LAST:event_jButton19ActionPerformed
 
     private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
 // TODO add your handling code here:
-         if (CusId ==null){
-            JOptionPane.showMessageDialog(this,"Bạn phải ch�?n một khách hàng để sửa !");
-        }
-        else
-        { 
-             if (txtFirstname.getText().equals("")){
-                 JOptionPane.showMessageDialog(this,"Bạn không được để trống H�? đệm !");
-             
-             }
-             else
-             {
-                 if (txtLastname.getText().equals(""))
-                 {
-                 JOptionPane.showMessageDialog(this,"Bạn không được để trống Tên !");
-                 }
-                 else
-                 {
+        if (CusId == null) {
+            JOptionPane.showMessageDialog(this, "Bạn phải ch�?n một khách hàng để sửa !");
+        } else {
+            if (txtFirstname.getText().equals("")) {
+                JOptionPane.showMessageDialog(this, "Bạn không được để trống H�? đệm !");
+
+            } else {
+                if (txtLastname.getText().equals("")) {
+                    JOptionPane.showMessageDialog(this, "Bạn không được để trống Tên !");
+                } else {
                     UpdateCustomer(CusId);
                     UnFillAllFeild();
-                 }
-             }
-             
+                }
+            }
+
         }
     }//GEN-LAST:event_jButton23ActionPerformed
 
     private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
 // TODO add your handling code here:
-         if (ODID==null){
-          JOptionPane.showMessageDialog(this,"Bạn phải ch�?n một đơn hàng");
-            
-        }
-        else {
+        if (ODID == null) {
+            JOptionPane.showMessageDialog(this, "Bạn phải ch�?n một đơn hàng");
+
+        } else {
             //new checkOutAll(this.ODID).setVisible(true);
-             new showOrderDetail(this,true).setVisible(true);
+            new showOrderDetail(this, true).setVisible(true);
         }
     }//GEN-LAST:event_jButton25ActionPerformed
 
     private void jTabbeQuanlykhachhangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbeQuanlykhachhangMouseClicked
 // TODO add your handling code here:
-        ViewRoom(); 
+        ViewRoom();
         showordes(Loai);
         showCustomers();
-        ViewRoomStatusToday(); 
+        ViewRoomStatusToday();
         viewreport();
         UnFillAllFeild();
         CountRoomShow();
-         CountOrderShow();
-         CountCustomerType();
-        
+        CountOrderShow();
+        CountCustomerType();
+
     }//GEN-LAST:event_jTabbeQuanlykhachhangMouseClicked
 
     private void btnXemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXemActionPerformed
@@ -2491,362 +2460,338 @@ public class hotelForm extends javax.swing.JFrame {
         viewreport();
     }//GEN-LAST:event_btnXemActionPerformed
 
-    
-    
     private void jButton26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton26ActionPerformed
 // TODO add your handling code here:
         showCustomers();
     }//GEN-LAST:event_jButton26ActionPerformed
-   
+
     private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
 // TODO add your handling code here:
-        if (CusId ==null){
-            JOptionPane.showMessageDialog(this,"Bạn phải ch�?n một khách hàng để xóa");
-        }
-        else
-        {   int cf=JOptionPane.showConfirmDialog(this,"Bạn thực sự muốn xóa tất cả thông tin v�? "+CusTomerName+" hay không ?","Cảnh báo",0);
-            if (cf==0){
-                Utils.SQLRUN("clearorderofcus '"+CusId+"'");
-                Utils.addItemToTable(tblCustomers,"select * from customersview");
-                Utils.hiddencol(tblCustomers,0);
-            UnFillAllFeild();
+        if (CusId == null) {
+            JOptionPane.showMessageDialog(this, "Bạn phải ch�?n một khách hàng để xóa");
+        } else {
+            int cf = JOptionPane.showConfirmDialog(this, "Bạn thực sự muốn xóa tất cả thông tin v�? " + CusTomerName + " hay không ?", "Cảnh báo", 0);
+            if (cf == 0) {
+                Utils.SQLRUN("clearorderofcus '" + CusId + "'");
+                Utils.addItemToTable(tblCustomers, "select * from customersview");
+                Utils.hiddencol(tblCustomers, 0);
+                UnFillAllFeild();
             }
         }
     }//GEN-LAST:event_jButton24ActionPerformed
 
     private void tblCustomersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCustomersMouseClicked
 // TODO add your handling code here:
-      CusId= Utils.SelectedRowToString(tblCustomers,0);
-      CusTomerName= Utils.SelectedRowToString(tblCustomers,1);
-      FillAllFeild();
+        CusId = Utils.SelectedRowToString(tblCustomers, 0);
+        CusTomerName = Utils.SelectedRowToString(tblCustomers, 1);
+        FillAllFeild();
     }//GEN-LAST:event_tblCustomersMouseClicked
 
     private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
 // TODO add your handling code here:
-        if (ODID==null){
-          JOptionPane.showMessageDialog(this,"Bạn phải ch�?n một đơn hàng");
-            
-        }
-        else {
-            new checkOutAll(this,true,this.ODID).setVisible(true);
+        if (ODID == null) {
+            JOptionPane.showMessageDialog(this, "Bạn phải ch�?n một đơn hàng");
+
+        } else {
+            new checkOutAll(this, true, this.ODID).setVisible(true);
         }
     }//GEN-LAST:event_jButton21ActionPerformed
 
     private void mnitRoomOperationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnitRoomOperationActionPerformed
 // TODO add your handling code here:
-        new AddRooms(this,true).setVisible(true);
+        new AddRooms(this, true).setVisible(true);
     }//GEN-LAST:event_mnitRoomOperationActionPerformed
 
     private void mnitCheckOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnitCheckOutActionPerformed
 // TODO add your handling code here:
-                int rowSelect = tableViewRoomStaus.getSelectedRow();            
-                String RName = tableViewRoomStaus.getValueAt(rowSelect,0).toString();  
-                CheckOut(RName); 
+        int rowSelect = tableViewRoomStaus.getSelectedRow();
+        String RName = tableViewRoomStaus.getValueAt(rowSelect, 0).toString();
+        CheckOut(RName);
     }//GEN-LAST:event_mnitCheckOutActionPerformed
 
     private void mnitInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnitInfoActionPerformed
 // TODO add your handling code here:
-            int rowSelect = tableViewRoomStaus.getSelectedRow();            
-                String RName = tableViewRoomStaus.getValueAt(rowSelect,0).toString();    
-                infoOrder(RName);                
+        int rowSelect = tableViewRoomStaus.getSelectedRow();
+        String RName = tableViewRoomStaus.getValueAt(rowSelect, 0).toString();
+        infoOrder(RName);
     }//GEN-LAST:event_mnitInfoActionPerformed
 
     private void tableViewRoomStausMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableViewRoomStausMouseReleased
 // TODO add your handling code here:
-        if(evt.isPopupTrigger()){   
+        if (evt.isPopupTrigger()) {
             int rowSelect = tableViewRoomStaus.getSelectedRow();
-            if(tableViewRoomStaus.isRowSelected(rowSelect)){     
-                Pmenu.show(evt.getComponent(),evt.getX(),evt.getY());
+            if (tableViewRoomStaus.isRowSelected(rowSelect)) {
+                Pmenu.show(evt.getComponent(), evt.getX(), evt.getY());
             }
         }
     }//GEN-LAST:event_tableViewRoomStausMouseReleased
 
     private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
 // TODO add your handling code here:
-         if (ODID==null)
-         {
-          JOptionPane.showMessageDialog(this,"Bạn phải ch�?n một đơn hàng");            
-        }
-        else 
-        {            
-             new insertCustomer(this,true,ODID).setVisible(true);
+        if (ODID == null) {
+            JOptionPane.showMessageDialog(this, "Bạn phải ch�?n một đơn hàng");
+        } else {
+            new insertCustomer(this, true, ODID).setVisible(true);
         }
     }//GEN-LAST:event_jButton22ActionPerformed
 
     private void tableViewRoomStausMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableViewRoomStausMouseClicked
 // TODO add your handling code here:
-        if(evt.getClickCount()== 2){
-           // showOrderOnclick ();
-            
+        if (evt.getClickCount() == 2) {
+            // showOrderOnclick ();
         }
     }//GEN-LAST:event_tableViewRoomStausMouseClicked
 
     private void dateChooseEndPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_dateChooseEndPropertyChange
 // TODO add your handling code here:
-        String ngayd = new UserFormat().getFormat(dateChooseBegin.getDate(),"ngay");
-        endDate = new UserFormat().getFormat(dateChooseEnd.getDate(),"ngay");
+        String ngayd = new UserFormat().getFormat(dateChooseBegin.getDate(), "ngay");
+        endDate = new UserFormat().getFormat(dateChooseEnd.getDate(), "ngay");
         int i = endDate.compareToIgnoreCase(ngayd);
-        if(i >= 0){
-            endDate = endDate + " " + new UserFormat().getFormat(new Date(),"gio");
-            try{
-                dateChooseEnd.setDate(new SimpleDateFormat("MM/dd/yy HH:mm:ss").parse(endDate));                 
+        if (i >= 0) {
+            endDate = endDate + " " + new UserFormat().getFormat(new Date(), "gio");
+            try {
+                dateChooseEnd.setDate(new SimpleDateFormat("MM/dd/yy HH:mm:ss").parse(endDate));
+            } catch (ParseException e) {
+                e.printStackTrace();
             }
-            catch(ParseException e){
+        } else {
+            JOptionPane.showMessageDialog(this, "Ngày cuối phải lớn hơn ngày đến");
+            try {
+                dateChooseEnd.setDate(new SimpleDateFormat("MM/dd/yy HH:mm:ss").parse(CongNgay(beginDate)));
+                endDate = new UserFormat().getFormat(dateChooseEnd.getDate(), "ngaygio");
+            } catch (ParseException e) {
                 e.printStackTrace();
             }
         }
-        else{
-            JOptionPane.showMessageDialog(this,"Ngày cuối phải lớn hơn ngày đến");
-            try{
-                dateChooseEnd.setDate(new SimpleDateFormat("MM/dd/yy HH:mm:ss").parse(CongNgay(beginDate))); 
-                endDate = new UserFormat().getFormat(dateChooseEnd.getDate(),"ngaygio");
-            }
-            catch(ParseException e){
-                e.printStackTrace();
-            }
-        }  
         //ViewRoom();
     }//GEN-LAST:event_dateChooseEndPropertyChange
 
     private void dateChooseBeginPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_dateChooseBeginPropertyChange
 // TODO add your handling code here:                                                      
-            beginDate = new UserFormat().getFormat(dateChooseBegin.getDate(),"ngay");
-            String today = new UserFormat().getFormat(new Date(),"ngay");
-            int i = beginDate.compareToIgnoreCase(today);
-            if(i >=0){                
-                try{
-                    beginDate = beginDate + " " + new UserFormat().getFormat(new Date(),"gio");
-                    dateChooseBegin.setDate(new SimpleDateFormat("MM/dd/yy HH:mm:ss").parse(beginDate));                    
-                   
-                    String ngaydi = CongNgay(beginDate);
-                    //JOptionPane.showMessageDialog(this,ngaydi);
-                    dateChooseEnd.setDate(new SimpleDateFormat("MM/dd/yy HH:mm:ss").parse(ngaydi));                    
-                    endDate = new UserFormat().getFormat(dateChooseEnd.getDate(),"ngaygio");
-                }
-                catch(ParseException e){
-                    e.printStackTrace();
-                }
-                    
+        beginDate = new UserFormat().getFormat(dateChooseBegin.getDate(), "ngay");
+        String today = new UserFormat().getFormat(new Date(), "ngay");
+        int i = beginDate.compareToIgnoreCase(today);
+        if (i >= 0) {
+            try {
+                beginDate = beginDate + " " + new UserFormat().getFormat(new Date(), "gio");
+                dateChooseBegin.setDate(new SimpleDateFormat("MM/dd/yy HH:mm:ss").parse(beginDate));
+
+                String ngaydi = CongNgay(beginDate);
+                //JOptionPane.showMessageDialog(this,ngaydi);
+                dateChooseEnd.setDate(new SimpleDateFormat("MM/dd/yy HH:mm:ss").parse(ngaydi));
+                endDate = new UserFormat().getFormat(dateChooseEnd.getDate(), "ngaygio");
+            } catch (ParseException e) {
+                e.printStackTrace();
             }
-            else{
-                JOptionPane.showMessageDialog(this,"Ngày đến không được nh�? hơn ngày hiện tại");
-                try {
-                    dateChooseBegin.setDate(new SimpleDateFormat("MM/dd/yy HH:mm:ss").parse(new UserFormat().getFormat(new Date(),"ngaygio")));                    
-                    beginDate = new UserFormat().getFormat(dateChooseBegin.getDate(),"ngaygio");                    
-                }catch (ParseException ex) {
-                    ex.printStackTrace();
-                }                     
-            }                        
+
+        } else {
+            JOptionPane.showMessageDialog(this, "Ngày đến không được nh�? hơn ngày hiện tại");
+            try {
+                dateChooseBegin.setDate(new SimpleDateFormat("MM/dd/yy HH:mm:ss").parse(new UserFormat().getFormat(new Date(), "ngaygio")));
+                beginDate = new UserFormat().getFormat(dateChooseBegin.getDate(), "ngaygio");
+            } catch (ParseException ex) {
+                ex.printStackTrace();
+            }
+        }
     }//GEN-LAST:event_dateChooseBeginPropertyChange
-    private String CongNgay(String ngay){        
-        int ngaymoi = Integer.parseInt(ngay.substring(3,5)) + 1;
-        String thang = beginDate.substring(0,2);
-        String conlai = beginDate.substring(6);                    
-        String ngaydi = thang +"/"+ ngaymoi+"/"+conlai;
+    private String CongNgay(String ngay) {
+        int ngaymoi = Integer.parseInt(ngay.substring(3, 5)) + 1;
+        String thang = beginDate.substring(0, 2);
+        String conlai = beginDate.substring(6);
+        String ngaydi = thang + "/" + ngaymoi + "/" + conlai;
         return ngaydi;
     }
     private void jcalendar1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jcalendar1PropertyChange
 // TODO add your handling code here:
-          if(evt.getPropertyName().equals("calendar")){                
-                calendar = (Calendar) evt.getNewValue();
-		txtDateField.setText(df.format(calendar.getTime()));                                 
-                jcalendar1.setCalendar(calendar);                                                
-                //dateChoose = df1.format(calendar.getTime());                
-                String today = new UserFormat().getFormat(new Date(),"ngay");
-                dateChoose = new UserFormat().getFormat(calendar.getTime(),"ngay");
-                int i = dateChoose.compareToIgnoreCase(today);
-                if(i == 0){
-                    dateChoose = dateChoose +" " + new UserFormat().getFormat(new Date(),"gio");
-                }                                
-                //JOptionPane.showMessageDialog(this,dateChoose);
-                ViewRoomStatusToday();                
-          }        
+        if (evt.getPropertyName().equals("calendar")) {
+            calendar = (Calendar) evt.getNewValue();
+            txtDateField.setText(df.format(calendar.getTime()));
+            jcalendar1.setCalendar(calendar);
+            //dateChoose = df1.format(calendar.getTime());
+            String today = new UserFormat().getFormat(new Date(), "ngay");
+            dateChoose = new UserFormat().getFormat(calendar.getTime(), "ngay");
+            int i = dateChoose.compareToIgnoreCase(today);
+            if (i == 0) {
+                dateChoose = dateChoose + " " + new UserFormat().getFormat(new Date(), "gio");
+            }
+            //JOptionPane.showMessageDialog(this,dateChoose);
+            ViewRoomStatusToday();
+        }
     }//GEN-LAST:event_jcalendar1PropertyChange
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
 // TODO add your handling code here:
-        if (ODID==null){
-          JOptionPane.showMessageDialog(this,"Bạn phải ch�?n một đơn hàng");
-            
+        if (ODID == null) {
+            JOptionPane.showMessageDialog(this, "Bạn phải ch�?n một đơn hàng");
+
+        } else {
+            new chagerooms(this, true).setVisible(true); // goi dialog change room
         }
-        else {
-            new chagerooms(this,true).setVisible(true); // goi dialog change room
-        }
-        
+
     }//GEN-LAST:event_jButton18ActionPerformed
 
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
 // TODO add your handling code here:
-        showordes(Loai); 
+        showordes(Loai);
         CountOrderShow();
     }//GEN-LAST:event_jButton20ActionPerformed
 
-    private void SQLRUN (String SQLTEXT)
-     {
-       try{
+    private void SQLRUN(String SQLTEXT) {
+        try {
             Connection conn = Utils.CON();
-            Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+            Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
             stm.execute(SQLTEXT);
             conn.close();
             stm.close();
-            
-        }
-        catch(Exception e){
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
 // TODO add your handling code here:
-        
-         if (ODID==null){
-          JOptionPane.showMessageDialog(this,"Bạn phải ch�?n một đơn hàng");
-            
-        }
-        else {
-            int isdelete = JOptionPane.showConfirmDialog(this,"Bạn thực sự muốn xóa đơn hàng của "+Cusname+" hay không ?","Cảnh báo",0);
+
+        if (ODID == null) {
+            JOptionPane.showMessageDialog(this, "Bạn phải ch�?n một đơn hàng");
+
+        } else {
+            int isdelete = JOptionPane.showConfirmDialog(this, "Bạn thực sự muốn xóa đơn hàng của " + Cusname + " hay không ?", "Cảnh báo", 0);
             System.out.println(isdelete);
-            if (isdelete==0) {
-            SQLRUN ("execute clearOrders '"+ODID+"'"); // goi ham xoa het thong tin ve orders
-            //SQLRUN ("Delete orders where orderId = '"+ODID+"'");  
-            showordes(Loai); 
-            ODID= null;
-            
+            if (isdelete == 0) {
+                SQLRUN("execute clearOrders '" + ODID + "'"); // goi ham xoa het thong tin ve orders
+                //SQLRUN ("Delete orders where orderId = '"+ODID+"'");
+                showordes(Loai);
+                ODID = null;
+
             }
             //if (isdelete==1) {}
             //JOptionPane.showMessageDialog(this,"Bạn đã xóa thành công ");
         }
-        
+
     }//GEN-LAST:event_jButton16ActionPerformed
 
     private void combOrdertypeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_combOrdertypeItemStateChanged
 // TODO add your handling code here:
-        showordes(Loai); 
-        
+        showordes(Loai);
+
     }//GEN-LAST:event_combOrdertypeItemStateChanged
 
     private void tableOrdersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableOrdersMouseClicked
 // TODO add your handling code here:
-         int  row;
+        int row;
         row = tableOrders.getSelectedRow();
-        ODID=tableOrders.getValueAt(row,0).toString();
-        int OrderStaus = new Integer(tableOrders.getValueAt(row,1).toString());
-        OrderID = new Integer((String) tableOrders.getValueAt(row,0));
-        System.out.println(tableOrders.getValueAt(row,0));
-        Cusname=tableOrders.getValueAt(row,2).toString();
+        ODID = tableOrders.getValueAt(row, 0).toString();
+        int OrderStaus = new Integer(tableOrders.getValueAt(row, 1).toString());
+        OrderID = new Integer((String) tableOrders.getValueAt(row, 0));
+        System.out.println(tableOrders.getValueAt(row, 0));
+        Cusname = tableOrders.getValueAt(row, 2).toString();
         hiddenPopup(OrderStaus);
         hiddenButton(OrderID);
     }//GEN-LAST:event_tableOrdersMouseClicked
-    
-    private void hiddenButton(int OrderID){
+
+    private void hiddenButton(int OrderID) {
         int status = 0;
         String sql = "";
         sql = sql + "select status from orders where orderID ='" + OrderID + "'";
         System.out.println(sql);
         Connection conn = new connectDatabase().getConnection();
-        try{
+        try {
             Statement st = conn.createStatement();
             ResultSet rs = st.executeQuery(sql);
-            while(rs.next()){
+            while (rs.next()) {
                 status = rs.getInt(1);
             }
-        st.close();
-        conn.close();
-        }
-        catch(SQLException se){
+            st.close();
+            conn.close();
+        } catch (SQLException se) {
             System.out.println(se);
         }
-        if(status == 3){
+        if (status == 3) {
             //jButton19.setEnabled(false);
             jButton22.setEnabled(false);
             jButton22.setEnabled(false);
             jButton18.setEnabled(false);
             jButton17.setEnabled(false);
-        }
-        else{
+        } else {
             //jButton19.setEnabled(true);
             jButton22.setEnabled(true);
             jButton22.setEnabled(true);
             jButton18.setEnabled(true);
             jButton17.setEnabled(true);
         }
-     }        
+    }
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
 // TODO add your handling code here:
-        if (ODID==null){
-          JOptionPane.showMessageDialog(this,"Bạn phải ch�?n một đơn hàng");
-            
-        }
-        else {
-            new addServicestoOrder(this,true).setVisible(true);
+        if (ODID == null) {
+            JOptionPane.showMessageDialog(this, "Bạn phải ch�?n một đơn hàng");
+
+        } else {
+            new addServicestoOrder(this, true).setVisible(true);
             //ODID=null;
         }
     }//GEN-LAST:event_jButton17ActionPerformed
-   
 
-    
-   
     private void btntimphongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntimphongActionPerformed
 // TODO add your handling code here:        
-        ViewRoom();    
+        ViewRoom();
         CountRoomShow();
     }//GEN-LAST:event_btntimphongActionPerformed
 
     private void cbbRoomTypeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbRoomTypeItemStateChanged
 // TODO add your handling code here:
-        if(cbbRoomType.getSelectedIndex()!=-1){
+        if (cbbRoomType.getSelectedIndex() != -1) {
             ViewRoom();
         }
     }//GEN-LAST:event_cbbRoomTypeItemStateChanged
 
     private void btnCreaOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreaOrderActionPerformed
-     
+
 // TODO add your handling code here:
         vt = new Vector();
-           int ro = table.getSelectedRow();
-           if(ro == -1){
-           JOptionPane.showMessageDialog(this,"Bạn phải ch�?n ít nhất một phòng!");
-            } // if huynh
-            else{
-                for(int i=0; i<getData.RowCount;i++) {
-                    if(table.getValueAt(i,0).equals(true)) {
-                        vt.addElement(table.getValueAt(i,1));
-                        
-                    }else{
-                        
-                        vt.removeElement(table.getValueAt(i,1));
-                    }
-                    
-                    
+        int ro = table.getSelectedRow();
+        if (ro == -1) {
+            JOptionPane.showMessageDialog(this, "Bạn phải ch�?n ít nhất một phòng!");
+        } // if huynh
+        else {
+            for (int i = 0; i < getData.RowCount; i++) {
+                if (table.getValueAt(i, 0).equals(true)) {
+                    vt.addElement(table.getValueAt(i, 1));
+
+                } else {
+
+                    vt.removeElement(table.getValueAt(i, 1));
                 }
-             
-                
-                if   (vt.size()==0 ) {
-                    JOptionPane.showMessageDialog(this,"Bạn phải ch�?n ít nhất một phòng");
-                }
-                else {
-                 createOrderNew taodonhang =new  createOrderNew(this,true,beginDate,endDate,vt);
-                 taodonhang.setVisible(true);
-                }
-            } // else cua phan chua chon
-      
+
+
+            }
+
+
+            if (vt.size() == 0) {
+                JOptionPane.showMessageDialog(this, "Bạn phải ch�?n ít nhất một phòng");
+            } else {
+                createOrderNew taodonhang = new createOrderNew(this, true, beginDate, endDate, vt);
+                taodonhang.setVisible(true);
+            }
+        } // else cua phan chua chon
+
     }//GEN-LAST:event_btnCreaOrderActionPerformed
-    
+
     private void mnitCreateUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnitCreateUserActionPerformed
 // TODO add your handling code here:
-        UserInfo uinfo = new UserInfo(this,true);
+        UserInfo uinfo = new UserInfo(this, true);
         uinfo.setVisible(true);
     }//GEN-LAST:event_mnitCreateUserActionPerformed
 
     private void mnitServiceOperationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnitServiceOperationActionPerformed
 // TODO add your handling code here:
-        addForm objService = new addForm(this,true);
+        addForm objService = new addForm(this, true);
         objService.setVisible(true);
     }//GEN-LAST:event_mnitServiceOperationActionPerformed
 
     private void mnitServiceTypesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnitServiceTypesActionPerformed
 // TODO add your handling code here:
-        addServiceType objServiceType = new addServiceType(this,true);
-        objServiceType.setVisible(true);        
+        addServiceType objServiceType = new addServiceType(this, true);
+        objServiceType.setVisible(true);
     }//GEN-LAST:event_mnitServiceTypesActionPerformed
 
     private void mnReservationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnReservationActionPerformed
@@ -2855,8 +2800,8 @@ public class hotelForm extends javax.swing.JFrame {
 
     private void mnitExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnitExitActionPerformed
 // TODO add your handling code here:        
-        int result = JOptionPane.showConfirmDialog(this,"Bạn có thực sự muốn thoát kh�?i ứng dụng không ?","Cảnh báo",JOptionPane.OK_CANCEL_OPTION);
-        if(result == 0){
+        int result = JOptionPane.showConfirmDialog(this, "Bạn có thực sự muốn thoát kh�?i ứng dụng không ?", "Cảnh báo", JOptionPane.OK_CANCEL_OPTION);
+        if (result == 0) {
             System.exit(1);
         }
     }//GEN-LAST:event_mnitExitActionPerformed
@@ -2864,505 +2809,494 @@ public class hotelForm extends javax.swing.JFrame {
     private void mnitBackupDatabaseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnitBackupDatabaseActionPerformed
 // TODO add your handling code here:
     }//GEN-LAST:event_mnitBackupDatabaseActionPerformed
-    
+
     /**
      * @param args the command line arguments
      */
-    
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
+
             public void run() {
                 new hotelForm().setVisible(true);
             }
         });
     }
-    public void loginMenu(){ 
-        mnitNew = new javax.swing.JMenuItem(); 
-        mnitNew.setText("Dành riêng cho Admin");        
+
+    public void loginMenu() {
+        mnitNew = new javax.swing.JMenuItem();
+        mnitNew.setText("Dành riêng cho Admin");
         mnOption.add(mnitNew);
     }
-    private void setLich(){
-         vnLocale = new Locale("vi","VN");
-         jcalendar1.setLocale(vnLocale);
-         dateChooseBegin.setLocale(vnLocale);
-         dateChooseEnd.setLocale(vnLocale);
-         df1 = new SimpleDateFormat("MM/dd/yy HH:mm:ss");
-         df = DateFormat.getDateInstance(DateFormat.LONG,vnLocale); 
+
+    private void setLich() {
+        vnLocale = new Locale("vi", "VN");
+        jcalendar1.setLocale(vnLocale);
+        dateChooseBegin.setLocale(vnLocale);
+        dateChooseEnd.setLocale(vnLocale);
+        df1 = new SimpleDateFormat("MM/dd/yy HH:mm:ss");
+        df = DateFormat.getDateInstance(DateFormat.LONG, vnLocale);
         // Get today's date
-         date = new Date();           
-         txtDateField.setText(df.format(date));  
-         dateChoose = new UserFormat().getFormat(date,"ngaygio");
-         /* 
-         try {
-                dateChooseBegin.setDate(new SimpleDateFormat("MM/dd/yy HH:mm:ss").parse(new UserFormat().getFormat(date,"ngaygio")));
-            } catch (ParseException ex) {
-                ex.printStackTrace();
-            }
-          */
-         ViewRoomStatusToday();
+        date = new Date();
+        txtDateField.setText(df.format(date));
+        dateChoose = new UserFormat().getFormat(date, "ngaygio");
+        /*
+        try {
+        dateChooseBegin.setDate(new SimpleDateFormat("MM/dd/yy HH:mm:ss").parse(new UserFormat().getFormat(date,"ngaygio")));
+        } catch (ParseException ex) {
+        ex.printStackTrace();
+        }
+         */
+        ViewRoomStatusToday();
     }
 
-    private void RoomTypeCombobox(){
+    private void RoomTypeCombobox() {
         String sql = "select name from roomstype";
         cbbRoomType.addItem("Hiện tất cả các loại phòng");
-        new sqlDatabase().addDataCombobox(sql,cbbRoomType);
+        new sqlDatabase().addDataCombobox(sql, cbbRoomType);
     }
     /*
     private void OrderStatusCombobox(){
-        String sql = "SELECT status_detail FROM order_status";
-        cbbOrderStatus.addItem("Hiện tất cả");
-        new sqlDatabase().addDataCombobox(sql,cbbOrderStatus);
+    String sql = "SELECT status_detail FROM order_status";
+    cbbOrderStatus.addItem("Hiện tất cả");
+    new sqlDatabase().addDataCombobox(sql,cbbOrderStatus);
     }
-    */ 
-    public void ViewRoom(){
+     */
+
+    public void ViewRoom() {
         String select = cbbRoomType.getSelectedItem().toString();
-        String[] title = {"Ch�?n","Mã Phòng","Tên phòng","Loại phòng","Giá phòng"};
-	String space = " ";
-	try{
-                if(con == null){
-                        con = new connectDatabase().getConnection();   
-                }  
-                String sql = "select RoomTypeId from roomstype ";
-                        sql = sql + "WHERE name = N'"+select+"'";
-             
-                sttm = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
-                if(select.equals("Hiện tất cả các loại phòng")){
-                        selectRoomTypeId = "0";
+        String[] title = {"Ch�?n", "Mã Phòng", "Tên phòng", "Loại phòng", "Giá phòng"};
+        String space = " ";
+        try {
+            if (con == null) {
+                con = new connectDatabase().getConnection();
+            }
+            String sql = "select RoomTypeId from roomstype ";
+            sql = sql + "WHERE name = N'" + select + "'";
+
+            sttm = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            if (select.equals("Hiện tất cả các loại phòng")) {
+                selectRoomTypeId = "0";
+            } else {
+                ResultSet rs = sttm.executeQuery(sql);
+                while (rs.next()) {
+                    selectRoomTypeId = rs.getString(1);
                 }
-                else{
-                        ResultSet rs = sttm.executeQuery(sql);
-                        while(rs.next()){
-                                selectRoomTypeId = rs.getString(1);
-                        }
-                }             
-        }
-        catch(Exception e){
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
-	TableDataRoom tableDataRoom = new TableDataRoom(beginDate,endDate,selectRoomTypeId,title);
-	table.setModel(tableDataRoom);		
-	table.setRowHeight(17);
-        Utils.hiddencol(table,1);
-        Utils.hiddencol(table,3);
+        TableDataRoom tableDataRoom = new TableDataRoom(beginDate, endDate, selectRoomTypeId, title);
+        table.setModel(tableDataRoom);
+        table.setRowHeight(17);
+        Utils.hiddencol(table, 1);
+        Utils.hiddencol(table, 3);
     }
 
- 
-    
- //-------------------------HuynhNt Code--------------------------------//
-    private void Infomation(){
-        lblUser.setText(Utils.selectDateToString("select username from users where userName='"+loginForm.user+"'","username"));
-        lblRight.setText(loginForm.usertypename);        
-        lblImage.setIcon(new javax.swing.ImageIcon(getClass().getResource(Utils.selectDateToString("select image from users where userName='"+loginForm.user+"'","image"))));
+    //-------------------------HuynhNt Code--------------------------------//
+    private void Infomation() {
+        lblUser.setText(Utils.selectDateToString("select username from users where userName='" + loginForm.user + "'", "username"));
+        lblRight.setText(loginForm.usertypename);
+        lblImage.setIcon(new javax.swing.ImageIcon(getClass().getResource(Utils.selectDateToString("select image from users where userName='" + loginForm.user + "'", "image"))));
         lblImage.setText("");
     }
-    
-    private void ViewRoomStatusToday(){
-        
-         String sql="";
-        
-        
-        String TatusRoom =cbbRoomStaus.getSelectedItem().toString();
-         if (TatusRoom.equals("Tất cả các loại"))
-         {
-            sql =  "select roomnumb as 'Tên phòng', N'Phòng đang bận' as 'Trạng thái',roomid as 'Mã phòng' from rooms  where roomid in (select roomid from TrangThai " ; 
-            sql = sql + "where (roomstatusId = 5 or roomstatusId = 6)  and '"+dateChoose+"' between beginDate and endDate) ";
+
+    private void ViewRoomStatusToday() {
+
+        String sql = "";
+
+
+        String TatusRoom = cbbRoomStaus.getSelectedItem().toString();
+        if (TatusRoom.equals("Tất cả các loại")) {
+            sql = "select roomnumb as 'Tên phòng', N'Phòng đang bận' as 'Trạng thái',roomid as 'Mã phòng' from rooms  where roomid in (select roomid from TrangThai ";
+            sql = sql + "where (roomstatusId = 5 or roomstatusId = 6)  and '" + dateChoose + "' between beginDate and endDate) ";
 
             sql = sql + "UNION select roomnumb, N'Phòng đang đặt' as 'Trạng thái',roomid from rooms where roomid in(select roomid from TrangThai ";
-            sql = sql + "where roomstatusId = 8 and '"+dateChoose+"' between beginDate and endDate) ";
+            sql = sql + "where roomstatusId = 8 and '" + dateChoose + "' between beginDate and endDate) ";
 
             sql = sql + "UNION select roomnumb, N'Phòng đang trống' as 'Trạng thái',roomid from rooms where roomid not in(select roomid from TrangThai ";
-            sql = sql + "where (roomstatusId = 5 or roomstatusId = 6 or roomstatusId = 8 or roomstatusId = 7 ) and '"+dateChoose+"' between beginDate and endDate)" ;
-            new sqlDatabase().addDataTable(sql,tableViewRoomStaus,3);  
-            Utils.hiddencol(tableViewRoomStaus,2);
-         }
-         
-        if (TatusRoom.equals("Phòng đang rỗi"))
-        {
+            sql = sql + "where (roomstatusId = 5 or roomstatusId = 6 or roomstatusId = 8 or roomstatusId = 7 ) and '" + dateChoose + "' between beginDate and endDate)";
+            new sqlDatabase().addDataTable(sql, tableViewRoomStaus, 3);
+            Utils.hiddencol(tableViewRoomStaus, 2);
+        }
+
+        if (TatusRoom.equals("Phòng đang rỗi")) {
             sql = "select roomnumb as 'Tên phòng', N'Phòng đang trống' as 'Trạng thái',roomid from rooms where roomid not in(select roomid from TrangThai ";
-            sql = sql + "where (roomstatusId = 5 or roomstatusId = 6 or roomstatusId = 8 or roomstatusId = 7 ) and '"+dateChoose+"' between beginDate and endDate)" ;
-            new sqlDatabase().addDataTable(sql,tableViewRoomStaus,3);  
-            Utils.hiddencol(tableViewRoomStaus,2);
+            sql = sql + "where (roomstatusId = 5 or roomstatusId = 6 or roomstatusId = 8 or roomstatusId = 7 ) and '" + dateChoose + "' between beginDate and endDate)";
+            new sqlDatabase().addDataTable(sql, tableViewRoomStaus, 3);
+            Utils.hiddencol(tableViewRoomStaus, 2);
         }
-         if (TatusRoom.equals("Phòng đang đặt"))
-         {
+        if (TatusRoom.equals("Phòng đang đặt")) {
             sql = "select roomnumb as 'Tên phòng', N'Phòng đang đặt' as 'Trạng thái',roomid from rooms where roomid in(select roomid from TrangThai ";
-            sql = sql + "where roomstatusId = 8 and '"+dateChoose+"' between beginDate and endDate) ";
-            new sqlDatabase().addDataTable(sql,tableViewRoomStaus,3);  
-            Utils.hiddencol(tableViewRoomStaus,2);
+            sql = sql + "where roomstatusId = 8 and '" + dateChoose + "' between beginDate and endDate) ";
+            new sqlDatabase().addDataTable(sql, tableViewRoomStaus, 3);
+            Utils.hiddencol(tableViewRoomStaus, 2);
         }
-        
-        if (TatusRoom.equals("Phòng đang bận"))
-        {
-             
-            sql =  "select roomnumb as 'Tên phòng', N'Phòng đang bận' as 'Trạng thái',roomid as 'Mã phòng' from rooms  where roomid in (select roomid from TrangThai " ; 
-            sql = sql + "where (roomstatusId = 5 or roomstatusId = 6)  and '"+dateChoose+"' between beginDate and endDate) ";
-            new sqlDatabase().addDataTable(sql,tableViewRoomStaus,3);  
-            Utils.hiddencol(tableViewRoomStaus,2);
+
+        if (TatusRoom.equals("Phòng đang bận")) {
+
+            sql = "select roomnumb as 'Tên phòng', N'Phòng đang bận' as 'Trạng thái',roomid as 'Mã phòng' from rooms  where roomid in (select roomid from TrangThai ";
+            sql = sql + "where (roomstatusId = 5 or roomstatusId = 6)  and '" + dateChoose + "' between beginDate and endDate) ";
+            new sqlDatabase().addDataTable(sql, tableViewRoomStaus, 3);
+            Utils.hiddencol(tableViewRoomStaus, 2);
         }
-        
-       //String sql = "{call ViewRoomStatusToday('"+dateChoose+"')}";
-        
-       
+
+        //String sql = "{call ViewRoomStatusToday('"+dateChoose+"')}";
+
+
     }
-    public void ChangeLK()
-    {
+
+    public void ChangeLK() {
         SwingUtilities.updateComponentTreeUI(this);
     }
-    private void CheckOut(String roomName){        
-        String sql = "select orid from busyrooms where roomNumb= N'"+roomName+"' and '"+dateChoose+"' between bd and ed";
+
+    private void CheckOut(String roomName) {
+        String sql = "select orid from busyrooms where roomNumb= N'" + roomName + "' and '" + dateChoose + "' between bd and ed";
         //String sql = "select roomId from rooms where roomNumb = N'Phong 101'";
-        ODID = new sqlDatabase().converToString(sql,1);
+        ODID = new sqlDatabase().converToString(sql, 1);
         int result = new sqlDatabase().getCount(sql);
-        if(result!=0){
-            new checkOutAll(this,true,ODID).setVisible(true);
+        if (result != 0) {
+            new checkOutAll(this, true, ODID).setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Phòng đang đang rỗi nên kông thể thanh toán");
         }
-        else{
-            JOptionPane.showMessageDialog(this,"Phòng đang đang rỗi nên kông thể thanh toán");
-        }    
     }
-    private void infoOrder(String roomName){
-        String sql = "select orderId from TrangThai where roomNumb= N'"+roomName+"' and '"+dateChoose+"' between beginDate and endDate";        
+
+    private void infoOrder(String roomName) {
+        String sql = "select orderId from TrangThai where roomNumb= N'" + roomName + "' and '" + dateChoose + "' between beginDate and endDate";
         //ODID = new sqlDatabase().ConverSql(sql,1);        
-        ODID = new  sqlDatabase().converToString(sql,1);
+        ODID = new sqlDatabase().converToString(sql, 1);
         int result = new sqlDatabase().getCount(sql);
-        if(result!=0){
-            new showOrderDetail(this,true).setVisible(true); 
-        }
-        else{
-            JOptionPane.showMessageDialog(this,"Phòng này hiện tại đang rỗi");
+        if (result != 0) {
+            new showOrderDetail(this, true).setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Phòng này hiện tại đang rỗi");
         }
     }
     //
-    
-    private void ChangerRoom(String roomName){        
-        String sql = "select orid from busyrooms where roomNumb= N'"+roomName+"' and '"+dateChoose+"' between bd and ed";
+
+    private void ChangerRoom(String roomName) {
+        String sql = "select orid from busyrooms where roomNumb= N'" + roomName + "' and '" + dateChoose + "' between bd and ed";
         //String sql = "select roomId from rooms where roomNumb = N'Phong 101'";
-        ODID = new sqlDatabase().converToString(sql,1);
+        ODID = new sqlDatabase().converToString(sql, 1);
         int result = new sqlDatabase().getCount(sql);
-        if(result!=0){
-            new chagerooms(this,true).setVisible(true);
+        if (result != 0) {
+            new chagerooms(this, true).setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Phòng đang đang rỗi nên không thể chuyển");
         }
-        else{
-            JOptionPane.showMessageDialog(this,"Phòng đang đang rỗi nên không thể chuyển");
-        }    
-    }
-        //
-     private void AddServices(String roomName){
-        String sql = "select orderId from TrangThai where roomNumb= N'"+roomName+"' and '"+dateChoose+"' between beginDate and endDate";        
-        //ODID = new sqlDatabase().ConverSql(sql,1);        
-        ODID = new  sqlDatabase().converToString(sql,1);
-        int result = new sqlDatabase().getCount(sql);
-        if(result!=0){
-            new addServicestoOrder(this,true).setVisible(true);
-        }
-        else{
-            JOptionPane.showMessageDialog(this,"Phòng đang đang rỗi nên kông thể g�?i dịch vụ!");
-        }   
     }
     //
-     private void addCustomer(String roomName){
-        String sql = "select orderId from TrangThai where roomNumb= N'"+roomName+"' and '"+dateChoose+"' between beginDate and endDate";        
+
+    private void AddServices(String roomName) {
+        String sql = "select orderId from TrangThai where roomNumb= N'" + roomName + "' and '" + dateChoose + "' between beginDate and endDate";
         //ODID = new sqlDatabase().ConverSql(sql,1);        
-        ODID = new  sqlDatabase().converToString(sql,1);
+        ODID = new sqlDatabase().converToString(sql, 1);
         int result = new sqlDatabase().getCount(sql);
-        if(result!=0){
-            new insertCustomer(this,true,ODID).setVisible(true);
-        }
-        else{
-            JOptionPane.showMessageDialog(this,"Phòng đang rỗi nên không thể thêm ngư�?i vào được!");
-        }   
-    }
-     
-  
-      private void Search()
-    {
-    {   if (jRadioButtonRoomName.isSelected())
-            
-        Utils.addItemToTable(tblSearchResult,"select [Tên phòng],[Tên khách],begindate as [Ngày đến ở] from vSearchRooms where [Tên phòng] like '%"+txtInput.getText()+"%'");
-    }
-       if (jRadioButtonCusName.isSelected())
-       {   
-        Utils.addItemToTable(tblSearchResult,"select [Tên khách],[Tên phòng],begindate as [Ngày đến ở] from vSearchRooms where [Tên khách] like '%"+txtInput.getText()+"%'");
-       }
-        if (jRadioButtonDay.isSelected())
-        {
-         Utils.addItemToTable(tblSearchResult,"select begindate as [Ngày đến ở],[Tên khách],[Tên phòng] from vSearchRooms where convert(int,convert(datetime ,convert (nvarchar, DATEPART(month,begindate))+'/'+convert (nvarchar,DATEPART(day,begindate))+'/'+convert(nvarchar,DATEPART(year,begindate))) -'"+new UserFormat().getFormat(jDateChooserSearch.getDate(),"ngay")+"')=0 ");
+        if (result != 0) {
+            new addServicestoOrder(this, true).setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Phòng đang đang rỗi nên kông thể g�?i dịch vụ!");
         }
     }
-     
-     private void NumbofRoomShow()
-     {
-        lbl1.setText(Utils.selectDateToString("select name from roomstype where roomtypeid=1","name"));
-         lbl2.setText(Utils.selectDateToString("select name from roomstype where roomtypeid=2","name"));
-          lbl3.setText(Utils.selectDateToString("select name from roomstype where roomtypeid=3","name"));
-           lbl4.setText(Utils.selectDateToString("select name from roomstype where roomtypeid=4","name"));
-           
-           odtype1.setText(Utils.selectDateToString("select status_detail as Name from order_Status where statusId=1","name"));
-           odtype2.setText(Utils.selectDateToString("select status_detail as Name from order_Status where statusId=2","name"));
-           odtype3.setText(Utils.selectDateToString("select status_detail as Name from order_Status where statusId=3","name"));
-           odtype4.setText(Utils.selectDateToString("select status_detail as Name from order_Status where statusId=4","name"));
-           
-     }
-     private void CountRoomShow()
-     {
-         n1.setText(Utils.selectDateToString("CountRoomType 1,'"+new UserFormat().getFormat(dateChooseBegin.getDate(),"ngaygio")+"','"+new UserFormat().getFormat(dateChooseEnd.getDate(),"ngaygio")+"'","NumbOfRoomType"));
-         n2.setText(Utils.selectDateToString("CountRoomType 2,'"+new UserFormat().getFormat(dateChooseBegin.getDate(),"ngaygio")+"','"+new UserFormat().getFormat(dateChooseEnd.getDate(),"ngaygio")+"'","NumbOfRoomType"));
-         n3.setText(Utils.selectDateToString("CountRoomType 3,'"+new UserFormat().getFormat(dateChooseBegin.getDate(),"ngaygio")+"','"+new UserFormat().getFormat(dateChooseEnd.getDate(),"ngaygio")+"'","NumbOfRoomType"));
-         n4.setText(Utils.selectDateToString("CountRoomType 4,'"+new UserFormat().getFormat(dateChooseBegin.getDate(),"ngaygio")+"','"+new UserFormat().getFormat(dateChooseEnd.getDate(),"ngaygio")+"'","NumbOfRoomType"));
-     }
-      private void CountOrderShow()
-      {
-          odn1.setText(Utils.selectDateToString("select count(orderId) as CountOD from orders where status =1","CountOD"));
-          odn2.setText(Utils.selectDateToString("select count(orderId) as CountOD from orders where status =2","CountOD"));
-          odn3.setText(Utils.selectDateToString("select count(orderId) as CountOD from orders where status =3","CountOD"));
-          odn4.setText(Utils.selectDateToString("select count(orderId) as CountOD from orders where status =4","CountOD"));
-      }
-      private void CountCustomerType()
-      {
-          cn1.setText(Utils.selectDateToString("select count (*) as Demkhachdathang from customersview where customerId in (select customerid from orders)","Demkhachdathang"));
-          cn2.setText(Utils.selectDateToString("select count (*) as Demkhachdeno from customersview where customerId in (select customerid from roomcurent_detail)","Demkhachdeno"));
-      }
-     private void hiddenPopup(int orderStatus)
-    {
-        if (orderStatus==3) 
+    //
+
+    private void addCustomer(String roomName) {
+        String sql = "select orderId from TrangThai where roomNumb= N'" + roomName + "' and '" + dateChoose + "' between beginDate and endDate";
+        //ODID = new sqlDatabase().ConverSql(sql,1);        
+        ODID = new sqlDatabase().converToString(sql, 1);
+        int result = new sqlDatabase().getCount(sql);
+        if (result != 0) {
+            new insertCustomer(this, true, ODID).setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Phòng đang rỗi nên không thể thêm ngư�?i vào được!");
+        }
+    }
+
+    private void Search() {
         {
+            if (jRadioButtonRoomName.isSelected()) {
+                Utils.addItemToTable(tblSearchResult, "select [Tên phòng],[Tên khách],begindate as [Ngày đến ở] from vSearchRooms where [Tên phòng] like '%" + txtInput.getText() + "%'");
+            }
+        }
+        if (jRadioButtonCusName.isSelected()) {
+            Utils.addItemToTable(tblSearchResult, "select [Tên khách],[Tên phòng],begindate as [Ngày đến ở] from vSearchRooms where [Tên khách] like '%" + txtInput.getText() + "%'");
+        }
+        if (jRadioButtonDay.isSelected()) {
+            Utils.addItemToTable(tblSearchResult, "select begindate as [Ngày đến ở],[Tên khách],[Tên phòng] from vSearchRooms where convert(int,convert(datetime ,convert (nvarchar, DATEPART(month,begindate))+'/'+convert (nvarchar,DATEPART(day,begindate))+'/'+convert(nvarchar,DATEPART(year,begindate))) -'" + new UserFormat().getFormat(jDateChooserSearch.getDate(), "ngay") + "')=0 ");
+        }
+    }
+
+    private void NumbofRoomShow() {
+        lbl1.setText(Utils.selectDateToString("select name from roomstype where roomtypeid=1", "name"));
+        lbl2.setText(Utils.selectDateToString("select name from roomstype where roomtypeid=2", "name"));
+        lbl3.setText(Utils.selectDateToString("select name from roomstype where roomtypeid=3", "name"));
+        lbl4.setText(Utils.selectDateToString("select name from roomstype where roomtypeid=4", "name"));
+
+        odtype1.setText(Utils.selectDateToString("select status_detail as Name from order_Status where statusId=1", "name"));
+        odtype2.setText(Utils.selectDateToString("select status_detail as Name from order_Status where statusId=2", "name"));
+        odtype3.setText(Utils.selectDateToString("select status_detail as Name from order_Status where statusId=3", "name"));
+        odtype4.setText(Utils.selectDateToString("select status_detail as Name from order_Status where statusId=4", "name"));
+
+    }
+
+    private void CountRoomShow() {
+        n1.setText(Utils.selectDateToString("CountRoomType 1,'" + new UserFormat().getFormat(dateChooseBegin.getDate(), "ngaygio") + "','" + new UserFormat().getFormat(dateChooseEnd.getDate(), "ngaygio") + "'", "NumbOfRoomType"));
+        n2.setText(Utils.selectDateToString("CountRoomType 2,'" + new UserFormat().getFormat(dateChooseBegin.getDate(), "ngaygio") + "','" + new UserFormat().getFormat(dateChooseEnd.getDate(), "ngaygio") + "'", "NumbOfRoomType"));
+        n3.setText(Utils.selectDateToString("CountRoomType 3,'" + new UserFormat().getFormat(dateChooseBegin.getDate(), "ngaygio") + "','" + new UserFormat().getFormat(dateChooseEnd.getDate(), "ngaygio") + "'", "NumbOfRoomType"));
+        n4.setText(Utils.selectDateToString("CountRoomType 4,'" + new UserFormat().getFormat(dateChooseBegin.getDate(), "ngaygio") + "','" + new UserFormat().getFormat(dateChooseEnd.getDate(), "ngaygio") + "'", "NumbOfRoomType"));
+    }
+
+    private void CountOrderShow() {
+        odn1.setText(Utils.selectDateToString("select count(orderId) as CountOD from orders where status =1", "CountOD"));
+        odn2.setText(Utils.selectDateToString("select count(orderId) as CountOD from orders where status =2", "CountOD"));
+        odn3.setText(Utils.selectDateToString("select count(orderId) as CountOD from orders where status =3", "CountOD"));
+        odn4.setText(Utils.selectDateToString("select count(orderId) as CountOD from orders where status =4", "CountOD"));
+    }
+
+    private void CountCustomerType() {
+        cn1.setText(Utils.selectDateToString("select count (*) as Demkhachdathang from customersview where customerId in (select customerid from orders)", "Demkhachdathang"));
+        cn2.setText(Utils.selectDateToString("select count (*) as Demkhachdeno from customersview where customerId in (select customerid from roomcurent_detail)", "Demkhachdeno"));
+    }
+
+    private void hiddenPopup(int orderStatus) {
+        if (orderStatus == 3) {
             mnitAddCus.setVisible(false);
             mnitAddSer.setVisible(false);
             mnitChangeOrd.setVisible(false);
             mnitPrint.setVisible(true);
-        }
-        else
-        {
+        } else {
             mnitAddCus.setVisible(true);
             mnitAddSer.setVisible(true);
             mnitChangeOrd.setVisible(true);
             mnitPrint.setVisible(false);
         }
     }
+
     private void viewreport() {
-         Utils.addDataToTextField("select count(orderId) as OTT from orders where status=3","OTT",txtOdDtt);
-         Utils.addDataToTextField("select count(orderId) as OCT from orders where status=5","OCT",txtOdCtt);
-         Utils.addDataToTextField("select count(orderId) as TT1p from orders where status=4","TT1p",txtOdTt1p);
-         Utils.addDataToTextField("select count(orderId) as TOD from orders ","TOD",txtTOD);
-         
-         Utils.addDataToTextField("select count(TypeName) as LDV from ServicesType","LDV",txtLDv);
-         Utils.addDataToTextField("select count(servicesId) TDV from services","TDV",txtTDV);
-         
-         Utils.addDataToTextField("select count (customerId) as KDH from orders ","KDH",txtKDH);
-         Utils.addDataToTextField("select count(customerId) KDO from roomcurent_detail","KDO",txtKDO);
-         Utils.addDataToTextField("select count (customerId) TK from customers","TK",txtTK);
-         
-         Utils.addDataToTextField("select count(name) LP from roomstype","LP",txtLP);
-         Utils.addDataToTextField("select count (roomid) as TP from rooms","TP",txtTP);
-         
-         Utils.addDataToTextField("select count (servicesId) as txtDvHd from servicesdetail","txtDvHd",txtDvHd);
-         Utils.addDataToTextField("select count (roomId) as txtPHD from roomcurent_detail","txtPHD",txtPHD);
-         Utils.addDataToTextField("select count ( DISTINCT roomId) as regRoom from orderdetail ","regRoom",txtRegRoom);
-         Utils.addDataToTextField("select count(roomId) -(select  count (DISTINCT roomId) from orderdetail) as CountFreeRoom from rooms","CountFreeRoom",txtFreeRoom);
-         
-         
-         
+        Utils.addDataToTextField("select count(orderId) as OTT from orders where status=3", "OTT", txtOdDtt);
+        Utils.addDataToTextField("select count(orderId) as OCT from orders where status=5", "OCT", txtOdCtt);
+        Utils.addDataToTextField("select count(orderId) as TT1p from orders where status=4", "TT1p", txtOdTt1p);
+        Utils.addDataToTextField("select count(orderId) as TOD from orders ", "TOD", txtTOD);
+
+        Utils.addDataToTextField("select count(TypeName) as LDV from ServicesType", "LDV", txtLDv);
+        Utils.addDataToTextField("select count(servicesId) TDV from services", "TDV", txtTDV);
+
+        Utils.addDataToTextField("select count (customerId) as KDH from orders ", "KDH", txtKDH);
+        Utils.addDataToTextField("select count(customerId) KDO from roomcurent_detail", "KDO", txtKDO);
+        Utils.addDataToTextField("select count (customerId) TK from customers", "TK", txtTK);
+
+        Utils.addDataToTextField("select count(name) LP from roomstype", "LP", txtLP);
+        Utils.addDataToTextField("select count (roomid) as TP from rooms", "TP", txtTP);
+
+        Utils.addDataToTextField("select count (servicesId) as txtDvHd from servicesdetail", "txtDvHd", txtDvHd);
+        Utils.addDataToTextField("select count (roomId) as txtPHD from roomcurent_detail", "txtPHD", txtPHD);
+        Utils.addDataToTextField("select count ( DISTINCT roomId) as regRoom from orderdetail ", "regRoom", txtRegRoom);
+        Utils.addDataToTextField("select count(roomId) -(select  count (DISTINCT roomId) from orderdetail) as CountFreeRoom from rooms", "CountFreeRoom", txtFreeRoom);
+
+
+
     }
     ////End Tab Thong ke///
     /////Tab Quan ly don hang ////
+
     private void showordes(String loai) {
-        if (combOrdertype.getSelectedItem().toString()=="Hiện tất cả các loại") {
-            loai="all";
-            String sqlshoworder=  "select * from orderjointypejoincustomer where [Trạng thái] <>'"+loai+"'";
-            new sqlDatabase().addDataTable(sqlshoworder,tableOrders);
-            Utils.hiddencol(tableOrders,0);
-            Utils.hiddencol(tableOrders,1);
-            
+        if (combOrdertype.getSelectedItem().toString() == "Hiện tất cả các loại") {
+            loai = "all";
+            String sqlshoworder = "select * from orderjointypejoincustomer where [Trạng thái] <>'" + loai + "'";
+            new sqlDatabase().addDataTable(sqlshoworder, tableOrders);
+            Utils.hiddencol(tableOrders, 0);
+            Utils.hiddencol(tableOrders, 1);
+
+        } else {
+            loai = combOrdertype.getSelectedItem().toString();
+            String sqlshoworder = "select * from orderjointypejoincustomer where [Trạng thái]=N'" + loai + "'";
+            new sqlDatabase().addDataTable(sqlshoworder, tableOrders);
+            Utils.hiddencol(tableOrders, 0);
+            Utils.hiddencol(tableOrders, 1);
         }
-        else {
-            loai =combOrdertype.getSelectedItem().toString();
-            String sqlshoworder=  "select * from orderjointypejoincustomer where [Trạng thái]=N'"+loai+"'";
-            new sqlDatabase().addDataTable(sqlshoworder,tableOrders);
-            Utils.hiddencol(tableOrders,0);
-            Utils.hiddencol(tableOrders,1);
-        }
-        
-      
-       //new sqlDatabase().addDataTable(sqlshoworder,tableOrders);
-              //ystem.out.print(dateChoose);
+
+
+        //new sqlDatabase().addDataTable(sqlshoworder,tableOrders);
+        //ystem.out.print(dateChoose);
     }
-     private void showOrderByCus(String loai)
-     {
-         
-       if (combOrdertype.getSelectedItem().toString()=="Hiện tất cả các loại") {
-            loai="all";
-            String sqlshoworder=  "select * from orderjointypejoincustomer where [Trạng thái] <>'"+loai+"' and [Ngư�?i đặt] like N'%"+txtRegName.getText()+"%'";
-            new sqlDatabase().addDataTable(sqlshoworder,tableOrders);
-            Utils.hiddencol(tableOrders,0);
-            Utils.hiddencol(tableOrders,1);
+
+    private void showOrderByCus(String loai) {
+
+        if (combOrdertype.getSelectedItem().toString() == "Hiện tất cả các loại") {
+            loai = "all";
+            String sqlshoworder = "select * from orderjointypejoincustomer where [Trạng thái] <>'" + loai + "' and [Ngư�?i đặt] like N'%" + txtRegName.getText() + "%'";
+            new sqlDatabase().addDataTable(sqlshoworder, tableOrders);
+            Utils.hiddencol(tableOrders, 0);
+            Utils.hiddencol(tableOrders, 1);
+        } else {
+            loai = combOrdertype.getSelectedItem().toString();
+            String sqlshoworder = "select * from orderjointypejoincustomer where [Trạng thái]=N'" + loai + "' and [Ngư�?i đặt] like N'%" + txtRegName.getText() + "%'";
+            new sqlDatabase().addDataTable(sqlshoworder, tableOrders);
+            Utils.hiddencol(tableOrders, 0);
+            Utils.hiddencol(tableOrders, 1);
         }
-        else {
-            loai =combOrdertype.getSelectedItem().toString();
-            String sqlshoworder=  "select * from orderjointypejoincustomer where [Trạng thái]=N'"+loai+"' and [Ngư�?i đặt] like N'%"+txtRegName.getText()+"%'";
-            new sqlDatabase().addDataTable(sqlshoworder,tableOrders);
-            Utils.hiddencol(tableOrders,0);
-            Utils.hiddencol(tableOrders,1);
-        }
-       
-       }        
-      
-     private void showordestype(){
-         String sqlshowordertype = "select status_detail from order_status";
+
+    }
+
+    private void showordestype() {
+        String sqlshowordertype = "select status_detail from order_status";
         combOrdertype.addItem("Hiện tất cả các loại");
-        new sqlDatabase().addDataCombobox(sqlshowordertype,combOrdertype);
-        
+        new sqlDatabase().addDataCombobox(sqlshowordertype, combOrdertype);
+
     }
-     
-     ////End Tab Quan ly don hang ////
+
+    ////End Tab Quan ly don hang ////
     /////Tab Quan ly khách hang ////
-     private void InsertNewCustomer() {
-        
-        String gioi ="";
-        String cusType ="";
-        cusType = Utils.selectDateToString("select customerTypeId from customerstype where name  =N'"+cbType.getSelectedItem().toString()+"'","customerTypeId");
-        if (sexMale.isSelected()){gioi="Nam";
+    private void InsertNewCustomer() {
+
+        String gioi = "";
+        String cusType = "";
+        cusType = Utils.selectDateToString("select customerTypeId from customerstype where name  =N'" + cbType.getSelectedItem().toString() + "'", "customerTypeId");
+        if (sexMale.isSelected()) {
+            gioi = "Nam";
         }
-        if (sexFemale.isSelected()){gioi="Nu";
+        if (sexFemale.isSelected()) {
+            gioi = "Nu";
         }
-        
-        String sql= "insert into customers (firstname,lastname,type,idCardNumb,visaCardNumb,sex,age,address,phone,email,country,detail)" +
-                " values (N'"+txtFirstname.getText()+"',N'"+txtLastname.getText()+"','"+cusType+"','"+txtIdcardNumb.getText()+"',N'"+txtVisaCardNum.getText()+"','"+gioi+"','"+txtAge.getText()+"',N'"+txtAddress.getText()+"','"+
-                txtPhone.getText()+"','"+txtEmail.getText()+"',N'"+txtCountry.getText()+"',N'"+txtNote.getText()+"')" ;
-       // JOptionPane.showMessageDialog(this,sql);
+
+        String sql = "insert into customers (firstname,lastname,type,idCardNumb,visaCardNumb,sex,age,address,phone,email,country,detail)"
+                + " values (N'" + txtFirstname.getText() + "',N'" + txtLastname.getText() + "','" + cusType + "','" + txtIdcardNumb.getText() + "',N'" + txtVisaCardNum.getText() + "','" + gioi + "','" + txtAge.getText() + "',N'" + txtAddress.getText() + "','"
+                + txtPhone.getText() + "','" + txtEmail.getText() + "',N'" + txtCountry.getText() + "',N'" + txtNote.getText() + "')";
+        // JOptionPane.showMessageDialog(this,sql);
         SQLRUN(sql);
-       UnFillAllFeild();
-       showCustomers();
-        
-        
+        UnFillAllFeild();
+        showCustomers();
+
+
     }
-    private void showCustomers()
-    { 
-        String Sql="" ;  
-        if (typeOfCus.getSelectedItem().toString().equals("Tất cả"))
-        {
-            Sql="select * from customersview";
+
+    private void showCustomers() {
+        String Sql = "";
+        if (typeOfCus.getSelectedItem().toString().equals("Tất cả")) {
+            Sql = "select * from customersview";
         }
-        if (typeOfCus.getSelectedItem().toString().equals("Khách đặt hàng"))
-        {
-            Sql="select * from customersview where customerId in (select customerid from orders)";
+        if (typeOfCus.getSelectedItem().toString().equals("Khách đặt hàng")) {
+            Sql = "select * from customersview where customerId in (select customerid from orders)";
         }
-        if (typeOfCus.getSelectedItem().toString().equals("Khách đến ở"))
-        {
-            Sql="select * from customersview where customerId in (select customerid from roomcurent_detail)";
+        if (typeOfCus.getSelectedItem().toString().equals("Khách đến ở")) {
+            Sql = "select * from customersview where customerId in (select customerid from roomcurent_detail)";
         }
-        Utils.addItemToTable(tblCustomers,Sql);
-        Utils.hiddencol(tblCustomers,0);
-        
+        Utils.addItemToTable(tblCustomers, Sql);
+        Utils.hiddencol(tblCustomers, 0);
+
     }
-     private void showCustomers(String FirstName, String LastName)
-    {
-        Utils.addItemToTable(tblCustomers,"select * from customersview where [H�? tên] like '%"+FirstName+" "+LastName+"%'");
-        Utils.hiddencol(tblCustomers,0);
-    
+
+    private void showCustomers(String FirstName, String LastName) {
+        Utils.addItemToTable(tblCustomers, "select * from customersview where [H�? tên] like '%" + FirstName + " " + LastName + "%'");
+        Utils.hiddencol(tblCustomers, 0);
+
     }
-    private void FillAllFeild(){
+
+    private void FillAllFeild() {
         // Connection con = null ;
-        String sql1 ="select * from customers where customerid= '"+CusId+"'" ;
-        String sql2 ="select firstname,lastname,idCardNumb,visaCardNumb,age,address,phone,email,country,detail from customers where customerid= '"+CusId+"'" ;
-        
-        if(con == null){
+        String sql1 = "select * from customers where customerid= '" + CusId + "'";
+        String sql2 = "select firstname,lastname,idCardNumb,visaCardNumb,age,address,phone,email,country,detail from customers where customerid= '" + CusId + "'";
+
+        if (con == null) {
             con = new connectDatabase().getConnection();
         }
-        try{
-            
-            Statement sttm1 = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+        try {
+
+            Statement sttm1 = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             ResultSet rs1 = sttm1.executeQuery(sql2);
-            while (rs1.next()){
+            while (rs1.next()) {
                 //customerId.setText(rs1.getString("customerId"));
                 txtFirstname.setText(rs1.getString("firstName"));
-                txtLastname.setText(rs1.getString("lastName"));                
+                txtLastname.setText(rs1.getString("lastName"));
                 txtIdcardNumb.setText(rs1.getString("idCardNumb"));
-                txtVisaCardNum.setText(rs1.getString("visaCardNumb"));       
+                txtVisaCardNum.setText(rs1.getString("visaCardNumb"));
                 txtAge.setText(rs1.getString("age"));
                 txtAddress.setText(rs1.getString("address"));
                 txtPhone.setText(rs1.getString("phone"));
                 txtEmail.setText(rs1.getString("email"));
                 txtCountry.setText(rs1.getString("country"));
-                txtNote.setText(rs1.getString("detail"));               
-           
-           }
+                txtNote.setText(rs1.getString("detail"));
+
+            }
             sttm1.close();
             rs1.close();
-            Statement sttm2 = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+            Statement sttm2 = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
             ResultSet rs2 = sttm2.executeQuery(sql1);
-            while(rs2.next()){
+            while (rs2.next()) {
                 // dua du lieu vao cac truong
-               
+
                 cbType.removeAllItems();
-               Utils.addItemTooCombobox(cbType,"select name from customerstype where customerTypeId='"+rs2.getString("type")+"'","");
-               Utils.addItemTooCombobox(cbType,"select name from customerstype where customerTypeId <>'"+rs2.getString("type")+"'","");
-                
-                if (rs2.getString("sex").equals("Nam")){
+                Utils.addItemTooCombobox(cbType, "select name from customerstype where customerTypeId='" + rs2.getString("type") + "'", "");
+                Utils.addItemTooCombobox(cbType, "select name from customerstype where customerTypeId <>'" + rs2.getString("type") + "'", "");
+
+                if (rs2.getString("sex").equals("Nam")) {
                     System.out.println(rs2.getString("sex"));
-                    sexMale.setSelected(true);                    
+                    sexMale.setSelected(true);
                 }
-                if (rs2.getString("sex").equals("Nu")){
+                if (rs2.getString("sex").equals("Nu")) {
                     System.out.println(rs2.getString("sex"));
-                    sexFemale.setSelected(true);                    
-                }              
-                            // hoan tat dua du lieu vao cac truong
-            }          
+                    sexFemale.setSelected(true);
+                }
+                // hoan tat dua du lieu vao cac truong
+            }
             sttm2.close();
-           rs2.close();
-        } catch(Exception e){
+            rs2.close();
+        } catch (Exception e) {
             e.printStackTrace();
         }
-    }  
-     private void UpdateCustomer(String cusId){
-       
-            String gioi ="";
-            String cusType ="";
-            cusType =Utils.selectDateToString("select customerTypeId from customerstype where name  =N'"+cbType.getSelectedItem().toString()+"'","customerTypeId");
-            if (sexMale.isSelected()){gioi="Nam";
-            }
-            if (sexFemale.isSelected()){gioi="Nu";
-            }
-            
-            String sqlupdate ="update customers set firstname=N'"+txtFirstname.getText()+"',lastname=N'"+txtLastname.getText()+"', type='"+cusType+"',idCardNumb='"+txtIdcardNumb.getText()+"', visaCardNumb=N'"+
-                    txtVisaCardNum.getText()+"',sex='"+gioi+"',age='"+txtAge.getText()+"',address=N'"+txtAddress.getText()+"',phone='"+txtPhone.getText()+
-                    "',email='"+txtEmail.getText()+"',country=N'"+txtCountry.getText()+"',detail=N'"+txtNote.getText()+"' where customerid='"+cusId+"'";
-            SQLRUN(sqlupdate);
-            //JOptionPane.showMessageDialog(this,sqlupdate);
-            showCustomers();
-      
-        
     }
-    private void UnFillAllFeild()
-    {
+
+    private void UpdateCustomer(String cusId) {
+
+        String gioi = "";
+        String cusType = "";
+        cusType = Utils.selectDateToString("select customerTypeId from customerstype where name  =N'" + cbType.getSelectedItem().toString() + "'", "customerTypeId");
+        if (sexMale.isSelected()) {
+            gioi = "Nam";
+        }
+        if (sexFemale.isSelected()) {
+            gioi = "Nu";
+        }
+
+        String sqlupdate = "update customers set firstname=N'" + txtFirstname.getText() + "',lastname=N'" + txtLastname.getText() + "', type='" + cusType + "',idCardNumb='" + txtIdcardNumb.getText() + "', visaCardNumb=N'"
+                + txtVisaCardNum.getText() + "',sex='" + gioi + "',age='" + txtAge.getText() + "',address=N'" + txtAddress.getText() + "',phone='" + txtPhone.getText()
+                + "',email='" + txtEmail.getText() + "',country=N'" + txtCountry.getText() + "',detail=N'" + txtNote.getText() + "' where customerid='" + cusId + "'";
+        SQLRUN(sqlupdate);
+        //JOptionPane.showMessageDialog(this,sqlupdate);
+        showCustomers();
+
+
+    }
+
+    private void UnFillAllFeild() {
         txtFirstname.setText("");
-        txtLastname.setText(""); 
+        txtLastname.setText("");
         sexMale.setSelected(true);
         txtIdcardNumb.setText(" ");
-        txtVisaCardNum.setText(" ");       
+        txtVisaCardNum.setText(" ");
         txtAge.setText(" ");
         cbType.removeAllItems();
-        Utils.addItemTooCombobox(cbType,"select name from customerstype ","");
+        Utils.addItemTooCombobox(cbType, "select name from customerstype ", "");
         txtAddress.setText(" ");
         txtPhone.setText(" ");
         txtEmail.setText(" ");
         txtCountry.setText(" ");
         txtNote.setText(" ");
-        CusId=null;
-        
+        CusId = null;
+
     }
-    
+
     //////ket thuc tab quan ly khach hang.//////
     //// thay doi giao dien
-    private void ChangeLookAndFeel(String type)
-    {
-        try{
+    private void ChangeLookAndFeel(String type) {
+        try {
             UIManager.setLookAndFeel(type);
             SwingUtilities.updateComponentTreeUI(this);
-           // pack();
-           
+            // pack();
+
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this,"�?ang nâng cấp !");
-            
+            JOptionPane.showMessageDialog(this, "�?ang nâng cấp !");
+
             //System.err.println("Can't set look & feel:" + e);
         }
     }
@@ -3370,9 +3304,8 @@ public class hotelForm extends javax.swing.JFrame {
     //Tuanp Variables declaration
     String Cusname;
     String CusTomerName;
-   // private String SelectedCusId;
+    // private String SelectedCusId;
     //End Tuanp Variables declaration
-    
     public static String ODID;
     private String CusId;
     private String Loai;
@@ -3380,11 +3313,11 @@ public class hotelForm extends javax.swing.JFrame {
     private Connection con;
     private Statement sttm;
     private Locale vnLocale;
-    private DateFormat df,df2;
+    private DateFormat df, df2;
     private Date date;
     private String dateChoose;
     private Format df1;
-    private Calendar calendar;        
+    private Calendar calendar;
     private javax.swing.JMenuItem mnitNew;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane JSconpane;
@@ -3622,5 +3555,4 @@ public class hotelForm extends javax.swing.JFrame {
     private javax.swing.JTextField txtVisaCardNum;
     private javax.swing.JComboBox typeOfCus;
     // End of variables declaration//GEN-END:variables
-    
 }

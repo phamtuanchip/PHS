@@ -3,54 +3,51 @@
  *
  * Created on April 9, 2006, 6:47 AM
  */
-
 package phs_project;
-import java.awt.Component;
+
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
-import javax.swing.JComboBox;
-import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
-import java.util.*;
 import java.util.Vector;
 import java.text.*;
+
 /**
  *
  * @author  TUNG
  */
 public class checkOut1 extends javax.swing.JDialog {
+
     private Vector vector;
     public int OrderID;
     public Connection conn;
     public String roomName = "";
-    public int vectorSize = 0; 
+    public int vectorSize = 0;
+
     /** Creates new form checkOut1 */
-    public checkOut1(java.awt.Frame parent, boolean modal,Vector vt,int OrderID) {
+    public checkOut1(java.awt.Frame parent, boolean modal, Vector vt, int OrderID) {
         super(parent, modal);
         this.conn = new connectDatabase().getConnection();
         this.vector = vt;
-        this.OrderID = OrderID;        
+        this.OrderID = OrderID;
         this.vectorSize = new Search_Order(OrderID).size;
         //txtorderid
         initComponents();
-        txtorderid.setText(""+OrderID);
+        txtorderid.setText("" + OrderID);
         txtCusName.setText(new Search_Order(OrderID).getCusName());
         hiddenComponent();
-        fillCostOFRoomTable();  
+        fillCostOFRoomTable();
         fillServiceOfOrder();
-        setSumPriceRoomInOrder();        
+        setSumPriceRoomInOrder();
         setSumOrder();
         set_giam_gia();
         SumTotalOrder();
         khachtra();
     }
+
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -522,44 +519,42 @@ public class checkOut1 extends javax.swing.JDialog {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
 // TODO add your handling code here:
         // float tongtien = this.GetSumTotalOrder();
-         //System.out.println(tongtien);
-            CallableStatement cs;
-            try{               
-                cs = conn.prepareCall("{call hoantat(?)}");
-                cs.setInt(1,OrderID);                
-                cs.execute();                       
-                        
-            }
-            catch(SQLException se){
-                System.out.println("loi call hoan tat");
-                System.out.println(se);
-            }        
-       jButton5.setEnabled(false);
+        //System.out.println(tongtien);
+        CallableStatement cs;
+        try {
+            cs = conn.prepareCall("{call hoantat(?)}");
+            cs.setInt(1, OrderID);
+            cs.execute();
+
+        } catch (SQLException se) {
+            System.out.println("loi call hoan tat");
+            System.out.println(se);
+        }
+        jButton5.setEnabled(false);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void CostOfServicesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CostOfServicesMouseClicked
 // TODO add your handling code here:
         int row = CostOfServices.getSelectedRow();
         //ten dich vu
-        String nameServices = CostOfServices.getValueAt(row,0).toString();
+        String nameServices = CostOfServices.getValueAt(row, 0).toString();
         System.out.println(nameServices);
         //ten phong
         int rowR = CostOfRoom.getSelectedRow();
-        String roomName = CostOfRoom.getValueAt(rowR,0).toString();
-       // tinhtien1dv(nameServices,roomName);
+        String roomName = CostOfRoom.getValueAt(rowR, 0).toString();
+        // tinhtien1dv(nameServices,roomName);
     }//GEN-LAST:event_CostOfServicesMouseClicked
 
     private void CostOfRoomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CostOfRoomMouseClicked
 // TODO add your handling code here:
         int row = CostOfRoom.getSelectedRow();
-        roomName = CostOfRoom.getValueAt(row,0).toString();
+        roomName = CostOfRoom.getValueAt(row, 0).toString();
         System.out.println(roomName);
         fillCostOFServiceForRoom(roomName);
     }//GEN-LAST:event_CostOfRoomMouseClicked
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 // TODO add your handling code here:
-        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -567,39 +562,36 @@ public class checkOut1 extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 // TODO add your handling code here:                               
-           
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnTraphongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTraphongActionPerformed
 // TODO add your handling code here:         
         CallableStatement cs;
         float tongtien = this.GetSumTotalOrder();
-        try{
-            for(int i = 0;i<vector.size();i++){
+        try {
+            for (int i = 0; i < vector.size(); i++) {
                 cs = conn.prepareCall("{call traphong(?,?,?)}");
-                cs.setFloat(1,tongtien);
-                cs.setString(2,vector.get(i).toString());
-                cs.setInt(3,OrderID);
+                cs.setFloat(1, tongtien);
+                cs.setString(2, vector.get(i).toString());
+                cs.setInt(3, OrderID);
                 cs.execute();
             }
-        //conn.close();
-        }   
-        catch(SQLException se){
+            //conn.close();
+        } catch (SQLException se) {
             System.out.println("loi call traphong");
             System.out.println(se);
         }
-        JOptionPane.showMessageDialog(this,"tra phong thanh cong !!!");
+        JOptionPane.showMessageDialog(this, "tra phong thanh cong !!!");
         btnTraphong.setEnabled(false);
     }//GEN-LAST:event_btnTraphongActionPerformed
-    
+
     /**
      * @param args the command line arguments
      */
-    private void hiddenComponent(){
-        if(vector.size() < vectorSize){
+    private void hiddenComponent() {
+        if (vector.size() < vectorSize) {
             this.setTitle("Tra mot phan don hang");
             //jPanel5.setVisible(false);
             //jLabel6.setVisible(false);
@@ -608,284 +600,296 @@ public class checkOut1 extends javax.swing.JDialog {
             txtConlai.setVisible(false);
             jButton5.setVisible(false);
             this.pack();
-            
+
         }
-        if(vector.size() == vectorSize){
+        if (vector.size() == vectorSize) {
             this.setTitle("Tra tat ca cac phong trong don hang");
         }
     }
-    
-    private void fillCostOFRoomTable(){
-        String sql = "";        
-        sql = sql + "SELECT rooms.roomNumb AS [Tên Phòng], orderDetail.beginDate AS [Ngày Bắt Đầu], ";
+
+    private void fillCostOFRoomTable() {
+        String sql = "";
+        sql = sql + "SELECT rooms.roomNumb AS [Tên Phòng], orderDetail.beginDate AS [Ngày Bắt �?ầu], ";
         sql = sql + "orderDetail.endDate AS [Ngày Kết thúc], CONVERT(decimal, orderDetail.endDate - orderDetail.beginDate) AS [Tổng số ngày], ";
-        sql = sql + "roomstype.price AS [Đơn giá], orderDetail.od_addition AS [Phí phát sinh], orderDetail.od_discount AS [Giảm giá], ";
-        sql = sql +  "dbo.orderDetail.od_total AS [Thành tiền] ";
+        sql = sql + "roomstype.price AS [�?ơn giá], orderDetail.od_addition AS [Phí phát sinh], orderDetail.od_discount AS [Giảm giá], ";
+        sql = sql + "dbo.orderDetail.od_total AS [Thành ti�?n] ";
         sql = sql + " FROM roomstype INNER JOIN rooms ON roomstype.roomtypeId = rooms.type INNER JOIN orderDetail ON rooms.roomId = orderDetail.roomId ";
         sql = sql + "WHERE (orderDetail.orderId = " + OrderID + ") AND ((rooms.roomNumb = N'" + vector.get(0).toString() + "') ";
-        for(int i = 1 ; i< (vector.size()-2);i++){
+        for (int i = 1; i < (vector.size() - 2); i++) {
             sql = sql + "OR (rooms.roomNumb = N'" + vector.get(i).toString() + "') ";
         }
-        sql = sql + "OR (rooms.roomNumb = N'" + vector.get(vector.size()-1).toString() + "')) ";
-        addItemToTable(CostOfRoom,sql);
+        sql = sql + "OR (rooms.roomNumb = N'" + vector.get(vector.size() - 1).toString() + "')) ";
+        addItemToTable(CostOfRoom, sql);
     }
-    private void fillCostOFServiceForRoom(String Rname){
-        String sqlSer = "";        
-        sqlSer = sqlSer + "SELECT dbo.services.name AS [Tên dịch vụ], dbo.servicesDetail.sv_total AS [Thành tiền] FROM dbo.services INNER JOIN ";                
-        sqlSer = sqlSer + "dbo.servicesDetail ON dbo.services.servicesId = dbo.servicesDetail.servicesId INNER JOIN dbo.orders ON dbo.servicesDetail.orderId = dbo.orders.orderId ";                
+
+    private void fillCostOFServiceForRoom(String Rname) {
+        String sqlSer = "";
+        sqlSer = sqlSer + "SELECT dbo.services.name AS [Tên dịch vụ], dbo.servicesDetail.sv_total AS [Thành ti�?n] FROM dbo.services INNER JOIN ";
+        sqlSer = sqlSer + "dbo.servicesDetail ON dbo.services.servicesId = dbo.servicesDetail.servicesId INNER JOIN dbo.orders ON dbo.servicesDetail.orderId = dbo.orders.orderId ";
         sqlSer = sqlSer + "WHERE (dbo.ServicesDetail.orderId = " + OrderID + ") AND (dbo.servicesDetail.RoomNum = (SELECT roomid FROM dbo.rooms WHERE dbo.rooms.roomnumb = N'" + Rname + "')) ";
-       /* for(int i = 1 ; i<vector.size();i++){
-            sqlSer = sqlSer + "OR (rooms.roomNumb = N'" + vector.get(i).toString() + "') ";
+        /* for(int i = 1 ; i<vector.size();i++){
+        sqlSer = sqlSer + "OR (rooms.roomNumb = N'" + vector.get(i).toString() + "') ";
         }*/
-        addItemToTable(CostOfServices,sqlSer);
-        float ttdv1ph = tongtiendv1room(OrderID,Rname);        
+        addItemToTable(CostOfServices, sqlSer);
+        float ttdv1ph = tongtiendv1room(OrderID, Rname);
         txtTongct.setValue(new Float(ttdv1ph));
         txtTongct.setEditable(false);
-        
+
     }
-    private void fillServiceOfOrder(){
-        if(vector.size() < vectorSize){
-            String sql1 = "";            
+
+    private void fillServiceOfOrder() {
+        if (vector.size() < vectorSize) {
+            String sql1 = "";
             sql1 = sql1 + "SELECT dbo.services.name AS [Tên dịch vụ], dbo.services.prices AS [Phí dịch vụ], dbo.servicesDetail.sv_addition AS [Phụ phí], ";
-            sql1 = sql1 + "dbo.servicesDetail.sv_discount AS [Giảm giá], dbo.servicesDetail.sv_total AS [Thành tiền] FROM dbo.services INNER JOIN ";              
+            sql1 = sql1 + "dbo.servicesDetail.sv_discount AS [Giảm giá], dbo.servicesDetail.sv_total AS [Thành ti�?n] FROM dbo.services INNER JOIN ";
             sql1 = sql1 + "dbo.servicesDetail ON dbo.services.servicesId = dbo.servicesDetail.servicesId INNER JOIN dbo.orders ON dbo.servicesDetail.orderId = dbo.orders.orderId ";
             sql1 = sql1 + "WHERE (dbo.ServicesDetail.orderId = " + OrderID + ") AND ((dbo.servicesDetail.RoomNum = (SELECT roomid FROM dbo.rooms WHERE dbo.rooms.roomnumb = N'" + vector.get(0).toString() + "')) ";
-            for(int i = 1 ; i < vector.size()-2;i++){
+            for (int i = 1; i < vector.size() - 2; i++) {
                 sql1 = sql1 + "OR (dbo.servicesDetail.RoomNum = (SELECT roomid FROM dbo.rooms WHERE dbo.rooms.roomnumb = N'" + vector.get(i).toString() + "')) ";
             }
-            sql1 = sql1 + "OR (dbo.servicesDetail.RoomNum = (SELECT roomid FROM dbo.rooms WHERE dbo.rooms.roomnumb = N'" + vector.get(vector.size()-1).toString() + "'))) ";
+            sql1 = sql1 + "OR (dbo.servicesDetail.RoomNum = (SELECT roomid FROM dbo.rooms WHERE dbo.rooms.roomnumb = N'" + vector.get(vector.size() - 1).toString() + "'))) ";
             System.out.println(sql1);
-            addItemToTable(tblDichvuchung,sql1);
-            float sumServicesnRoom =  this.tongtiendvnhieuroom(OrderID,vector);
+            addItemToTable(tblDichvuchung, sql1);
+            float sumServicesnRoom = this.tongtiendvnhieuroom(OrderID, vector);
             txtSumOfServices.setValue(new Float(sumServicesnRoom));
             txtSumOfServices.setEditable(false);
         }
-        if(vector.size() == vectorSize){
-            String sql = "";                                                                      
+        if (vector.size() == vectorSize) {
+            String sql = "";
             sql = sql + "SELECT dbo.services.name AS [Tên dịch vụ], dbo.services.prices AS [Phí dịch vụ], dbo.servicesDetail.sv_addition AS [Phụ phí], ";
-            sql = sql + "dbo.servicesDetail.sv_discount AS [Giảm giá], dbo.servicesDetail.sv_total AS [Thành tiền] FROM dbo.services INNER JOIN ";              
+            sql = sql + "dbo.servicesDetail.sv_discount AS [Giảm giá], dbo.servicesDetail.sv_total AS [Thành ti�?n] FROM dbo.services INNER JOIN ";
             sql = sql + "dbo.servicesDetail ON dbo.services.servicesId = dbo.servicesDetail.servicesId INNER JOIN dbo.orders ON dbo.servicesDetail.orderId = dbo.orders.orderId ";
-            sql = sql + "WHERE dbo.servicesDetail.orderId = " + OrderID  ;        
-            addItemToTable(tblDichvuchung,sql);
+            sql = sql + "WHERE dbo.servicesDetail.orderId = " + OrderID;
+            addItemToTable(tblDichvuchung, sql);
             setSumPriceServicesInOrder();
-        }        
+        }
     }
-    private float tongtiendv1room(int OrderID,String rooname){
+
+    private float tongtiendv1room(int OrderID, String rooname) {
         String sql = "";
         float tiendv1room = 0;
-        sql = sql + "SELECT sum(dbo.servicesDetail.sv_total) AS [Thành tiền] FROM dbo.services INNER JOIN dbo.servicesDetail ON ";               
-        sql = sql +"dbo.services.servicesId = dbo.servicesDetail.servicesId INNER JOIN dbo.orders ON dbo.servicesDetail.orderId = dbo.orders.orderId ";
+        sql = sql + "SELECT sum(dbo.servicesDetail.sv_total) AS [Thành ti�?n] FROM dbo.services INNER JOIN dbo.servicesDetail ON ";
+        sql = sql + "dbo.services.servicesId = dbo.servicesDetail.servicesId INNER JOIN dbo.orders ON dbo.servicesDetail.orderId = dbo.orders.orderId ";
         sql = sql + "WHERE (dbo.ServicesDetail.orderId = " + OrderID + ") AND (dbo.servicesDetail.RoomNum = (SELECT roomid FROM dbo.rooms WHERE dbo.rooms.roomnumb = N'" + rooname + "')) ";
-        try{
-            Statement st = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+        try {
+            Statement st = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             ResultSet rs = st.executeQuery(sql);
-            while (rs.next()){
+            while (rs.next()) {
                 tiendv1room = rs.getFloat(1);
                 return tiendv1room;
             }
-        st.close();
-        conn.close();
-        }
-        catch(SQLException e){
-        
+            st.close();
+            conn.close();
+        } catch (SQLException e) {
         }
         return tiendv1room;
     }
-    private float tongtiendvnhieuroom(int OrderID,Vector room_Name){
+
+    private float tongtiendvnhieuroom(int OrderID, Vector room_Name) {
         String sql = "";
         float tiendvnroom = 0;
-        sql = sql + "SELECT sum(dbo.servicesDetail.sv_total) AS [Thành tiền] FROM dbo.services INNER JOIN dbo.servicesDetail ON ";               
-        sql = sql +"dbo.services.servicesId = dbo.servicesDetail.servicesId INNER JOIN dbo.orders ON dbo.servicesDetail.orderId = dbo.orders.orderId ";
+        sql = sql + "SELECT sum(dbo.servicesDetail.sv_total) AS [Thành ti�?n] FROM dbo.services INNER JOIN dbo.servicesDetail ON ";
+        sql = sql + "dbo.services.servicesId = dbo.servicesDetail.servicesId INNER JOIN dbo.orders ON dbo.servicesDetail.orderId = dbo.orders.orderId ";
         sql = sql + "WHERE (dbo.ServicesDetail.orderId = " + OrderID + ") AND ((dbo.servicesDetail.RoomNum = (SELECT roomid FROM dbo.rooms WHERE dbo.rooms.roomnumb = N'" + room_Name.get(0).toString() + "')) ";
-         for(int i = 1 ; i < room_Name.size()-2;i++){
+        for (int i = 1; i < room_Name.size() - 2; i++) {
             sql = sql + "OR (dbo.servicesDetail.RoomNum = (SELECT roomid FROM dbo.rooms WHERE dbo.rooms.roomnumb = N'" + room_Name.get(i).toString() + "')) ";
         }
-        sql = sql + "OR (dbo.servicesDetail.RoomNum = (SELECT roomid FROM dbo.rooms WHERE dbo.rooms.roomnumb = N'" + room_Name.get(room_Name.size()-1).toString() + "'))) ";
-        try{
-            Statement st = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+        sql = sql + "OR (dbo.servicesDetail.RoomNum = (SELECT roomid FROM dbo.rooms WHERE dbo.rooms.roomnumb = N'" + room_Name.get(room_Name.size() - 1).toString() + "'))) ";
+        try {
+            Statement st = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             ResultSet rs = st.executeQuery(sql);
-            while (rs.next()){
+            while (rs.next()) {
                 tiendvnroom = rs.getFloat(1);
                 return tiendvnroom;
             }
-        st.close();
-        conn.close();
-        }
-        catch(SQLException e){
-        
+            st.close();
+            conn.close();
+        } catch (SQLException e) {
         }
         return tiendvnroom;
-     }
-    private void setSumPriceRoomInOrder(){
-        // tinh tong tien phong tra ra txtSumPriceRoom
-        float sumRoom =  this.SumPriceRoomInOrder();
-        txtSumPriceRoom.setValue(new Float(sumRoom));
-        txtSumPriceRoom.setEditable(false);                
     }
-    private float SumPriceRoomInOrder(){
+
+    private void setSumPriceRoomInOrder() {
+        // tinh tong tien phong tra ra txtSumPriceRoom
+        float sumRoom = this.SumPriceRoomInOrder();
+        txtSumPriceRoom.setValue(new Float(sumRoom));
+        txtSumPriceRoom.setEditable(false);
+    }
+
+    private float SumPriceRoomInOrder() {
         //tinh tong tien phong
-        float sumPriceOr = 0;       
+        float sumPriceOr = 0;
         String sql = "";
-        sql = sql + "SELECT Sum([Thành tiền])  FROM tinhtienphong  ";
+        sql = sql + "SELECT Sum([Thành ti�?n])  FROM tinhtienphong  ";
         sql = sql + "WHERE ([Mã đơn hàng] = " + OrderID + ") AND (([Tên phòng] = N'" + vector.get(0).toString() + "') ";
-        for(int i = 1 ; i < vector.size()-2;i++){
+        for (int i = 1; i < vector.size() - 2; i++) {
             sql = sql + "OR ([Tên phòng] = N'" + vector.get(i).toString() + "') ";
         }
-        sql = sql + "OR ([Tên phòng] = N'" + vector.get(vector.size()-1).toString() + "')) ";
+        sql = sql + "OR ([Tên phòng] = N'" + vector.get(vector.size() - 1).toString() + "')) ";
         System.out.println(sql);
-        try{
-            Statement st = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+        try {
+            Statement st = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             ResultSet rs = st.executeQuery(sql);
-            while(rs.next()){
+            while (rs.next()) {
                 sumPriceOr = rs.getFloat(1);
-                return sumPriceOr;                
-            }   
-          conn.close();
-        } catch(SQLException se){
+                return sumPriceOr;
+            }
+            conn.close();
+        } catch (SQLException se) {
             System.out.println("Loi Tong tien phong");
             System.out.println(se);
-        }        
+        }
         return sumPriceOr;
     }
-     private float SumPriceServicesInOrder(){
+
+    private float SumPriceServicesInOrder() {
         // tinh tong tien dich vu         
-        float sumPriceSer = 0;        
+        float sumPriceSer = 0;
         String sql = "";
-        sql = sql + "SELECT Sum([Thành tiền])  FROM tinhtiendichvu ";
-        sql = sql + "WHERE ([Mã đơn hàng] = " + OrderID + ")" ;         
+        sql = sql + "SELECT Sum([Thành ti�?n])  FROM tinhtiendichvu ";
+        sql = sql + "WHERE ([Mã đơn hàng] = " + OrderID + ")";
         System.out.println(sql);
-        try{
-            Statement st = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+        try {
+            Statement st = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             ResultSet rs = st.executeQuery(sql);
-            while(rs.next()){
+            while (rs.next()) {
                 sumPriceSer = rs.getFloat(1);
                 return sumPriceSer;
             }
-           conn.close();
-        }
-        catch(SQLException se){
+            conn.close();
+        } catch (SQLException se) {
             System.out.println("tinh tong tien dv co loi ");
             System.out.println(se);
-        }        
+        }
         return sumPriceSer;
     }
-    private void setSumPriceServicesInOrder(){
-         // tinh tong tien dich vu tra ra txtSumPriceServices     
-        float sumServices =  this.SumPriceServicesInOrder();
+
+    private void setSumPriceServicesInOrder() {
+        // tinh tong tien dich vu tra ra txtSumPriceServices
+        float sumServices = this.SumPriceServicesInOrder();
         txtSumOfServices.setValue(new Float(sumServices));
-        txtSumOfServices.setEditable(false);     
+        txtSumOfServices.setEditable(false);
     }
-    private void setSumOrder(){
+
+    private void setSumOrder() {
         float sumOrder = 0;
-        float sumRoom =  this.SumPriceRoomInOrder();
-        float sumServices =  this.SumPriceServicesInOrder();
-        float sumServicesnroom = this.tongtiendvnhieuroom(OrderID,vector);
-        sumOrder = this.SumOrder(sumRoom,sumServices,sumServicesnroom);        
+        float sumRoom = this.SumPriceRoomInOrder();
+        float sumServices = this.SumPriceServicesInOrder();
+        float sumServicesnroom = this.tongtiendvnhieuroom(OrderID, vector);
+        sumOrder = this.SumOrder(sumRoom, sumServices, sumServicesnroom);
         txtSumTotal.setValue(new Float(sumOrder));
-        txtSumTotal.setEditable(false);        
+        txtSumTotal.setEditable(false);
     }
-    private float SumOrder(float sumRoom,float sumService,float sumServicesnroom){
+
+    private float SumOrder(float sumRoom, float sumService, float sumServicesnroom) {
         float sumTotalOrder = 0;
-        if(vector.size() < vectorSize){
+        if (vector.size() < vectorSize) {
             sumTotalOrder = sumRoom + sumServicesnroom;
             return sumTotalOrder;
         }
-        if(vector.size() == vectorSize){
+        if (vector.size() == vectorSize) {
             sumTotalOrder = sumRoom + sumService;
             return sumTotalOrder;
-        }        
+        }
         return sumTotalOrder;
-    }    
-    private float giam_gia(){
+    }
+
+    private float giam_gia() {
         float discount = 0;
-        String sql  = "SELECT discount FROM orders WHERE orderID = " + OrderID;        
-        try{
-            Statement st = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+        String sql = "SELECT discount FROM orders WHERE orderID = " + OrderID;
+        try {
+            Statement st = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             ResultSet rs = st.executeQuery(sql);
-            while(rs.next()){
+            while (rs.next()) {
                 discount = rs.getFloat(1);
                 return discount;
             }
             st.close();
-           // conn.close();
-        }
-        catch(SQLException se){
+            // conn.close();
+        } catch (SQLException se) {
             System.out.println("loi get giam gia");
             System.out.println(se);
         }
         return discount;
     }
-    private void set_giam_gia(){
+
+    private void set_giam_gia() {
         float discount = 0;
         discount = this.giam_gia();
         txtGiamgia.setValue(new Float(discount));
         txtGiamgia.setEditable(false);
     }
-    private void SumTotalOrder(){
+
+    private void SumTotalOrder() {
         float sumTotalOr = 0;
-        float sumRoom =  this.SumPriceRoomInOrder();
-        float sumServices =  this.SumPriceServicesInOrder();
-        float sumServicesnroom = this.tongtiendvnhieuroom(OrderID,vector);
-        float sumOr = this.SumOrder(sumRoom,sumServices,sumServicesnroom);
+        float sumRoom = this.SumPriceRoomInOrder();
+        float sumServices = this.SumPriceServicesInOrder();
+        float sumServicesnroom = this.tongtiendvnhieuroom(OrderID, vector);
+        float sumOr = this.SumOrder(sumRoom, sumServices, sumServicesnroom);
         float dis = this.giam_gia();
-        sumTotalOr = sumOr - (sumOr*dis/100);
+        sumTotalOr = sumOr - (sumOr * dis / 100);
         txtthanhtien.setValue(new Float(sumTotalOr));
         txtthanhtien.setEditable(false);
     }
-    private float GetSumTotalOrder(){
+
+    private float GetSumTotalOrder() {
         float sumTotalOr = 0;
-        float sumRoom =  this.SumPriceRoomInOrder();
-        float sumServices =  this.SumPriceServicesInOrder();
-        float sumServicesnroom = this.tongtiendvnhieuroom(OrderID,vector);
-        float sumOr = this.SumOrder(sumRoom,sumServices,sumServicesnroom);
+        float sumRoom = this.SumPriceRoomInOrder();
+        float sumServices = this.SumPriceServicesInOrder();
+        float sumServicesnroom = this.tongtiendvnhieuroom(OrderID, vector);
+        float sumOr = this.SumOrder(sumRoom, sumServices, sumServicesnroom);
         float dis = this.giam_gia();
-        sumTotalOr = sumOr - (sumOr*dis/100);
+        sumTotalOr = sumOr - (sumOr * dis / 100);
         return sumTotalOr;
     }
-    private void khachtra(){
+
+    private void khachtra() {
         float khachtra = 0;
         String sql = "select totalfee from orders where OrderID = '" + OrderID + "'";
-        try{
-            Statement st = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+        try {
+            Statement st = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             ResultSet rs = st.executeQuery(sql);
-            while(rs.next()){
-                khachtra = rs.getFloat(1);                
+            while (rs.next()) {
+                khachtra = rs.getFloat(1);
             }
             st.close();
-           // conn.close();
-        }
-        catch(SQLException se){
+            // conn.close();
+        } catch (SQLException se) {
             System.out.println("loi get giam gia");
             System.out.println(se);
         }
         jFormattedTextField1.setValue(new Float(khachtra));
         jFormattedTextField1.setEditable(false);
     }
+
     private void SQLRUN(String SQLTEXT) // Ham de chay cau truy van
     {
-        try{            
-            Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
-            stm.execute(SQLTEXT);            
+        try {
+            Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            stm.execute(SQLTEXT);
             conn.close();
             stm.close();
             System.out.println(SQLTEXT);
-        } catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }       
-    }           
-    private void addItemToTable(JTable TableName,String sqltb )// Lay du lieu tu cau truy van dua vao tabe, nhieu ten bang
-    {        
-        //String sqltb=  "select * from Tenbang";
-        new sqlDatabase().addDataTable(sqltb,TableName);
-        
+        }
     }
+
+    private void addItemToTable(JTable TableName, String sqltb)// Lay du lieu tu cau truy van dua vao tabe, nhieu ten bang
+    {
+        //String sqltb=  "select * from Tenbang";
+        new sqlDatabase().addDataTable(sqltb, TableName);
+
+    }
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
+
             public void run() {
-                new checkOut1(new javax.swing.JFrame(), true, new Vector(),0).setVisible(true);
+                new checkOut1(new javax.swing.JFrame(), true, new Vector(), 0).setVisible(true);
             }
         });
-    }      
+    }
     private SimpleDateFormat df2;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable CostOfRoom;
@@ -931,5 +935,4 @@ public class checkOut1 extends javax.swing.JDialog {
     private javax.swing.JTextField txtorderid;
     private javax.swing.JFormattedTextField txtthanhtien;
     // End of variables declaration//GEN-END:variables
-    
 }

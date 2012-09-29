@@ -3,12 +3,10 @@
  *
  * Created on March 25, 2006, 12:16 AM
  */
-
 package phs_project;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.Statement;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -19,29 +17,26 @@ import javax.swing.JTextField;
  * @author  nhoc
  */
 public class addServicestoOrder extends javax.swing.JDialog {
-    
+
     /** Creates new form addServicestoOrder */
-    public addServicestoOrder(JFrame parent,boolean check) {
-        super(parent,check);
+    public addServicestoOrder(JFrame parent, boolean check) {
+        super(parent, check);
         initComponents();
-        
-        if (hotelForm.ODID==null)
-        {
-            JOptionPane.showMessageDialog(this,"Bạn không thể g�?i trực tiếp form này vì cần có tham số");
-        }
-        else 
-        {    
+
+        if (hotelForm.ODID == null) {
+            JOptionPane.showMessageDialog(this, "Bạn không thể g�?i trực tiếp form này vì cần có tham số");
+        } else {
             //SQLRUN("sumtotal "+hotelForm.ODID+"");
-            addDataToTextField("select * from orderofcus where orderid='"+hotelForm.ODID+"'","orderDate",Ngaydat);
-            addDataToTextField("select * from orderofcus where orderid='"+hotelForm.ODID+"'","cusname",Nguoidat);
+            addDataToTextField("select * from orderofcus where orderid='" + hotelForm.ODID + "'", "orderDate", Ngaydat);
+            addDataToTextField("select * from orderofcus where orderid='" + hotelForm.ODID + "'", "cusname", Nguoidat);
             serviceTypeShow();
-            roomInorderShow();    
+            roomInorderShow();
             orderId.setText(hotelForm.ODID);
             ServiceInorderShow(orderId.getText());
         }
-       
+
     }
-    
+
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -323,14 +318,13 @@ public class addServicestoOrder extends javax.swing.JDialog {
         hotelForm.ODID = null;
     }//GEN-LAST:event_jButton4ActionPerformed
 
-  
     private void ServiceInorderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ServiceInorderMouseClicked
 // TODO add your handling code here:
-        int  row;
+        int row;
         row = ServiceInorder.getSelectedRow();
-        svInOdId=ServiceInorder.getValueAt(row,0).toString();
+        svInOdId = ServiceInorder.getValueAt(row, 0).toString();
         //System.out.println(SeviceName.getValueAt(row,0));
-       System.out.println(svInOdId);
+        System.out.println(svInOdId);
     }//GEN-LAST:event_ServiceInorderMouseClicked
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -338,178 +332,178 @@ public class addServicestoOrder extends javax.swing.JDialog {
         RemoveServices();
     }//GEN-LAST:event_jButton3ActionPerformed
 
-     private void RemoveServices(){
-        if(svInOdId==null){
-            JOptionPane.showMessageDialog(this,"Bạn phải ch�?n một dịc vụ để b�? ra");
-        }
-        else{
-            SQLRUN ("delete servicesDetail where idservices_detail ='"+svInOdId+"'");
+    private void RemoveServices() {
+        if (svInOdId == null) {
+            JOptionPane.showMessageDialog(this, "Bạn phải ch�?n một dịc vụ để b�? ra");
+        } else {
+            SQLRUN("delete servicesDetail where idservices_detail ='" + svInOdId + "'");
             ServiceInorderShow(oderName);
-            svId=null;
-            svInOdId=null;
-        
+            svId = null;
+            svInOdId = null;
+
         }
-        }
+    }
     private void SeviceNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SeviceNameMouseClicked
 // TODO add your handling code here:
-        int  row;
+        int row;
         row = SeviceName.getSelectedRow();
-        svId=SeviceName.getValueAt(row,0).toString();
-        svCost =SeviceName.getValueAt(row,2).toString();
+        svId = SeviceName.getValueAt(row, 0).toString();
+        svCost = SeviceName.getValueAt(row, 2).toString();
         GiaDV.setText(svCost);
         //System.out.println(SeviceName.getValueAt(row,0));
         //System.out.println(svId);
-        
-        
-        
+
+
+
     }//GEN-LAST:event_SeviceNameMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 // TODO add your handling code here:
-       AddServices();
-        
+        AddServices();
+
     }//GEN-LAST:event_jButton1ActionPerformed
- 
-     private void AddServices()
-        {
+
+    private void AddServices() {
 //Goi cau truy van
-        if (svId==null){
-            JOptionPane.showMessageDialog(this,"Bạn phải ch�?n một dịc vụ để thêm vào!");
+        if (svId == null) {
+            JOptionPane.showMessageDialog(this, "Bạn phải ch�?n một dịc vụ để thêm vào!");
+        } else {
+            String SqlInsertService;
+            String sqlupdate;
+            String RoomNum;
+            RoomNum = selectDateToString("Select roomid from rooms where roomnumb= '" + RoomInorder.getSelectedItem().toString() + "'", "roomid");
+            //RoomNum =RoomInorder.getSelectedItem().toString();
+            //RoomNum
+            int g = Integer.parseInt(GiaDV.getText());
+            //Integer.parseInt()
+            int gg = Integer.parseInt(giamgia.getText());
+            int pp = Integer.parseInt(phuphi.getText());
+            int Tongso = g + gg + pp;
+            SqlInsertService = "insert into servicesdetail (orderid,servicesid,roomnum,sv_addition,sv_discount,sv_total) values (";
+            SqlInsertService = SqlInsertService + "'" + orderId.getText() + "','" + svId + "','" + RoomNum + "','"
+                    + phuphi.getText() + "','" + giamgia.getText() + "','" + Tongso + "')";
+
+            SQLRUN(SqlInsertService);
+            //SQLRUN("sumtotal "+hotelForm.ODID+"");
+            System.out.println(SqlInsertService);
+            // serviceTypeShow();
+            serviceTBNameShow(Type);
+            ServiceInorderShow(oderName); // load lai bang dich vu da co cua orders
+            svId = null;
+            svInOdId = null;
         }
-        else
-        {
-        String SqlInsertService;
-        String sqlupdate;
-        String RoomNum;
-        RoomNum=selectDateToString("Select roomid from rooms where roomnumb= '"+RoomInorder.getSelectedItem().toString()+"'","roomid");
-        //RoomNum =RoomInorder.getSelectedItem().toString();
-        //RoomNum
-           int g= Integer.parseInt( GiaDV.getText()) ; 
-           //Integer.parseInt()
-           int gg =Integer.parseInt(giamgia.getText()); 
-           int pp=Integer.parseInt(phuphi.getText());
-        int Tongso  = g+gg+pp ;   
-        SqlInsertService = "insert into servicesdetail (orderid,servicesid,roomnum,sv_addition,sv_discount,sv_total) values (" ;
-        SqlInsertService=SqlInsertService+"'"+orderId.getText()+"','"+svId+"','"+RoomNum+"','"
-                +phuphi.getText()+"','"+giamgia.getText()+"','"+Tongso+"')";
-        
-        SQLRUN (SqlInsertService);
-        //SQLRUN("sumtotal "+hotelForm.ODID+"");
-        System.out.println(SqlInsertService);
-       // serviceTypeShow();
-        serviceTBNameShow(Type);
-        ServiceInorderShow(oderName); // load lai bang dich vu da co cua orders
-        svId=null;
-        svInOdId=null;
-        }
-        }
-     
+    }
+
     private void serviceTypeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_serviceTypeItemStateChanged
 // TODO add your handling code here:
-         serviceTBNameShow(Type);
-         svId=null;
-         svInOdId=null;
-        
+        serviceTBNameShow(Type);
+        svId = null;
+        svInOdId = null;
+
     }//GEN-LAST:event_serviceTypeItemStateChanged
-    
+
     /**
      * @param args the command line arguments
      */
-    private void serviceTypeShow(){
+    private void serviceTypeShow() {
         String sqlshow = "select TypeName from servicestype";
         serviceType.addItem("Tất cả");
-        new sqlDatabase().addDataCombobox(sqlshow,serviceType);
+        new sqlDatabase().addDataCombobox(sqlshow, serviceType);
     }
-    private void serviceTBNameShow(String loaiDV){
-     if (serviceType.getSelectedItem().toString()=="Tất cả") {
-            loaiDV="all";
-            String sqlshowSV=  "select * from servicejointype where [Loại] <>'"+loaiDV+"'";
-            new sqlDatabase().addDataTable(sqlshowSV,SeviceName);
-            new Utils().hiddencol(SeviceName,0);
+
+    private void serviceTBNameShow(String loaiDV) {
+        if (serviceType.getSelectedItem().toString() == "Tất cả") {
+            loaiDV = "all";
+            String sqlshowSV = "select * from servicejointype where [Loại] <>'" + loaiDV + "'";
+            new sqlDatabase().addDataTable(sqlshowSV, SeviceName);
+            new Utils().hiddencol(SeviceName, 0);
+        } else {
+            loaiDV = serviceType.getSelectedItem().toString();
+            String sqlshowSV = "select * from servicejointype where [Loại] =N'" + loaiDV + "'";
+            new sqlDatabase().addDataTable(sqlshowSV, SeviceName);
         }
-        else {
-            loaiDV =serviceType.getSelectedItem().toString();
-            String sqlshowSV=  "select * from servicejointype where [Loại] =N'"+loaiDV+"'";
-            new sqlDatabase().addDataTable(sqlshowSV,SeviceName);}
-            new Utils().hiddencol(SeviceName,0);
+        new Utils().hiddencol(SeviceName, 0);
     }
-    
-    private void ServiceInorderShow(String OdId){
-        OdId=orderId.getText();
-        String sqlshowSV=  "select [MãDV],[Tên dịch vụ],[Giá ti�?n],[Giảm giá], [Phụ phí], [Tổng ti�?n], [Loại],[Của phòng] from costofservices where [Mã] ='"+OdId+"'";
-        new sqlDatabase().addDataTable(sqlshowSV,ServiceInorder);
-        new Utils().hiddencol(ServiceInorder,0);
+
+    private void ServiceInorderShow(String OdId) {
+        OdId = orderId.getText();
+        String sqlshowSV = "select [MãDV],[Tên dịch vụ],[Giá ti�?n],[Giảm giá], [Phụ phí], [Tổng ti�?n], [Loại],[Của phòng] from costofservices where [Mã] ='" + OdId + "'";
+        new sqlDatabase().addDataTable(sqlshowSV, ServiceInorder);
+        new Utils().hiddencol(ServiceInorder, 0);
     }
-    private void roomInorderShow()
-    {
-        String sqlshow = "select [Tên phòng] from roomInorder  where roomStatusId=5 and orderId='"+hotelForm.ODID+"'";
+
+    private void roomInorderShow() {
+        String sqlshow = "select [Tên phòng] from roomInorder  where roomStatusId=5 and orderId='" + hotelForm.ODID + "'";
         RoomInorder.addItem("Cả đoàn");
-        new sqlDatabase().addDataCombobox(sqlshow,RoomInorder);
+        new sqlDatabase().addDataCombobox(sqlshow, RoomInorder);
         //System.out.println(sqlshow);
     }
-     private void SQLRUN (String SQLTEXT)
-     {
-       try{
+
+    private void SQLRUN(String SQLTEXT) {
+        try {
             Connection conn = new connectDatabase().getConnection();
-            Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+            Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
             stm.execute(SQLTEXT);
             conn.close();
             stm.close();
             System.out.println(SQLTEXT);
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         //System.out.println(SqlInsertService);
-     }
-      public String selectDateToString(String sql,String rsName) // dua du lieu tu trong cau truy van ra bien string
+    }
+
+    public String selectDateToString(String sql, String rsName) // dua du lieu tu trong cau truy van ra bien string
     {
-        String returnvl ="" ;
+        String returnvl = "";
         //Connection con =null;
-        if(con == null){
+        if (con == null) {
             con = new connectDatabase().getConnection();
         }
-        try{
+        try {
             Statement sttm = con.createStatement();
             ResultSet rs = sttm.executeQuery(sql);
-            while(rs.next()){
+            while (rs.next()) {
                 System.err.println(rs.getString(rsName));
                 returnvl = rs.getString(rsName);
             }
             sttm.close();
             rs.close();
-        } catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return returnvl;
     }
-      public void addDataToTextField(String sql,String rsName,JTextField TexFiedName) // dua du lieu tu trong cau truy van vao bang
+
+    public void addDataToTextField(String sql, String rsName, JTextField TexFiedName) // dua du lieu tu trong cau truy van vao bang
     {
         //Connection con =null;
-        if(con == null){
+        if (con == null) {
             con = new connectDatabase().getConnection();
         }
-        try{
+        try {
             Statement sttm = con.createStatement();
             ResultSet rs = sttm.executeQuery(sql);
-            while(rs.next()){
+            while (rs.next()) {
                 TexFiedName.setText(rs.getString(rsName));
             }
             sttm.close();
             rs.close();
-        } catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
+
             public void run() {
-                new addServicestoOrder(new JFrame(),true).setVisible(true);
+                new addServicestoOrder(new JFrame(), true).setVisible(true);
             }
         });
     }
     //private Connection conn;
-    private Connection con ;
+    private Connection con;
     private String oderName;
     private String Type;
     private String svId;
@@ -543,5 +537,4 @@ public class addServicestoOrder extends javax.swing.JDialog {
     private javax.swing.JScrollPane scrool;
     private javax.swing.JComboBox serviceType;
     // End of variables declaration//GEN-END:variables
-    
 }

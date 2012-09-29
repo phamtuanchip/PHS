@@ -3,82 +3,84 @@
  *
  * Created on April 28, 2006, 3:28 AM
  */
-
 package phs_project;
-import java.sql.*;
+
 import java.text.SimpleDateFormat;
 import javax.swing.*;
+
 /**
  *
  * @author  TUNG
  */
 public class Report extends javax.swing.JDialog {
-    
+
     /** Creates new form Report */
     public Report(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        initComponents();       
+        initComponents();
         addItemToCombo();
     }
-    
-    private void addItemToCombo(){
+
+    private void addItemToCombo() {
         String sql = "Select status_detail from order_status";
-        new Utils().addItemTooCombobox(cbxLoaidonhang,sql,"Hiện tất cả loại đơn hàng");
+        new Utils().addItemTooCombobox(cbxLoaidonhang, sql, "Hiện tất cả loại đơn hàng");
     }
-    private void showOrder(){
+
+    private void showOrder() {
         sdf = new SimpleDateFormat("MM/dd/yyyy");
         String begindate = sdf.format(txttungay.getDate());
-        String endDate = sdf.format(txtdenngay.getDate());        
-        String order_status = cbxLoaidonhang.getSelectedItem().toString();        
-        if(order_status == "Hiện tất cả loại đơn hàng"){
+        String endDate = sdf.format(txtdenngay.getDate());
+        String order_status = cbxLoaidonhang.getSelectedItem().toString();
+        if (order_status == "Hiện tất cả loại đơn hàng") {
             String sql = "Select * from report1 where [Ngày đặt phòng] between '" + begindate + "' and '" + endDate + "'";
             System.out.println(sql);
-            new Utils().addItemToTable(tbldanhsachdonhang,sql);
-        }
-        else{
+            new Utils().addItemToTable(tbldanhsachdonhang, sql);
+        } else {
             String sql = "Select * from report1 where [Trạng thái đơn hàng] = N'" + order_status + "' and [Ngày đặt phòng] between '" + begindate + "' and '" + endDate + "'";
             System.out.println(sql);
-            new Utils().addItemToTable(tbldanhsachdonhang,sql);
-        }                
+            new Utils().addItemToTable(tbldanhsachdonhang, sql);
+        }
     }
-    private void thongke(){
+
+    private void thongke() {
         sdf = new SimpleDateFormat("MM/dd/yyyy");
         String begindate = sdf.format(txttungay.getDate());
         System.out.println(begindate);
-        String endDate = sdf.format(txtdenngay.getDate());        
+        String endDate = sdf.format(txtdenngay.getDate());
         System.out.println(endDate);
-        String order_status = cbxLoaidonhang.getSelectedItem().toString();        
+        String order_status = cbxLoaidonhang.getSelectedItem().toString();
         lblloaidonhang.setText(order_status);
         String count = "";
         float sum = 0;
-        if(order_status == "Hiện tất cả loại đơn hàng"){
+        if (order_status == "Hiện tất cả loại đơn hàng") {
             String sql = "Select count(*) as dem from report1 where [Ngày đặt phòng] between '" + begindate + "' and '" + endDate + "'";
-            count = new Utils().selectDateToString(sql,"dem");
+            count = new Utils().selectDateToString(sql, "dem");
             lblSodonhang.setText(count);
             String sql1 = "Select sum([Tổng ti�?n]) as tong from report1 where [Ngày đặt phòng] between '" + begindate + "' and '" + endDate + "'";
-            sum = new Utils().selectDataToFloat(sql1,"tong");
+            sum = new Utils().selectDataToFloat(sql1, "tong");
+            txttongtien.setValue(new Float(sum));
+            txttongtien.setEnabled(false);
+        } else {
+            String sql = "Select count(*) as dem from report1 where [Trạng thái đơn hàng] = N'" + order_status + "' and [Ngày đặt phòng] between '" + begindate + "' and '" + endDate + "'";
+            count = new Utils().selectDateToString(sql, "dem");
+            lblSodonhang.setText(count);
+            String sql1 = "Select sum([Tổng ti�?n]) as tong from report1 where [Trạng thái đơn hàng] = N'" + order_status + "' and [Ngày đặt phòng] between '" + begindate + "' and '" + endDate + "'";
+            sum = new Utils().selectDataToFloat(sql1, "tong");
             txttongtien.setValue(new Float(sum));
             txttongtien.setEnabled(false);
         }
-        else{
-            String sql = "Select count(*) as dem from report1 where [Trạng thái đơn hàng] = N'" + order_status + "' and [Ngày đặt phòng] between '" + begindate + "' and '" + endDate + "'";
-            count = new Utils().selectDateToString(sql,"dem");
-            lblSodonhang.setText(count);
-            String sql1 = "Select sum([Tổng ti�?n]) as tong from report1 where [Trạng thái đơn hàng] = N'" + order_status + "' and [Ngày đặt phòng] between '" + begindate + "' and '" + endDate + "'";
-            sum = new Utils().selectDataToFloat(sql1,"tong");
-            txttongtien.setValue(new Float(sum));
-            txttongtien.setEnabled(false);
-        }                
     }
-    private void TotalOrder(){
+
+    private void TotalOrder() {
         sdf = new SimpleDateFormat("MM/dd/yyyy");
         String begindate = sdf.format(txttungay.getDate());
-        String endDate = sdf.format(txtdenngay.getDate());                
+        String endDate = sdf.format(txtdenngay.getDate());
         String countTotal = "";
         String sql = "Select count(*) as dem from report1 where [Ngày đặt phòng] between '" + begindate + "' and '" + endDate + "'";
-        countTotal = new Utils().selectDateToString(sql,"dem");
+        countTotal = new Utils().selectDateToString(sql, "dem");
         lbltongdonhang.setText(countTotal);
     }
+
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -353,22 +355,22 @@ public class Report extends javax.swing.JDialog {
 
     private void txttungayPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_txttungayPropertyChange
 // TODO add your handling code here:
-        String begindate = new UserFormat().getFormat(txttungay.getDate(),"ngay");
-        String endDate = new UserFormat().getFormat(txtdenngay.getDate(),"ngay");
+        String begindate = new UserFormat().getFormat(txttungay.getDate(), "ngay");
+        String endDate = new UserFormat().getFormat(txtdenngay.getDate(), "ngay");
         int i = begindate.compareToIgnoreCase(endDate);
-        if(i > 0){
-            JOptionPane.showMessageDialog(this,"Ngày cuối phải lớn hơn ngày đến");
-        }       
+        if (i > 0) {
+            JOptionPane.showMessageDialog(this, "Ngày cuối phải lớn hơn ngày đến");
+        }
     }//GEN-LAST:event_txttungayPropertyChange
 
     private void txtdenngayPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_txtdenngayPropertyChange
 // TODO add your handling code here:
-        String begindate = new UserFormat().getFormat(txttungay.getDate(),"ngay");
-        String endDate = new UserFormat().getFormat(txtdenngay.getDate(),"ngay");
+        String begindate = new UserFormat().getFormat(txttungay.getDate(), "ngay");
+        String endDate = new UserFormat().getFormat(txtdenngay.getDate(), "ngay");
         int i = endDate.compareToIgnoreCase(begindate);
-        if(i < 0){
-            JOptionPane.showMessageDialog(this,"Ngày cuối phải lớn hơn ngày đến");
-        }        
+        if (i < 0) {
+            JOptionPane.showMessageDialog(this, "Ngày cuối phải lớn hơn ngày đến");
+        }
     }//GEN-LAST:event_txtdenngayPropertyChange
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -382,18 +384,18 @@ public class Report extends javax.swing.JDialog {
 // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
-    
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
+
             public void run() {
                 new Report(new javax.swing.JFrame(), true).setVisible(true);
             }
         });
     }
-    
     private SimpleDateFormat sdf;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox cbxLoaidonhang;
@@ -421,5 +423,4 @@ public class Report extends javax.swing.JDialog {
     private javax.swing.JFormattedTextField txttongtien;
     private com.toedter.calendar.JDateChooser txttungay;
     // End of variables declaration//GEN-END:variables
-    
 }

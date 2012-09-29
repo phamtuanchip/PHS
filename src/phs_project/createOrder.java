@@ -3,13 +3,10 @@
  *
  * Created on February 17, 2006, 6:13 AM
  */
-
 package phs_project;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+
 import javax.swing.*;
 import java.sql.*;
-import phs_project.hotelForm;
 import java.util.*;
 import java.text.*;
 
@@ -18,12 +15,14 @@ import java.text.*;
  * @author  TUNG
  */
 public class createOrder extends javax.swing.JDialog {
+
     public Connection con;
-    public String bedate="";
-    public String endate="";
+    public String bedate = "";
+    public String endate = "";
     public static Vector vector;
+
     /** Creates new form createOrder */
-    public createOrder(String begindate,String enddate,Vector vt){
+    public createOrder(String begindate, String enddate, Vector vt) {
         System.out.print("Tao don hang");
         this.bedate = begindate;
         this.endate = enddate;
@@ -32,17 +31,17 @@ public class createOrder extends javax.swing.JDialog {
         System.out.println(endate);
         System.out.println(vector);
         initComponents();
-       // addItemTooCombobox(OrderList,"Select OrderId from orders ","Chọn một đơn hàng");
-        
+        // addItemTooCombobox(OrderList,"Select OrderId from orders ","Ch�?n một đơn hàng");
+
         addDataCombobox();
-        addDataCombo();        
+        addDataCombo();
         df1 = new SimpleDateFormat("MM/dd/yy HH:mm:ss");
         cbxNgay.setText(df1.format(new java.util.Date()));
         cbxromforcusmt();
-        
-        
+
+
     }
-    
+
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -433,10 +432,10 @@ public class createOrder extends javax.swing.JDialog {
 
     private void rdbNoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rdbNoMouseClicked
 // TODO add your handling code here:
-        
-        
-         addItemTooCombobox(OrderList,"Select OrderId from orders ","Đơn hàng vừa tạo");
-        
+
+
+        addItemTooCombobox(OrderList, "Select OrderId from orders ", "�?ơn hàng vừa tạo");
+
     }//GEN-LAST:event_rdbNoMouseClicked
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
@@ -445,199 +444,190 @@ public class createOrder extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-    // TODO add your handling code here:
+        // TODO add your handling code here:
         insertCus();
         insert_Order();
         //this.dispose();
-        
+
     }//GEN-LAST:event_btnSaveActionPerformed
-    private void insertCus(){
-               
-            String gioi ;
-            gioi ="";
-            String sqlinsertCustomers;
-            if(rdbFemale.isSelected()){
-                gioi="Nu";
-            }
-            if(rdbMale.isSelected()){
-                gioi="Nam";
-            }
-            sqlinsertCustomers =" insertcustomer '"+txtFirstName.getText()+"','"+txtLastName.getText()+"','"+
-                    cbxcustomer.getSelectedItem().toString()+
-                    "','"+txtIdCard.getText()+"','"+gioi+"','"+txtAge.getText()+"','"+
-                    txtAddress.getText()+"','"+txtPhone.getText()+"','"+
-                    txtEmail.getText()+"','"+txtCountry.getText()+"','"+txtCusDescrib.getText()+"'";
-            
-             //System.out.println(sqlinsertCustomers);
-             //SQLRUN(sqlinsertCustomers);   // Dua du lieu vao bang khach hang
-       
+    private void insertCus() {
+
+        String gioi;
+        gioi = "";
+        String sqlinsertCustomers;
+        if (rdbFemale.isSelected()) {
+            gioi = "Nu";
+        }
+        if (rdbMale.isSelected()) {
+            gioi = "Nam";
+        }
+        sqlinsertCustomers = " insertcustomer '" + txtFirstName.getText() + "','" + txtLastName.getText() + "','"
+                + cbxcustomer.getSelectedItem().toString()
+                + "','" + txtIdCard.getText() + "','" + gioi + "','" + txtAge.getText() + "','"
+                + txtAddress.getText() + "','" + txtPhone.getText() + "','"
+                + txtEmail.getText() + "','" + txtCountry.getText() + "','" + txtCusDescrib.getText() + "'";
+
+        //System.out.println(sqlinsertCustomers);
+        //SQLRUN(sqlinsertCustomers);   // Dua du lieu vao bang khach hang
+
     }
-    private void cbxromforcusmt(){
-        if (vector==null) 
-        {
+
+    private void cbxromforcusmt() {
+        if (vector == null) {
             System.out.println("Chua co vector");
-           JOptionPane.showMessageDialog(this,"Chưa có room nào để tạo đơn  hàng");
-        } 
-        else 
-        {
-       
-            for(int j=0;j<vector.size();j++)
-           {
-               sqlroom = "select roomNumb from rooms where roomid ='"+vector.get(j).toString()+"'";
-               
+            JOptionPane.showMessageDialog(this, "Chưa có room nào để tạo đơn  hàng");
+        } else {
+
+            for (int j = 0; j < vector.size(); j++) {
+                sqlroom = "select roomNumb from rooms where roomid ='" + vector.get(j).toString() + "'";
+
                 //cbxromforcus.addItem(vector.get(j).toString());
-               try{
-                con = new connectDatabase().getConnection();
-        	Statement  st = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
-        	//String sql = "select  name from  customerstype";
-		ResultSet rs = st.executeQuery(sqlroom);	
-        	//cbxcustomer.addItem("Chon 1");
-        	while(rs.next()){
-	            cbxromforcus.addItem(rs.getString(1));
-			}
-        	rs.close();
-	}
-	catch(SQLException ce){
-            System.out.print(ce);
-	}
-               
+                try {
+                    con = new connectDatabase().getConnection();
+                    Statement st = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+                    //String sql = "select  name from  customerstype";
+                    ResultSet rs = st.executeQuery(sqlroom);
+                    //cbxcustomer.addItem("Chon 1");
+                    while (rs.next()) {
+                        cbxromforcus.addItem(rs.getString(1));
+                    }
+                    rs.close();
+                } catch (SQLException ce) {
+                    System.out.print(ce);
+                }
+
 
             }
         } // ket thuc viec tao don hang
     }
-    private void insert_Order(){
+
+    private void insert_Order() {
         //CallableStatement csOrder;
         Vector vector = hotelForm.vt;
-        String sqlcreat ="";
-        String sqlcreateorder ="" ;
-            for(int i=0;i<vector.size();i++){
-                //csOrder = con.prepareCall("{Call creatorder(?,?,?,?,?,?,?)}");
-                String Taomoi ;
-                Taomoi ="";
-                if(rdbYes.isSelected()){
-                    Taomoi="YES";
-                }
-                if(rdbNo.isSelected()){
-                    Taomoi="NO";
-                }
-                sqlcreateorder =" execute creatorder '"+Taomoi+"','"+txtOrderDescrib.getText()+"','"+cbxNgay.getText()+"','"+
-                        cbxLDH.getSelectedItem().toString()+"','"+vector.get(i).toString()+"','"+bedate+"','"+endate+"'";
-               
-                //System.out.println(sqlcreateorder);
-                SQLRUN(sqlcreateorder);
+        String sqlcreat = "";
+        String sqlcreateorder = "";
+        for (int i = 0; i < vector.size(); i++) {
+            //csOrder = con.prepareCall("{Call creatorder(?,?,?,?,?,?,?)}");
+            String Taomoi;
+            Taomoi = "";
+            if (rdbYes.isSelected()) {
+                Taomoi = "YES";
             }
-        
+            if (rdbNo.isSelected()) {
+                Taomoi = "NO";
+            }
+            sqlcreateorder = " execute creatorder '" + Taomoi + "','" + txtOrderDescrib.getText() + "','" + cbxNgay.getText() + "','"
+                    + cbxLDH.getSelectedItem().toString() + "','" + vector.get(i).toString() + "','" + bedate + "','" + endate + "'";
+
+            //System.out.println(sqlcreateorder);
+            SQLRUN(sqlcreateorder);
         }
-    
-    
-    /*  */  
-    
+
+    }
+
+    /*  */
     /**
      * @param args the command line arguments
      */
-  
-	private void addDataCombobox(){ // Function add data to combobox	
-    	try{
-                con = new connectDatabase().getConnection();
-        	Statement  st = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
-        	String sql = "select  name from  customerstype";
-		ResultSet rs = st.executeQuery(sql);	
-        	//cbxcustomer.addItem("Chon 1");
-        	while(rs.next()){
-	            cbxcustomer.addItem(rs.getString(1));
-			}
-        	rs.close();
-	}
-	catch(SQLException ce){
-            System.out.print(ce);
-	}
-	}//end
-        private void addDataCombo(){
-      try{
-          Statement  st = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
-            String sql = "select status_detail from order_status";
-            ResultSet rs = st.executeQuery(sql);	
-            //cbxLDH.addItem("Chọn loại đơn hàng");
-            while(rs.next()){
-	        cbxLDH.addItem(rs.getString(1));
+    private void addDataCombobox() { // Function add data to combobox
+        try {
+            con = new connectDatabase().getConnection();
+            Statement st = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            String sql = "select  name from  customerstype";
+            ResultSet rs = st.executeQuery(sql);
+            //cbxcustomer.addItem("Chon 1");
+            while (rs.next()) {
+                cbxcustomer.addItem(rs.getString(1));
             }
             rs.close();
-	}
-	catch(SQLException ce){
+        } catch (SQLException ce) {
             System.out.print(ce);
-	}
         }
-        
-        public static void main(String args[]) {
+    }//end
+
+    private void addDataCombo() {
+        try {
+            Statement st = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            String sql = "select status_detail from order_status";
+            ResultSet rs = st.executeQuery(sql);
+            //cbxLDH.addItem("Ch�?n loại đơn hàng");
+            while (rs.next()) {
+                cbxLDH.addItem(rs.getString(1));
+            }
+            rs.close();
+        } catch (SQLException ce) {
+            System.out.print(ce);
+        }
+    }
+
+    public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
+
             public void run() {
                 //new createOrder(hotelForm.,enddate,vector).setVisible(true);
             }
         });
     }
     private DateFormat df1;
-    private String sqlroom ;
-    
-    
+    private String sqlroom;
+
     // Phan cua tuan chip sua lai
-   
-   
     // COPY Tu day di tat ca cac form
                                   /* import cac goi nay
-                                   import java.sql.Connection;
-                                    import java.sql.ResultSet;
-                                    import java.sql.ResultSetMetaData;
-                                    import java.sql.Statement;
-                                    import javax.swing.JOptionPane;
-                                    import javax.swing.JTable;
-                                    import javax.swing.JTextField;
-                                   
-                                   */
-    private void SQLRUN (String SQLTEXT) // Ham de chay cau truy van
-     {
-       try{
+    import java.sql.Connection;
+    import java.sql.ResultSet;
+    import java.sql.ResultSetMetaData;
+    import java.sql.Statement;
+    import javax.swing.JOptionPane;
+    import javax.swing.JTable;
+    import javax.swing.JTextField;
+
+     */
+    private void SQLRUN(String SQLTEXT) // Ham de chay cau truy van
+    {
+        try {
             Connection conn = new connectDatabase().getConnection();
-            Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+            Statement stm = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
             stm.execute(SQLTEXT);
             conn.close();
             stm.close();
             System.out.println(SQLTEXT);
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-     private String  SelectedRowToString (JTable TableName, int CollNumb ) // Lay va In ten truong thu CollNumb ra  bietn ReturnValua, lay 1 bien
-      {
+
+    private String SelectedRowToString(JTable TableName, int CollNumb) // Lay va In ten truong thu CollNumb ra  bietn ReturnValua, lay 1 bien
+    {
         //int CollNumb ;
         //CollNumb=0;
-        int  RowSelected;
+        int RowSelected;
         String ReturnValue;
         RowSelected = TableName.getSelectedRow();
-        ReturnValue=TableName.getValueAt(RowSelected,CollNumb).toString();
-        System.out.println(ReturnValue+" ");
+        ReturnValue = TableName.getValueAt(RowSelected, CollNumb).toString();
+        System.out.println(ReturnValue + " ");
         return ReturnValue;
         //System.out.println(TableName.getValueAt(RowSelected,CollNumb));
-        
-      }
-    private void addItemTooCombobox(JComboBox ComboboxName,String sqlcb,String FirstChoice) // Dua du lieu tu cau truy van vao combobox, chi co 1 truong trong du lieu
-     {
+
+    }
+
+    private void addItemTooCombobox(JComboBox ComboboxName, String sqlcb, String FirstChoice) // Dua du lieu tu cau truy van vao combobox, chi co 1 truong trong du lieu
+    {
         //String sqlcb = "select TenTruogn from TenBang";
-        if (FirstChoice!=""){
-         ComboboxName.addItem(FirstChoice);
+        if (FirstChoice != "") {
+            ComboboxName.addItem(FirstChoice);
         }
-         new sqlDatabase().addDataCombobox(sqlcb,ComboboxName);
-     }
-      
-     private void addItemToTable(JTable TableName,String sqltb )// Lay du lieu tu cau truy van dua vao tabe, nhieu ten bang
-     {
-      
-            //String sqltb=  "select * from Tenbang";
-            new sqlDatabase().addDataTable(sqltb,TableName);
-       
-     }
-    
-                             //  Copy tu day di tat ca cac form
+        new sqlDatabase().addDataCombobox(sqlcb, ComboboxName);
+    }
+
+    private void addItemToTable(JTable TableName, String sqltb)// Lay du lieu tu cau truy van dua vao tabe, nhieu ten bang
+    {
+
+        //String sqltb=  "select * from Tenbang";
+        new sqlDatabase().addDataTable(sqltb, TableName);
+
+    }
+    //  Copy tu day di tat ca cac form
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox OrderList;
     private javax.swing.JButton btnCancel;
@@ -688,5 +678,5 @@ public class createOrder extends javax.swing.JDialog {
     private javax.swing.JTextField txtPhone;
     // End of variables declaration//GEN-END:variables
     // Bien khai bao them
-   // private int j;
+    // private int j;
 }

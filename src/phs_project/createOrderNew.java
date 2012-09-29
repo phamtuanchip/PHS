@@ -7,7 +7,6 @@ package phs_project;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLData;
 import java.sql.Statement;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;

@@ -27,7 +27,7 @@ public class ChangeLookFeel{
         try{
             UIManager.setLookAndFeel(lafName);                     
         } catch (Exception e) {
-            System.err.println("Can't set look & feel:" + e);
+            e.printStackTrace();
         }
     }    
 }

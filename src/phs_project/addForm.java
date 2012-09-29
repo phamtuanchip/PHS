@@ -336,7 +336,7 @@ public class addForm extends javax.swing.JDialog {
                     tableData();
                 }
                 else{
-                    javax.swing.JOptionPane.showMessageDialog(this,"Bạn phải lựa chọn loại dịch vụ");
+                    javax.swing.JOptionPane.showMessageDialog(this,"Bạn phải lựa ch�?n loại dịch vụ");
                     cbbSelectType.requestFocus();
                 }
            }
@@ -419,7 +419,7 @@ public class addForm extends javax.swing.JDialog {
 
 private void addDataComboboxType(){ // Function add data to combobox	
     String sql = "select  TypeName from  ServicesType";
-    cbbSelectType.addItem("Lựa chọn loại dịch vụ");
+    cbbSelectType.addItem("Lựa ch�?n loại dịch vụ");
     new sqlDatabase().addDataCombobox(sql,cbbSelectType);
     cbbSelectType.addItem("Tạo một loại dịch vụ mới");
 }//end
@@ -484,7 +484,7 @@ private  void delServices(){
         }
    }
    else{
-       javax.swing.JOptionPane.showMessageDialog(this,"Bạn phải lựa chọn dịch vụ muốn sửa");
+       javax.swing.JOptionPane.showMessageDialog(this,"Bạn phải lựa ch�?n dịch vụ muốn sửa");
    }
 }
 
@@ -514,11 +514,11 @@ private void updateService(){
             }
         }
         catch(SQLException ce){
-            System.out.println(ce);
+            ce.printStackTrace();
         }
     }
     if(row == -1){
-         javax.swing.JOptionPane.showMessageDialog(this,"Bạn phải lựa chọn dịch vụ muốn sửa !");
+         javax.swing.JOptionPane.showMessageDialog(this,"Bạn phải lựa ch�?n dịch vụ muốn sửa !");
     }
 }
 

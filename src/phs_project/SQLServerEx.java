@@ -1,4 +1,5 @@
 package phs_project;
+
 import java.sql.*;
 import java.util.*;
 import javax.swing.*;
@@ -9,7 +10,7 @@ import java.awt.Font;
  *
  */
 public class SQLServerEx {
-    
+
     /** Creates a new instance of SQLServerEx */
     public SQLServerEx() {
         try {
@@ -26,20 +27,20 @@ public class SQLServerEx {
             stmt.execute(update);
             update = "UPDATE Customers SET CompanyName=N'Café Thượng Uyển', Address=N'Phố Lương Văn Can', Country=N'Việt Nam' WHERE City=N'Hà Nội'";
             stmt.execute(update);
-            
+
             String updateString = "UPDATE Customers SET CompanyName=?, Address=?, City=?, Country=? WHERE City=?";
             PreparedStatement preStmt = con.prepareStatement(updateString);
-            preStmt.setString(1, "Lục Huyền Cầm");
+            preStmt.setString(1, "Lục Huy�?n Cầm");
             preStmt.setString(2, "Trần Quốc Toản");
-            preStmt.setString(3, "Đà Nẵng");
-            preStmt.setString(4, "Việt Nam"); 
-            preStmt.setString(5, "México D.F.");            
+            preStmt.setString(3, "�?à Nẵng");
+            preStmt.setString(4, "Việt Nam");
+            preStmt.setString(5, "México D.F.");
             preStmt.executeUpdate();
-                
-            String query = "SELECT CompanyName AS 'Tên tiệm', Address AS 'Địa chỉ', City AS 'Thành phố', Phone AS 'Điện thoại', Country AS 'Quốc gia' FROM Customers";
+
+            String query = "SELECT CompanyName AS 'Tên tiệm', Address AS '�?ịa chỉ', City AS 'Thành phố', Phone AS '�?iện thoại', Country AS 'Quốc gia' FROM Customers";
             ResultSet rs = stmt.executeQuery(query);
             displayResult(rs, "Khách hàng");
-            
+
             rs.close();
             stmt.close();
             con.close();
@@ -47,26 +48,26 @@ public class SQLServerEx {
             exc.printStackTrace();
         }
     }
-    
+
     /** 
      * Shows resultset 
      */
     void displayResult(ResultSet rs, String tableName) {
         ResultsModel model = new ResultsModel();     // Create a table model
-        model.setResultSet(rs);      
+        model.setResultSet(rs);
         JTable table = new JTable(model);            // Create a table from the model
         table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);   // Use scrollbars
         Font font = table.getTableHeader().getFont().deriveFont(Font.BOLD);
         table.getTableHeader().setFont(font); // Bold header font
-        
+
         JFrame jf = new JFrame(tableName);
         jf.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         jf.setSize(800, 400);
         JTextArea jt = new JTextArea();
-        jf.getContentPane().add(new JScrollPane(table));        
+        jf.getContentPane().add(new JScrollPane(table));
         jf.setVisible(true);
     }
-    
+
     /**
      * @param args the command line arguments
      */
