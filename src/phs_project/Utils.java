@@ -6,166 +6,163 @@
  * To change this template, choose Tools | Template Manager
  * and open the template in the editor.
  */
-
-
 package phs_project;
-    import java.sql.Connection;
-    import java.sql.ResultSet;
-    import java.sql.Statement;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.Locale;
 import java.util.ResourceBundle;
-    import java.util.Vector;
-    import javax.swing.JTable;
-    import javax.swing.JTextField;
-    import javax.swing.JComboBox;
-
-
+import java.util.Vector;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.JComboBox;
 
 public class Utils {
 
-    private static ResourceBundle rb ;
+    private static ResourceBundle rb;
     private static Locale lc = new Locale("vi", "VN");
 
     public static ResourceBundle RB() {
-        if(rb == null) rb = ResourceBundle.getBundle("phs_project/Image/locale", LC()) ;
+        if (rb == null) {
+            rb = ResourceBundle.getBundle("phs_project/Image/locale", LC());
+        }
         return rb;
     }
-     
+
     public static Locale LC() {
-     return lc ;
+        return lc;
     }
 
-    public static void hiddencol(JTable tblName, int colNum )
-    {
+    public static void hiddencol(JTable tblName, int colNum) {
         tblName.getColumnModel().getColumn(colNum).setMaxWidth(0);
-        tblName.getColumnModel().getColumn(colNum).setMinWidth(0); 
+        tblName.getColumnModel().getColumn(colNum).setMinWidth(0);
         tblName.getColumnModel().getColumn(colNum).setPreferredWidth(0);
     }
-    
-     
+
     public static void SQLRUN(String SQLTEXT) // Ham de chay cau truy van
     {
-        try{
-            Connection   conn = CON();
+        try {
+            Connection conn = CON();
             Statement stm = conn.createStatement();
             stm.execute(SQLTEXT);
             conn.close();
             stm.close();
-             
-        } catch(Exception e){
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    public static String  SelectedRowToString(JTable TableName, int CollNumb ) // Lay va In ten truong thu CollNumb ra  bietn ReturnValua, lay 1 bien
+
+    public static String SelectedRowToString(JTable TableName, int CollNumb) // Lay va In ten truong thu CollNumb ra  bietn ReturnValua, lay 1 bien
     {
 
-        int  RowSelected;
+        int RowSelected;
         String ReturnValue;
         RowSelected = TableName.getSelectedRow();
-        ReturnValue=TableName.getValueAt(RowSelected,CollNumb).toString();
+        ReturnValue = TableName.getValueAt(RowSelected, CollNumb).toString();
 
         return ReturnValue;
 
-        
+
     }
-    public static void addItemTooCombobox(JComboBox ComboboxName,String sqlcb,String Firstchoice) // Dua du lieu tu cau truy van vao combobox, chi co 1 truong trong du lieu
+
+    public static void addItemTooCombobox(JComboBox ComboboxName, String sqlcb, String Firstchoice) // Dua du lieu tu cau truy van vao combobox, chi co 1 truong trong du lieu
     {
 
-        if (!Firstchoice.equals("")){
+        if (!Firstchoice.equals("")) {
             ComboboxName.addItem(Firstchoice);
         }
-        new sqlDatabase().addDataCombobox(sqlcb,ComboboxName);
+        new sqlDatabase().addDataCombobox(sqlcb, ComboboxName);
     }
-    
-    public static void addItemToTable(JTable TableName,String sqltb )// Lay du lieu tu cau truy van dua vao tabe, nhieu ten bang
-    {
-        
-        new sqlDatabase().addDataTable(sqltb,TableName);
-        
-    }
-    
-    public static void addDataToTextField(String sql,String rsName,JTextField TexFiedName) // dua du lieu tu trong cau truy van vao bang
+
+    public static void addItemToTable(JTable TableName, String sqltb)// Lay du lieu tu cau truy van dua vao tabe, nhieu ten bang
     {
 
-        try{
+        new sqlDatabase().addDataTable(sqltb, TableName);
+
+    }
+
+    public static void addDataToTextField(String sql, String rsName, JTextField TexFiedName) // dua du lieu tu trong cau truy van vao bang
+    {
+
+        try {
             Statement sttm = CON().createStatement();
             ResultSet rs = sttm.executeQuery(sql);
-            while(rs.next()){
+            while (rs.next()) {
                 TexFiedName.setText(rs.getString(rsName));
             }
             sttm.close();
             rs.close();
-        } catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    
+    public static String selectDateToString(String sql, String rsName) {
+        String returnvl = "";
 
-    public static String selectDateToString(String sql,String rsName)  
-    {
-        String returnvl ="" ;
-
-        try{
+        try {
             Statement sttm = CON().createStatement();
             ResultSet rs = sttm.executeQuery(sql);
-            while(rs.next()){
+            while (rs.next()) {
                 System.err.println(rs.getString(rsName));
                 returnvl = rs.getString(rsName);
             }
             sttm.close();
             rs.close();
-        } catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return returnvl;
     }
-    
-      public static float selectDataToFloat(String sql,String rsName) {
-        float returnvl =0 ;
 
-        try{
+    public static float selectDataToFloat(String sql, String rsName) {
+        float returnvl = 0;
+
+        try {
             Statement sttm = CON().createStatement();
             ResultSet rs = sttm.executeQuery(sql);
-            while(rs.next()){
+            while (rs.next()) {
                 System.err.println(rs.getString(rsName));
                 returnvl = rs.getFloat(rsName);
             }
             sttm.close();
             rs.close();
-        } catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return returnvl;
     }
-    public Vector getDataToVector(String sql,String rsName){
+
+    public Vector getDataToVector(String sql, String rsName) {
         Vector vt = new Vector();
-        try{
+        try {
             Statement sttm = CON().createStatement();
             ResultSet rs = sttm.executeQuery(sql);
-            while(rs.next()){
+            while (rs.next()) {
                 System.err.println(rs.getString(rsName));
                 vt.addElement(rs.getString(rsName));
             }
             sttm.close();
             rs.close();
-        } catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return vt;
     }
-     
-    
+
     /** Creates a new instance of publicClass */
     public Utils() {
     }
+
     public static Connection CON() {
         try {
-        if(con == null || con.isClosed()){
-            con = new connectDatabase().getConnection();
-        }
+            if (con == null || con.isClosed()) {
+                con = new connectDatabase().getConnection();
+            }
         } catch (Exception e) {
-        e.printStackTrace();
+            e.printStackTrace();
         }
         return con;
     }

@@ -1,0 +1,1 @@
+jdbc:microsoft:sqlserver://192.168.1.10:1433;databaseName=phs_data;User=sa;Password=1234567

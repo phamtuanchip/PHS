@@ -6,9 +6,6 @@
 
 package phs_project;
 
-import java.io.File;
-import java.util.Locale;
-import java.util.ResourceBundle;
 import javax.swing.JFrame;
 
 /**

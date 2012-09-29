@@ -23,10 +23,10 @@ public class getData{
                         cs.setString(3,endDate);
 			ResultSet resultSet = cs.executeQuery();
 			if(resultSet.wasNull()){
-				System.out.println ("select loi");
+				//System.out.println ("select loi");
 			}
 			else{
-				System.out.println ("ngonlanh");
+				//System.out.println ("ngonlanh");
 			}
 			ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
 			int column_count = resultSetMetaData.getColumnCount();

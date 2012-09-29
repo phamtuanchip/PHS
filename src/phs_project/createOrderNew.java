@@ -3,8 +3,8 @@
  *
  * Created on March 26, 2006, 10:01 PM
  */
-
 package phs_project;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLData;
@@ -21,20 +21,21 @@ import java.util.*;
  * @author  nhoc
  */
 public class createOrderNew extends javax.swing.JDialog {
-    
+
     /** Creates new form createOrderNew */
-    public static Vector roomArray ;
-    public createOrderNew(JFrame parent,boolean check,String begin,String end,Vector roomvt) {
-        super(parent,check);
+    public static Vector roomArray;
+
+    public createOrderNew(JFrame parent, boolean check, String begin, String end, Vector roomvt) {
+        super(parent, check);
         initComponents();
-        
-        this.roomArray =roomvt;
+
+        this.roomArray = roomvt;
         PanelKhachQuen.setVisible(false);
         //addItemToTable(Bangkhachhang,"select * from cusjointype");
         //addItemToTable(Bangkhachhang,"select * from rooms");
         //Bangkhachhang.
-        addItemTooCombobox(type,"select name from customerstype","");
-        addItemTooCombobox(orderType,"select Status_detail from order_Status","");
+        addItemTooCombobox(type, "select name from customerstype", "");
+        addItemTooCombobox(orderType, "select Status_detail from order_Status", "");
         customerId.setText(" ");
         firstName.setText("");
         lastName.setText("");
@@ -42,20 +43,20 @@ public class createOrderNew extends javax.swing.JDialog {
         digitalClock clock = new digitalClock(orderdate);
         this.begindate.setText(begin);
         this.enddate.setText(end);
-        String Roomlist ="" ;
+        String Roomlist = "";
         if (roomvt != null) {
             String sqlselect = " select * from rooms ";
-            for (int i =0; i< roomvt.size(); i++) {
-                Roomlist=Roomlist+ selectDateToString("select roomnumb from rooms where roomid='"+roomvt.get(i).toString()+"'","roomnumb")+",";
-                
+            for (int i = 0; i < roomvt.size(); i++) {
+                Roomlist = Roomlist + selectDateToString("select roomnumb from rooms where roomid='" + roomvt.get(i).toString() + "'", "roomnumb") + ",";
+
             }
         }
         SelectedRoom.setText(Roomlist);
-        
-        
-        
+
+
+
     }
-    
+
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -527,14 +528,14 @@ public class createOrderNew extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 // TODO add your handling code here:
-         Utils.addItemToTable(Bangkhachhang,"select * from cusjointype where [H�? Tên] like N'%"+Timtenkhach.getText()+"%'");
-          Utils.hiddencol(Bangkhachhang,0);
+        Utils.addItemToTable(Bangkhachhang, "select * from cusjointype where [H�? Tên] like N'%" + Timtenkhach.getText() + "%'");
+        Utils.hiddencol(Bangkhachhang, 0);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void TimtenkhachKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TimtenkhachKeyReleased
 // TODO add your handling code here:
-         Utils.addItemToTable(Bangkhachhang,"select * from cusjointype where [H�? Tên] like N'%"+Timtenkhach.getText()+"%'");
-          Utils.hiddencol(Bangkhachhang,0);
+        Utils.addItemToTable(Bangkhachhang, "select * from cusjointype where [H�? Tên] like N'%" + Timtenkhach.getText() + "%'");
+        Utils.hiddencol(Bangkhachhang, 0);
     }//GEN-LAST:event_TimtenkhachKeyReleased
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -544,321 +545,319 @@ public class createOrderNew extends javax.swing.JDialog {
 
     private void TimtenkhachKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TimtenkhachKeyPressed
 // TODO add your handling code here:
-          Utils.addItemToTable(Bangkhachhang,"select * from cusjointype where [H�? Tên] like N'%"+Timtenkhach.getText()+"%'");
-          Utils.hiddencol(Bangkhachhang,0);
+        Utils.addItemToTable(Bangkhachhang, "select * from cusjointype where [H�? Tên] like N'%" + Timtenkhach.getText() + "%'");
+        Utils.hiddencol(Bangkhachhang, 0);
     }//GEN-LAST:event_TimtenkhachKeyPressed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
 // TODO add your handling code here:
-       
-      
-            if (customerId.getText().equals(" ")) 
-            {
-                if ((firstName.getText().equals(""))||(lastName.getText().equals("")))
-                {
-                JOptionPane.showMessageDialog(this,"Bạn phải nhập h�? và tên của khách hàng");
-                
-                }
-                else
-                {
-                    InsertNewCustomer();
-                    CreaterOrder(customerId.getText());
-                    AddCusInorder(customerId.getText(),orderId.getText());
-                    unfillAllFeid();
-                    JOptionPane.showMessageDialog(this,"Bạn vừa tạo thành công 1 đơn hàng");
-                    this.dispose();
-                }
-                
-            }
-            else
-            {
-                //UpdateCustomer(customerId.getText());
+
+
+        if (customerId.getText().equals(" ")) {
+            if ((firstName.getText().equals("")) || (lastName.getText().equals(""))) {
+                JOptionPane.showMessageDialog(this, "Bạn phải nhập h�? và tên của khách hàng");
+
+            } else {
+                InsertNewCustomer();
                 CreaterOrder(customerId.getText());
-                AddCusInorder(customerId.getText(),orderId.getText());
+                AddCusInorder(customerId.getText(), orderId.getText());
                 unfillAllFeid();
-                 JOptionPane.showMessageDialog(this,"Bạn vừa tạo thành công 1 đơn hàng");
-                 this.dispose();
+                JOptionPane.showMessageDialog(this, "Bạn vừa tạo thành công 1 đơn hàng");
+                this.dispose();
             }
-           
-      
+
+        } else {
+            //UpdateCustomer(customerId.getText());
+            CreaterOrder(customerId.getText());
+            AddCusInorder(customerId.getText(), orderId.getText());
+            unfillAllFeid();
+            JOptionPane.showMessageDialog(this, "Bạn vừa tạo thành công 1 đơn hàng");
+            this.dispose();
+        }
+
+
     }//GEN-LAST:event_jToggleButton1ActionPerformed
-                    
+
     private void firstNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_firstNameKeyTyped
 // TODO add your handling code here:
-        if (Khachcu.isSelected()){
-            addItemToTable(Bangkhachhang,"select * from cusjointype where firstname like '%"+firstName.getText()+"%' or lastname like '%"+lastName.getText()+"%'");
-            
+        if (Khachcu.isSelected()) {
+            addItemToTable(Bangkhachhang, "select * from cusjointype where firstname like '%" + firstName.getText() + "%' or lastname like '%" + lastName.getText() + "%'");
+
         }
     }//GEN-LAST:event_firstNameKeyTyped
-        
+
     private void BangkhachhangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BangkhachhangMouseClicked
 // TODO add your handling code here:
-        Makhachhang= SelectedRowToString(Bangkhachhang,0);
+        Makhachhang = SelectedRowToString(Bangkhachhang, 0);
         fillAllFeid();
         //Khachcu.setSelected(true);
-        
-        
-        
+
+
+
     }//GEN-LAST:event_BangkhachhangMouseClicked
-        
+
     private void KhachmoiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_KhachmoiMouseClicked
 // TODO add your handling code here:
         PanelKhachQuen.setVisible(false);
         unfillAllFeid();
-        
-        
+
+
     }//GEN-LAST:event_KhachmoiMouseClicked
-    
+
     private void KhachcuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_KhachcuMouseClicked
 // TODO add your handling code here:
         // type.removeAllItems();
         //  addItemTooCombobox(type,"select name from customerstype","");
         unfillAllFeid();
-        addItemToTable(Bangkhachhang,"select * from cusjointype");
-        Utils.hiddencol(Bangkhachhang,0);
+        addItemToTable(Bangkhachhang, "select * from cusjointype");
+        Utils.hiddencol(Bangkhachhang, 0);
         PanelKhachQuen.setVisible(true);
-       // if (Khachcu.isSelected()) {
-         //   new searchCustomers().setVisible(true);
-       // }
+        // if (Khachcu.isSelected()) {
+        //   new searchCustomers().setVisible(true);
+        // }
         //customerId.setText("");
     }//GEN-LAST:event_KhachcuMouseClicked
-    private void DeleteCustomer(String cusId){
-        if (Makhachhang!=null){
-            int rt= JOptionPane.showConfirmDialog(this,"Bạn thực sự muốn xóa khách hàng có mã :"+Makhachhang+"\n tất cả các đơn hàng liên quan sẽ bị xóa","Cảnh báo",0);
-            if (rt ==0) {
-                int mkh = Integer.parseInt( customerId.getText());
+    private void DeleteCustomer(String cusId) {
+        if (Makhachhang != null) {
+            int rt = JOptionPane.showConfirmDialog(this, "Bạn thực sự muốn xóa khách hàng có mã :" + Makhachhang + "\n tất cả các đơn hàng liên quan sẽ bị xóa", "Cảnh báo", 0);
+            if (rt == 0) {
+                int mkh = Integer.parseInt(customerId.getText());
                 int mkhselect = Integer.parseInt(cusId);
-                if  (mkh ==mkhselect){
+                if (mkh == mkhselect) {
                     unfillAllFeid();
-                    addItemToTable(Bangkhachhang,"select * from cusjointype");
+                    addItemToTable(Bangkhachhang, "select * from cusjointype");
                 }
-                SQLRUN("clearorderofcus '"+cusId+"'") ;
-                addItemToTable(Bangkhachhang,"select * from cusjointype");
-                
+                SQLRUN("clearorderofcus '" + cusId + "'");
+                addItemToTable(Bangkhachhang, "select * from cusjointype");
+
             }
-            
-            Makhachhang=null;
-            
+
+            Makhachhang = null;
+
         } else {
-            JOptionPane.showMessageDialog(this,"Bạn phải ch�?n 1 khách để xóa");
+            JOptionPane.showMessageDialog(this, "Bạn phải ch�?n 1 khách để xóa");
         }
     }
-    
-    
+
     private void InsertNewCustomer() {
-        
-        String gioi ="";
-        String cusType ="";
-        cusType = selectDateToString("select customerTypeId from customerstype where name  =N'"+type.getSelectedItem().toString()+"'","customerTypeId");
-        if (sexMale.isSelected()){gioi="Nam";
+
+        String gioi = "";
+        String cusType = "";
+        cusType = selectDateToString("select customerTypeId from customerstype where name  =N'" + type.getSelectedItem().toString() + "'", "customerTypeId");
+        if (sexMale.isSelected()) {
+            gioi = "Nam";
         }
-        if (sexFemale.isSelected()){gioi="Nu";
+        if (sexFemale.isSelected()) {
+            gioi = "Nu";
         }
-        
-        String sql= "insert into customers (firstname,lastname,type,idCardNumb,visaCardNumb,sex,age,address,phone,email,country,detail)" +
-                " values (N'"+firstName.getText()+"',N'"+lastName.getText()+"','"+cusType+"','"+idCardNumb.getText()+"',N'"+visaCardNumb.getText()+"','"+gioi+"','"+age.getText()+"',N'"+address.getText()+"','"+
-                phone.getText()+"','"+email.getText()+"',N'"+country.getText()+"',N'"+detail.getText()+"')" ;
-       // JOptionPane.showMessageDialog(this,sql);
+
+        String sql = "insert into customers (firstname,lastname,type,idCardNumb,visaCardNumb,sex,age,address,phone,email,country,detail)"
+                + " values (N'" + firstName.getText() + "',N'" + lastName.getText() + "','" + cusType + "','" + idCardNumb.getText() + "',N'" + visaCardNumb.getText() + "','" + gioi + "','" + age.getText() + "',N'" + address.getText() + "','"
+                + phone.getText() + "','" + email.getText() + "',N'" + country.getText() + "',N'" + detail.getText() + "')";
+        // JOptionPane.showMessageDialog(this,sql);
         SQLRUN(sql);
-        String GetCuid = selectDateToString("select max (customerid)as customerid from customers ","customerid");
+        String GetCuid = selectDateToString("select max (customerid)as customerid from customers ", "customerid");
         customerId.setText(GetCuid);
-        
-        
+
+
     }
-    
-    private void UpdateCustomer(String cusId){
-       
-            String gioi ="";
-            String cusType ="";
-            cusType = selectDateToString("select customerTypeId from customerstype where name  =N'"+type.getSelectedItem().toString()+"'","customerTypeId");
-            if (sexMale.isSelected()){gioi="Nam";
-            }
-            if (sexFemale.isSelected()){gioi="Nu";
-            }
-            
-            String sqlupdate ="update customers set firstname=N'"+firstName.getText()+"',lastname=N'"+lastName.getText()+"', type='"+cusType+"',idCardNumb='"+idCardNumb.getText()+"', visaCardNumb=N'"+
-                    visaCardNumb.getText()+"',sex='"+gioi+"',age='"+age.getText()+"',address=N'"+address.getText()+"',phone='"+phone.getText()+
-                    "',email='"+email.getText()+"',country=N'"+country.getText()+"',detail=N'"+detail.getText()+"' where customerid='"+cusId+"'";
-            SQLRUN(sqlupdate);
-            //JOptionPane.showMessageDialog(this,sqlupdate);
-            
-      
-        
+
+    private void UpdateCustomer(String cusId) {
+
+        String gioi = "";
+        String cusType = "";
+        cusType = selectDateToString("select customerTypeId from customerstype where name  =N'" + type.getSelectedItem().toString() + "'", "customerTypeId");
+        if (sexMale.isSelected()) {
+            gioi = "Nam";
+        }
+        if (sexFemale.isSelected()) {
+            gioi = "Nu";
+        }
+
+        String sqlupdate = "update customers set firstname=N'" + firstName.getText() + "',lastname=N'" + lastName.getText() + "', type='" + cusType + "',idCardNumb='" + idCardNumb.getText() + "', visaCardNumb=N'"
+                + visaCardNumb.getText() + "',sex='" + gioi + "',age='" + age.getText() + "',address=N'" + address.getText() + "',phone='" + phone.getText()
+                + "',email='" + email.getText() + "',country=N'" + country.getText() + "',detail=N'" + detail.getText() + "' where customerid='" + cusId + "'";
+        SQLRUN(sqlupdate);
+        //JOptionPane.showMessageDialog(this,sqlupdate);
+
+
+
     }
+
     private void CreaterOrder(String MaKhach) {
-        
-            String odType ="";
-            odType = selectDateToString("select statusid from order_status  where status_detail =N'"+orderType.getSelectedItem().toString()+"'","statusid");
-            String  sql2 = "insert into orders (customerId,Status,note,orderDate) values ('"+customerId.getText()+"','"+odType+"',N'"+Note.getText()+"',getDate())";
-            SQLRUN(sql2);
-            //JOptionPane.showMessageDialog(this,sql2);
-            //SQLRUN("");
-            String GetOdid =  selectDateToString("select max (orderid)as orderid from orders ","orderid");
-            orderId.setText(GetOdid);
-            if (roomArray != null )// khi da chon room
-            {
-                
-                String CountDays = Utils.selectDateToString("select convert(int,'"+begindate.getText()+"'-getDate()) as countDay","countDay");
-               // JOptionPane.showMessageDialog(this,CountDays);
-                if (new Integer(CountDays)>0)
-                { 
-                    RoomStatusID="8";
-                   
-                }
-                else
-                {
-                    RoomStatusID="6";
-                }
-                
-                for (int i=0; i < roomArray.size() ; i++) {
-                
-                
-                String insertOrderDetail =" insert into orderDetail (roomid,orderid,begindate,enddate,roomStatus) values ('"+
-                            roomArray.get(i).toString()+ "','"+GetOdid+"','"+begindate.getText()+"','"+enddate.getText()+"','"+RoomStatusID+"')";
-                    SQLRUN(insertOrderDetail);
-                    //JOptionPane.showMessageDialog(this,insertOrderDetail);
-                }
-                
+
+        String odType = "";
+        odType = selectDateToString("select statusid from order_status  where status_detail =N'" + orderType.getSelectedItem().toString() + "'", "statusid");
+        String sql2 = "insert into orders (customerId,Status,note,orderDate) values ('" + customerId.getText() + "','" + odType + "',N'" + Note.getText() + "',getDate())";
+        SQLRUN(sql2);
+        //JOptionPane.showMessageDialog(this,sql2);
+        //SQLRUN("");
+        String GetOdid = selectDateToString("select max (orderid)as orderid from orders ", "orderid");
+        orderId.setText(GetOdid);
+        if (roomArray != null)// khi da chon room
+        {
+
+            String CountDays = Utils.selectDateToString("select convert(int,'" + begindate.getText() + "'-getDate()) as countDay", "countDay");
+            // JOptionPane.showMessageDialog(this,CountDays);
+            if (new Integer(CountDays) > 0) {
+                RoomStatusID = "8";
+
+            } else {
+                RoomStatusID = "6";
             }
-           // AddCusInorder(customerId.getText(),GetOdid);
-           // addItemToTable(Bangkhachhang ,"select * from customers where customerid in " +
-                //    "(select customerid from cusinorders where orderid='"
-                //    +orderId.getText()+"' ) ");
-           // PanelKhachQuen.setVisible(true);
-            //askForAdd(type.getSelectedItem().toString(),1);
-        
+
+            for (int i = 0; i < roomArray.size(); i++) {
+
+
+                String insertOrderDetail = " insert into orderDetail (roomid,orderid,begindate,enddate,roomStatus) values ('"
+                        + roomArray.get(i).toString() + "','" + GetOdid + "','" + begindate.getText() + "','" + enddate.getText() + "','" + RoomStatusID + "')";
+                SQLRUN(insertOrderDetail);
+                //JOptionPane.showMessageDialog(this,insertOrderDetail);
+            }
+
+        }
+        // AddCusInorder(customerId.getText(),GetOdid);
+        // addItemToTable(Bangkhachhang ,"select * from customers where customerid in " +
+        //    "(select customerid from cusinorders where orderid='"
+        //    +orderId.getText()+"' ) ");
+        // PanelKhachQuen.setVisible(true);
+        //askForAdd(type.getSelectedItem().toString(),1);
+
     }
-    
-    private void AddCusInorder(String CusID,String OID) {
-       
-            String sqlin="insert into cusInOrders (customerid,orderid) values ('" +
-                    CusID+"','"+OID+"')";
-            //JOptionPane.showMessageDialog(this,sqlin);
-            SQLRUN(sqlin);
-      
+
+    private void AddCusInorder(String CusID, String OID) {
+
+        String sqlin = "insert into cusInOrders (customerid,orderid) values ('"
+                + CusID + "','" + OID + "')";
+        //JOptionPane.showMessageDialog(this,sqlin);
+        SQLRUN(sqlin);
+
     }
-    
-    private void UpdateRespnseInOrder(String cusId,String note,String oId) {
-        if ((cusId.equals(""))&&(oId.equals(""))){
-            String insertorder ="update orders set customerid ='"+cusId+"',note=N'"+note+"' where orderid='"+oId+"'";
+
+    private void UpdateRespnseInOrder(String cusId, String note, String oId) {
+        if ((cusId.equals("")) && (oId.equals(""))) {
+            String insertorder = "update orders set customerid ='" + cusId + "',note=N'" + note + "' where orderid='" + oId + "'";
             //JOptionPane.showMessageDialog(this,insertorder);
         } else {
-            JOptionPane.showMessageDialog(this,"Chưa có mã đơn và mã khách để cập nhật");
+            JOptionPane.showMessageDialog(this, "Chưa có mã đơn và mã khách để cập nhật");
         }
     }
-    private  void askForAdd(String cusType,int checktye ) {
-        String typeid =selectDateToString("select  customertypeid from customerstype where name ='"+cusType+"'","customertypeid");
+
+    private void askForAdd(String cusType, int checktye) {
+        String typeid = selectDateToString("select  customertypeid from customerstype where name ='" + cusType + "'", "customertypeid");
         if (Integer.parseInt(typeid) != 1) {
-            int tl= JOptionPane.showConfirmDialog(this,"Khách này không đi một mình, bạn có muốn thêm khách vào không?","Thong bao",0);
-            if (tl==0){
+            int tl = JOptionPane.showConfirmDialog(this, "Khách này không đi một mình, bạn có muốn thêm khách vào không?", "Thong bao", 0);
+            if (tl == 0) {
                 unfillAllFeid();
                 Khachmoi.setSelected(true);
-                isaddnew =true;
+                isaddnew = true;
                 type.removeAllItems();
-                addItemTooCombobox(type,"select name from customerstype where customertypeid='"+typeid+"'","");
-                
+                addItemTooCombobox(type, "select name from customerstype where customertypeid='" + typeid + "'", "");
+
             } else {
                 this.dispose();
             }
         }
     }
-    
-    
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
+
             public void run() {
                 //new createOrderNew(String begindate, String enddate,Vector vt).setVisible(true);
             }
         });
     }
-    
+
     public void SQLRUN(String SQLTEXT) // Ham de chay cau truy van
     {
-        try{
-            Connection   conn = Utils.CON();
+        try {
+            Connection conn = Utils.CON();
             Statement stm = conn.createStatement();
             stm.execute(SQLTEXT);
             conn.close();
             stm.close();
             System.out.println(SQLTEXT);
-        } catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    public String  SelectedRowToString(JTable TableName, int CollNumb ) // Lay va In ten truong thu CollNumb ra  bietn ReturnValua, lay 1 bien
+
+    public String SelectedRowToString(JTable TableName, int CollNumb) // Lay va In ten truong thu CollNumb ra  bietn ReturnValua, lay 1 bien
     {
         //int CollNumb ;
         //CollNumb=0;
-        int  RowSelected;
+        int RowSelected;
         String ReturnValue;
         RowSelected = TableName.getSelectedRow();
-        ReturnValue=TableName.getValueAt(RowSelected,CollNumb).toString();
-        System.out.println(ReturnValue+" ");
+        ReturnValue = TableName.getValueAt(RowSelected, CollNumb).toString();
+        System.out.println(ReturnValue + " ");
         return ReturnValue;
         //System.out.println(TableName.getValueAt(RowSelected,CollNumb));
-        
+
     }
-    public void addItemTooCombobox(JComboBox ComboboxName,String sqlcb,String Firstchoice) // Dua du lieu tu cau truy van vao combobox, chi co 1 truong trong du lieu
+
+    public void addItemTooCombobox(JComboBox ComboboxName, String sqlcb, String Firstchoice) // Dua du lieu tu cau truy van vao combobox, chi co 1 truong trong du lieu
     {
         //String sqlcb = "select TenTruogn from TenBang";
         //ComboboxName.addItem("Chon 1");
-        if (!Firstchoice.equals("")){
+        if (!Firstchoice.equals("")) {
             ComboboxName.addItem(Firstchoice);
         }
-        new sqlDatabase().addDataCombobox(sqlcb,ComboboxName);
+        new sqlDatabase().addDataCombobox(sqlcb, ComboboxName);
     }
-    
-    public void addItemToTable(JTable TableName,String sqltb )// Lay du lieu tu cau truy van dua vao tabe, nhieu ten bang
-    {
-        
-        //String sqltb=  "select * from Tenbang";
-        new sqlDatabase().addDataTable(sqltb,TableName);
-        
-    }
-    
-    public void addDataToTextField(String sql,String rsName,JTextField TexFiedName) // dua du lieu tu trong cau truy van vao bang
+
+    public void addItemToTable(JTable TableName, String sqltb)// Lay du lieu tu cau truy van dua vao tabe, nhieu ten bang
     {
 
-        try{
+        //String sqltb=  "select * from Tenbang";
+        new sqlDatabase().addDataTable(sqltb, TableName);
+
+    }
+
+    public void addDataToTextField(String sql, String rsName, JTextField TexFiedName) // dua du lieu tu trong cau truy van vao bang
+    {
+
+        try {
             Statement sttm = Utils.CON().createStatement();
             ResultSet rs = sttm.executeQuery(sql);
-            while(rs.next()){
+            while (rs.next()) {
                 TexFiedName.setText(rs.getString(rsName));
             }
             sttm.close();
             rs.close();
-        } catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    public String selectDateToString(String sql,String rsName) // dua du lieu tu trong cau truy van ra bien string
+
+    public String selectDateToString(String sql, String rsName) // dua du lieu tu trong cau truy van ra bien string
     {
-        String returnvl ="" ;
-         
-        try{
+        String returnvl = "";
+
+        try {
             Statement sttm = Utils.CON().createStatement();
             ResultSet rs = sttm.executeQuery(sql);
-            while(rs.next()){
+            while (rs.next()) {
                 System.err.println(rs.getString(rsName));
                 returnvl = rs.getString(rsName);
             }
             sttm.close();
             rs.close();
-        } catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return returnvl;
     }
-    
-    
+
     //  Copy tu day di tat ca cac form
-    private void unfillAllFeid(){
+    private void unfillAllFeid() {
         //type.removeAllItems();
         // addItemTooCombobox(type,"select name from customerstype","");
-        addDataToTextField("select max(customerId)+1 as customerId from customers ","customerId",customerId);
+        addDataToTextField("select max(customerId)+1 as customerId from customers ", "customerId", customerId);
         customerId.setText(" ");
         firstName.setText("");
         lastName.setText("");
@@ -871,75 +870,75 @@ public class createOrderNew extends javax.swing.JDialog {
         email.setText("");
         detail.setText("");
         sexMale.setSelected(true);
-        
+
     }
-    private void fillAllFeid(){
+
+    private void fillAllFeid() {
         // Connection con = null ;
-        String sql1 ="select * from customers where customerid= '"+Makhachhang+"'" ;
-        String sql2 ="select customerId,firstname,lastname,idCardNumb,visaCardNumb,age,address,phone,email,country,detail from customers where customerid= '"+Makhachhang+"'" ;
-        
-        if(con == null){
+        String sql1 = "select * from customers where customerid= '" + Makhachhang + "'";
+        String sql2 = "select customerId,firstname,lastname,idCardNumb,visaCardNumb,age,address,phone,email,country,detail from customers where customerid= '" + Makhachhang + "'";
+
+        if (con == null) {
             con = new connectDatabase().getConnection();
         }
-        try{
-            
-            Statement sttm1 = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
-                    
+        try {
+
+            Statement sttm1 = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+
             ResultSet rs1 = sttm1.executeQuery(sql2);
-            while (rs1.next()){
+            while (rs1.next()) {
                 customerId.setText(rs1.getString("customerId"));
                 firstName.setText(rs1.getString("firstName"));
                 lastName.setText(rs1.getString("lastName"));
-                
+
                 idCardNumb.setText(rs1.getString("idCardNumb"));
                 visaCardNumb.setText(rs1.getString("visaCardNumb"));
-                  
+
                 age.setText(rs1.getString("age"));
                 address.setText(rs1.getString("address"));
                 phone.setText(rs1.getString("phone"));
                 email.setText(rs1.getString("email"));
                 country.setText(rs1.getString("country"));
                 detail.setText(rs1.getString("detail"));
-                
-           
-           }
+
+
+            }
             sttm1.close();
             rs1.close();
-            Statement sttm2 = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+            Statement sttm2 = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
             ResultSet rs2 = sttm2.executeQuery(sql1);
-            while(rs2.next()){
+            while (rs2.next()) {
                 // dua du lieu vao cac truong
-               
+
                 type.removeAllItems();
-                addItemTooCombobox(type,"select name from customerstype where customerTypeId='"+rs2.getString("type")+"'","");
-                addItemTooCombobox(type,"select name from customerstype where customerTypeId <>'"+rs2.getString("type")+"'","");
-                
-                if (rs2.getString("sex").equals("Nam")){
+                addItemTooCombobox(type, "select name from customerstype where customerTypeId='" + rs2.getString("type") + "'", "");
+                addItemTooCombobox(type, "select name from customerstype where customerTypeId <>'" + rs2.getString("type") + "'", "");
+
+                if (rs2.getString("sex").equals("Nam")) {
                     System.out.println(rs2.getString("sex"));
                     sexMale.setSelected(true);
-                    
+
                 }
-                if (rs2.getString("sex").equals("Nu")){
+                if (rs2.getString("sex").equals("Nu")) {
                     System.out.println(rs2.getString("sex"));
                     sexFemale.setSelected(true);
-                    
+
                 }
-              
-                
+
+
                 // hoan tat dua du lieu vao cac truong
             }
-            
+
             sttm2.close();
-           
+
             rs2.close();
-        } catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
     // bien tu tao
     String Makhachhang;
-    Connection con ;
+    Connection con;
     boolean isaddnew = false;
     private String RoomStatusID;
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1002,5 +1001,4 @@ public class createOrderNew extends javax.swing.JDialog {
     private javax.swing.JComboBox type;
     private javax.swing.JTextField visaCardNumb;
     // End of variables declaration//GEN-END:variables
-    
 }
