@@ -3,20 +3,22 @@
  *
  * Created on April 28, 2006, 12:47 AM
  */
-
 package phs_project;
+
 import java.sql.*;
 import java.sql.Connection;
-import javax.swing.JOptionPane;
+
 /**
  *
  * @author  TUNG
  */
 public class purchard extends javax.swing.JDialog {
+
     public String Order_ID;
     public Connection conn;
+
     /** Creates new form purchard */
-    public purchard(javax.swing.JDialog parent, boolean modal,String OrderID) {
+    public purchard(javax.swing.JDialog parent, boolean modal, String OrderID) {
         super(parent, modal);
         this.Order_ID = OrderID;
         this.conn = new connectDatabase().getConnection();
@@ -26,10 +28,11 @@ public class purchard extends javax.swing.JDialog {
         fillTableServiceDetail(Order_ID);
         tinhtongtienphong(Order_ID);
         tinhtongtiendichvu(Order_ID);
-        cong(sumRoomPrice,sumServicesPrice);
+        cong(sumRoomPrice, sumServicesPrice);
         thanhtien(Order_ID);
     }
-    public purchard(java.awt.Frame parent, boolean modal,String OrderID) {
+
+    public purchard(java.awt.Frame parent, boolean modal, String OrderID) {
         super(parent, modal);
         this.Order_ID = OrderID;
         this.conn = new connectDatabase().getConnection();
@@ -39,16 +42,17 @@ public class purchard extends javax.swing.JDialog {
         fillTableServiceDetail(Order_ID);
         tinhtongtienphong(Order_ID);
         tinhtongtiendichvu(Order_ID);
-        cong(sumRoomPrice,sumServicesPrice);
+        cong(sumRoomPrice, sumServicesPrice);
         thanhtien(Order_ID);
     }
-    private void OrderInfor(String OrderID){
+
+    private void OrderInfor(String OrderID) {
         String sql = "";
-        sql = sql + "select orderid,orderDate,name,idCardNumb,address,email from orderInfo where orderid ='" + OrderID+"'";
-        try{
-            Statement st = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+        sql = sql + "select orderid,orderDate,name,idCardNumb,address,email from orderInfo where orderid ='" + OrderID + "'";
+        try {
+            Statement st = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             ResultSet rs = st.executeQuery(sql);
-            while(rs.next()){
+            while (rs.next()) {
                 lblOrderID.setText(rs.getString(1));
                 lblBegindate.setText(rs.getString(2));
                 lblCusName.setText(rs.getString(3));
@@ -58,66 +62,67 @@ public class purchard extends javax.swing.JDialog {
             }
             rs.close();
             st.close();
-        }
-        catch(SQLException se){
+        } catch (SQLException se) {
             System.out.println("loi ORderInfo");
             System.out.println(se);
         }
-        
+
     }
-    private void fillTableRoomDetail(String OrderID){
-        String sql= "";
+
+    private void fillTableRoomDetail(String OrderID) {
+        String sql = "";
         sql = sql + "select [Mã đơn hàng],[Tên phòng],[Ngày bắt đầu],[Ngày kết thúc],[Số ngày ],[�?ơn giá phòng],[Phụ phí], ";
-        sql = sql + "[Giảm giá],[Thành ti�?n] from Tinhtienphong where [Mã đơn hàng] = '"+ OrderID+"'";
-        new Utils().addItemToTable(tblRoomPrice,sql);
-        new Utils().hiddencol(tblRoomPrice,0);
+        sql = sql + "[Giảm giá],[Thành ti�?n] from Tinhtienphong where [Mã đơn hàng] = '" + OrderID + "'";
+        new Utils().addItemToTable(tblRoomPrice, sql);
+        new Utils().hiddencol(tblRoomPrice, 0);
     }
-    private void fillTableServiceDetail(String OrderID){
+
+    private void fillTableServiceDetail(String OrderID) {
         String sql = "";
         sql = sql + "select Mã,[Của phòng] as [Phòng], Loại, [Tên dịch vụ],[Giá ti�?n], [Giảm giá], [Phụ phí], [Tổng ti�?n] ";
-        sql = sql + "from costofservices where Mã = '"+ OrderID+"'";
-        new Utils().addItemToTable(tblServicesPrice,sql);
-        new Utils().hiddencol(tblServicesPrice,0);
+        sql = sql + "from costofservices where Mã = '" + OrderID + "'";
+        new Utils().addItemToTable(tblServicesPrice, sql);
+        new Utils().hiddencol(tblServicesPrice, 0);
     }
-    private void tinhtongtienphong(String OrderID){
+
+    private void tinhtongtienphong(String OrderID) {
         String sql = "";
-        sql = sql + "Select sum([Thành ti�?n]) as tongtienphong from Tinhtienphong where [Mã đơn hàng] = '" + OrderID+"'";
+        sql = sql + "Select sum([Thành ti�?n]) as tongtienphong from Tinhtienphong where [Mã đơn hàng] = '" + OrderID + "'";
         sql = sql + " group by [Mã đơn hàng]";
-        sumRoomPrice = new Utils().selectDateToString(sql,"tongtienphong");
+        sumRoomPrice = new Utils().selectDateToString(sql, "tongtienphong");
         lblSumPriceRoom.setText(sumRoomPrice);
     }
-    private void tinhtongtiendichvu(String OrderID){
+
+    private void tinhtongtiendichvu(String OrderID) {
         String sql = "";
-        sql = sql + "select sum([Tổng ti�?n]) as tongtiendichvu from costofservices where Mã = '" + OrderID+"'";
-        sql = sql + " group by Mã" ;
-        sumServicesPrice = new Utils().selectDateToString(sql,"tongtiendichvu");
+        sql = sql + "select sum([Tổng ti�?n]) as tongtiendichvu from costofservices where Mã = '" + OrderID + "'";
+        sql = sql + " group by Mã";
+        sumServicesPrice = new Utils().selectDateToString(sql, "tongtiendichvu");
         lblSumPriceServices.setText(sumServicesPrice);
     }
-    private void cong(String str1,String str2){
-       /// if (str2.toString().equals(null))    {
+
+    private void cong(String str1, String str2) {
+        /// if (str2.toString().equals(null))    {
         //    JOptionPane.showMessageDialog(this,"NUll");
-       // }
-        if (str2.toString().equals(""))
-        {
-           // JOptionPane.showMessageDialog(this,"..");
-            str2="0";
-        }    
+        // }
+        if (str2.toString().equals("")) {
+            // JOptionPane.showMessageDialog(this,"..");
+            str2 = "0";
+        }
         double sum = new Double(str1) + new Double(str2);
-        lblSum.setText(""+sum);
+        lblSum.setText("" + sum);
     }
-    private void thanhtien(String OrderID){
-        String sql = "select totalfee,addition,discount from orders where orderid ='" + OrderID+"'";
-        String tt = new Utils().selectDateToString(sql,"totalfee");
+
+    private void thanhtien(String OrderID) {
+        String sql = "select totalfee,addition,discount from orders where orderid ='" + OrderID + "'";
+        String tt = new Utils().selectDateToString(sql, "totalfee");
         lblSumOrder.setText(tt);
-        String add = new Utils().selectDateToString(sql,"addition");
+        String add = new Utils().selectDateToString(sql, "addition");
         lblAdd.setText(add);
-        String discount = new Utils().selectDateToString(sql,"discount");
+        String discount = new Utils().selectDateToString(sql, "discount");
         lbldiscount.setText(discount);
     }
-    
-    
-    
-    
+
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -481,16 +486,16 @@ public class purchard extends javax.swing.JDialog {
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-       // java.awt.EventQueue.invokeLater(new Runnable() {
-         //   public void run() {
-           //     new purchard(new javax.swing.JFrame(), true,100).setVisible(true);
-          //  }
-       // });
+        // java.awt.EventQueue.invokeLater(new Runnable() {
+        //   public void run() {
+        //     new purchard(new javax.swing.JFrame(), true,100).setVisible(true);
+        //  }
+        // });
     }
     private String sumRoomPrice;
     private String sumServicesPrice;
@@ -534,5 +539,4 @@ public class purchard extends javax.swing.JDialog {
     private javax.swing.JTable tblRoomPrice;
     private javax.swing.JTable tblServicesPrice;
     // End of variables declaration//GEN-END:variables
-    
 }
