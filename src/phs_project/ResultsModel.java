@@ -24,7 +24,7 @@ class ResultsModel extends DefaultTableModel {
             }
             fireTableChanged(null);           // Signal the table there is new model data
         } catch (SQLException sqle) {
-            System.err.println(sqle.getMessage());
+            sqle.printStackTrace();
         }
     }
 }
