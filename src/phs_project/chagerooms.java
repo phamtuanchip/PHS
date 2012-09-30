@@ -373,7 +373,7 @@ public class chagerooms extends javax.swing.JDialog {
         } else {
             if ((new Integer(roomStatusID) == 6) || (new Integer(roomStatusID) == 8)) {
                 String sqlremoverom = "delete orderdetail where [id] = '" + detailId + "'";
-                new Utils().SQLRUN(sqlremoverom);
+                Utils.SQLRUN(sqlremoverom);
                 JOptionPane.showMessageDialog(this, "Bạn vừa b�? phòng ra kh�?i đơn hàng thành công !");
                 roomInOrdershow();
 
@@ -386,8 +386,8 @@ public class chagerooms extends javax.swing.JDialog {
 
     private void tblFreeRoomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblFreeRoomMouseClicked
 // TODO add your handling code here:
-        freeRoomTooAdd = new Utils().SelectedRowToString(tblFreeRoom, 0);
-        freeRoomTooAddName = new Utils().SelectedRowToString(tblFreeRoom, 1);
+        freeRoomTooAdd = Utils.SelectedRowToString(tblFreeRoom, 0);
+        freeRoomTooAddName = Utils.SelectedRowToString(tblFreeRoom, 1);
     }//GEN-LAST:event_tblFreeRoomMouseClicked
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
@@ -407,7 +407,7 @@ public class chagerooms extends javax.swing.JDialog {
                 String sqlinsert = "insert into orderDetail (roomid,orderid,begindate,enddate) values ('"
                         + freeRoomTooAdd + "','" + madonhang.getText() + "','" + new UserFormat().getFormat(beginDate.getDate(), "ngaygio") + "','" + new UserFormat().getFormat(endDate.getDate(), "ngaygio") + "')";
                 //JOptionPane.showMessageDialog(this,sqlinsert);
-                new Utils().SQLRUN(sqlinsert);
+                Utils.SQLRUN(sqlinsert);
                 roomInOrdershow();
                 roomFreeToAdd(new UserFormat().getFormat(beginDate.getDate(), "ngaygio"), new UserFormat().getFormat(endDate.getDate(), "ngaygio"));
                 freeRoomTooAdd = null;
@@ -453,9 +453,9 @@ public class chagerooms extends javax.swing.JDialog {
                     //SQLRUN("Update orderdetail set roomid='"+roomfree+"' where begindate='"+bd+"' and enddate='"+ed+"'");
                     String sqlupdate = " update orderdetail set  enddate=getdate() where id='" + detailId + "' and roomid='" + roomtochange + "'";
                     SQLRUN(sqlupdate);
-                    new Utils().SQLRUN("update roomcurent_detail set roomId='" + roomfree + "' where roomid='" + roomtochange + "'");
-                    new Utils().SQLRUN("update servicesDetail set roomnum='" + roomfree + "' where roomnum='" + roomtochange + "'");
-                    new Utils().SQLRUN("update orderdetail set roomstatus=7 where [id]='" + detailId + "'");
+                    Utils.SQLRUN("update roomcurent_detail set roomId='" + roomfree + "' where roomid='" + roomtochange + "'");
+                    Utils.SQLRUN("update servicesDetail set roomnum='" + roomfree + "' where roomnum='" + roomtochange + "'");
+                    Utils.SQLRUN("update orderdetail set roomstatus=7 where [id]='" + detailId + "'");
 
                     String sqlchangeCus = "";
                     // JOptionPane.showMessageDialog(this,sqlupdate);
@@ -503,8 +503,8 @@ public class chagerooms extends javax.swing.JDialog {
                 int isChange = JOptionPane.showConfirmDialog(this, " Bạn thực sự muốn đổi phòng " + nameroomtochange + " thành phòng " + nameroomfree + "? \n Tất cả khách, dịch vụ đã g�?i sẽ được chuyển!", "Cảnh báo", 0);
                 if (isChange == 0) {
                     SQLRUN("Update orderdetail set roomid='" + roomfree + "' where begindate='" + bd + "' and enddate='" + ed + "' and id='" + detailId + "'");
-                    new Utils().SQLRUN("update roomcurent_detail set roomId='" + roomfree + "' where roomid='" + roomtochange + "'");
-                    new Utils().SQLRUN("update servicesDetail set roomnum='" + roomfree + "' where roomnum='" + roomtochange + "'");
+                    Utils.SQLRUN("update roomcurent_detail set roomId='" + roomfree + "' where roomid='" + roomtochange + "'");
+                    Utils.SQLRUN("update servicesDetail set roomnum='" + roomfree + "' where roomnum='" + roomtochange + "'");
                     roomInOrdershow(); // refress lai bang roominorder
               /* roomtochange = null; // chuyen het cac bien ve null //
                     nameroomtochange = null;
@@ -541,7 +541,7 @@ public class chagerooms extends javax.swing.JDialog {
         roomOutOrdershow(bd, ed);// hien cac phong co the
         roomfree = null;
         //orderid=madonhang.getText();
-        new Utils().addItemToTable(tblCusInRoom, "select firstname +' '+lastname as [H�? tên] from customers where customerId in (select customerid  from roomcurent_detail where roomid='" + roomtochange + "' )");
+        Utils.addItemToTable(tblCusInRoom, "select firstname +' '+lastname as [H�? tên] from customers where customerId in (select customerid  from roomcurent_detail where roomid='" + roomtochange + "' )");
 
 
     }//GEN-LAST:event_roomInOrderMouseClicked
@@ -564,10 +564,10 @@ public class chagerooms extends javax.swing.JDialog {
         Oid = madonhang.getText();
         String sqltb = "select * from roomInChangeOd where orderId= '" + Oid + "'";
         new sqlDatabase().addDataTable(sqltb, roomInOrder);
-        new Utils().hiddencol(roomInOrder, 0);
-        new Utils().hiddencol(roomInOrder, 1);
-        new Utils().hiddencol(roomInOrder, 2);
-        new Utils().hiddencol(roomInOrder, 3);
+        Utils.hiddencol(roomInOrder, 0);
+        Utils.hiddencol(roomInOrder, 1);
+        Utils.hiddencol(roomInOrder, 2);
+        Utils.hiddencol(roomInOrder, 3);
         roomtochange = null; // chuyen het cac bien ve null //
         nameroomtochange = null;
         bd = null;
@@ -582,12 +582,6 @@ public class chagerooms extends javax.swing.JDialog {
 
     }
 
-    private void hiddencol(int colNum) {
-        roomInOrder.getColumnModel().getColumn(colNum).setMaxWidth(0);
-        roomInOrder.getColumnModel().getColumn(colNum).setMinWidth(0);
-        roomInOrder.getColumnModel().getColumn(colNum).setPreferredWidth(0);
-    }
-
     private void roomOutOrdershow(String bd, String ed)// Hien nhung room co the chuyen (phai co tham so ngay cua room can chuyen)
     {
         String sqltb = "SELECT roomid,roomnumb as [Số phòng],[price] as [Giá] FROM roomjointype "
@@ -595,7 +589,7 @@ public class chagerooms extends javax.swing.JDialog {
                 + " OR('" + ed + "'BETWEEN bd AND ed) OR (bd BETWEEN '" + bd + "' AND '" + ed + "')"
                 + " OR(ed BETWEEN '" + bd + "' AND '" + ed + "'))";
         new sqlDatabase().addDataTable(sqltb, roomOutOrder);
-        new Utils().hiddencol(roomOutOrder, 0);
+        Utils.hiddencol(roomOutOrder, 0);
     }
 
     private void roomFreeToAdd(String bd, String ed)// Hien nhung room trong de chuyen)
@@ -605,11 +599,10 @@ public class chagerooms extends javax.swing.JDialog {
                     + " WHERE roomid NOT IN (SELECT roomid FROM busyrooms WHERE ('" + bd + "' BETWEEN bd AND ed)"
                     + " OR('" + ed + "'BETWEEN bd AND ed) OR (bd BETWEEN '" + bd + "' AND '" + ed + "')"
                     + " OR(ed BETWEEN '" + bd + "' AND '" + ed + "'))";
-            // new sqlDatabase().addDataTable(sqltb,roomOutOrder);
-            new Utils().addItemToTable(tblFreeRoom, sqltb);
-            new Utils().hiddencol(tblFreeRoom, 0);
+            Utils.addItemToTable(tblFreeRoom, sqltb);
+            Utils.hiddencol(tblFreeRoom, 0);
         } else {
-            new Utils().addItemToTable(tblFreeRoom, "select [Số phòng] ='Chưa có'  ,[Giá] = 'Chưa có'");
+            Utils.addItemToTable(tblFreeRoom, "select [Số phòng] ='Chưa có'  ,[Giá] = 'Chưa có'");
         }
     }
 
@@ -621,7 +614,6 @@ public class chagerooms extends javax.swing.JDialog {
             stm.execute(SQLTEXT);
             conn.close();
             stm.close();
-            System.out.println(SQLTEXT);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -650,10 +642,7 @@ public class chagerooms extends javax.swing.JDialog {
         String ReturnValue;
         RowSelected = TableName.getSelectedRow();
         ReturnValue = TableName.getValueAt(RowSelected, CollNumb).toString();
-        System.out.println(ReturnValue + " ");
         return ReturnValue;
-        //System.out.println(TableName.getValueAt(RowSelected,CollNumb));
-
     }
     // Bien do nguoi dung  tao ra
     private String roomtochange;

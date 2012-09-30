@@ -35,9 +35,9 @@ public class insertCustomer extends javax.swing.JDialog {
         orderId.setText(hotelForm.ODID);
         //digitalClock clock = new digitalClock(orderdate);
         addItemTooCombobox(cbRooms, "select [Tên phòng] from roomInorder where orderId='" + orderId.getText() + "' and (roomstatusId =5 or roomstatusId =6 or roomstatusId =8) order by [Ngày đến ở] ", "");
-        new Utils().addDataToTextField("select * from orders where orderId='" + orderId.getText() + "'", "orderDate", orderdate);
-        new Utils().addDataToTextField("select * from orders where orderId='" + orderId.getText() + "'", "Note", Note);
-        new Utils().addItemToTable(tblCusIinOrder, " select firstName +' '+ lastName as [Tên khách hàng] from CusInOrder where orderId='" + orderId.getText() + "'");
+        Utils.addDataToTextField("select * from orders where orderId='" + orderId.getText() + "'", "orderDate", orderdate);
+        Utils.addDataToTextField("select * from orders where orderId='" + orderId.getText() + "'", "Note", Note);
+        Utils.addItemToTable(tblCusIinOrder, " select firstName +' '+ lastName as [Tên khách hàng] from CusInOrder where orderId='" + orderId.getText() + "'");
     }
 
     /** This method is called from within the constructor to
@@ -498,35 +498,35 @@ public class insertCustomer extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(this, "Bạn phải nhập h�? và tên của khách hàng");
             } else {
                 InsertNewCustomer();
-                String customerIdMax = new Utils().selectDateToString("select Max(customerId) as cusMax from customers", "cusMax");
+                String customerIdMax = Utils.selectDateToString("select Max(customerId) as cusMax from customers", "cusMax");
                 AddCusInorder(customerIdMax, orderId.getText());
-                String roomId = new Utils().selectDateToString("select roomid from rooms where roomnumb='" + cbRooms.getSelectedItem().toString() + "'", "roomid");
-                new Utils().SQLRUN("insert into roomcurent_detail (roomid,customerId) values('" + roomId + "','" + customerIdMax + "')");
-                String IdDetail = new Utils().selectDateToString("select [id] from roomInorder where roomid=(select roomid from rooms where roomnumb='" + cbRooms.getSelectedItem() + "') and orderId='" + orderId.getText() + "' and getDate() between [Ngày đến ở] and enddate ", "id");
+                String roomId = Utils.selectDateToString("select roomid from rooms where roomnumb='" + cbRooms.getSelectedItem().toString() + "'", "roomid");
+                Utils.SQLRUN("insert into roomcurent_detail (roomid,customerId) values('" + roomId + "','" + customerIdMax + "')");
+                String IdDetail = Utils.selectDateToString("select [id] from roomInorder where roomid=(select roomid from rooms where roomnumb='" + cbRooms.getSelectedItem() + "') and orderId='" + orderId.getText() + "' and getDate() between [Ngày đến ở] and enddate ", "id");
                 String sqlUpdateRoomStatus = "update orderDetail set roomstatus =5 where Id='" + IdDetail + "'";
-                new Utils().SQLRUN(sqlUpdateRoomStatus);
-                new Utils().SQLRUN("update orders set status=2 where orderid='" + orderId.getText() + "'");
-                new Utils().addItemToTable(tblCusIinOrder, "select firstName +' '+ lastName as [Tên khách hàng] from CusInOrder where orderId='" + orderId.getText() + "'");
+                Utils.SQLRUN(sqlUpdateRoomStatus);
+                Utils.SQLRUN("update orders set status=2 where orderid='" + orderId.getText() + "'");
+                Utils.addItemToTable(tblCusIinOrder, "select firstName +' '+ lastName as [Tên khách hàng] from CusInOrder where orderId='" + orderId.getText() + "'");
                 unfillAllFeid();
             }
         } else // ch�?n khách quen
         {
-            int countCusInOrder = new Integer(new Utils().selectDateToString("select count (customerId) as CountCus from cusInOrders where orderId='" + orderId.getText() + "' and CusTomerId='" + customerId.getText() + "' ", "CountCus"));
+            int countCusInOrder = new Integer(Utils.selectDateToString("select count (customerId) as CountCus from cusInOrders where orderId='" + orderId.getText() + "' and CusTomerId='" + customerId.getText() + "' ", "CountCus"));
             if (countCusInOrder > 0) {
-                int countCusInRoom = new Integer(new Utils().selectDateToString("select count (customerId) as CountCusInr from roomcurent_detail where CusTomerId='" + customerId.getText() + "' ", "CountCusInr"));
+                int countCusInRoom = new Integer(Utils.selectDateToString("select count (customerId) as CountCusInr from roomcurent_detail where CusTomerId='" + customerId.getText() + "' ", "CountCusInr"));
                 if (countCusInRoom > 0) {
                     JOptionPane.showMessageDialog(this, "Khách này đã có ");
                 }// khách đã đến ở trong phòng
                 else // xêp phòng cho khách !
                 {
-                    String roomId = new Utils().selectDateToString("select roomid from rooms where roomnumb='" + cbRooms.getSelectedItem().toString() + "'", "roomid");
-                    new Utils().SQLRUN("insert into roomcurent_detail (roomid,customerId) values('" + roomId + "','" + customerId.getText() + "')");
-                    String IdDetail = new Utils().selectDateToString("select [id] from roomInorder where roomid=(select roomid from rooms where roomnumb='" + cbRooms.getSelectedItem() + "') and orderId='" + orderId.getText() + "' and getDate() between [Ngày đến ở] and enddate ", "id");
+                    String roomId = Utils.selectDateToString("select roomid from rooms where roomnumb='" + cbRooms.getSelectedItem().toString() + "'", "roomid");
+                    Utils.SQLRUN("insert into roomcurent_detail (roomid,customerId) values('" + roomId + "','" + customerId.getText() + "')");
+                    String IdDetail = Utils.selectDateToString("select [id] from roomInorder where roomid=(select roomid from rooms where roomnumb='" + cbRooms.getSelectedItem() + "') and orderId='" + orderId.getText() + "' and getDate() between [Ngày đến ở] and enddate ", "id");
                     //String IdDetail=new publicClass().selectDateToString("select [id] from roomInorder where roomid=(select roomid from rooms where roomnumb='"+cbRooms.getSelectedItem()+"') and orderId='"+orderId.getText()+"'","id");
                     String sqlUpdateRoomStatus = "update orderDetail set roomstatus =5 where Id='" + IdDetail + "'";
-                    new Utils().SQLRUN(sqlUpdateRoomStatus);
-                    new Utils().SQLRUN("update orders set status=2 where orderid='" + orderId.getText() + "'");
-                    new Utils().addItemToTable(tblCusIinOrder, "select  firstName +' '+ lastName as [Tên khách hàng] from CusInOrder where orderId='" + orderId.getText() + "'");
+                    Utils.SQLRUN(sqlUpdateRoomStatus);
+                    Utils.SQLRUN("update orders set status=2 where orderid='" + orderId.getText() + "'");
+                    Utils.addItemToTable(tblCusIinOrder, "select  firstName +' '+ lastName as [Tên khách hàng] from CusInOrder where orderId='" + orderId.getText() + "'");
                     unfillAllFeid();
                     JOptionPane.showMessageDialog(this, "Ngư�?i đặt hàng vừa được xếp phòng !");
                 } // xêp phòng cho khách !
@@ -534,13 +534,13 @@ public class insertCustomer extends javax.swing.JDialog {
             else // khách chưa có, vừa thêm vào đơn hàng vừa xếp phòng
             {
                 AddCusInorder(customerId.getText(), orderId.getText());
-                String roomId = new Utils().selectDateToString("select roomid from rooms where roomnumb='" + cbRooms.getSelectedItem().toString() + "'", "roomid");
-                new Utils().SQLRUN("insert into roomcurent_detail (roomid,customerId) values('" + roomId + "','" + customerId.getText() + "')");
-                String IdDetail = new Utils().selectDateToString("select [id] from roomInorder where roomid=(select roomid from rooms where roomnumb='" + cbRooms.getSelectedItem() + "') and orderId='" + orderId.getText() + "' and getDate() between [Ngày đến ở] and enddate ", "id");
+                String roomId = Utils.selectDateToString("select roomid from rooms where roomnumb='" + cbRooms.getSelectedItem().toString() + "'", "roomid");
+                Utils.SQLRUN("insert into roomcurent_detail (roomid,customerId) values('" + roomId + "','" + customerId.getText() + "')");
+                String IdDetail = Utils.selectDateToString("select [id] from roomInorder where roomid=(select roomid from rooms where roomnumb='" + cbRooms.getSelectedItem() + "') and orderId='" + orderId.getText() + "' and getDate() between [Ngày đến ở] and enddate ", "id");
                 String sqlUpdateRoomStatus = "update orderDetail set roomstatus =5 where Id='" + IdDetail + "'";
-                new Utils().SQLRUN(sqlUpdateRoomStatus);
-                new Utils().SQLRUN("update orders set status=2 where orderid='" + orderId.getText() + "'");
-                new Utils().addItemToTable(tblCusIinOrder, "select  firstName +' '+ lastName as [Tên khách hàng] from CusInOrder where orderId='" + orderId.getText() + "'");
+                Utils.SQLRUN(sqlUpdateRoomStatus);
+                Utils.SQLRUN("update orders set status=2 where orderid='" + orderId.getText() + "'");
+                Utils.addItemToTable(tblCusIinOrder, "select  firstName +' '+ lastName as [Tên khách hàng] from CusInOrder where orderId='" + orderId.getText() + "'");
                 unfillAllFeid();
             }
         }// khách quen
@@ -555,7 +555,7 @@ public class insertCustomer extends javax.swing.JDialog {
     private void TimtenkhachKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TimtenkhachKeyPressed
 // TODO add your handling code here:
         addItemToTable(Bangkhachhang, "select * from cusjointype where [H�? tên] like N'%" + Timtenkhach.getText() + "%'");
-        new Utils().hiddencol(Bangkhachhang, 0);
+        Utils.hiddencol(Bangkhachhang, 0);
     }//GEN-LAST:event_TimtenkhachKeyPressed
 
     private void firstNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_firstNameKeyTyped
@@ -728,7 +728,7 @@ public class insertCustomer extends javax.swing.JDialog {
             stm.execute(SQLTEXT);
             conn.close();
             stm.close();
-            System.out.println(SQLTEXT);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -742,9 +742,9 @@ public class insertCustomer extends javax.swing.JDialog {
         String ReturnValue;
         RowSelected = TableName.getSelectedRow();
         ReturnValue = TableName.getValueAt(RowSelected, CollNumb).toString();
-        System.out.println(ReturnValue + " ");
+
         return ReturnValue;
-        //System.out.println(TableName.getValueAt(RowSelected,CollNumb));
+
 
     }
 
@@ -763,7 +763,7 @@ public class insertCustomer extends javax.swing.JDialog {
 
         //String sqltb=  "select * from Tenbang";
         new sqlDatabase().addDataTable(sqltb, TableName);
-        new Utils().hiddencol(Bangkhachhang, 0);
+        Utils.hiddencol(Bangkhachhang, 0);
 
     }
 
@@ -870,12 +870,12 @@ public class insertCustomer extends javax.swing.JDialog {
                 addItemTooCombobox(type, "select name from customerstype where customerTypeId <>'" + rs2.getString("type") + "'", "");
 
                 if (rs2.getString("sex").equals("Nam")) {
-                    System.out.println(rs2.getString("sex"));
+
                     sexMale.setSelected(true);
 
                 }
                 if (rs2.getString("sex").equals("Nu")) {
-                    System.out.println(rs2.getString("sex"));
+
                     sexFemale.setSelected(true);
 
                 }

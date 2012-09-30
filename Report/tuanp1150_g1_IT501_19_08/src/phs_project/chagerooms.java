@@ -648,7 +648,6 @@ public class chagerooms extends javax.swing.JDialog {
             stm.execute(SQLTEXT);
             conn.close();
             stm.close();
-            System.out.println(SQLTEXT);
         }
         catch(Exception e){
             e.printStackTrace();
@@ -678,10 +677,7 @@ public class chagerooms extends javax.swing.JDialog {
         String ReturnValue;
         RowSelected = TableName.getSelectedRow();
         ReturnValue=TableName.getValueAt(RowSelected,CollNumb).toString();
-        System.out.println(ReturnValue+" ");
         return ReturnValue;
-        //System.out.println(TableName.getValueAt(RowSelected,CollNumb));
-        
       }
      
      // Bien do nguoi dung  tao ra

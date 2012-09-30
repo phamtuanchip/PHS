@@ -135,7 +135,7 @@ public class Utils {
         return returnvl;
     }
 
-    public Vector getDataToVector(String sql, String rsName) {
+    public static Vector getDataToVector(String sql, String rsName) {
         Vector vt = new Vector();
         try {
             Statement sttm = CON().createStatement();

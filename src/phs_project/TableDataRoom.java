@@ -15,7 +15,7 @@ class TableDataRoom extends AbstractTableModel {
         //	this.begin_Date = beginDate;
         //	this.end_Date = endDate;
         columnNames = title;
-        System.out.println(columnNames.length);
+        
         getData getdata = new getData();
         data = getdata.getDataTable(beginDate, endDate, select);
     }

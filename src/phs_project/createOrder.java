@@ -23,13 +23,11 @@ public class createOrder extends javax.swing.JDialog {
 
     /** Creates new form createOrder */
     public createOrder(String begindate, String enddate, Vector vt) {
-        System.out.print("Tao don hang");
+
         this.bedate = begindate;
         this.endate = enddate;
         this.vector = vt;
-        System.out.println(bedate);
-        System.out.println(endate);
-        System.out.println(vector);
+
         initComponents();
         // addItemTooCombobox(OrderList,"Select OrderId from orders ","Ch�?n một đơn hàng");
 
@@ -467,14 +465,11 @@ public class createOrder extends javax.swing.JDialog {
                 + txtAddress.getText() + "','" + txtPhone.getText() + "','"
                 + txtEmail.getText() + "','" + txtCountry.getText() + "','" + txtCusDescrib.getText() + "'";
 
-        //System.out.println(sqlinsertCustomers);
-        //SQLRUN(sqlinsertCustomers);   // Dua du lieu vao bang khach hang
-
     }
 
     private void cbxromforcusmt() {
         if (vector == null) {
-            System.out.println("Chua co vector");
+
             JOptionPane.showMessageDialog(this, "Chưa có room nào để tạo đơn  hàng");
         } else {
 
@@ -493,7 +488,7 @@ public class createOrder extends javax.swing.JDialog {
                     }
                     rs.close();
                 } catch (SQLException ce) {
-                    System.out.print(ce);
+                    ce.printStackTrace();
                 }
 
 
@@ -518,8 +513,6 @@ public class createOrder extends javax.swing.JDialog {
             }
             sqlcreateorder = " execute creatorder '" + Taomoi + "','" + txtOrderDescrib.getText() + "','" + cbxNgay.getText() + "','"
                     + cbxLDH.getSelectedItem().toString() + "','" + vector.get(i).toString() + "','" + bedate + "','" + endate + "'";
-
-            //System.out.println(sqlcreateorder);
             SQLRUN(sqlcreateorder);
         }
 
@@ -541,7 +534,7 @@ public class createOrder extends javax.swing.JDialog {
             }
             rs.close();
         } catch (SQLException ce) {
-            System.out.print(ce);
+            ce.printStackTrace();
         }
     }//end
 
@@ -556,7 +549,7 @@ public class createOrder extends javax.swing.JDialog {
             }
             rs.close();
         } catch (SQLException ce) {
-            System.out.print(ce);
+            ce.printStackTrace();
         }
     }
 
@@ -591,7 +584,7 @@ public class createOrder extends javax.swing.JDialog {
             stm.execute(SQLTEXT);
             conn.close();
             stm.close();
-            System.out.println(SQLTEXT);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -605,9 +598,9 @@ public class createOrder extends javax.swing.JDialog {
         String ReturnValue;
         RowSelected = TableName.getSelectedRow();
         ReturnValue = TableName.getValueAt(RowSelected, CollNumb).toString();
-        System.out.println(ReturnValue + " ");
+
         return ReturnValue;
-        //System.out.println(TableName.getValueAt(RowSelected,CollNumb));
+
 
     }
 

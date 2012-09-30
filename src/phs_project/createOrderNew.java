@@ -779,7 +779,7 @@ public class createOrderNew extends javax.swing.JDialog {
             stm.execute(SQLTEXT);
             conn.close();
             stm.close();
-            //System.out.println(SQLTEXT);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -793,9 +793,9 @@ public class createOrderNew extends javax.swing.JDialog {
         String ReturnValue;
         RowSelected = TableName.getSelectedRow();
         ReturnValue = TableName.getValueAt(RowSelected, CollNumb).toString();
-        //System.out.println(ReturnValue + " ");
+
         return ReturnValue;
-        //System.out.println(TableName.getValueAt(RowSelected,CollNumb));
+
 
     }
 
@@ -914,12 +914,12 @@ public class createOrderNew extends javax.swing.JDialog {
                 addItemTooCombobox(type, "select name from customerstype where customerTypeId <>'" + rs2.getString("type") + "'", "");
 
                 if (rs2.getString("sex").equals("Nam")) {
-                    //System.out.println(rs2.getString("sex"));
+
                     sexMale.setSelected(true);
 
                 }
                 if (rs2.getString("sex").equals("Nu")) {
-                    //System.out.println(rs2.getString("sex"));
+
                     sexFemale.setSelected(true);
 
                 }

@@ -51,7 +51,6 @@ public class connectDatabase {
             //make connection
             con = java.sql.DriverManager.getConnection(dsn);
         } catch (Exception e) {
-            //System.out.println("khong connect duoc");
             e.printStackTrace();
         }
         return con;

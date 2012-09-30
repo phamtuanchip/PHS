@@ -63,8 +63,7 @@ public class purchard extends javax.swing.JDialog {
             rs.close();
             st.close();
         } catch (SQLException se) {
-            System.out.println("loi ORderInfo");
-            System.out.println(se);
+            se.printStackTrace();
         }
 
     }

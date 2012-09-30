@@ -53,8 +53,7 @@ public class Search_Order1 extends javax.swing.JFrame {
             cs.close();
             conn.close();
         } catch (SQLException se) {
-            System.out.println("loi search_o");
-            System.err.println(se);
+            se.printStackTrace();
         }
         return orderID;
     }
@@ -63,7 +62,7 @@ public class Search_Order1 extends javax.swing.JFrame {
         //fill data lien quan den 1 order vao table 
         df1 = new SimpleDateFormat("MM/dd/yyyy");
         String beginDate = df1.format(txtEndDate.getDate());
-        System.out.println(beginDate);
+
         int OrderID_value = this.SearchOrder(cbxRoomName.getSelectedItem().toString(), beginDate);
         txtOrderID.setText("" + OrderID_value);
         String cusName = this.getCusName();
@@ -91,7 +90,7 @@ public class Search_Order1 extends javax.swing.JFrame {
             stmt.close();
             conn.close();
         } catch (SQLException se) {
-            System.err.println(se);
+          se.printStackTrace();
         }
         return Cus_Name;
     }
@@ -116,7 +115,7 @@ public class Search_Order1 extends javax.swing.JFrame {
             st.close();
             conn.close();
         } catch (SQLException se) {
-            System.out.println(se);
+            se.printStackTrace();
         }
         return roomInOrder;
     }

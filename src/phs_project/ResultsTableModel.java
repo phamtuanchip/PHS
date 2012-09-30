@@ -33,7 +33,7 @@ class ResultsTableModel extends AbstractTableModel {
                 }
             }
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
     }
     //

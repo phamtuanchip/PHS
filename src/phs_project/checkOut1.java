@@ -518,8 +518,7 @@ public class checkOut1 extends javax.swing.JDialog {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
 // TODO add your handling code here:
-        // float tongtien = this.GetSumTotalOrder();
-        //System.out.println(tongtien);
+       
         CallableStatement cs;
         try {
             cs = conn.prepareCall("{call hoantat(?)}");
@@ -527,8 +526,7 @@ public class checkOut1 extends javax.swing.JDialog {
             cs.execute();
 
         } catch (SQLException se) {
-            System.out.println("loi call hoan tat");
-            System.out.println(se);
+            se.printStackTrace();
         }
         jButton5.setEnabled(false);
     }//GEN-LAST:event_jButton5ActionPerformed
@@ -538,8 +536,6 @@ public class checkOut1 extends javax.swing.JDialog {
         int row = CostOfServices.getSelectedRow();
         //ten dich vu
         String nameServices = CostOfServices.getValueAt(row, 0).toString();
-        System.out.println(nameServices);
-        //ten phong
         int rowR = CostOfRoom.getSelectedRow();
         String roomName = CostOfRoom.getValueAt(rowR, 0).toString();
         // tinhtien1dv(nameServices,roomName);
@@ -549,7 +545,6 @@ public class checkOut1 extends javax.swing.JDialog {
 // TODO add your handling code here:
         int row = CostOfRoom.getSelectedRow();
         roomName = CostOfRoom.getValueAt(row, 0).toString();
-        System.out.println(roomName);
         fillCostOFServiceForRoom(roomName);
     }//GEN-LAST:event_CostOfRoomMouseClicked
 
@@ -580,8 +575,7 @@ public class checkOut1 extends javax.swing.JDialog {
             }
             //conn.close();
         } catch (SQLException se) {
-            System.out.println("loi call traphong");
-            System.out.println(se);
+           se.printStackTrace();
         }
         JOptionPane.showMessageDialog(this, "tra phong thanh cong !!!");
         btnTraphong.setEnabled(false);
@@ -648,7 +642,6 @@ public class checkOut1 extends javax.swing.JDialog {
                 sql1 = sql1 + "OR (dbo.servicesDetail.RoomNum = (SELECT roomid FROM dbo.rooms WHERE dbo.rooms.roomnumb = N'" + vector.get(i).toString() + "')) ";
             }
             sql1 = sql1 + "OR (dbo.servicesDetail.RoomNum = (SELECT roomid FROM dbo.rooms WHERE dbo.rooms.roomnumb = N'" + vector.get(vector.size() - 1).toString() + "'))) ";
-            System.out.println(sql1);
             addItemToTable(tblDichvuchung, sql1);
             float sumServicesnRoom = this.tongtiendvnhieuroom(OrderID, vector);
             txtSumOfServices.setValue(new Float(sumServicesnRoom));
@@ -726,7 +719,7 @@ public class checkOut1 extends javax.swing.JDialog {
             sql = sql + "OR ([Tên phòng] = N'" + vector.get(i).toString() + "') ";
         }
         sql = sql + "OR ([Tên phòng] = N'" + vector.get(vector.size() - 1).toString() + "')) ";
-        System.out.println(sql);
+
         try {
             Statement st = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             ResultSet rs = st.executeQuery(sql);
@@ -736,8 +729,7 @@ public class checkOut1 extends javax.swing.JDialog {
             }
             conn.close();
         } catch (SQLException se) {
-            System.out.println("Loi Tong tien phong");
-            System.out.println(se);
+           se.printStackTrace();
         }
         return sumPriceOr;
     }
@@ -748,7 +740,7 @@ public class checkOut1 extends javax.swing.JDialog {
         String sql = "";
         sql = sql + "SELECT Sum([Thành ti�?n])  FROM tinhtiendichvu ";
         sql = sql + "WHERE ([Mã đơn hàng] = " + OrderID + ")";
-        System.out.println(sql);
+        
         try {
             Statement st = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             ResultSet rs = st.executeQuery(sql);
@@ -758,8 +750,7 @@ public class checkOut1 extends javax.swing.JDialog {
             }
             conn.close();
         } catch (SQLException se) {
-            System.out.println("tinh tong tien dv co loi ");
-            System.out.println(se);
+           se.printStackTrace();
         }
         return sumPriceSer;
     }
@@ -807,8 +798,7 @@ public class checkOut1 extends javax.swing.JDialog {
             st.close();
             // conn.close();
         } catch (SQLException se) {
-            System.out.println("loi get giam gia");
-            System.out.println(se);
+            se.printStackTrace();
         }
         return discount;
     }
@@ -855,8 +845,7 @@ public class checkOut1 extends javax.swing.JDialog {
             st.close();
             // conn.close();
         } catch (SQLException se) {
-            System.out.println("loi get giam gia");
-            System.out.println(se);
+           se.printStackTrace();
         }
         jFormattedTextField1.setValue(new Float(khachtra));
         jFormattedTextField1.setEditable(false);
@@ -869,7 +858,6 @@ public class checkOut1 extends javax.swing.JDialog {
             stm.execute(SQLTEXT);
             conn.close();
             stm.close();
-            System.out.println(SQLTEXT);
         } catch (Exception e) {
             e.printStackTrace();
         }

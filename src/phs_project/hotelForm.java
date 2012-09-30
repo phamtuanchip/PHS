@@ -2656,16 +2656,15 @@ public class hotelForm extends javax.swing.JFrame {
 
         } else {
             int isdelete = JOptionPane.showConfirmDialog(this, "Bạn thực sự muốn xóa đơn hàng của " + Cusname + " hay không ?", "Cảnh báo", 0);
-            //System.out.println(isdelete);
+
             if (isdelete == 0) {
                 SQLRUN("execute clearOrders '" + ODID + "'"); // goi ham xoa het thong tin ve orders
-                //SQLRUN ("Delete orders where orderId = '"+ODID+"'");
+
                 showordes(Loai);
                 ODID = null;
 
             }
-            //if (isdelete==1) {}
-            //JOptionPane.showMessageDialog(this,"Bạn đã xóa thành công ");
+
         }
 
     }//GEN-LAST:event_jButton16ActionPerformed
@@ -2683,7 +2682,7 @@ public class hotelForm extends javax.swing.JFrame {
         ODID = tableOrders.getValueAt(row, 0).toString();
         int OrderStaus = new Integer(tableOrders.getValueAt(row, 1).toString());
         OrderID = new Integer((String) tableOrders.getValueAt(row, 0));
-        System.out.println(tableOrders.getValueAt(row, 0));
+         
         Cusname = tableOrders.getValueAt(row, 2).toString();
         hiddenPopup(OrderStaus);
         hiddenButton(OrderID);
@@ -2693,7 +2692,7 @@ public class hotelForm extends javax.swing.JFrame {
         int status = 0;
         String sql = "";
         sql = sql + "select status from orders where orderID ='" + OrderID + "'";
-        System.out.println(sql);
+         
         Connection conn = new connectDatabase().getConnection();
         try {
             Statement st = conn.createStatement();
@@ -3226,11 +3225,11 @@ public class hotelForm extends javax.swing.JFrame {
                 Utils.addItemTooCombobox(cbType, "select name from customerstype where customerTypeId <>'" + rs2.getString("type") + "'", "");
 
                 if (rs2.getString("sex").equals("Nam")) {
-                    //System.out.println(rs2.getString("sex"));
+
                     sexMale.setSelected(true);
                 }
                 if (rs2.getString("sex").equals("Nu")) {
-                    //System.out.println(rs2.getString("sex"));
+
                     sexFemale.setSelected(true);
                 }
                 // hoan tat dua du lieu vao cac truong

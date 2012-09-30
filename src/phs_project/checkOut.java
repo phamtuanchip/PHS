@@ -353,7 +353,6 @@ public class checkOut extends javax.swing.JFrame {
             stm.execute(SQLTEXT);
             conn.close();
             stm.close();
-            System.out.println(SQLTEXT);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -367,10 +366,7 @@ public class checkOut extends javax.swing.JFrame {
         String ReturnValue;
         RowSelected = TableName.getSelectedRow();
         ReturnValue = TableName.getValueAt(RowSelected, CollNumb).toString();
-        System.out.println(ReturnValue + " ");
         return ReturnValue;
-        //System.out.println(TableName.getValueAt(RowSelected,CollNumb));
-
     }
 
     private void addItemTooCombobox(JComboBox ComboboxName, String sqlcb) // Dua du lieu tu cau truy van vao combobox, chi co 1 truong trong du lieu

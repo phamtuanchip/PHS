@@ -323,8 +323,6 @@ public class addServicestoOrder extends javax.swing.JDialog {
         int row;
         row = ServiceInorder.getSelectedRow();
         svInOdId = ServiceInorder.getValueAt(row, 0).toString();
-        //System.out.println(SeviceName.getValueAt(row,0));
-        System.out.println(svInOdId);
     }//GEN-LAST:event_ServiceInorderMouseClicked
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -350,11 +348,6 @@ public class addServicestoOrder extends javax.swing.JDialog {
         svId = SeviceName.getValueAt(row, 0).toString();
         svCost = SeviceName.getValueAt(row, 2).toString();
         GiaDV.setText(svCost);
-        //System.out.println(SeviceName.getValueAt(row,0));
-        //System.out.println(svId);
-
-
-
     }//GEN-LAST:event_SeviceNameMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -384,9 +377,6 @@ public class addServicestoOrder extends javax.swing.JDialog {
                     + phuphi.getText() + "','" + giamgia.getText() + "','" + Tongso + "')";
 
             SQLRUN(SqlInsertService);
-            //SQLRUN("sumtotal "+hotelForm.ODID+"");
-            System.out.println(SqlInsertService);
-            // serviceTypeShow();
             serviceTBNameShow(Type);
             ServiceInorderShow(oderName); // load lai bang dich vu da co cua orders
             svId = null;
@@ -412,31 +402,30 @@ public class addServicestoOrder extends javax.swing.JDialog {
     }
 
     private void serviceTBNameShow(String loaiDV) {
-        if (serviceType.getSelectedItem().toString() == "Tất cả") {
+        if ("Tất cả".equals(serviceType.getSelectedItem().toString())) {
             loaiDV = "all";
             String sqlshowSV = "select * from servicejointype where [Loại] <>'" + loaiDV + "'";
             new sqlDatabase().addDataTable(sqlshowSV, SeviceName);
-            new Utils().hiddencol(SeviceName, 0);
+            Utils.hiddencol(SeviceName, 0);
         } else {
             loaiDV = serviceType.getSelectedItem().toString();
             String sqlshowSV = "select * from servicejointype where [Loại] =N'" + loaiDV + "'";
             new sqlDatabase().addDataTable(sqlshowSV, SeviceName);
         }
-        new Utils().hiddencol(SeviceName, 0);
+        Utils.hiddencol(SeviceName, 0);
     }
 
     private void ServiceInorderShow(String OdId) {
         OdId = orderId.getText();
         String sqlshowSV = "select [MãDV],[Tên dịch vụ],[Giá ti�?n],[Giảm giá], [Phụ phí], [Tổng ti�?n], [Loại],[Của phòng] from costofservices where [Mã] ='" + OdId + "'";
         new sqlDatabase().addDataTable(sqlshowSV, ServiceInorder);
-        new Utils().hiddencol(ServiceInorder, 0);
+        Utils.hiddencol(ServiceInorder, 0);
     }
 
     private void roomInorderShow() {
         String sqlshow = "select [Tên phòng] from roomInorder  where roomStatusId=5 and orderId='" + hotelForm.ODID + "'";
         RoomInorder.addItem("Cả đoàn");
         new sqlDatabase().addDataCombobox(sqlshow, RoomInorder);
-        //System.out.println(sqlshow);
     }
 
     private void SQLRUN(String SQLTEXT) {
@@ -446,11 +435,9 @@ public class addServicestoOrder extends javax.swing.JDialog {
             stm.execute(SQLTEXT);
             conn.close();
             stm.close();
-            System.out.println(SQLTEXT);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        //System.out.println(SqlInsertService);
     }
 
     public String selectDateToString(String sql, String rsName) // dua du lieu tu trong cau truy van ra bien string

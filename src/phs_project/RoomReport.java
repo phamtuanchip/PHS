@@ -284,24 +284,24 @@ public class RoomReport extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton1ActionPerformed
     private void addDataToCombo() {
         String sql = "select name from roomstype";
-        new Utils().addItemTooCombobox(cbxloaiphong, sql, "Tất cả các loại");
+        Utils.addItemTooCombobox(cbxloaiphong, sql, "Tất cả các loại");
     }
 
     private void listRoom() {
         sdf = new SimpleDateFormat("MM/dd/yyyy");
         bdate = sdf.format(txtbegindate.getDate());
-        System.out.println(bdate);
+
         eDate = sdf.format(txtenddate.getDate());
-        System.out.println(eDate);
+
         room_type = cbxloaiphong.getSelectedItem().toString();
         if (room_type == "Tất cả các loại") {
             String sql = "select * from room_type_report where begindate between '" + bdate + "' and '" + eDate + "'";
-            System.out.println(sql);
-            new Utils().addItemToTable(tbldsphong, sql);
+
+            Utils.addItemToTable(tbldsphong, sql);
         } else {
             String sql = "select * from room_type_report where name = N'" + room_type + "' AND begindate between '" + bdate + "' and '" + eDate + "'";
-            System.out.println(sql);
-            new Utils().addItemToTable(tbldsphong, sql);
+
+            Utils.addItemToTable(tbldsphong, sql);
         }
 
     }
@@ -309,25 +309,25 @@ public class RoomReport extends javax.swing.JDialog {
     private void thongkeloaiphong() {
         sdf = new SimpleDateFormat("MM/dd/yyyy");
         bdate = sdf.format(txtbegindate.getDate());
-        System.out.println(bdate);
+
         eDate = sdf.format(txtenddate.getDate());
-        System.out.println(eDate);
+
         room_type = cbxloaiphong.getSelectedItem().toString();
         if (room_type == "Tất cả các loại") {
             String sql = "select count(*) as dem  from room_type_report where begindate between '" + bdate + "' and '" + eDate + "'";
-            String countORder = new Utils().selectDateToString(sql, "dem");
+            String countORder = Utils.selectDateToString(sql, "dem");
             txttongsoluot.setText(countORder);
             //tinh tong tien
             String sqltt = "select sum(od_total) as demtien  from room_type_report where begindate between '" + bdate + "' and '" + eDate + "'";
-            float countTotal = new Utils().selectDataToFloat(sqltt, "demtien");
+            float countTotal = Utils.selectDataToFloat(sqltt, "demtien");
             txttongtienphong.setValue(new Float(countTotal));
             //thong ke loai phong duoc thue
             String strsql = "select top 1 name,count(name) as dem from room_type_report where begindate between '" + bdate + "' and '" + eDate + "' group by name order by dem DESC";
-            String loai_phong_thue_nhieu_nhat = new Utils().selectDateToString(strsql, "name");
+            String loai_phong_thue_nhieu_nhat = Utils.selectDateToString(strsql, "name");
             txtmaxloaiphong.setText(loai_phong_thue_nhieu_nhat);
 
             String strsql1 = "select top 1 name,count(name) as dem from room_type_report where begindate between '" + bdate + "' and '" + eDate + "' group by name order by dem ASC";
-            String loai_phong_thue_it_nhat = new Utils().selectDateToString(strsql1, "name");
+            String loai_phong_thue_it_nhat = Utils.selectDateToString(strsql1, "name");
             txtminloaiphong.setText(loai_phong_thue_it_nhat);
 
             //thong ke phong duoc thue nhieu nhat
@@ -335,7 +335,7 @@ public class RoomReport extends javax.swing.JDialog {
             strphong = strphong + "select top 5 roomNumb,count(roomNumb) as dem from room_type_report where begindate between '" + bdate + "' and '" + eDate + "' group by roomNumb";
             strphong = strphong + " having count(roomNumb) > 2 order by dem DESC";
             Vector phong_thue_nhieu_nhat = new Vector();
-            phong_thue_nhieu_nhat = new Utils().getDataToVector(strphong, "roomNumb");
+            phong_thue_nhieu_nhat = Utils.getDataToVector(strphong, "roomNumb");
             String result = "";
             for (int i = 0; i < phong_thue_nhieu_nhat.size() - 2; i++) {
                 result = result + phong_thue_nhieu_nhat.get(i).toString() + ", ";
@@ -344,11 +344,11 @@ public class RoomReport extends javax.swing.JDialog {
             txtmaxroom.setText(result);
         } else {
             String sql = "select count(*) as dem  from room_type_report where name = N'" + room_type + " and begindate between '" + bdate + "' and '" + eDate + "'";
-            String countORder = new Utils().selectDateToString(sql, "dem");
+            String countORder = Utils.selectDateToString(sql, "dem");
             txttongsoluot.setText(countORder);
             //tinh tong tien
             String sqltt = "select sum(od_total) as demtien  from room_type_report where name = N'" + room_type + " and begindate between '" + bdate + "' and '" + eDate + "'";
-            float countTotal = new Utils().selectDataToFloat(sqltt, "demtien");
+            float countTotal = Utils.selectDataToFloat(sqltt, "demtien");
             txttongtienphong.setValue(new Float(countTotal));
 
         }

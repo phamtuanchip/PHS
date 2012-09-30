@@ -363,7 +363,7 @@ private void updateServiceType(){
             }
         }
         catch(SQLException ce){
-            System.out.println(ce);
+            ce.printStackTrace();
         }
     }
     if(row == -1){

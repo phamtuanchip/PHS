@@ -122,7 +122,6 @@ public class Search_Order extends javax.swing.JFrame {
                 cs.setString(3, Edate);
                 cs.setString(4, check);
                 JOptionPane.showMessageDialog(this, " " + OrderID + " " + vector.get(i).toString() + " " + Edate + " " + check);
-                System.out.println("exec checkoutProcess " + OrderID + ",'" + vector.get(i).toString() + "', '" + Edate + "', " + check + "'");
                 cs.execute();
             }
             conn.close();
