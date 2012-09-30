@@ -49,7 +49,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Component id="TienHuynh" alignment="0" pref="362" max="32767" attributes="1"/>
-              <Component id="jPanel2" alignment="0" min="0" max="32767" attributes="1"/>
+              <Component id="jPanel2" alignment="0" min="0" pref="362" max="32767" attributes="1"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">

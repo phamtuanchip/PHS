@@ -291,7 +291,7 @@ public class loginForm extends javax.swing.JDialog {
                 }
             }
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
         return Result;
     }

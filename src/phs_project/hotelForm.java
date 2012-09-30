@@ -2656,7 +2656,7 @@ public class hotelForm extends javax.swing.JFrame {
 
         } else {
             int isdelete = JOptionPane.showConfirmDialog(this, "Bạn thực sự muốn xóa đơn hàng của " + Cusname + " hay không ?", "Cảnh báo", 0);
-            System.out.println(isdelete);
+            //System.out.println(isdelete);
             if (isdelete == 0) {
                 SQLRUN("execute clearOrders '" + ODID + "'"); // goi ham xoa het thong tin ve orders
                 //SQLRUN ("Delete orders where orderId = '"+ODID+"'");
@@ -2704,7 +2704,7 @@ public class hotelForm extends javax.swing.JFrame {
             st.close();
             conn.close();
         } catch (SQLException se) {
-            System.out.println(se);
+            se.printStackTrace();
         }
         if (status == 3) {
             //jButton19.setEnabled(false);
@@ -2751,8 +2751,7 @@ public class hotelForm extends javax.swing.JFrame {
         int ro = table.getSelectedRow();
         if (ro == -1) {
             JOptionPane.showMessageDialog(this, "Bạn phải ch�?n ít nhất một phòng!");
-        } // if huynh
-        else {
+        }else {
             for (int i = 0; i < getData.RowCount; i++) {
                 if (table.getValueAt(i, 0).equals(true)) {
                     vt.addElement(table.getValueAt(i, 1));
@@ -2896,7 +2895,7 @@ public class hotelForm extends javax.swing.JFrame {
     private void Infomation() {
         lblUser.setText(Utils.selectDateToString("select username from users where userName='" + loginForm.user + "'", "username"));
         lblRight.setText(loginForm.usertypename);
-        lblImage.setIcon(new javax.swing.ImageIcon(getClass().getResource(Utils.selectDateToString("select image from users where userName='" + loginForm.user + "'", "image"))));
+        //lblImage.setIcon(new javax.swing.ImageIcon(getClass().getResource(Utils.selectDateToString("select image from users where userName='" + loginForm.user + "'", "image"))));
         lblImage.setText("");
     }
 
@@ -2939,9 +2938,6 @@ public class hotelForm extends javax.swing.JFrame {
             new sqlDatabase().addDataTable(sql, tableViewRoomStaus, 3);
             Utils.hiddencol(tableViewRoomStaus, 2);
         }
-
-        //String sql = "{call ViewRoomStatusToday('"+dateChoose+"')}";
-
 
     }
 
@@ -3230,11 +3226,11 @@ public class hotelForm extends javax.swing.JFrame {
                 Utils.addItemTooCombobox(cbType, "select name from customerstype where customerTypeId <>'" + rs2.getString("type") + "'", "");
 
                 if (rs2.getString("sex").equals("Nam")) {
-                    System.out.println(rs2.getString("sex"));
+                    //System.out.println(rs2.getString("sex"));
                     sexMale.setSelected(true);
                 }
                 if (rs2.getString("sex").equals("Nu")) {
-                    System.out.println(rs2.getString("sex"));
+                    //System.out.println(rs2.getString("sex"));
                     sexFemale.setSelected(true);
                 }
                 // hoan tat dua du lieu vao cac truong
